@@ -37,7 +37,7 @@ function paymentTokensCreate(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
 ## Example Usage
 
@@ -82,7 +82,7 @@ function customerPaymentTokensGet(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
 
 ## Example Usage
 
@@ -122,7 +122,7 @@ function paymentTokensGet(string $id): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
 ## Example Usage
 
@@ -158,7 +158,7 @@ function paymentTokensDelete(string $id): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance.
 
 ## Example Usage
 
@@ -194,7 +194,7 @@ function setupTokensCreate(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
 ## Example Usage
 
@@ -235,7 +235,7 @@ function setupTokensGet(string $id): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
 ## Example Usage
 

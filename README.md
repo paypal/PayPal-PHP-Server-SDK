@@ -1,5 +1,5 @@
 
-# Getting Started with paypal server sdk
+# Getting Started with Paypal Server SDK
 
 ## Introduction
 
@@ -50,7 +50,7 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```php
-$client = PaypalServerSdkClientBuilder::init()
+$client = PaypalServerSDKClientBuilder::init()
     ->clientCredentialsAuthCredentials(
         ClientCredentialsAuthCredentialsBuilder::init(
             'OAuthClientId',

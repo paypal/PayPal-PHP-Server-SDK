@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PaypalServerSdkLib\\": "src/"
+            "PaypalServerSDKLib\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PaypalServerSdkLib\\Tests\\": "tests/"
+            "PaypalServerSDKLib\\Tests\\": "tests/"
         }
     },
     "scripts": {

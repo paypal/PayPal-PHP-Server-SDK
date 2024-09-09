@@ -37,7 +37,7 @@ function authorizationsGet(string $authorizationId): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
 
@@ -77,7 +77,7 @@ function authorizationsCapture(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
 ## Example Usage
 
@@ -126,7 +126,7 @@ function authorizationsReauthorize(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
 
@@ -170,7 +170,7 @@ function authorizationsVoid(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`?PaymentAuthorization`](../../doc/models/payment-authorization.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`?PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
 
@@ -213,7 +213,7 @@ function capturesGet(string $captureId): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
 ## Example Usage
 
@@ -254,7 +254,7 @@ function capturesRefund(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
 ## Example Usage
 
@@ -297,7 +297,7 @@ function refundsGet(string $refundId): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
 ## Example Usage
 

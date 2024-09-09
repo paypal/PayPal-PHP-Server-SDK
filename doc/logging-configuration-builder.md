@@ -19,25 +19,25 @@ Represents the logging configurations for API calls. Create instance using `Logg
 
 In order to provide custom logger, any implementation of the `Psr\Log\LoggerInterface` can be used so that you can override the `log` behavior and provide its instance directly in the SDK client initialization.
 
-The following example uses `Monolog\Logger` implementation of `Psr\Log\LoggerInterface` for PaypalServerSdkClient initialization.
+The following example uses `Monolog\Logger` implementation of `Psr\Log\LoggerInterface` for PaypalServerSDKClient initialization.
 
 ```php
 <?php
 
-use PaypalServerSdkLib\PaypalServerSdkClientBuilder;
-use PaypalServerSdkLib\Logging\LoggingConfigurationBuilder;
-use PaypalServerSdkLib\Logging\RequestLoggingConfigurationBuilder;
-use PaypalServerSdkLib\Logging\ResponseLoggingConfigurationBuilder;
+use PaypalServerSDKLib\PaypalServerSDKClientBuilder;
+use PaypalServerSDKLib\Logging\LoggingConfigurationBuilder;
+use PaypalServerSDKLib\Logging\RequestLoggingConfigurationBuilder;
+use PaypalServerSDKLib\Logging\ResponseLoggingConfigurationBuilder;
 use Psr\Log\LogLevel;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 // create a log channel
-$logger = new Logger('PaypalServerSdk');
+$logger = new Logger('PaypalServerSDK');
 $logger->pushHandler(new StreamHandler(__DIR__ . '/api_data.log'));
 
 // initialize the sdk client using this logger
-$client = PaypalServerSdkClientBuilder::init()
+$client = PaypalServerSDKClientBuilder::init()
     ->loggingConfiguration(
         LoggingConfigurationBuilder::init()
             ->logger($logger)

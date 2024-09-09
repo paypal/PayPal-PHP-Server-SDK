@@ -42,7 +42,7 @@ function ordersCreate(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -92,7 +92,7 @@ function ordersGet(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -130,7 +130,7 @@ function ordersPatch(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance.
 
 ## Example Usage
 
@@ -177,7 +177,7 @@ function ordersConfirm(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -227,7 +227,7 @@ function ordersAuthorize(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
 
 ## Example Usage
 
@@ -274,7 +274,7 @@ function ordersCapture(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -318,7 +318,7 @@ function ordersTrackCreate(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -365,7 +365,7 @@ function ordersTrackersPatch(array $options): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
+This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance.
 
 ## Example Usage
 
