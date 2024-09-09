@@ -35,14 +35,14 @@ function ordersCreate(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`OrderRequest`](../../doc/models/order-request.md) | Body, Required | - |
-| `payPalRequestId` | `?string` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager. |
-| `payPalPartnerAttributionId` | `?string` | Header, Optional | - |
-| `payPalClientMetadataId` | `?string` | Header, Optional | - |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> |
+| `payPalRequestId` | `?string` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108` |
+| `payPalPartnerAttributionId` | `?string` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `payPalClientMetadataId` | `?string` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=,-]*$` |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -87,12 +87,12 @@ function ordersGet(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order for which to show details. |
-| `fields` | `?string` | Query, Optional | A comma-separated list of fields that should be returned for the order. Valid filter field is `payment_source`. |
+| `id` | `string` | Template, Required | The ID of the order for which to show details.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `fields` | `?string` | Query, Optional | A comma-separated list of fields that should be returned for the order. Valid filter field is `payment_source`.<br>**Constraints**: *Pattern*: `^[a-z_]*$` |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -125,12 +125,12 @@ function ordersPatch(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order to update. |
+| `id` | `string` | Template, Required | The ID of the order to update.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
 | `body` | [`?(Patch[])`](../../doc/models/patch.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance.
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
 
 ## Example Usage
 
@@ -170,14 +170,14 @@ function ordersConfirm(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order for which the payer confirms their intent to pay. |
-| `payPalClientMetadataId` | `?string` | Header, Optional | - |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> |
+| `id` | `string` | Template, Required | The ID of the order for which the payer confirms their intent to pay.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `payPalClientMetadataId` | `?string` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=]*$` |
 | `body` | [`?ConfirmOrderRequest`](../../doc/models/confirm-order-request.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -218,16 +218,16 @@ function ordersAuthorize(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order for which to authorize. |
-| `payPalRequestId` | `?string` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager. |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> |
-| `payPalClientMetadataId` | `?string` | Header, Optional | - |
+| `id` | `string` | Template, Required | The ID of the order for which to authorize.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `payPalRequestId` | `?string` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108` |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=,-]*$` |
+| `payPalClientMetadataId` | `?string` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `payPalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see <a href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertion">PayPal-Auth-Assertion</a>. |
 | `body` | [`?OrderAuthorizeRequest`](../../doc/models/order-authorize-request.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
 
 ## Example Usage
 
@@ -265,16 +265,16 @@ function ordersCapture(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order for which to capture a payment. |
-| `payPalRequestId` | `?string` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager. |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> |
-| `payPalClientMetadataId` | `?string` | Header, Optional | - |
+| `id` | `string` | Template, Required | The ID of the order for which to capture a payment.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `payPalRequestId` | `?string` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108` |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=,-]*$` |
+| `payPalClientMetadataId` | `?string` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `payPalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see <a href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertion">PayPal-Auth-Assertion</a>. |
 | `body` | [`?OrderCaptureRequest`](../../doc/models/order-capture-request.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -312,13 +312,13 @@ function ordersTrackCreate(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order that the tracking information is associated with. |
+| `id` | `string` | Template, Required | The ID of the order that the tracking information is associated with.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
 | `body` | [`OrderTrackerRequest`](../../doc/models/order-tracker-request.md) | Body, Required | - |
 | `payPalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see <a href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertion">PayPal-Auth-Assertion</a>. |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -359,13 +359,13 @@ function ordersTrackersPatch(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the order that the tracking information is associated with. |
-| `trackerId` | `string` | Template, Required | The order tracking ID. |
+| `id` | `string` | Template, Required | The ID of the order that the tracking information is associated with.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `trackerId` | `string` | Template, Required | The order tracking ID.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
 | `body` | [`?(Patch[])`](../../doc/models/patch.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PayPalRESTAPIsLib\Utils\ApiResponse` instance.
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
 
 ## Example Usage
 

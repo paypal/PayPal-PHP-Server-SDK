@@ -27,7 +27,7 @@ Documentation for accessing and setting credentials for Oauth2.
 You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* autentication, are called.
 
 ```php
-$client = PayPalRESTAPIsClientBuilder::init()
+$client = PaypalServerSdkClientBuilder::init()
     ->clientCredentialsAuthCredentials(
         ClientCredentialsAuthCredentialsBuilder::init(
             'OAuthClientId',
@@ -46,7 +46,7 @@ Your application can also manually provide an OAuthToken using the setter `oAuth
 Whenever the OAuth Token gets updated, the provided callback implementation will be executed. For instance, you may use it to store your access token whenever it gets updated.
 
 ```php
-$client = PayPalRESTAPIsClientBuilder::init()
+$client = PaypalServerSdkClientBuilder::init()
     ->clientCredentialsAuthCredentials(
         ClientCredentialsAuthCredentialsBuilder::init(
             'OAuthClientId',
@@ -68,7 +68,7 @@ $client = PayPalRESTAPIsClientBuilder::init()
 To authorize a client using a stored access token, set up the `oAuthTokenProvider` in `ClientCredentialsAuthCredentialsBuilder` along with the other auth parameters before creating the client:
 
 ```php
-$client = PayPalRESTAPIsClientBuilder::init()
+$client = PaypalServerSdkClientBuilder::init()
     ->clientCredentialsAuthCredentials(
         ClientCredentialsAuthCredentialsBuilder::init(
             'OAuthClientId',

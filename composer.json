@@ -3,7 +3,7 @@
     "description": "PayPal's SDK for interacting with the REST APIs",
     "type": "library",
     "keywords": [],
-    "homepage": "https://www.apimatic.io",
+    "homepage": "https://github.com/paypal/PayPal-PHP-Server-SDK",
     "license": [
         "MIT"
     ],
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PayPalRESTAPIsLib\\": "src/"
+            "PaypalServerSdkLib\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PayPalRESTAPIsLib\\Tests\\": "tests/"
+            "PaypalServerSdkLib\\Tests\\": "tests/"
         }
     },
     "scripts": {
