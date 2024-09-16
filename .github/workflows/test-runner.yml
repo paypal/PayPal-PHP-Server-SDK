@@ -1,0 +1,46 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Running all tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Install dependencies
+      run: |
+        composer install
+        composer require php-webdriver/webdriver --dev
+        composer require phpunit/phpunit --dev
+
+    - name: Run Lint Tests
+      run: composer lint
+
+    - name: Run Analyzer Tests
+      run: composer analyze
+
+    - name: Set up Java 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Run Selenium Server
+      run: java -jar selenium.jar standalone &
+
+    - name: Run tests
+      run: ./vendor/bin/phpunit --testdox
+      env: 
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        EMAIL: ${{ secrets.EMAIL }}
+        PASSWORD: ${{ secrets.PASSWORD }}

@@ -1,0 +1,10 @@
+tests/E2E/**
+tests/UnitTests/**
+tests/ClientFactory.php
+tests/WebDriverUtilities.php
+tests/bootstrap.php
+tests/Controllers/BaseTestController.php
+.gitignore
+.github/**
+phpunit.xml
+selenium.jar
