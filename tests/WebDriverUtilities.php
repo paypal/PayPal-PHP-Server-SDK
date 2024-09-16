@@ -1,6 +1,6 @@
 <?php
 
-namespace PayPalRESTAPIsLib\Tests;
+namespace PaypalServerSDKLib\Tests;
 
 use Exception;
 use Facebook\WebDriver\Firefox\FirefoxOptions;
