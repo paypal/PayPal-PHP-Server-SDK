@@ -15,10 +15,10 @@ use stdClass;
 /**
  * Additional attributes associated with the use of a PayPal Wallet.
  */
-class PayPalWalletAttributesResponse implements \JsonSerializable
+class PaypalWalletAttributesResponse implements \JsonSerializable
 {
     /**
-     * @var PayPalWalletVaultResponse|null
+     * @var PaypalWalletVaultResponse|null
      */
     private $vault;
 
@@ -31,7 +31,7 @@ class PayPalWalletAttributesResponse implements \JsonSerializable
      * Returns Vault.
      * The details about a saved PayPal Wallet payment source.
      */
-    public function getVault(): ?PayPalWalletVaultResponse
+    public function getVault(): ?PaypalWalletVaultResponse
     {
         return $this->vault;
     }
@@ -42,7 +42,7 @@ class PayPalWalletAttributesResponse implements \JsonSerializable
      *
      * @maps vault
      */
-    public function setVault(?PayPalWalletVaultResponse $vault): void
+    public function setVault(?PaypalWalletVaultResponse $vault): void
     {
         $this->vault = $vault;
     }

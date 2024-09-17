@@ -1,11 +1,11 @@
 
-# Pay Pal Wallet Experience Context
+# Paypal Wallet Experience Context
 
 Customizes the payer experience during the approval process for payment with PayPal.<blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code> and <code>shipping_preference</code> during partner account setup, which overrides the request values.</blockquote>
 
 ## Structure
 
-`PayPalWalletExperienceContext`
+`PaypalWalletExperienceContext`
 
 ## Fields
 
@@ -16,8 +16,8 @@ Customizes the payer experience during the approval process for payment with Pay
 | `shippingPreference` | [`?string(ShippingPreference)`](../../doc/models/shipping-preference.md) | Optional | The location from which the shipping address is derived.<br>**Default**: `ShippingPreference::GET_FROM_FILE`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `24`, *Pattern*: `^[A-Z_]+$` | getShippingPreference(): ?string | setShippingPreference(?string shippingPreference): void |
 | `returnUrl` | `?string` | Optional | Describes the URL. | getReturnUrl(): ?string | setReturnUrl(?string returnUrl): void |
 | `cancelUrl` | `?string` | Optional | Describes the URL. | getCancelUrl(): ?string | setCancelUrl(?string cancelUrl): void |
-| `landingPage` | [`?string(PayPalExperienceLandingPage)`](../../doc/models/pay-pal-experience-landing-page.md) | Optional | The type of landing page to show on the PayPal site for customer checkout.<br>**Default**: `PayPalExperienceLandingPage::NO_PREFERENCE`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `13`, *Pattern*: `^[0-9A-Z_]+$` | getLandingPage(): ?string | setLandingPage(?string landingPage): void |
-| `userAction` | [`?string(PayPalExperienceUserAction)`](../../doc/models/pay-pal-experience-user-action.md) | Optional | Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.<br>**Default**: `PayPalExperienceUserAction::CONTINUE_`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `8`, *Pattern*: `^[0-9A-Z_]+$` | getUserAction(): ?string | setUserAction(?string userAction): void |
+| `landingPage` | [`?string(PaypalExperienceLandingPage)`](../../doc/models/paypal-experience-landing-page.md) | Optional | The type of landing page to show on the PayPal site for customer checkout.<br>**Default**: `PaypalExperienceLandingPage::NO_PREFERENCE`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `13`, *Pattern*: `^[0-9A-Z_]+$` | getLandingPage(): ?string | setLandingPage(?string landingPage): void |
+| `userAction` | [`?string(PaypalExperienceUserAction)`](../../doc/models/paypal-experience-user-action.md) | Optional | Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.<br>**Default**: `PaypalExperienceUserAction::CONTINUE_`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `8`, *Pattern*: `^[0-9A-Z_]+$` | getUserAction(): ?string | setUserAction(?string userAction): void |
 | `paymentMethodPreference` | [`?string(PayeePaymentMethodPreference)`](../../doc/models/payee-payment-method-preference.md) | Optional | The merchant-preferred payment methods.<br>**Default**: `PayeePaymentMethodPreference::UNRESTRICTED`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getPaymentMethodPreference(): ?string | setPaymentMethodPreference(?string paymentMethodPreference): void |
 
 ## Example (as JSON)

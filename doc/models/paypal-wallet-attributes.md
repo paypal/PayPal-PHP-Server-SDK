@@ -1,18 +1,18 @@
 
-# Pay Pal Wallet Attributes
+# Paypal Wallet Attributes
 
 Additional attributes associated with the use of this PayPal Wallet.
 
 ## Structure
 
-`PayPalWalletAttributes`
+`PaypalWalletAttributes`
 
 ## Fields
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `customer` | [`?PayPalWalletCustomerRequest`](../../doc/models/pay-pal-wallet-customer-request.md) | Optional | - | getCustomer(): ?PayPalWalletCustomerRequest | setCustomer(?PayPalWalletCustomerRequest customer): void |
-| `vault` | [`?PayPalWalletVaultInstruction`](../../doc/models/pay-pal-wallet-vault-instruction.md) | Optional | - | getVault(): ?PayPalWalletVaultInstruction | setVault(?PayPalWalletVaultInstruction vault): void |
+| `customer` | [`?PaypalWalletCustomerRequest`](../../doc/models/paypal-wallet-customer-request.md) | Optional | - | getCustomer(): ?PaypalWalletCustomerRequest | setCustomer(?PaypalWalletCustomerRequest customer): void |
+| `vault` | [`?PaypalWalletVaultInstruction`](../../doc/models/paypal-wallet-vault-instruction.md) | Optional | - | getVault(): ?PaypalWalletVaultInstruction | setVault(?PaypalWalletVaultInstruction vault): void |
 
 ## Example (as JSON)
 

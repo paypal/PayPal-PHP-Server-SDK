@@ -1,9 +1,9 @@
 
-# Pay Pal Payment Token
+# Paypal Payment Token
 
 ## Structure
 
-`PayPalPaymentToken`
+`PaypalPaymentToken`
 
 ## Fields
 

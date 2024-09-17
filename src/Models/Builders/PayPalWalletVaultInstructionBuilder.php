@@ -11,31 +11,31 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletVaultInstruction;
+use PaypalServerSDKLib\Models\PaypalWalletVaultInstruction;
 
 /**
- * Builder for model PayPalWalletVaultInstruction
+ * Builder for model PaypalWalletVaultInstruction
  *
- * @see PayPalWalletVaultInstruction
+ * @see PaypalWalletVaultInstruction
  */
-class PayPalWalletVaultInstructionBuilder
+class PaypalWalletVaultInstructionBuilder
 {
     /**
-     * @var PayPalWalletVaultInstruction
+     * @var PaypalWalletVaultInstruction
      */
     private $instance;
 
-    private function __construct(PayPalWalletVaultInstruction $instance)
+    private function __construct(PaypalWalletVaultInstruction $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet vault instruction Builder object.
+     * Initializes a new paypal wallet vault instruction Builder object.
      */
     public static function init(string $usageType): self
     {
-        return new self(new PayPalWalletVaultInstruction($usageType));
+        return new self(new PaypalWalletVaultInstruction($usageType));
     }
 
     /**
@@ -84,9 +84,9 @@ class PayPalWalletVaultInstructionBuilder
     }
 
     /**
-     * Initializes a new pay pal wallet vault instruction object.
+     * Initializes a new paypal wallet vault instruction object.
      */
-    public function build(): PayPalWalletVaultInstruction
+    public function build(): PaypalWalletVaultInstruction
     {
         return CoreHelper::clone($this->instance);
     }

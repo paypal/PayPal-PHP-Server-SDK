@@ -11,31 +11,31 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletExperienceContext;
+use PaypalServerSDKLib\Models\PaypalWalletExperienceContext;
 
 /**
- * Builder for model PayPalWalletExperienceContext
+ * Builder for model PaypalWalletExperienceContext
  *
- * @see PayPalWalletExperienceContext
+ * @see PaypalWalletExperienceContext
  */
-class PayPalWalletExperienceContextBuilder
+class PaypalWalletExperienceContextBuilder
 {
     /**
-     * @var PayPalWalletExperienceContext
+     * @var PaypalWalletExperienceContext
      */
     private $instance;
 
-    private function __construct(PayPalWalletExperienceContext $instance)
+    private function __construct(PaypalWalletExperienceContext $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet experience context Builder object.
+     * Initializes a new paypal wallet experience context Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWalletExperienceContext());
+        return new self(new PaypalWalletExperienceContext());
     }
 
     /**
@@ -111,9 +111,9 @@ class PayPalWalletExperienceContextBuilder
     }
 
     /**
-     * Initializes a new pay pal wallet experience context object.
+     * Initializes a new paypal wallet experience context object.
      */
-    public function build(): PayPalWalletExperienceContext
+    public function build(): PaypalWalletExperienceContext
     {
         return CoreHelper::clone($this->instance);
     }

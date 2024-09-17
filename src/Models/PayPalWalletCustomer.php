@@ -15,7 +15,7 @@ use stdClass;
 /**
  * The details about a customer in PayPal's system of record.
  */
-class PayPalWalletCustomer implements \JsonSerializable
+class PaypalWalletCustomer implements \JsonSerializable
 {
     /**
      * @var string|null

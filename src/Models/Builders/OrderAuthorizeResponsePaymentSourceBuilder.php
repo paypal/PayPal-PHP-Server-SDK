@@ -15,7 +15,7 @@ use PaypalServerSDKLib\Models\ApplePayPaymentObject;
 use PaypalServerSDKLib\Models\CardResponse;
 use PaypalServerSDKLib\Models\GooglePayWalletResponse;
 use PaypalServerSDKLib\Models\OrderAuthorizeResponsePaymentSource;
-use PaypalServerSDKLib\Models\PayPalWalletResponse;
+use PaypalServerSDKLib\Models\PaypalWalletResponse;
 use PaypalServerSDKLib\Models\VenmoWalletResponse;
 
 /**
@@ -55,7 +55,7 @@ class OrderAuthorizeResponsePaymentSourceBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?PayPalWalletResponse $value): self
+    public function paypal(?PaypalWalletResponse $value): self
     {
         $this->instance->setPaypal($value);
         return $this;

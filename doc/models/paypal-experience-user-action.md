@@ -1,11 +1,11 @@
 
-# Pay Pal Experience User Action
+# Paypal Experience User Action
 
 Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.
 
 ## Enumeration
 
-`PayPalExperienceUserAction`
+`PaypalExperienceUserAction`
 
 ## Fields
 

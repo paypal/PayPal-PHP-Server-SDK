@@ -28,7 +28,7 @@ class PaymentSource implements \JsonSerializable
     private $token;
 
     /**
-     * @var PayPalWallet|null
+     * @var PaypalWallet|null
      */
     private $paypal;
 
@@ -53,12 +53,12 @@ class PaymentSource implements \JsonSerializable
     private $giropay;
 
     /**
-     * @var IDEALPaymentRequest|null
+     * @var IdealPaymentRequest|null
      */
     private $ideal;
 
     /**
-     * @var MyBankPaymentRequest|null
+     * @var MybankPaymentRequest|null
      */
     private $mybank;
 
@@ -146,7 +146,7 @@ class PaymentSource implements \JsonSerializable
      * Returns Paypal.
      * A resource that identifies a PayPal Wallet is used for payment.
      */
-    public function getPaypal(): ?PayPalWallet
+    public function getPaypal(): ?PaypalWallet
     {
         return $this->paypal;
     }
@@ -157,7 +157,7 @@ class PaymentSource implements \JsonSerializable
      *
      * @maps paypal
      */
-    public function setPaypal(?PayPalWallet $paypal): void
+    public function setPaypal(?PaypalWallet $paypal): void
     {
         $this->paypal = $paypal;
     }
@@ -246,7 +246,7 @@ class PaymentSource implements \JsonSerializable
      * Returns Ideal.
      * Information needed to pay using iDEAL.
      */
-    public function getIdeal(): ?IDEALPaymentRequest
+    public function getIdeal(): ?IdealPaymentRequest
     {
         return $this->ideal;
     }
@@ -257,7 +257,7 @@ class PaymentSource implements \JsonSerializable
      *
      * @maps ideal
      */
-    public function setIdeal(?IDEALPaymentRequest $ideal): void
+    public function setIdeal(?IdealPaymentRequest $ideal): void
     {
         $this->ideal = $ideal;
     }
@@ -266,7 +266,7 @@ class PaymentSource implements \JsonSerializable
      * Returns Mybank.
      * Information needed to pay using MyBank.
      */
-    public function getMybank(): ?MyBankPaymentRequest
+    public function getMybank(): ?MybankPaymentRequest
     {
         return $this->mybank;
     }
@@ -277,7 +277,7 @@ class PaymentSource implements \JsonSerializable
      *
      * @maps mybank
      */
-    public function setMybank(?MyBankPaymentRequest $mybank): void
+    public function setMybank(?MybankPaymentRequest $mybank): void
     {
         $this->mybank = $mybank;
     }

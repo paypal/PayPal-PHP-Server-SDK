@@ -15,7 +15,7 @@ use stdClass;
 /**
  * A resource that identifies a PayPal Wallet is used for payment.
  */
-class PayPalWallet implements \JsonSerializable
+class PaypalWallet implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -53,12 +53,12 @@ class PayPalWallet implements \JsonSerializable
     private $address;
 
     /**
-     * @var PayPalWalletAttributes|null
+     * @var PaypalWalletAttributes|null
      */
     private $attributes;
 
     /**
-     * @var PayPalWalletExperienceContext|null
+     * @var PaypalWalletExperienceContext|null
      */
     private $experienceContext;
 
@@ -235,7 +235,7 @@ class PayPalWallet implements \JsonSerializable
      * Returns Attributes.
      * Additional attributes associated with the use of this PayPal Wallet.
      */
-    public function getAttributes(): ?PayPalWalletAttributes
+    public function getAttributes(): ?PaypalWalletAttributes
     {
         return $this->attributes;
     }
@@ -246,7 +246,7 @@ class PayPalWallet implements \JsonSerializable
      *
      * @maps attributes
      */
-    public function setAttributes(?PayPalWalletAttributes $attributes): void
+    public function setAttributes(?PaypalWalletAttributes $attributes): void
     {
         $this->attributes = $attributes;
     }
@@ -258,7 +258,7 @@ class PayPalWallet implements \JsonSerializable
      * and <code>shipping_preference</code> during partner account setup, which overrides the request
      * values.</blockquote>
      */
-    public function getExperienceContext(): ?PayPalWalletExperienceContext
+    public function getExperienceContext(): ?PaypalWalletExperienceContext
     {
         return $this->experienceContext;
     }
@@ -272,7 +272,7 @@ class PayPalWallet implements \JsonSerializable
      *
      * @maps experience_context
      */
-    public function setExperienceContext(?PayPalWalletExperienceContext $experienceContext): void
+    public function setExperienceContext(?PaypalWalletExperienceContext $experienceContext): void
     {
         $this->experienceContext = $experienceContext;
     }

@@ -18,7 +18,7 @@ use stdClass;
  * and <code>shipping_preference</code> during partner account setup, which overrides the request
  * values.</blockquote>
  */
-class PayPalWalletExperienceContext implements \JsonSerializable
+class PaypalWalletExperienceContext implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -48,12 +48,12 @@ class PayPalWalletExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $landingPage = PayPalExperienceLandingPage::NO_PREFERENCE;
+    private $landingPage = PaypalExperienceLandingPage::NO_PREFERENCE;
 
     /**
      * @var string|null
      */
-    private $userAction = PayPalExperienceUserAction::CONTINUE_;
+    private $userAction = PaypalExperienceUserAction::CONTINUE_;
 
     /**
      * @var string|null
@@ -260,10 +260,10 @@ class PayPalWalletExperienceContext implements \JsonSerializable
             $json['cancel_url']                = $this->cancelUrl;
         }
         if (isset($this->landingPage)) {
-            $json['landing_page']              = PayPalExperienceLandingPage::checkValue($this->landingPage);
+            $json['landing_page']              = PaypalExperienceLandingPage::checkValue($this->landingPage);
         }
         if (isset($this->userAction)) {
-            $json['user_action']               = PayPalExperienceUserAction::checkValue($this->userAction);
+            $json['user_action']               = PaypalExperienceUserAction::checkValue($this->userAction);
         }
         if (isset($this->paymentMethodPreference)) {
             $json['payment_method_preference'] =

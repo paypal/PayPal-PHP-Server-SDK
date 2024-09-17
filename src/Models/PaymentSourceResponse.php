@@ -23,7 +23,7 @@ class PaymentSourceResponse implements \JsonSerializable
     private $card;
 
     /**
-     * @var PayPalWalletResponse|null
+     * @var PaypalWalletResponse|null
      */
     private $paypal;
 
@@ -48,12 +48,12 @@ class PaymentSourceResponse implements \JsonSerializable
     private $giropay;
 
     /**
-     * @var IDEALPaymentObject|null
+     * @var IdealPaymentObject|null
      */
     private $ideal;
 
     /**
-     * @var MyBankPaymentObject|null
+     * @var MybankPaymentObject|null
      */
     private $mybank;
 
@@ -111,7 +111,7 @@ class PaymentSourceResponse implements \JsonSerializable
      * Returns Paypal.
      * The PayPal Wallet response.
      */
-    public function getPaypal(): ?PayPalWalletResponse
+    public function getPaypal(): ?PaypalWalletResponse
     {
         return $this->paypal;
     }
@@ -122,7 +122,7 @@ class PaymentSourceResponse implements \JsonSerializable
      *
      * @maps paypal
      */
-    public function setPaypal(?PayPalWalletResponse $paypal): void
+    public function setPaypal(?PaypalWalletResponse $paypal): void
     {
         $this->paypal = $paypal;
     }
@@ -211,7 +211,7 @@ class PaymentSourceResponse implements \JsonSerializable
      * Returns Ideal.
      * Information used to pay using iDEAL.
      */
-    public function getIdeal(): ?IDEALPaymentObject
+    public function getIdeal(): ?IdealPaymentObject
     {
         return $this->ideal;
     }
@@ -222,7 +222,7 @@ class PaymentSourceResponse implements \JsonSerializable
      *
      * @maps ideal
      */
-    public function setIdeal(?IDEALPaymentObject $ideal): void
+    public function setIdeal(?IdealPaymentObject $ideal): void
     {
         $this->ideal = $ideal;
     }
@@ -231,7 +231,7 @@ class PaymentSourceResponse implements \JsonSerializable
      * Returns Mybank.
      * Information used to pay using MyBank.
      */
-    public function getMybank(): ?MyBankPaymentObject
+    public function getMybank(): ?MybankPaymentObject
     {
         return $this->mybank;
     }
@@ -242,7 +242,7 @@ class PaymentSourceResponse implements \JsonSerializable
      *
      * @maps mybank
      */
-    public function setMybank(?MyBankPaymentObject $mybank): void
+    public function setMybank(?MybankPaymentObject $mybank): void
     {
         $this->mybank = $mybank;
     }

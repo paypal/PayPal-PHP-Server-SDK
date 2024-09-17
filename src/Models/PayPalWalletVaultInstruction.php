@@ -12,7 +12,7 @@ namespace PaypalServerSDKLib\Models;
 
 use stdClass;
 
-class PayPalWalletVaultInstruction implements \JsonSerializable
+class PaypalWalletVaultInstruction implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -37,7 +37,7 @@ class PayPalWalletVaultInstruction implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $customerType = PayPalPaymentTokenCustomerType::CONSUMER;
+    private $customerType = PaypalPaymentTokenCustomerType::CONSUMER;
 
     /**
      * @var bool|null
@@ -206,11 +206,11 @@ class PayPalWalletVaultInstruction implements \JsonSerializable
             $json['description']                    = $this->description;
         }
         if (isset($this->usagePattern)) {
-            $json['usage_pattern']                  = PayPalPaymentTokenUsagePattern::checkValue($this->usagePattern);
+            $json['usage_pattern']                  = PaypalPaymentTokenUsagePattern::checkValue($this->usagePattern);
         }
-        $json['usage_type']                         = PayPalPaymentTokenUsageType::checkValue($this->usageType);
+        $json['usage_type']                         = PaypalPaymentTokenUsageType::checkValue($this->usageType);
         if (isset($this->customerType)) {
-            $json['customer_type']                  = PayPalPaymentTokenCustomerType::checkValue($this->customerType);
+            $json['customer_type']                  = PaypalPaymentTokenCustomerType::checkValue($this->customerType);
         }
         if (isset($this->permitMultiplePaymentTokens)) {
             $json['permit_multiple_payment_tokens'] = $this->permitMultiplePaymentTokens;

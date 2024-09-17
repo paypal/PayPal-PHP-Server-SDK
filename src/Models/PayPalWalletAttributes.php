@@ -15,22 +15,22 @@ use stdClass;
 /**
  * Additional attributes associated with the use of this PayPal Wallet.
  */
-class PayPalWalletAttributes implements \JsonSerializable
+class PaypalWalletAttributes implements \JsonSerializable
 {
     /**
-     * @var PayPalWalletCustomerRequest|null
+     * @var PaypalWalletCustomerRequest|null
      */
     private $customer;
 
     /**
-     * @var PayPalWalletVaultInstruction|null
+     * @var PaypalWalletVaultInstruction|null
      */
     private $vault;
 
     /**
      * Returns Customer.
      */
-    public function getCustomer(): ?PayPalWalletCustomerRequest
+    public function getCustomer(): ?PaypalWalletCustomerRequest
     {
         return $this->customer;
     }
@@ -40,7 +40,7 @@ class PayPalWalletAttributes implements \JsonSerializable
      *
      * @maps customer
      */
-    public function setCustomer(?PayPalWalletCustomerRequest $customer): void
+    public function setCustomer(?PaypalWalletCustomerRequest $customer): void
     {
         $this->customer = $customer;
     }
@@ -48,7 +48,7 @@ class PayPalWalletAttributes implements \JsonSerializable
     /**
      * Returns Vault.
      */
-    public function getVault(): ?PayPalWalletVaultInstruction
+    public function getVault(): ?PaypalWalletVaultInstruction
     {
         return $this->vault;
     }
@@ -58,7 +58,7 @@ class PayPalWalletAttributes implements \JsonSerializable
      *
      * @maps vault
      */
-    public function setVault(?PayPalWalletVaultInstruction $vault): void
+    public function setVault(?PaypalWalletVaultInstruction $vault): void
     {
         $this->vault = $vault;
     }

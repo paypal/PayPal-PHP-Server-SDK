@@ -15,7 +15,7 @@ use stdClass;
 /**
  * The PayPal Wallet response.
  */
-class PayPalWalletResponse implements \JsonSerializable
+class PaypalWalletResponse implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -68,7 +68,7 @@ class PayPalWalletResponse implements \JsonSerializable
     private $address;
 
     /**
-     * @var PayPalWalletAttributesResponse|null
+     * @var PaypalWalletAttributesResponse|null
      */
     private $attributes;
 
@@ -306,7 +306,7 @@ class PayPalWalletResponse implements \JsonSerializable
      * Returns Attributes.
      * Additional attributes associated with the use of a PayPal Wallet.
      */
-    public function getAttributes(): ?PayPalWalletAttributesResponse
+    public function getAttributes(): ?PaypalWalletAttributesResponse
     {
         return $this->attributes;
     }
@@ -317,7 +317,7 @@ class PayPalWalletResponse implements \JsonSerializable
      *
      * @maps attributes
      */
-    public function setAttributes(?PayPalWalletAttributesResponse $attributes): void
+    public function setAttributes(?PaypalWalletAttributesResponse $attributes): void
     {
         $this->attributes = $attributes;
     }
@@ -341,7 +341,7 @@ class PayPalWalletResponse implements \JsonSerializable
             $json['account_id']     = $this->accountId;
         }
         if (isset($this->accountStatus)) {
-            $json['account_status'] = PayPalWalletAccountVerificationStatus::checkValue($this->accountStatus);
+            $json['account_status'] = PaypalWalletAccountVerificationStatus::checkValue($this->accountStatus);
         }
         if (isset($this->name)) {
             $json['name']           = $this->name;

@@ -18,7 +18,7 @@ use stdClass;
  * The account status indicates whether the buyer has verified the financial details associated with
  * their PayPal account.
  */
-class PayPalWalletAccountVerificationStatus
+class PaypalWalletAccountVerificationStatus
 {
     public const VERIFIED = 'VERIFIED';
 
@@ -41,6 +41,6 @@ class PayPalWalletAccountVerificationStatus
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalWalletAccountVerificationStatus.");
+        throw new Exception("$value is invalid for PaypalWalletAccountVerificationStatus.");
     }
 }

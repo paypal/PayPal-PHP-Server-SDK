@@ -13,7 +13,7 @@ namespace PaypalServerSDKLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\SetupTokenRequestCard;
 use PaypalServerSDKLib\Models\SetupTokenRequestPaymentSource;
-use PaypalServerSDKLib\Models\VaultPayPalWalletRequest;
+use PaypalServerSDKLib\Models\VaultPaypalWalletRequest;
 use PaypalServerSDKLib\Models\VaultTokenRequest;
 use PaypalServerSDKLib\Models\VaultVenmoRequest;
 
@@ -54,7 +54,7 @@ class SetupTokenRequestPaymentSourceBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?VaultPayPalWalletRequest $value): self
+    public function paypal(?VaultPaypalWalletRequest $value): self
     {
         $this->instance->setPaypal($value);
         return $this;

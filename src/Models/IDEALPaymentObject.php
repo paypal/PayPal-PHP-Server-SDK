@@ -15,7 +15,7 @@ use stdClass;
 /**
  * Information used to pay using iDEAL.
  */
-class IDEALPaymentObject implements \JsonSerializable
+class IdealPaymentObject implements \JsonSerializable
 {
     /**
      * @var string|null

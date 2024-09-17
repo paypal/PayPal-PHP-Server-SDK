@@ -1,11 +1,11 @@
 
-# Pay Pal Wallet Vault Status
+# Paypal Wallet Vault Status
 
 The vault status.
 
 ## Enumeration
 
-`PayPalWalletVaultStatus`
+`PaypalWalletVaultStatus`
 
 ## Fields
 

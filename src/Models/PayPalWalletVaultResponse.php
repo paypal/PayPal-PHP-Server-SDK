@@ -15,7 +15,7 @@ use stdClass;
 /**
  * The details about a saved PayPal Wallet payment source.
  */
-class PayPalWalletVaultResponse implements \JsonSerializable
+class PaypalWalletVaultResponse implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -33,7 +33,7 @@ class PayPalWalletVaultResponse implements \JsonSerializable
     private $links;
 
     /**
-     * @var PayPalWalletCustomer|null
+     * @var PaypalWalletCustomer|null
      */
     private $customer;
 
@@ -105,7 +105,7 @@ class PayPalWalletVaultResponse implements \JsonSerializable
      * Returns Customer.
      * The details about a customer in PayPal's system of record.
      */
-    public function getCustomer(): ?PayPalWalletCustomer
+    public function getCustomer(): ?PaypalWalletCustomer
     {
         return $this->customer;
     }
@@ -116,7 +116,7 @@ class PayPalWalletVaultResponse implements \JsonSerializable
      *
      * @maps customer
      */
-    public function setCustomer(?PayPalWalletCustomer $customer): void
+    public function setCustomer(?PaypalWalletCustomer $customer): void
     {
         $this->customer = $customer;
     }
@@ -137,7 +137,7 @@ class PayPalWalletVaultResponse implements \JsonSerializable
             $json['id']       = $this->id;
         }
         if (isset($this->status)) {
-            $json['status']   = PayPalWalletVaultStatus::checkValue($this->status);
+            $json['status']   = PaypalWalletVaultStatus::checkValue($this->status);
         }
         if (isset($this->links)) {
             $json['links']    = $this->links;

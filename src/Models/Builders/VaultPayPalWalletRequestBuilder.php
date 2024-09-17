@@ -13,31 +13,31 @@ namespace PaypalServerSDKLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\VaultedDigitalWalletShippingDetails;
 use PaypalServerSDKLib\Models\VaultExperienceContext;
-use PaypalServerSDKLib\Models\VaultPayPalWalletRequest;
+use PaypalServerSDKLib\Models\VaultPaypalWalletRequest;
 
 /**
- * Builder for model VaultPayPalWalletRequest
+ * Builder for model VaultPaypalWalletRequest
  *
- * @see VaultPayPalWalletRequest
+ * @see VaultPaypalWalletRequest
  */
-class VaultPayPalWalletRequestBuilder
+class VaultPaypalWalletRequestBuilder
 {
     /**
-     * @var VaultPayPalWalletRequest
+     * @var VaultPaypalWalletRequest
      */
     private $instance;
 
-    private function __construct(VaultPayPalWalletRequest $instance)
+    private function __construct(VaultPaypalWalletRequest $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new vault pay pal wallet request Builder object.
+     * Initializes a new vault paypal wallet request Builder object.
      */
     public static function init(): self
     {
-        return new self(new VaultPayPalWalletRequest());
+        return new self(new VaultPaypalWalletRequest());
     }
 
     /**
@@ -95,9 +95,9 @@ class VaultPayPalWalletRequestBuilder
     }
 
     /**
-     * Initializes a new vault pay pal wallet request object.
+     * Initializes a new vault paypal wallet request object.
      */
-    public function build(): VaultPayPalWalletRequest
+    public function build(): VaultPaypalWalletRequest
     {
         return CoreHelper::clone($this->instance);
     }

@@ -1,11 +1,11 @@
 
-# Pay Pal Payment Token Usage Pattern
+# Paypal Payment Token Usage Pattern
 
 Expected business/pricing model for the billing agreement.
 
 ## Enumeration
 
-`PayPalPaymentTokenUsagePattern`
+`PaypalPaymentTokenUsagePattern`
 
 ## Fields
 

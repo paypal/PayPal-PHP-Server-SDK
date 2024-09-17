@@ -11,31 +11,31 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\MyBankPaymentObject;
+use PaypalServerSDKLib\Models\MybankPaymentObject;
 
 /**
- * Builder for model MyBankPaymentObject
+ * Builder for model MybankPaymentObject
  *
- * @see MyBankPaymentObject
+ * @see MybankPaymentObject
  */
-class MyBankPaymentObjectBuilder
+class MybankPaymentObjectBuilder
 {
     /**
-     * @var MyBankPaymentObject
+     * @var MybankPaymentObject
      */
     private $instance;
 
-    private function __construct(MyBankPaymentObject $instance)
+    private function __construct(MybankPaymentObject $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new my bank payment object Builder object.
+     * Initializes a new mybank payment object Builder object.
      */
     public static function init(): self
     {
-        return new self(new MyBankPaymentObject());
+        return new self(new MybankPaymentObject());
     }
 
     /**
@@ -75,9 +75,9 @@ class MyBankPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new my bank payment object object.
+     * Initializes a new mybank payment object object.
      */
-    public function build(): MyBankPaymentObject
+    public function build(): MybankPaymentObject
     {
         return CoreHelper::clone($this->instance);
     }

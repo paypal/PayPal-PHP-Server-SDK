@@ -11,32 +11,32 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletCustomer;
+use PaypalServerSDKLib\Models\PaypalWalletCustomer;
 use PaypalServerSDKLib\Models\PhoneWithType;
 
 /**
- * Builder for model PayPalWalletCustomer
+ * Builder for model PaypalWalletCustomer
  *
- * @see PayPalWalletCustomer
+ * @see PaypalWalletCustomer
  */
-class PayPalWalletCustomerBuilder
+class PaypalWalletCustomerBuilder
 {
     /**
-     * @var PayPalWalletCustomer
+     * @var PaypalWalletCustomer
      */
     private $instance;
 
-    private function __construct(PayPalWalletCustomer $instance)
+    private function __construct(PaypalWalletCustomer $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet customer Builder object.
+     * Initializes a new paypal wallet customer Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWalletCustomer());
+        return new self(new PaypalWalletCustomer());
     }
 
     /**
@@ -76,9 +76,9 @@ class PayPalWalletCustomerBuilder
     }
 
     /**
-     * Initializes a new pay pal wallet customer object.
+     * Initializes a new paypal wallet customer object.
      */
-    public function build(): PayPalWalletCustomer
+    public function build(): PaypalWalletCustomer
     {
         return CoreHelper::clone($this->instance);
     }

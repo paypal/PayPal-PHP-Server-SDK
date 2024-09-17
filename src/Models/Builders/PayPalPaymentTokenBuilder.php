@@ -13,34 +13,34 @@ namespace PaypalServerSDKLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\Address;
 use PaypalServerSDKLib\Models\Name;
-use PaypalServerSDKLib\Models\PayPalPaymentToken;
+use PaypalServerSDKLib\Models\PaypalPaymentToken;
 use PaypalServerSDKLib\Models\Phone;
 use PaypalServerSDKLib\Models\PhoneWithType;
 use PaypalServerSDKLib\Models\VaultedDigitalWalletShippingDetails;
 
 /**
- * Builder for model PayPalPaymentToken
+ * Builder for model PaypalPaymentToken
  *
- * @see PayPalPaymentToken
+ * @see PaypalPaymentToken
  */
-class PayPalPaymentTokenBuilder
+class PaypalPaymentTokenBuilder
 {
     /**
-     * @var PayPalPaymentToken
+     * @var PaypalPaymentToken
      */
     private $instance;
 
-    private function __construct(PayPalPaymentToken $instance)
+    private function __construct(PaypalPaymentToken $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal payment token Builder object.
+     * Initializes a new paypal payment token Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalPaymentToken());
+        return new self(new PaypalPaymentToken());
     }
 
     /**
@@ -152,9 +152,9 @@ class PayPalPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new pay pal payment token object.
+     * Initializes a new paypal payment token object.
      */
-    public function build(): PayPalPaymentToken
+    public function build(): PaypalPaymentToken
     {
         return CoreHelper::clone($this->instance);
     }

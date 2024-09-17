@@ -17,7 +17,7 @@ use stdClass;
 /**
  * Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.
  */
-class PayPalExperienceUserAction
+class PaypalExperienceUserAction
 {
     public const CONTINUE_ = 'CONTINUE';
 
@@ -40,6 +40,6 @@ class PayPalExperienceUserAction
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalExperienceUserAction.");
+        throw new Exception("$value is invalid for PaypalExperienceUserAction.");
     }
 }

@@ -12,31 +12,31 @@ namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\ExperienceContext;
-use PaypalServerSDKLib\Models\IDEALPaymentRequest;
+use PaypalServerSDKLib\Models\IdealPaymentRequest;
 
 /**
- * Builder for model IDEALPaymentRequest
+ * Builder for model IdealPaymentRequest
  *
- * @see IDEALPaymentRequest
+ * @see IdealPaymentRequest
  */
-class IDEALPaymentRequestBuilder
+class IdealPaymentRequestBuilder
 {
     /**
-     * @var IDEALPaymentRequest
+     * @var IdealPaymentRequest
      */
     private $instance;
 
-    private function __construct(IDEALPaymentRequest $instance)
+    private function __construct(IdealPaymentRequest $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new idealpayment request Builder object.
+     * Initializes a new ideal payment request Builder object.
      */
     public static function init(string $name, string $countryCode): self
     {
-        return new self(new IDEALPaymentRequest($name, $countryCode));
+        return new self(new IdealPaymentRequest($name, $countryCode));
     }
 
     /**
@@ -58,9 +58,9 @@ class IDEALPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new idealpayment request object.
+     * Initializes a new ideal payment request object.
      */
-    public function build(): IDEALPaymentRequest
+    public function build(): IdealPaymentRequest
     {
         return CoreHelper::clone($this->instance);
     }

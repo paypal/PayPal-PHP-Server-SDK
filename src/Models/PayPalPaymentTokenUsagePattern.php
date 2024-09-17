@@ -17,7 +17,7 @@ use stdClass;
 /**
  * Expected business/pricing model for the billing agreement.
  */
-class PayPalPaymentTokenUsagePattern
+class PaypalPaymentTokenUsagePattern
 {
     public const IMMEDIATE = 'IMMEDIATE';
 
@@ -55,6 +55,6 @@ class PayPalPaymentTokenUsagePattern
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalPaymentTokenUsagePattern.");
+        throw new Exception("$value is invalid for PaypalPaymentTokenUsagePattern.");
     }
 }

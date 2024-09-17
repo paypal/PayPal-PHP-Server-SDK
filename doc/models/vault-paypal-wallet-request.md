@@ -1,11 +1,11 @@
 
-# Vault Pay Pal Wallet Request
+# Vault Paypal Wallet Request
 
 A resource representing a request to vault PayPal Wallet.
 
 ## Structure
 
-`VaultPayPalWalletRequest`
+`VaultPaypalWalletRequest`
 
 ## Fields
 

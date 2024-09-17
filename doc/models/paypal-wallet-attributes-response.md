@@ -1,17 +1,17 @@
 
-# Pay Pal Wallet Attributes Response
+# Paypal Wallet Attributes Response
 
 Additional attributes associated with the use of a PayPal Wallet.
 
 ## Structure
 
-`PayPalWalletAttributesResponse`
+`PaypalWalletAttributesResponse`
 
 ## Fields
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `vault` | [`?PayPalWalletVaultResponse`](../../doc/models/pay-pal-wallet-vault-response.md) | Optional | The details about a saved PayPal Wallet payment source. | getVault(): ?PayPalWalletVaultResponse | setVault(?PayPalWalletVaultResponse vault): void |
+| `vault` | [`?PaypalWalletVaultResponse`](../../doc/models/paypal-wallet-vault-response.md) | Optional | The details about a saved PayPal Wallet payment source. | getVault(): ?PaypalWalletVaultResponse | setVault(?PaypalWalletVaultResponse vault): void |
 | `cobrandedCards` | [`?(CobrandedCard[])`](../../doc/models/cobranded-card.md) | Optional | An array of merchant cobranded cards used by buyer to complete an order. This array will be present if a merchant has onboarded their cobranded card with PayPal and provided corresponding label(s).<br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `25` | getCobrandedCards(): ?array | setCobrandedCards(?array cobrandedCards): void |
 
 ## Example (as JSON)

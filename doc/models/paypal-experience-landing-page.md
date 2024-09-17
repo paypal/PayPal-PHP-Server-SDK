@@ -1,11 +1,11 @@
 
-# Pay Pal Experience Landing Page
+# Paypal Experience Landing Page
 
 The type of landing page to show on the PayPal site for customer checkout.
 
 ## Enumeration
 
-`PayPalExperienceLandingPage`
+`PaypalExperienceLandingPage`
 
 ## Fields
 

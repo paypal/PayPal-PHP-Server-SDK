@@ -1,11 +1,11 @@
 
-# My Bank Payment Object
+# Mybank Payment Object
 
 Information used to pay using MyBank.
 
 ## Structure
 
-`MyBankPaymentObject`
+`MybankPaymentObject`
 
 ## Fields
 

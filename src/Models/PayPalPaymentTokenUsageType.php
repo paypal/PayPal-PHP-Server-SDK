@@ -17,7 +17,7 @@ use stdClass;
 /**
  * The usage type associated with the PayPal payment token.
  */
-class PayPalPaymentTokenUsageType
+class PaypalPaymentTokenUsageType
 {
     public const MERCHANT = 'MERCHANT';
 
@@ -40,6 +40,6 @@ class PayPalPaymentTokenUsageType
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalPaymentTokenUsageType.");
+        throw new Exception("$value is invalid for PaypalPaymentTokenUsageType.");
     }
 }

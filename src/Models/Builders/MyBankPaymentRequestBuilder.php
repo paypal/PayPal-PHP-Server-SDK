@@ -12,31 +12,31 @@ namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\ExperienceContext;
-use PaypalServerSDKLib\Models\MyBankPaymentRequest;
+use PaypalServerSDKLib\Models\MybankPaymentRequest;
 
 /**
- * Builder for model MyBankPaymentRequest
+ * Builder for model MybankPaymentRequest
  *
- * @see MyBankPaymentRequest
+ * @see MybankPaymentRequest
  */
-class MyBankPaymentRequestBuilder
+class MybankPaymentRequestBuilder
 {
     /**
-     * @var MyBankPaymentRequest
+     * @var MybankPaymentRequest
      */
     private $instance;
 
-    private function __construct(MyBankPaymentRequest $instance)
+    private function __construct(MybankPaymentRequest $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new my bank payment request Builder object.
+     * Initializes a new mybank payment request Builder object.
      */
     public static function init(string $name, string $countryCode): self
     {
-        return new self(new MyBankPaymentRequest($name, $countryCode));
+        return new self(new MybankPaymentRequest($name, $countryCode));
     }
 
     /**
@@ -49,9 +49,9 @@ class MyBankPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new my bank payment request object.
+     * Initializes a new mybank payment request object.
      */
-    public function build(): MyBankPaymentRequest
+    public function build(): MybankPaymentRequest
     {
         return CoreHelper::clone($this->instance);
     }

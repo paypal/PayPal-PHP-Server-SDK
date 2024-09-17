@@ -12,7 +12,7 @@ namespace PaypalServerSDKLib\Models;
 
 use stdClass;
 
-class PayPalPaymentToken implements \JsonSerializable
+class PaypalPaymentToken implements \JsonSerializable
 {
     /**
      * @var string|null

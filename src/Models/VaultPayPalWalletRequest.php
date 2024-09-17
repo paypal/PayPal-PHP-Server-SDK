@@ -15,7 +15,7 @@ use stdClass;
 /**
  * A resource representing a request to vault PayPal Wallet.
  */
-class VaultPayPalWalletRequest implements \JsonSerializable
+class VaultPaypalWalletRequest implements \JsonSerializable
 {
     /**
      * @var string|null

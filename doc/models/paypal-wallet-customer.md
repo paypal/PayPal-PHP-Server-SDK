@@ -1,9 +1,11 @@
 
-# Pay Pal Wallet Customer Request
+# Paypal Wallet Customer
+
+The details about a customer in PayPal's system of record.
 
 ## Structure
 
-`PayPalWalletCustomerRequest`
+`PaypalWalletCustomer`
 
 ## Fields
 
@@ -18,15 +20,15 @@
 
 ```json
 {
-  "id": "id2",
-  "email_address": "email_address0",
+  "id": "id8",
+  "email_address": "email_address4",
   "phone": {
     "phone_type": "OTHER",
     "phone_number": {
       "national_number": "national_number6"
     }
   },
-  "merchant_customer_id": "merchant_customer_id4"
+  "merchant_customer_id": "merchant_customer_id0"
 }
 ```
 

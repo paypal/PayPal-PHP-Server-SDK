@@ -11,32 +11,32 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletCustomerRequest;
+use PaypalServerSDKLib\Models\PaypalWalletCustomerRequest;
 use PaypalServerSDKLib\Models\PhoneWithType;
 
 /**
- * Builder for model PayPalWalletCustomerRequest
+ * Builder for model PaypalWalletCustomerRequest
  *
- * @see PayPalWalletCustomerRequest
+ * @see PaypalWalletCustomerRequest
  */
-class PayPalWalletCustomerRequestBuilder
+class PaypalWalletCustomerRequestBuilder
 {
     /**
-     * @var PayPalWalletCustomerRequest
+     * @var PaypalWalletCustomerRequest
      */
     private $instance;
 
-    private function __construct(PayPalWalletCustomerRequest $instance)
+    private function __construct(PaypalWalletCustomerRequest $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet customer request Builder object.
+     * Initializes a new paypal wallet customer request Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWalletCustomerRequest());
+        return new self(new PaypalWalletCustomerRequest());
     }
 
     /**
@@ -76,9 +76,9 @@ class PayPalWalletCustomerRequestBuilder
     }
 
     /**
-     * Initializes a new pay pal wallet customer request object.
+     * Initializes a new paypal wallet customer request object.
      */
-    public function build(): PayPalWalletCustomerRequest
+    public function build(): PaypalWalletCustomerRequest
     {
         return CoreHelper::clone($this->instance);
     }

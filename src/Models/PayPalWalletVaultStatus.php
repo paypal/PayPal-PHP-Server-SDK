@@ -17,7 +17,7 @@ use stdClass;
 /**
  * The vault status.
  */
-class PayPalWalletVaultStatus
+class PaypalWalletVaultStatus
 {
     public const VAULTED = 'VAULTED';
 
@@ -42,6 +42,6 @@ class PayPalWalletVaultStatus
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalWalletVaultStatus.");
+        throw new Exception("$value is invalid for PaypalWalletVaultStatus.");
     }
 }

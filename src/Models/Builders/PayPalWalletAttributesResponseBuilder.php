@@ -11,38 +11,38 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletAttributesResponse;
-use PaypalServerSDKLib\Models\PayPalWalletVaultResponse;
+use PaypalServerSDKLib\Models\PaypalWalletAttributesResponse;
+use PaypalServerSDKLib\Models\PaypalWalletVaultResponse;
 
 /**
- * Builder for model PayPalWalletAttributesResponse
+ * Builder for model PaypalWalletAttributesResponse
  *
- * @see PayPalWalletAttributesResponse
+ * @see PaypalWalletAttributesResponse
  */
-class PayPalWalletAttributesResponseBuilder
+class PaypalWalletAttributesResponseBuilder
 {
     /**
-     * @var PayPalWalletAttributesResponse
+     * @var PaypalWalletAttributesResponse
      */
     private $instance;
 
-    private function __construct(PayPalWalletAttributesResponse $instance)
+    private function __construct(PaypalWalletAttributesResponse $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet attributes response Builder object.
+     * Initializes a new paypal wallet attributes response Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWalletAttributesResponse());
+        return new self(new PaypalWalletAttributesResponse());
     }
 
     /**
      * Sets vault field.
      */
-    public function vault(?PayPalWalletVaultResponse $value): self
+    public function vault(?PaypalWalletVaultResponse $value): self
     {
         $this->instance->setVault($value);
         return $this;
@@ -58,9 +58,9 @@ class PayPalWalletAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new pay pal wallet attributes response object.
+     * Initializes a new paypal wallet attributes response object.
      */
-    public function build(): PayPalWalletAttributesResponse
+    public function build(): PaypalWalletAttributesResponse
     {
         return CoreHelper::clone($this->instance);
     }

@@ -18,7 +18,7 @@ use stdClass;
  * The customer type associated with the PayPal payment token. This is to indicate whether the customer
  * acting on the merchant / platform is either a business or a consumer.
  */
-class PayPalPaymentTokenCustomerType
+class PaypalPaymentTokenCustomerType
 {
     public const CONSUMER = 'CONSUMER';
 
@@ -41,6 +41,6 @@ class PayPalPaymentTokenCustomerType
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalPaymentTokenCustomerType.");
+        throw new Exception("$value is invalid for PaypalPaymentTokenCustomerType.");
     }
 }

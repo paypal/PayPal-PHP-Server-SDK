@@ -1,11 +1,11 @@
 
-# IDEAL Payment Request
+# Ideal Payment Request
 
 Information needed to pay using iDEAL.
 
 ## Structure
 
-`IDEALPaymentRequest`
+`IdealPaymentRequest`
 
 ## Fields
 

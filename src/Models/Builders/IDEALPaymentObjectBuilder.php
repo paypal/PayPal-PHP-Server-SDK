@@ -11,31 +11,31 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\IDEALPaymentObject;
+use PaypalServerSDKLib\Models\IdealPaymentObject;
 
 /**
- * Builder for model IDEALPaymentObject
+ * Builder for model IdealPaymentObject
  *
- * @see IDEALPaymentObject
+ * @see IdealPaymentObject
  */
-class IDEALPaymentObjectBuilder
+class IdealPaymentObjectBuilder
 {
     /**
-     * @var IDEALPaymentObject
+     * @var IdealPaymentObject
      */
     private $instance;
 
-    private function __construct(IDEALPaymentObject $instance)
+    private function __construct(IdealPaymentObject $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new idealpayment object Builder object.
+     * Initializes a new ideal payment object Builder object.
      */
     public static function init(): self
     {
-        return new self(new IDEALPaymentObject());
+        return new self(new IdealPaymentObject());
     }
 
     /**
@@ -75,9 +75,9 @@ class IDEALPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new idealpayment object object.
+     * Initializes a new ideal payment object object.
      */
-    public function build(): IDEALPaymentObject
+    public function build(): IdealPaymentObject
     {
         return CoreHelper::clone($this->instance);
     }

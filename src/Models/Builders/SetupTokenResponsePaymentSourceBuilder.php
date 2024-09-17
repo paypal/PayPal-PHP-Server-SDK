@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalPaymentToken;
+use PaypalServerSDKLib\Models\PaypalPaymentToken;
 use PaypalServerSDKLib\Models\SetupTokenResponseCard;
 use PaypalServerSDKLib\Models\SetupTokenResponsePaymentSource;
 use PaypalServerSDKLib\Models\VenmoPaymentToken;
@@ -53,7 +53,7 @@ class SetupTokenResponsePaymentSourceBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?PayPalPaymentToken $value): self
+    public function paypal(?PaypalPaymentToken $value): self
     {
         $this->instance->setPaypal($value);
         return $this;

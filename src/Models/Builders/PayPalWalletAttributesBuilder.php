@@ -11,39 +11,39 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletAttributes;
-use PaypalServerSDKLib\Models\PayPalWalletCustomerRequest;
-use PaypalServerSDKLib\Models\PayPalWalletVaultInstruction;
+use PaypalServerSDKLib\Models\PaypalWalletAttributes;
+use PaypalServerSDKLib\Models\PaypalWalletCustomerRequest;
+use PaypalServerSDKLib\Models\PaypalWalletVaultInstruction;
 
 /**
- * Builder for model PayPalWalletAttributes
+ * Builder for model PaypalWalletAttributes
  *
- * @see PayPalWalletAttributes
+ * @see PaypalWalletAttributes
  */
-class PayPalWalletAttributesBuilder
+class PaypalWalletAttributesBuilder
 {
     /**
-     * @var PayPalWalletAttributes
+     * @var PaypalWalletAttributes
      */
     private $instance;
 
-    private function __construct(PayPalWalletAttributes $instance)
+    private function __construct(PaypalWalletAttributes $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet attributes Builder object.
+     * Initializes a new paypal wallet attributes Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWalletAttributes());
+        return new self(new PaypalWalletAttributes());
     }
 
     /**
      * Sets customer field.
      */
-    public function customer(?PayPalWalletCustomerRequest $value): self
+    public function customer(?PaypalWalletCustomerRequest $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
@@ -52,16 +52,16 @@ class PayPalWalletAttributesBuilder
     /**
      * Sets vault field.
      */
-    public function vault(?PayPalWalletVaultInstruction $value): self
+    public function vault(?PaypalWalletVaultInstruction $value): self
     {
         $this->instance->setVault($value);
         return $this;
     }
 
     /**
-     * Initializes a new pay pal wallet attributes object.
+     * Initializes a new paypal wallet attributes object.
      */
-    public function build(): PayPalWalletAttributes
+    public function build(): PaypalWalletAttributes
     {
         return CoreHelper::clone($this->instance);
     }

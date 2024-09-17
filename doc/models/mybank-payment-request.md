@@ -1,11 +1,11 @@
 
-# My Bank Payment Request
+# Mybank Payment Request
 
 Information needed to pay using MyBank.
 
 ## Structure
 
-`MyBankPaymentRequest`
+`MybankPaymentRequest`
 
 ## Fields
 

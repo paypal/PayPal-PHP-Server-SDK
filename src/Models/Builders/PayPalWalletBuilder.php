@@ -13,35 +13,35 @@ namespace PaypalServerSDKLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\Address;
 use PaypalServerSDKLib\Models\Name;
-use PaypalServerSDKLib\Models\PayPalWallet;
-use PaypalServerSDKLib\Models\PayPalWalletAttributes;
-use PaypalServerSDKLib\Models\PayPalWalletExperienceContext;
+use PaypalServerSDKLib\Models\PaypalWallet;
+use PaypalServerSDKLib\Models\PaypalWalletAttributes;
+use PaypalServerSDKLib\Models\PaypalWalletExperienceContext;
 use PaypalServerSDKLib\Models\PhoneWithType;
 use PaypalServerSDKLib\Models\TaxInfo;
 
 /**
- * Builder for model PayPalWallet
+ * Builder for model PaypalWallet
  *
- * @see PayPalWallet
+ * @see PaypalWallet
  */
-class PayPalWalletBuilder
+class PaypalWalletBuilder
 {
     /**
-     * @var PayPalWallet
+     * @var PaypalWallet
      */
     private $instance;
 
-    private function __construct(PayPalWallet $instance)
+    private function __construct(PaypalWallet $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet Builder object.
+     * Initializes a new paypal wallet Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWallet());
+        return new self(new PaypalWallet());
     }
 
     /**
@@ -110,7 +110,7 @@ class PayPalWalletBuilder
     /**
      * Sets attributes field.
      */
-    public function attributes(?PayPalWalletAttributes $value): self
+    public function attributes(?PaypalWalletAttributes $value): self
     {
         $this->instance->setAttributes($value);
         return $this;
@@ -119,7 +119,7 @@ class PayPalWalletBuilder
     /**
      * Sets experience context field.
      */
-    public function experienceContext(?PayPalWalletExperienceContext $value): self
+    public function experienceContext(?PaypalWalletExperienceContext $value): self
     {
         $this->instance->setExperienceContext($value);
         return $this;
@@ -135,9 +135,9 @@ class PayPalWalletBuilder
     }
 
     /**
-     * Initializes a new pay pal wallet object.
+     * Initializes a new paypal wallet object.
      */
-    public function build(): PayPalWallet
+    public function build(): PaypalWallet
     {
         return CoreHelper::clone($this->instance);
     }

@@ -11,32 +11,32 @@ declare(strict_types=1);
 namespace PaypalServerSDKLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSDKLib\Models\PayPalWalletCustomer;
-use PaypalServerSDKLib\Models\PayPalWalletVaultResponse;
+use PaypalServerSDKLib\Models\PaypalWalletCustomer;
+use PaypalServerSDKLib\Models\PaypalWalletVaultResponse;
 
 /**
- * Builder for model PayPalWalletVaultResponse
+ * Builder for model PaypalWalletVaultResponse
  *
- * @see PayPalWalletVaultResponse
+ * @see PaypalWalletVaultResponse
  */
-class PayPalWalletVaultResponseBuilder
+class PaypalWalletVaultResponseBuilder
 {
     /**
-     * @var PayPalWalletVaultResponse
+     * @var PaypalWalletVaultResponse
      */
     private $instance;
 
-    private function __construct(PayPalWalletVaultResponse $instance)
+    private function __construct(PaypalWalletVaultResponse $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new pay pal wallet vault response Builder object.
+     * Initializes a new paypal wallet vault response Builder object.
      */
     public static function init(): self
     {
-        return new self(new PayPalWalletVaultResponse());
+        return new self(new PaypalWalletVaultResponse());
     }
 
     /**
@@ -69,16 +69,16 @@ class PayPalWalletVaultResponseBuilder
     /**
      * Sets customer field.
      */
-    public function customer(?PayPalWalletCustomer $value): self
+    public function customer(?PaypalWalletCustomer $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
     }
 
     /**
-     * Initializes a new pay pal wallet vault response object.
+     * Initializes a new paypal wallet vault response object.
      */
-    public function build(): PayPalWalletVaultResponse
+    public function build(): PaypalWalletVaultResponse
     {
         return CoreHelper::clone($this->instance);
     }

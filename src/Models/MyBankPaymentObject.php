@@ -15,7 +15,7 @@ use stdClass;
 /**
  * Information used to pay using MyBank.
  */
-class MyBankPaymentObject implements \JsonSerializable
+class MybankPaymentObject implements \JsonSerializable
 {
     /**
      * @var string|null

@@ -17,7 +17,7 @@ use stdClass;
 /**
  * The type of landing page to show on the PayPal site for customer checkout.
  */
-class PayPalExperienceLandingPage
+class PaypalExperienceLandingPage
 {
     public const LOGIN = 'LOGIN';
 
@@ -42,6 +42,6 @@ class PayPalExperienceLandingPage
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for PayPalExperienceLandingPage.");
+        throw new Exception("$value is invalid for PaypalExperienceLandingPage.");
     }
 }
