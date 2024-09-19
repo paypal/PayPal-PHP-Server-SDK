@@ -14,7 +14,7 @@ use Core\Utils\CoreHelper;
 use PaypalServerSDKLib\Models\ApplePayPaymentToken;
 use PaypalServerSDKLib\Models\CardPaymentToken;
 use PaypalServerSDKLib\Models\PaymentTokenResponsePaymentSource;
-use PaypalServerSDKLib\Models\PayPalPaymentToken;
+use PaypalServerSDKLib\Models\PaypalPaymentToken;
 use PaypalServerSDKLib\Models\VenmoPaymentToken;
 
 /**
@@ -54,7 +54,7 @@ class PaymentTokenResponsePaymentSourceBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?PayPalPaymentToken $value): self
+    public function paypal(?PaypalPaymentToken $value): self
     {
         $this->instance->setPaypal($value);
         return $this;

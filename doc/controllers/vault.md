@@ -32,7 +32,7 @@ function paymentTokensCreate(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `payPalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
+| `paypalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
 
 ## Response Type
@@ -43,7 +43,7 @@ This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getR
 
 ```php
 $collect = [
-    'payPalRequestId' => 'PayPal-Request-Id6',
+    'paypalRequestId' => 'PayPal-Request-Id6',
     'body' => PaymentTokenRequestBuilder::init(
         PaymentTokenRequestPaymentSourceBuilder::init()->build()
     )->build()
@@ -189,7 +189,7 @@ function setupTokensCreate(array $options): ApiResponse
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `payPalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
+| `paypalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`SetupTokenRequest`](../../doc/models/setup-token-request.md) | Body, Required | Setup Token creation with a instrument type optional financial instrument details and customer_id. |
 
 ## Response Type
@@ -200,7 +200,7 @@ This method returns a `PaypalServerSDKLib\Utils\ApiResponse` instance. The `getR
 
 ```php
 $collect = [
-    'payPalRequestId' => 'PayPal-Request-Id6',
+    'paypalRequestId' => 'PayPal-Request-Id6',
     'body' => SetupTokenRequestBuilder::init(
         SetupTokenRequestPaymentSourceBuilder::init()->build()
     )->build()

@@ -24,7 +24,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
     private $card;
 
     /**
-     * @var PayPalPaymentToken|null
+     * @var PaypalPaymentToken|null
      */
     private $paypal;
 
@@ -66,7 +66,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
     /**
      * Returns Paypal.
      */
-    public function getPaypal(): ?PayPalPaymentToken
+    public function getPaypal(): ?PaypalPaymentToken
     {
         return $this->paypal;
     }
@@ -76,7 +76,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
      *
      * @maps paypal
      */
-    public function setPaypal(?PayPalPaymentToken $paypal): void
+    public function setPaypal(?PaypalPaymentToken $paypal): void
     {
         $this->paypal = $paypal;
     }

@@ -266,9 +266,9 @@ class Order implements \JsonSerializable
     /**
      * Returns Links.
      * An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to
-     * redirect the payer. The API caller has 3 hours (default setting, this which can be changed by your
+     * redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your
      * account manager to 24/48/72 hours to accommodate your use case) from the time the order is created,
-     * to redirect your payer. Once redirected, the API caller has 3 hours for the payer to approve the
+     * to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the
      * order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to
      * initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is
      * specified or you will get "We're sorry, Things don't appear to be working at the moment" after the
@@ -284,9 +284,9 @@ class Order implements \JsonSerializable
     /**
      * Sets Links.
      * An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to
-     * redirect the payer. The API caller has 3 hours (default setting, this which can be changed by your
+     * redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your
      * account manager to 24/48/72 hours to accommodate your use case) from the time the order is created,
-     * to redirect your payer. Once redirected, the API caller has 3 hours for the payer to approve the
+     * to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the
      * order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to
      * initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is
      * specified or you will get "We're sorry, Things don't appear to be working at the moment" after the

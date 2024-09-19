@@ -18,11 +18,11 @@ use PaypalServerSDKLib\Models\CardRequest;
 use PaypalServerSDKLib\Models\EPSPaymentRequest;
 use PaypalServerSDKLib\Models\GiropayPaymentRequest;
 use PaypalServerSDKLib\Models\GooglePayRequest;
-use PaypalServerSDKLib\Models\IDEALPaymentRequest;
-use PaypalServerSDKLib\Models\MyBankPaymentRequest;
+use PaypalServerSDKLib\Models\IdealPaymentRequest;
+use PaypalServerSDKLib\Models\MybankPaymentRequest;
 use PaypalServerSDKLib\Models\P24PaymentRequest;
 use PaypalServerSDKLib\Models\PaymentSource;
-use PaypalServerSDKLib\Models\PayPalWallet;
+use PaypalServerSDKLib\Models\PaypalWallet;
 use PaypalServerSDKLib\Models\SofortPaymentRequest;
 use PaypalServerSDKLib\Models\Token;
 use PaypalServerSDKLib\Models\TrustlyPaymentRequest;
@@ -74,7 +74,7 @@ class PaymentSourceBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?PayPalWallet $value): self
+    public function paypal(?PaypalWallet $value): self
     {
         $this->instance->setPaypal($value);
         return $this;
@@ -119,7 +119,7 @@ class PaymentSourceBuilder
     /**
      * Sets ideal field.
      */
-    public function ideal(?IDEALPaymentRequest $value): self
+    public function ideal(?IdealPaymentRequest $value): self
     {
         $this->instance->setIdeal($value);
         return $this;
@@ -128,7 +128,7 @@ class PaymentSourceBuilder
     /**
      * Sets mybank field.
      */
-    public function mybank(?MyBankPaymentRequest $value): self
+    public function mybank(?MybankPaymentRequest $value): self
     {
         $this->instance->setMybank($value);
         return $this;

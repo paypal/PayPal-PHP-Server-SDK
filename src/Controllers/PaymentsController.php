@@ -81,7 +81,7 @@ class PaymentsController extends BaseController
             ->parameters(
                 TemplateParam::init('authorization_id', $options)->extract('authorizationId'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 BodyParam::init($options)->extract('body')
             );
@@ -163,7 +163,7 @@ class PaymentsController extends BaseController
             ->parameters(
                 TemplateParam::init('authorization_id', $options)->extract('authorizationId'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 BodyParam::init($options)->extract('body')
             );
@@ -229,7 +229,7 @@ class PaymentsController extends BaseController
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('authorization_id', $options)->extract('authorizationId'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('payPalAuthAssertion'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal')
             );
 
@@ -342,9 +342,9 @@ class PaymentsController extends BaseController
             ->parameters(
                 TemplateParam::init('capture_id', $options)->extract('captureId'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('payPalAuthAssertion'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 BodyParam::init($options)->extract('body')
             );
 

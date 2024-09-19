@@ -43,9 +43,9 @@ class OrdersController extends BaseController
             ->parameters(
                 HeaderParam::init('Content-Type', 'application/json'),
                 BodyParam::init($options)->extract('body'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
-                HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('payPalPartnerAttributionId'),
-                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('payPalClientMetadataId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
+                HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('paypalPartnerAttributionId'),
+                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal')
             );
 
@@ -218,7 +218,7 @@ class OrdersController extends BaseController
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('payPalClientMetadataId'),
+                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 BodyParam::init($options)->extract('body')
             );
@@ -270,10 +270,10 @@ class OrdersController extends BaseController
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
-                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('payPalClientMetadataId'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('payPalAuthAssertion'),
+                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 BodyParam::init($options)->extract('body')
             );
 
@@ -336,10 +336,10 @@ class OrdersController extends BaseController
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
-                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('payPalClientMetadataId'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('payPalAuthAssertion'),
+                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 BodyParam::init($options)->extract('body')
             );
 
@@ -398,7 +398,7 @@ class OrdersController extends BaseController
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
                 BodyParam::init($options)->extract('body'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('payPalAuthAssertion')
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
             );
 
         $_resHandler = $this->responseHandler()

@@ -28,7 +28,7 @@ class OrderAuthorizeRequestPaymentSource implements \JsonSerializable
     private $token;
 
     /**
-     * @var PayPalWallet|null
+     * @var PaypalWallet|null
      */
     private $paypal;
 
@@ -101,7 +101,7 @@ class OrderAuthorizeRequestPaymentSource implements \JsonSerializable
      * Returns Paypal.
      * A resource that identifies a PayPal Wallet is used for payment.
      */
-    public function getPaypal(): ?PayPalWallet
+    public function getPaypal(): ?PaypalWallet
     {
         return $this->paypal;
     }
@@ -112,7 +112,7 @@ class OrderAuthorizeRequestPaymentSource implements \JsonSerializable
      *
      * @maps paypal
      */
-    public function setPaypal(?PayPalWallet $paypal): void
+    public function setPaypal(?PaypalWallet $paypal): void
     {
         $this->paypal = $paypal;
     }

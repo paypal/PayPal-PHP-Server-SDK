@@ -18,11 +18,11 @@ use PaypalServerSDKLib\Models\CardResponse;
 use PaypalServerSDKLib\Models\EPSPaymentObject;
 use PaypalServerSDKLib\Models\GiropayPaymentObject;
 use PaypalServerSDKLib\Models\GooglePayWalletResponse;
-use PaypalServerSDKLib\Models\IDEALPaymentObject;
-use PaypalServerSDKLib\Models\MyBankPaymentObject;
+use PaypalServerSDKLib\Models\IdealPaymentObject;
+use PaypalServerSDKLib\Models\MybankPaymentObject;
 use PaypalServerSDKLib\Models\P24PaymentObject;
 use PaypalServerSDKLib\Models\PaymentSourceResponse;
-use PaypalServerSDKLib\Models\PayPalWalletResponse;
+use PaypalServerSDKLib\Models\PaypalWalletResponse;
 use PaypalServerSDKLib\Models\SofortPaymentObject;
 use PaypalServerSDKLib\Models\TrustlyPaymentObject;
 use PaypalServerSDKLib\Models\VenmoWalletResponse;
@@ -64,7 +64,7 @@ class PaymentSourceResponseBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?PayPalWalletResponse $value): self
+    public function paypal(?PaypalWalletResponse $value): self
     {
         $this->instance->setPaypal($value);
         return $this;
@@ -109,7 +109,7 @@ class PaymentSourceResponseBuilder
     /**
      * Sets ideal field.
      */
-    public function ideal(?IDEALPaymentObject $value): self
+    public function ideal(?IdealPaymentObject $value): self
     {
         $this->instance->setIdeal($value);
         return $this;
@@ -118,7 +118,7 @@ class PaymentSourceResponseBuilder
     /**
      * Sets mybank field.
      */
-    public function mybank(?MyBankPaymentObject $value): self
+    public function mybank(?MybankPaymentObject $value): self
     {
         $this->instance->setMybank($value);
         return $this;

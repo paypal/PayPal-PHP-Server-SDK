@@ -23,7 +23,7 @@ class OrderAuthorizeResponsePaymentSource implements \JsonSerializable
     private $card;
 
     /**
-     * @var PayPalWalletResponse|null
+     * @var PaypalWalletResponse|null
      */
     private $paypal;
 
@@ -66,7 +66,7 @@ class OrderAuthorizeResponsePaymentSource implements \JsonSerializable
      * Returns Paypal.
      * The PayPal Wallet response.
      */
-    public function getPaypal(): ?PayPalWalletResponse
+    public function getPaypal(): ?PaypalWalletResponse
     {
         return $this->paypal;
     }
@@ -77,7 +77,7 @@ class OrderAuthorizeResponsePaymentSource implements \JsonSerializable
      *
      * @maps paypal
      */
-    public function setPaypal(?PayPalWalletResponse $paypal): void
+    public function setPaypal(?PaypalWalletResponse $paypal): void
     {
         $this->paypal = $paypal;
     }

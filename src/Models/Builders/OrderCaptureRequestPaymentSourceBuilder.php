@@ -15,7 +15,7 @@ use PaypalServerSDKLib\Models\ApplePayRequest;
 use PaypalServerSDKLib\Models\CardRequest;
 use PaypalServerSDKLib\Models\GooglePayRequest;
 use PaypalServerSDKLib\Models\OrderCaptureRequestPaymentSource;
-use PaypalServerSDKLib\Models\PayPalWallet;
+use PaypalServerSDKLib\Models\PaypalWallet;
 use PaypalServerSDKLib\Models\Token;
 use PaypalServerSDKLib\Models\VenmoWalletRequest;
 
@@ -65,7 +65,7 @@ class OrderCaptureRequestPaymentSourceBuilder
     /**
      * Sets paypal field.
      */
-    public function paypal(?PayPalWallet $value): self
+    public function paypal(?PaypalWallet $value): self
     {
         $this->instance->setPaypal($value);
         return $this;

@@ -37,7 +37,7 @@ class VaultController extends BaseController
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v3/vault/payment-tokens')
             ->auth('Oauth2')
             ->parameters(
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Content-Type', 'application/json'),
                 BodyParam::init($options)->extract('body')
             );
@@ -191,7 +191,7 @@ class VaultController extends BaseController
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v3/vault/setup-tokens')
             ->auth('Oauth2')
             ->parameters(
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('payPalRequestId'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Content-Type', 'application/json'),
                 BodyParam::init($options)->extract('body')
             );

@@ -23,7 +23,7 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
     private $card;
 
     /**
-     * @var VaultPayPalWalletRequest|null
+     * @var VaultPaypalWalletRequest|null
      */
     private $paypal;
 
@@ -61,7 +61,7 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
      * Returns Paypal.
      * A resource representing a request to vault PayPal Wallet.
      */
-    public function getPaypal(): ?VaultPayPalWalletRequest
+    public function getPaypal(): ?VaultPaypalWalletRequest
     {
         return $this->paypal;
     }
@@ -72,7 +72,7 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
      *
      * @maps paypal
      */
-    public function setPaypal(?VaultPayPalWalletRequest $paypal): void
+    public function setPaypal(?VaultPaypalWalletRequest $paypal): void
     {
         $this->paypal = $paypal;
     }
