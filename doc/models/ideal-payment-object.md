@@ -1,11 +1,11 @@
 
-# IDEAL Payment Object
+# Ideal Payment Object
 
 Information used to pay using iDEAL.
 
 ## Structure
 
-`IDEALPaymentObject`
+`IdealPaymentObject`
 
 ## Fields
 

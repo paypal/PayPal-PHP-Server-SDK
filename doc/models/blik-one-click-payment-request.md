@@ -1,11 +1,11 @@
 
-# BLIK One Click Payment Request
+# Blik One Click Payment Request
 
 Information used to pay using BLIK one-click flow.
 
 ## Structure
 
-`BLIKOneClickPaymentRequest`
+`BlikOneClickPaymentRequest`
 
 ## Fields
 

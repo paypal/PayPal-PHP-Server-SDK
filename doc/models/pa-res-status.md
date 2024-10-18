@@ -1,11 +1,11 @@
 
-# PA Res Status
+# Pa Res Status
 
 Transactions status result identifier. The outcome of the issuer's authentication.
 
 ## Enumeration
 
-`PAResStatus`
+`PaResStatus`
 
 ## Fields
 

@@ -1,11 +1,11 @@
 
-# BLIK Experience Context
+# Blik Experience Context
 
 Customizes the payer experience during the approval process for the BLIK payment.
 
 ## Structure
 
-`BLIKExperienceContext`
+`BlikExperienceContext`
 
 ## Fields
 

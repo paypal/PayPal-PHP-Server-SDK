@@ -1,11 +1,11 @@
 
-# CVV Code
+# Cvv Code
 
 The card verification value code for for Visa, Discover, Mastercard, or American Express.
 
 ## Enumeration
 
-`CVVCode`
+`CvvCode`
 
 ## Fields
 
