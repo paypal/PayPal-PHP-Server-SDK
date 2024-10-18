@@ -1,11 +1,11 @@
 
-# Link HTTP Method
+# Link Http Method
 
 The HTTP method required to make the related call.
 
 ## Enumeration
 
-`LinkHTTPMethod`
+`LinkHttpMethod`
 
 ## Fields
 

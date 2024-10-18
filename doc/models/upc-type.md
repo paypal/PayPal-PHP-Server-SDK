@@ -1,11 +1,11 @@
 
-# UPC Type
+# Upc Type
 
 The Universal Product Code type.
 
 ## Enumeration
 
-`UPCType`
+`UpcType`
 
 ## Fields
 
