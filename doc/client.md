@@ -21,7 +21,7 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```php
-$client = PaypalServerSDKClientBuilder::init()
+$client = PaypalServerSdkClientBuilder::init()
     ->clientCredentialsAuthCredentials(
         ClientCredentialsAuthCredentialsBuilder::init(
             'OAuthClientId',
@@ -46,7 +46,7 @@ API calls return an `ApiResponse` object that includes the following fields:
 | `getHeaders` | Headers of the HTTP response as a Hash |
 | `getResult` | The deserialized body of the HTTP response as a String |
 
-## Paypal Server SDK Client
+## PayPal Server SDK Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 

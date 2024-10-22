@@ -12,13 +12,13 @@ The payment source used to fund the payment.
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `card` | [`?CardResponse`](../../doc/models/card-response.md) | Optional | The payment card to use to fund a payment. Card can be a credit or debit card. | getCard(): ?CardResponse | setCard(?CardResponse card): void |
-| `paypal` | [`?PayPalWalletResponse`](../../doc/models/pay-pal-wallet-response.md) | Optional | The PayPal Wallet response. | getPaypal(): ?PayPalWalletResponse | setPaypal(?PayPalWalletResponse paypal): void |
+| `paypal` | [`?PaypalWalletResponse`](../../doc/models/paypal-wallet-response.md) | Optional | The PayPal Wallet response. | getPaypal(): ?PaypalWalletResponse | setPaypal(?PaypalWalletResponse paypal): void |
 | `bancontact` | [`?BancontactPaymentObject`](../../doc/models/bancontact-payment-object.md) | Optional | Information used to pay Bancontact. | getBancontact(): ?BancontactPaymentObject | setBancontact(?BancontactPaymentObject bancontact): void |
-| `blik` | [`?BLIKPaymentObject`](../../doc/models/blik-payment-object.md) | Optional | Information used to pay using BLIK. | getBlik(): ?BLIKPaymentObject | setBlik(?BLIKPaymentObject blik): void |
-| `eps` | [`?EPSPaymentObject`](../../doc/models/eps-payment-object.md) | Optional | Information used to pay using eps. | getEps(): ?EPSPaymentObject | setEps(?EPSPaymentObject eps): void |
+| `blik` | [`?BlikPaymentObject`](../../doc/models/blik-payment-object.md) | Optional | Information used to pay using BLIK. | getBlik(): ?BlikPaymentObject | setBlik(?BlikPaymentObject blik): void |
+| `eps` | [`?EpsPaymentObject`](../../doc/models/eps-payment-object.md) | Optional | Information used to pay using eps. | getEps(): ?EpsPaymentObject | setEps(?EpsPaymentObject eps): void |
 | `giropay` | [`?GiropayPaymentObject`](../../doc/models/giropay-payment-object.md) | Optional | Information needed to pay using giropay. | getGiropay(): ?GiropayPaymentObject | setGiropay(?GiropayPaymentObject giropay): void |
-| `ideal` | [`?IDEALPaymentObject`](../../doc/models/ideal-payment-object.md) | Optional | Information used to pay using iDEAL. | getIdeal(): ?IDEALPaymentObject | setIdeal(?IDEALPaymentObject ideal): void |
-| `mybank` | [`?MyBankPaymentObject`](../../doc/models/my-bank-payment-object.md) | Optional | Information used to pay using MyBank. | getMybank(): ?MyBankPaymentObject | setMybank(?MyBankPaymentObject mybank): void |
+| `ideal` | [`?IdealPaymentObject`](../../doc/models/ideal-payment-object.md) | Optional | Information used to pay using iDEAL. | getIdeal(): ?IdealPaymentObject | setIdeal(?IdealPaymentObject ideal): void |
+| `mybank` | [`?MybankPaymentObject`](../../doc/models/mybank-payment-object.md) | Optional | Information used to pay using MyBank. | getMybank(): ?MybankPaymentObject | setMybank(?MybankPaymentObject mybank): void |
 | `p24` | [`?P24PaymentObject`](../../doc/models/p24-payment-object.md) | Optional | Information used to pay using P24(Przelewy24). | getP24(): ?P24PaymentObject | setP24(?P24PaymentObject p24): void |
 | `sofort` | [`?SofortPaymentObject`](../../doc/models/sofort-payment-object.md) | Optional | Information used to pay using Sofort. | getSofort(): ?SofortPaymentObject | setSofort(?SofortPaymentObject sofort): void |
 | `trustly` | [`?TrustlyPaymentObject`](../../doc/models/trustly-payment-object.md) | Optional | Information needed to pay using Trustly. | getTrustly(): ?TrustlyPaymentObject | setTrustly(?TrustlyPaymentObject trustly): void |
