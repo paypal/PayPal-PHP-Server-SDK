@@ -28,7 +28,9 @@ class PaymentAdviceCode
 
     public const ENUM_21 = '21';
 
-    private const _ALL_VALUES = [self::ENUM_01, self::ENUM_02, self::ENUM_03, self::ENUM_21];
+    public const ENUM_43 = '43';
+
+    private const _ALL_VALUES = [self::ENUM_01, self::ENUM_02, self::ENUM_03, self::ENUM_21, self::ENUM_43];
 
     /**
      * Ensures that all the given values are present in this Enum.

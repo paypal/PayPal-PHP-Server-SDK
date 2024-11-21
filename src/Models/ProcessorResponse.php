@@ -141,7 +141,12 @@ class ProcessorResponse implements \JsonSerializable
             $json['response_code']       = ProcessorResponseCode::checkValue($this->responseCode);
         }
         if (isset($this->paymentAdviceCode)) {
-            $json['payment_advice_code'] = PaymentAdviceCode::checkValue($this->paymentAdviceCode);
+            try {
+                $json['payment_advice_code'] = PaymentAdviceCode::checkValue($this->paymentAdviceCode);
+            } catch (Exception $e) {
+                // If the payment advice code is not recognized, just pass it through as-is
+                $json['payment_advice_code'] = $this->paymentAdviceCode;
+            }
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
