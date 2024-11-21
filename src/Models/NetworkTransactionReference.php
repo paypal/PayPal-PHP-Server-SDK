@@ -18,7 +18,7 @@ use stdClass;
 class NetworkTransactionReference implements \JsonSerializable
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $id;
 
@@ -38,9 +38,9 @@ class NetworkTransactionReference implements \JsonSerializable
     private $acquirerReferenceNumber;
 
     /**
-     * @param string $id
+     * @param string|null $id
      */
-    public function __construct(string $id)
+    public function __construct(?string $id = null)
     {
         $this->id = $id;
     }
@@ -52,7 +52,7 @@ class NetworkTransactionReference implements \JsonSerializable
      * is the "NRID" field in response. The pattern we expect for this field from Visa/Amex/CB/Discover is
      * numeric, Mastercard/BNPP is alphanumeric and Paysecure is alphanumeric with special character -.
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -64,10 +64,9 @@ class NetworkTransactionReference implements \JsonSerializable
      * is the "NRID" field in response. The pattern we expect for this field from Visa/Amex/CB/Discover is
      * numeric, Mastercard/BNPP is alphanumeric and Paysecure is alphanumeric with special character -.
      *
-     * @required
      * @maps id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
