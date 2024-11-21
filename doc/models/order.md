@@ -16,17 +16,16 @@ The order details.
 | `id` | `?string` | Optional | The ID of the order. | getId(): ?string | setId(?string id): void |
 | `paymentSource` | [`?PaymentSourceResponse`](../../doc/models/payment-source-response.md) | Optional | The payment source used to fund the payment. | getPaymentSource(): ?PaymentSourceResponse | setPaymentSource(?PaymentSourceResponse paymentSource): void |
 | `intent` | [`?string(CheckoutPaymentIntent)`](../../doc/models/checkout-payment-intent.md) | Optional | The intent to either capture payment immediately or authorize a payment for an order after order creation. | getIntent(): ?string | setIntent(?string intent): void |
-| `processingInstruction` | [`?string(ProcessingInstruction)`](../../doc/models/processing-instruction.md) | Optional | The instruction to process an order.<br>**Default**: `ProcessingInstruction::NO_INSTRUCTION`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9A-Z_]+$` | getProcessingInstruction(): ?string | setProcessingInstruction(?string processingInstruction): void |
+| `processingInstruction` | `mixed` | Optional | - | getProcessingInstruction(): | setProcessingInstruction( processingInstruction): void |
 | `payer` | [`?Payer`](../../doc/models/payer.md) | Optional | - | getPayer(): ?Payer | setPayer(?Payer payer): void |
 | `purchaseUnits` | [`?(PurchaseUnit[])`](../../doc/models/purchase-unit.md) | Optional | An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant.<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` | getPurchaseUnits(): ?array | setPurchaseUnits(?array purchaseUnits): void |
 | `status` | [`?string(OrderStatus)`](../../doc/models/order-status.md) | Optional | The order status.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getStatus(): ?string | setStatus(?string status): void |
-| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 3 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 3 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. | getLinks(): ?array | setLinks(?array links): void |
+| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. | getLinks(): ?array | setLinks(?array links): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "processing_instruction": "NO_INSTRUCTION",
   "create_time": "create_time8",
   "update_time": "update_time4",
   "id": "id2",

@@ -116,7 +116,7 @@ class VaultedDigitalWalletShippingDetails implements \JsonSerializable
             $json['name']    = $this->name;
         }
         if (isset($this->type)) {
-            $json['type']    = FullfillmentType::checkValue($this->type);
+            $json['type']    = FulfillmentType::checkValue($this->type);
         }
         if (isset($this->address)) {
             $json['address'] = $this->address;

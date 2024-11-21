@@ -95,6 +95,15 @@ class CardVerificationDetailsBuilder
     }
 
     /**
+     * Sets three d secure field.
+     */
+    public function threeDSecure($value): self
+    {
+        $this->instance->setThreeDSecure($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new card verification details object.
      */
     public function build(): CardVerificationDetails

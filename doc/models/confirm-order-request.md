@@ -12,7 +12,7 @@ Payer confirms the intent to pay for the Order using the provided payment source
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `paymentSource` | [`PaymentSource`](../../doc/models/payment-source.md) | Required | The payment source definition. | getPaymentSource(): PaymentSource | setPaymentSource(PaymentSource paymentSource): void |
-| `processingInstruction` | [`?string(ProcessingInstruction)`](../../doc/models/processing-instruction.md) | Optional | The instruction to process an order.<br>**Default**: `ProcessingInstruction::NO_INSTRUCTION`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9A-Z_]+$` | getProcessingInstruction(): ?string | setProcessingInstruction(?string processingInstruction): void |
+| `processingInstruction` | `mixed` | Optional | - | getProcessingInstruction(): | setProcessingInstruction( processingInstruction): void |
 | `applicationContext` | [`?OrderConfirmApplicationContext`](../../doc/models/order-confirm-application-context.md) | Optional | Customizes the payer confirmation experience. | getApplicationContext(): ?OrderConfirmApplicationContext | setApplicationContext(?OrderConfirmApplicationContext applicationContext): void |
 
 ## Example (as JSON)
@@ -86,7 +86,10 @@ Payer confirms the intent to pay for the Order using the provided payment source
       }
     }
   },
-  "processing_instruction": "NO_INSTRUCTION",
+  "processing_instruction": {
+    "key1": "val1",
+    "key2": "val2"
+  },
   "application_context": {
     "brand_name": "brand_name8",
     "locale": "locale2",

@@ -177,7 +177,7 @@ class ShippingDetails implements \JsonSerializable
             $json['phone_number'] = $this->phoneNumber;
         }
         if (isset($this->type)) {
-            $json['type']         = FullfillmentType::checkValue($this->type);
+            $json['type']         = FulfillmentType::checkValue($this->type);
         }
         if (isset($this->options)) {
             $json['options']      = $this->options;

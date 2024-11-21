@@ -23,9 +23,9 @@ class ConfirmOrderRequest implements \JsonSerializable
     private $paymentSource;
 
     /**
-     * @var string|null
+     * @var mixed
      */
-    private $processingInstruction = ProcessingInstruction::NO_INSTRUCTION;
+    private $processingInstruction;
 
     /**
      * @var OrderConfirmApplicationContext|null
@@ -63,20 +63,22 @@ class ConfirmOrderRequest implements \JsonSerializable
 
     /**
      * Returns Processing Instruction.
-     * The instruction to process an order.
+     *
+     * @return mixed
      */
-    public function getProcessingInstruction(): ?string
+    public function getProcessingInstruction()
     {
         return $this->processingInstruction;
     }
 
     /**
      * Sets Processing Instruction.
-     * The instruction to process an order.
      *
      * @maps processing_instruction
+     *
+     * @param mixed $processingInstruction
      */
-    public function setProcessingInstruction(?string $processingInstruction): void
+    public function setProcessingInstruction($processingInstruction): void
     {
         $this->processingInstruction = $processingInstruction;
     }
@@ -115,7 +117,7 @@ class ConfirmOrderRequest implements \JsonSerializable
         $json = [];
         $json['payment_source']             = $this->paymentSource;
         if (isset($this->processingInstruction)) {
-            $json['processing_instruction'] = ProcessingInstruction::checkValue($this->processingInstruction);
+            $json['processing_instruction'] = $this->processingInstruction;
         }
         if (isset($this->applicationContext)) {
             $json['application_context']    = $this->applicationContext;

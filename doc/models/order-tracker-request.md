@@ -25,7 +25,7 @@ The tracking details of an order.
   "capture_id": "capture_id0",
   "notify_payer": false,
   "tracking_number": "tracking_number6",
-  "carrier": "SNTGLOBAL_API",
+  "carrier": "HOMERUNNER",
   "carrier_name_other": "carrier_name_other0",
   "items": [
     {
