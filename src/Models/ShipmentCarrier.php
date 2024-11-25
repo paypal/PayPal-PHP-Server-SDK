@@ -2576,6 +2576,222 @@ class ShipmentCarrier
 
     public const SPEEDY = 'SPEEDY';
 
+    public const ZOOM_RED = 'ZOOM_RED';
+
+    public const NAVLUNGO = 'NAVLUNGO';
+
+    public const CASTLEPARCELS = 'CASTLEPARCELS';
+
+    public const WEEE = 'WEEE';
+
+    public const PACKALY = 'PACKALY';
+
+    public const YUNHUIPOST = 'YUNHUIPOST';
+
+    public const YOUPARCEL = 'YOUPARCEL';
+
+    public const LEMAN = 'LEMAN';
+
+    public const MOOVIN = 'MOOVIN';
+
+    public const URB_IT = 'URB_IT';
+
+    public const MULTIENTREGAPANAMA = 'MULTIENTREGAPANAMA';
+
+    public const JUSDASR = 'JUSDASR';
+
+    public const DISCOUNTPOST = 'DISCOUNTPOST';
+
+    public const RHENUS_UK = 'RHENUS_UK';
+
+    public const SWISHIP_JP = 'SWISHIP_JP';
+
+    public const GLS_US = 'GLS_US';
+
+    public const SMTL = 'SMTL';
+
+    public const EMEGA = 'EMEGA';
+
+    public const EXPRESSONE_SV = 'EXPRESSONE_SV';
+
+    public const HEPSIJET = 'HEPSIJET';
+
+    public const WELIVERY = 'WELIVERY';
+
+    public const BRINGER = 'BRINGER';
+
+    public const EASYROUTES = 'EASYROUTES';
+
+    public const MRW = 'MRW';
+
+    public const RPM = 'RPM';
+
+    public const DPD_PRT = 'DPD_PRT';
+
+    public const GLS_ROMANIA = 'GLS_ROMANIA';
+
+    public const LMPARCEL = 'LMPARCEL';
+
+    public const GTAGSM = 'GTAGSM';
+
+    public const DOMINO = 'DOMINO';
+
+    public const ESHIPPER = 'ESHIPPER';
+
+    public const TRANSPAK = 'TRANSPAK';
+
+    public const XINDUS = 'XINDUS';
+
+    public const AOYUE = 'AOYUE';
+
+    public const EASYPARCEL = 'EASYPARCEL';
+
+    public const EXPRESSONE = 'EXPRESSONE';
+
+    public const SENDEO_KARGO = 'SENDEO_KARGO';
+
+    public const SPEEDAF = 'SPEEDAF';
+
+    public const ETOWER = 'ETOWER';
+
+    public const GCX = 'GCX';
+
+    public const NINJAVAN_VN = 'NINJAVAN_VN';
+
+    public const ALLEGRO = 'ALLEGRO';
+
+    public const JUMPPOINT = 'JUMPPOINT';
+
+    public const SHIPGLOBAL_US = 'SHIPGLOBAL_US';
+
+    public const KINISI = 'KINISI';
+
+    public const OAKH = 'OAKH';
+
+    public const AWEST = 'AWEST';
+
+    public const BARSAN = 'BARSAN';
+
+    public const ENERGOLOGISTIC = 'ENERGOLOGISTIC';
+
+    public const MADROOEX = 'MADROOEX';
+
+    public const GOBOLT = 'GOBOLT';
+
+    public const SWISS_UNIVERSAL_EXPRESS = 'SWISS_UNIVERSAL_EXPRESS';
+
+    public const IORDIRECT = 'IORDIRECT';
+
+    public const XMSZM = 'XMSZM';
+
+    public const GLS_HUN = 'GLS_HUN';
+
+    public const SENDY = 'SENDY';
+
+    public const BRAUNSEXPRESS = 'BRAUNSEXPRESS';
+
+    public const GRANDSLAMEXPRESS = 'GRANDSLAMEXPRESS';
+
+    public const XGS = 'XGS';
+
+    public const OTSCHILE = 'OTSCHILE';
+
+    public const PACK_UP = 'PACK_UP';
+
+    public const PARCELSTARS = 'PARCELSTARS';
+
+    public const TEAMEXPRESSLLC = 'TEAMEXPRESSLLC';
+
+    public const ASYADEXPRESS = 'ASYADEXPRESS';
+
+    public const TDN = 'TDN';
+
+    public const EARLYBIRD = 'EARLYBIRD';
+
+    public const CACESA = 'CACESA';
+
+    public const PARCELJET = 'PARCELJET';
+
+    public const MNG_KARGO = 'MNG_KARGO';
+
+    public const SUPERPACKLINE = 'SUPERPACKLINE';
+
+    public const SPEEDX = 'SPEEDX';
+
+    public const VESYL = 'VESYL';
+
+    public const SKYKING = 'SKYKING';
+
+    public const DIRMENSAJERIA = 'DIRMENSAJERIA';
+
+    public const NETLOGIXGROUP = 'NETLOGIXGROUP';
+
+    public const ZYOU = 'ZYOU';
+
+    public const JAWAR = 'JAWAR';
+
+    public const AGSYSTEMS = 'AGSYSTEMS';
+
+    public const GPS = 'GPS';
+
+    public const PTT_KARGO = 'PTT_KARGO';
+
+    public const MAERGO = 'MAERGO';
+
+    public const ARIHANTCOURIER = 'ARIHANTCOURIER';
+
+    public const VTFE = 'VTFE';
+
+    public const YUNANT = 'YUNANT';
+
+    public const URBIFY = 'URBIFY';
+
+    public const PACK_MAN = 'PACK_MAN';
+
+    public const LIEFERGRUN = 'LIEFERGRUN';
+
+    public const OBIBOX = 'OBIBOX';
+
+    public const PAIKEDA = 'PAIKEDA';
+
+    public const SCOTTY = 'SCOTTY';
+
+    public const INTELCOM_CA = 'INTELCOM_CA';
+
+    public const SWE = 'SWE';
+
+    public const ASENDIA = 'ASENDIA';
+
+    public const DPD_AT = 'DPD_AT';
+
+    public const RELAY = 'RELAY';
+
+    public const ATA = 'ATA';
+
+    public const SKYEXPRESS_INTERNATIONAL = 'SKYEXPRESS_INTERNATIONAL';
+
+    public const SURAT_KARGO = 'SURAT_KARGO';
+
+    public const SGLINK = 'SGLINK';
+
+    public const FLEETOPTICSINC = 'FLEETOPTICSINC';
+
+    public const SHOPLINE = 'SHOPLINE';
+
+    public const PIGGYSHIP = 'PIGGYSHIP';
+
+    public const LOGOIX = 'LOGOIX';
+
+    public const KOLAY_GELSIN = 'KOLAY_GELSIN';
+
+    public const ASSOCIATED_COURIERS = 'ASSOCIATED_COURIERS';
+
+    public const UPS_CHECKER = 'UPS_CHECKER';
+
+    public const WINESHIPPING = 'WINESHIPPING';
+
+    public const SPEDISCI = 'SPEDISCI';
+
     private const _ALL_VALUES = [
         self::DPD_RU,
         self::BG_BULGARIAN_POST,
@@ -3852,7 +4068,115 @@ class ShipmentCarrier
         self::MOBI_BR,
         self::LOGINEXT_WEBHOOK,
         self::EMS,
-        self::SPEEDY
+        self::SPEEDY,
+        self::ZOOM_RED,
+        self::NAVLUNGO,
+        self::CASTLEPARCELS,
+        self::WEEE,
+        self::PACKALY,
+        self::YUNHUIPOST,
+        self::YOUPARCEL,
+        self::LEMAN,
+        self::MOOVIN,
+        self::URB_IT,
+        self::MULTIENTREGAPANAMA,
+        self::JUSDASR,
+        self::DISCOUNTPOST,
+        self::RHENUS_UK,
+        self::SWISHIP_JP,
+        self::GLS_US,
+        self::SMTL,
+        self::EMEGA,
+        self::EXPRESSONE_SV,
+        self::HEPSIJET,
+        self::WELIVERY,
+        self::BRINGER,
+        self::EASYROUTES,
+        self::MRW,
+        self::RPM,
+        self::DPD_PRT,
+        self::GLS_ROMANIA,
+        self::LMPARCEL,
+        self::GTAGSM,
+        self::DOMINO,
+        self::ESHIPPER,
+        self::TRANSPAK,
+        self::XINDUS,
+        self::AOYUE,
+        self::EASYPARCEL,
+        self::EXPRESSONE,
+        self::SENDEO_KARGO,
+        self::SPEEDAF,
+        self::ETOWER,
+        self::GCX,
+        self::NINJAVAN_VN,
+        self::ALLEGRO,
+        self::JUMPPOINT,
+        self::SHIPGLOBAL_US,
+        self::KINISI,
+        self::OAKH,
+        self::AWEST,
+        self::BARSAN,
+        self::ENERGOLOGISTIC,
+        self::MADROOEX,
+        self::GOBOLT,
+        self::SWISS_UNIVERSAL_EXPRESS,
+        self::IORDIRECT,
+        self::XMSZM,
+        self::GLS_HUN,
+        self::SENDY,
+        self::BRAUNSEXPRESS,
+        self::GRANDSLAMEXPRESS,
+        self::XGS,
+        self::OTSCHILE,
+        self::PACK_UP,
+        self::PARCELSTARS,
+        self::TEAMEXPRESSLLC,
+        self::ASYADEXPRESS,
+        self::TDN,
+        self::EARLYBIRD,
+        self::CACESA,
+        self::PARCELJET,
+        self::MNG_KARGO,
+        self::SUPERPACKLINE,
+        self::SPEEDX,
+        self::VESYL,
+        self::SKYKING,
+        self::DIRMENSAJERIA,
+        self::NETLOGIXGROUP,
+        self::ZYOU,
+        self::JAWAR,
+        self::AGSYSTEMS,
+        self::GPS,
+        self::PTT_KARGO,
+        self::MAERGO,
+        self::ARIHANTCOURIER,
+        self::VTFE,
+        self::YUNANT,
+        self::URBIFY,
+        self::PACK_MAN,
+        self::LIEFERGRUN,
+        self::OBIBOX,
+        self::PAIKEDA,
+        self::SCOTTY,
+        self::INTELCOM_CA,
+        self::SWE,
+        self::ASENDIA,
+        self::DPD_AT,
+        self::RELAY,
+        self::ATA,
+        self::SKYEXPRESS_INTERNATIONAL,
+        self::SURAT_KARGO,
+        self::SGLINK,
+        self::FLEETOPTICSINC,
+        self::SHOPLINE,
+        self::PIGGYSHIP,
+        self::LOGOIX,
+        self::KOLAY_GELSIN,
+        self::ASSOCIATED_COURIERS,
+        self::UPS_CHECKER,
+        self::WINESHIPPING,
+        self::SPEDISCI
     ];
 
     /**

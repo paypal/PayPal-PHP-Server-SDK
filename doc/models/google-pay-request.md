@@ -46,6 +46,13 @@ Information needed to pay using Google Pay.
     "message_id": "message_id0",
     "message_expiration": "message_expiration2",
     "payment_method": "CARD",
+    "card": {
+      "name": "name6",
+      "number": "number6",
+      "expiry": "expiry4",
+      "last_digits": "last_digits0",
+      "type": "UNKNOWN"
+    },
     "authentication_method": "PAN_ONLY",
     "cryptogram": "cryptogram6",
     "eci_indicator": "eci_indicator0"

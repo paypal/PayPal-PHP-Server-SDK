@@ -48,6 +48,11 @@ class CardVerificationDetails implements \JsonSerializable
     private $processorResponse;
 
     /**
+     * @var mixed
+     */
+    private $threeDSecure;
+
+    /**
      * Returns Network Transaction Id.
      * Transaction Identifier as given by the network to indicate a previously executed CIT authorization.
      * Only present when authorization is successful for a verification.
@@ -176,6 +181,32 @@ class CardVerificationDetails implements \JsonSerializable
     }
 
     /**
+     * Returns Three D Secure.
+     * DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in
+     * 'three_d_secure' object under 'authentication_result' object instead of the 'verification' field.
+     *
+     * @return mixed
+     */
+    public function getThreeDSecure()
+    {
+        return $this->threeDSecure;
+    }
+
+    /**
+     * Sets Three D Secure.
+     * DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in
+     * 'three_d_secure' object under 'authentication_result' object instead of the 'verification' field.
+     *
+     * @maps three_d_secure
+     *
+     * @param mixed $threeDSecure
+     */
+    public function setThreeDSecure($threeDSecure): void
+    {
+        $this->threeDSecure = $threeDSecure;
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -204,6 +235,9 @@ class CardVerificationDetails implements \JsonSerializable
         }
         if (isset($this->processorResponse)) {
             $json['processor_response']     = $this->processorResponse;
+        }
+        if (isset($this->threeDSecure)) {
+            $json['three_d_secure']         = $this->threeDSecure;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

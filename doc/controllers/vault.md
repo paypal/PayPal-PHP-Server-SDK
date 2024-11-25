@@ -12,12 +12,55 @@ $vaultController = $client->getVaultController();
 
 ## Methods
 
+* [Payment-Tokens Create](../../doc/controllers/vault.md#payment-tokens-create)
 * [Customer Payment-Tokens Get](../../doc/controllers/vault.md#customer-payment-tokens-get)
 * [Payment-Tokens Get](../../doc/controllers/vault.md#payment-tokens-get)
-* [Payment-Tokens Create](../../doc/controllers/vault.md#payment-tokens-create)
-* [Setup-Tokens Create](../../doc/controllers/vault.md#setup-tokens-create)
 * [Payment-Tokens Delete](../../doc/controllers/vault.md#payment-tokens-delete)
+* [Setup-Tokens Create](../../doc/controllers/vault.md#setup-tokens-create)
 * [Setup-Tokens Get](../../doc/controllers/vault.md#setup-tokens-get)
+
+
+# Payment-Tokens Create
+
+Creates a Payment Token from the given payment source and adds it to the Vault of the associated customer.
+
+```php
+function paymentTokensCreate(array $options): ApiResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `paypalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
+| `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
+
+## Response Type
+
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+
+## Example Usage
+
+```php
+$collect = [
+    'paypalRequestId' => 'PayPal-Request-Id6',
+    'body' => PaymentTokenRequestBuilder::init(
+        PaymentTokenRequestPaymentSourceBuilder::init()->build()
+    )->build()
+];
+
+$apiResponse = $vaultController->paymentTokensCreate($collect);
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 404 | Request contains reference to resources that do not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
 # Customer Payment-Tokens Get
@@ -99,36 +142,30 @@ $apiResponse = $vaultController->paymentTokensGet($id);
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Payment-Tokens Create
+# Payment-Tokens Delete
 
-Creates a Payment Token from the given payment source and adds it to the Vault of the associated customer.
+Delete the payment token associated with the payment token id.
 
 ```php
-function paymentTokensCreate(array $options): ApiResponse
+function paymentTokensDelete(string $id): ApiResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paypalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
-| `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
+| `id` | `string` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
 
 ## Example Usage
 
 ```php
-$collect = [
-    'paypalRequestId' => 'PayPal-Request-Id6',
-    'body' => PaymentTokenRequestBuilder::init(
-        PaymentTokenRequestPaymentSourceBuilder::init()->build()
-    )->build()
-];
+$id = 'id0';
 
-$apiResponse = $vaultController->paymentTokensCreate($collect);
+$apiResponse = $vaultController->paymentTokensDelete($id);
 ```
 
 ## Errors
@@ -137,8 +174,6 @@ $apiResponse = $vaultController->paymentTokensCreate($collect);
 |  --- | --- | --- |
 | 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 404 | Request contains reference to resources that do not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
@@ -181,41 +216,6 @@ $apiResponse = $vaultController->setupTokensCreate($collect);
 | 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
-
-
-# Payment-Tokens Delete
-
-Delete the payment token associated with the payment token id.
-
-```php
-function paymentTokensDelete(string $id): ApiResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
-
-## Response Type
-
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
-
-## Example Usage
-
-```php
-$id = 'id0';
-
-$apiResponse = $vaultController->paymentTokensDelete($id);
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 

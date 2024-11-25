@@ -34,6 +34,11 @@ class GooglePayDecryptedTokenData implements \JsonSerializable
     private $paymentMethod;
 
     /**
+     * @var GooglePayCard
+     */
+    private $card;
+
+    /**
      * @var string
      */
     private $authenticationMethod;
@@ -50,11 +55,13 @@ class GooglePayDecryptedTokenData implements \JsonSerializable
 
     /**
      * @param string $paymentMethod
+     * @param GooglePayCard $card
      * @param string $authenticationMethod
      */
-    public function __construct(string $paymentMethod, string $authenticationMethod)
+    public function __construct(string $paymentMethod, GooglePayCard $card, string $authenticationMethod)
     {
         $this->paymentMethod = $paymentMethod;
+        $this->card = $card;
         $this->authenticationMethod = $authenticationMethod;
     }
 
@@ -119,6 +126,27 @@ class GooglePayDecryptedTokenData implements \JsonSerializable
     public function setPaymentMethod(string $paymentMethod): void
     {
         $this->paymentMethod = $paymentMethod;
+    }
+
+    /**
+     * Returns Card.
+     * The payment card used to fund a Google Pay payment. Can be a credit or debit card.
+     */
+    public function getCard(): GooglePayCard
+    {
+        return $this->card;
+    }
+
+    /**
+     * Sets Card.
+     * The payment card used to fund a Google Pay payment. Can be a credit or debit card.
+     *
+     * @required
+     * @maps card
+     */
+    public function setCard(GooglePayCard $card): void
+    {
+        $this->card = $card;
     }
 
     /**
@@ -205,6 +233,7 @@ class GooglePayDecryptedTokenData implements \JsonSerializable
             $json['message_expiration'] = $this->messageExpiration;
         }
         $json['payment_method']         = GooglePayPaymentMethod::checkValue($this->paymentMethod);
+        $json['card']                   = $this->card;
         $json['authentication_method']  = GooglePayAuthenticationMethod::checkValue($this->authenticationMethod);
         if (isset($this->cryptogram)) {
             $json['cryptogram']         = $this->cryptogram;

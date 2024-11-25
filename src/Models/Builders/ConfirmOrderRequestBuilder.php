@@ -43,7 +43,7 @@ class ConfirmOrderRequestBuilder
     /**
      * Sets processing instruction field.
      */
-    public function processingInstruction(?string $value): self
+    public function processingInstruction($value): self
     {
         $this->instance->setProcessingInstruction($value);
         return $this;

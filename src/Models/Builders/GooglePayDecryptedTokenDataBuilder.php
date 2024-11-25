@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\GooglePayCard;
 use PaypalServerSdkLib\Models\GooglePayDecryptedTokenData;
 
 /**
@@ -33,9 +34,9 @@ class GooglePayDecryptedTokenDataBuilder
     /**
      * Initializes a new google pay decrypted token data Builder object.
      */
-    public static function init(string $paymentMethod, string $authenticationMethod): self
+    public static function init(string $paymentMethod, GooglePayCard $card, string $authenticationMethod): self
     {
-        return new self(new GooglePayDecryptedTokenData($paymentMethod, $authenticationMethod));
+        return new self(new GooglePayDecryptedTokenData($paymentMethod, $card, $authenticationMethod));
     }
 
     /**

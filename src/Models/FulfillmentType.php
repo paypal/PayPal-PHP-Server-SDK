@@ -18,7 +18,7 @@ use stdClass;
  * A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either
  * `type` or `options` may be present, but not both.
  */
-class FullfillmentType
+class FulfillmentType
 {
     public const SHIPPING = 'SHIPPING';
 
@@ -46,6 +46,6 @@ class FullfillmentType
         if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
             return $value;
         }
-        throw new Exception("$value is invalid for FullfillmentType.");
+        throw new Exception("$value is invalid for FulfillmentType.");
     }
 }
