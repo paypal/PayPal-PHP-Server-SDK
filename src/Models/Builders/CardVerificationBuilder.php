@@ -31,7 +31,7 @@ class CardVerificationBuilder
     }
 
     /**
-     * Initializes a new card verification Builder object.
+     * Initializes a new Card Verification Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class CardVerificationBuilder
 
     /**
      * Sets method field.
+     *
+     * @param string|null $value
      */
     public function method(?string $value): self
     {
@@ -48,7 +50,7 @@ class CardVerificationBuilder
     }
 
     /**
-     * Initializes a new card verification object.
+     * Initializes a new Card Verification object.
      */
     public function build(): CardVerification
     {

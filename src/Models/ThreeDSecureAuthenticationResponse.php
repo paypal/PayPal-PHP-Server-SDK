@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -68,6 +69,19 @@ class ThreeDSecureAuthenticationResponse implements \JsonSerializable
     }
 
     /**
+     * Converts the ThreeDSecureAuthenticationResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the ThreeDSecureAuthenticationResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ThreeDSecureAuthenticationResponse',
+            ['authenticationStatus' => $this->authenticationStatus, 'enrollmentStatus' => $this->enrollmentStatus]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -80,10 +94,10 @@ class ThreeDSecureAuthenticationResponse implements \JsonSerializable
     {
         $json = [];
         if (isset($this->authenticationStatus)) {
-            $json['authentication_status'] = PaResStatus::checkValue($this->authenticationStatus);
+            $json['authentication_status'] = $this->authenticationStatus;
         }
         if (isset($this->enrollmentStatus)) {
-            $json['enrollment_status']     = EnrollmentStatus::checkValue($this->enrollmentStatus);
+            $json['enrollment_status']     = $this->enrollmentStatus;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

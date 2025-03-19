@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -170,6 +171,25 @@ class ShippingOption implements \JsonSerializable
     }
 
     /**
+     * Converts the ShippingOption object to a human-readable string representation.
+     *
+     * @return string The string representation of the ShippingOption object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ShippingOption',
+            [
+                'id' => $this->id,
+                'label' => $this->label,
+                'type' => $this->type,
+                'amount' => $this->amount,
+                'selected' => $this->selected
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -184,7 +204,7 @@ class ShippingOption implements \JsonSerializable
         $json['id']         = $this->id;
         $json['label']      = $this->label;
         if (isset($this->type)) {
-            $json['type']   = ShippingType::checkValue($this->type);
+            $json['type']   = $this->type;
         }
         if (isset($this->amount)) {
             $json['amount'] = $this->amount;

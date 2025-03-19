@@ -9,9 +9,9 @@ Indicates whether the transaction is eligible for seller protection. For informa
 
 ## Fields
 
-| Name |
-|  --- |
-| `ELIGIBLE` |
-| `PARTIALLY_ELIGIBLE` |
-| `NOT_ELIGIBLE` |
+| Name | Description |
+|  --- | --- |
+| `ELIGIBLE` | Your PayPal balance remains intact if the customer claims that they did not receive an item or the account holder claims that they did not authorize the payment. |
+| `PARTIALLY_ELIGIBLE` | Your PayPal balance remains intact if the customer claims that they did not receive an item. |
+| `NOT_ELIGIBLE` | This transaction is not eligible for seller protection. |
 

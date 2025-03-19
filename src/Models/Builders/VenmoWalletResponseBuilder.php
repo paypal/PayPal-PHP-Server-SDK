@@ -35,7 +35,7 @@ class VenmoWalletResponseBuilder
     }
 
     /**
-     * Initializes a new venmo wallet response Builder object.
+     * Initializes a new Venmo Wallet Response Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +44,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -53,6 +55,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets account id field.
+     *
+     * @param string|null $value
      */
     public function accountId(?string $value): self
     {
@@ -62,6 +66,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets user name field.
+     *
+     * @param string|null $value
      */
     public function userName(?string $value): self
     {
@@ -71,6 +77,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets name field.
+     *
+     * @param Name|null $value
      */
     public function name(?Name $value): self
     {
@@ -80,6 +88,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param PhoneNumber|null $value
      */
     public function phoneNumber(?PhoneNumber $value): self
     {
@@ -89,6 +99,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -98,6 +110,8 @@ class VenmoWalletResponseBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param VenmoWalletAttributesResponse|null $value
      */
     public function attributes(?VenmoWalletAttributesResponse $value): self
     {
@@ -106,7 +120,7 @@ class VenmoWalletResponseBuilder
     }
 
     /**
-     * Initializes a new venmo wallet response object.
+     * Initializes a new Venmo Wallet Response object.
      */
     public function build(): VenmoWalletResponse
     {

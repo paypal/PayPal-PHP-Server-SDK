@@ -32,7 +32,7 @@ class AuthenticationResponseBuilder
     }
 
     /**
-     * Initializes a new authentication response Builder object.
+     * Initializes a new Authentication Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class AuthenticationResponseBuilder
 
     /**
      * Sets liability shift field.
+     *
+     * @param string|null $value
      */
     public function liabilityShift(?string $value): self
     {
@@ -50,6 +52,8 @@ class AuthenticationResponseBuilder
 
     /**
      * Sets three d secure field.
+     *
+     * @param ThreeDSecureAuthenticationResponse|null $value
      */
     public function threeDSecure(?ThreeDSecureAuthenticationResponse $value): self
     {
@@ -58,7 +62,7 @@ class AuthenticationResponseBuilder
     }
 
     /**
-     * Initializes a new authentication response object.
+     * Initializes a new Authentication Response object.
      */
     public function build(): AuthenticationResponse
     {

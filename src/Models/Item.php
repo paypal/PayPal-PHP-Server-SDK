@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -285,6 +286,30 @@ class Item implements \JsonSerializable
     }
 
     /**
+     * Converts the Item object to a human-readable string representation.
+     *
+     * @return string The string representation of the Item object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Item',
+            [
+                'name' => $this->name,
+                'unitAmount' => $this->unitAmount,
+                'tax' => $this->tax,
+                'quantity' => $this->quantity,
+                'description' => $this->description,
+                'sku' => $this->sku,
+                'url' => $this->url,
+                'category' => $this->category,
+                'imageUrl' => $this->imageUrl,
+                'upc' => $this->upc
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -312,7 +337,7 @@ class Item implements \JsonSerializable
             $json['url']         = $this->url;
         }
         if (isset($this->category)) {
-            $json['category']    = ItemCategory::checkValue($this->category);
+            $json['category']    = $this->category;
         }
         if (isset($this->imageUrl)) {
             $json['image_url']   = $this->imageUrl;

@@ -31,7 +31,10 @@ class TaxInfoBuilder
     }
 
     /**
-     * Initializes a new tax info Builder object.
+     * Initializes a new Tax Info Builder object.
+     *
+     * @param string $taxId
+     * @param string $taxIdType
      */
     public static function init(string $taxId, string $taxIdType): self
     {
@@ -39,7 +42,7 @@ class TaxInfoBuilder
     }
 
     /**
-     * Initializes a new tax info object.
+     * Initializes a new Tax Info object.
      */
     public function build(): TaxInfo
     {

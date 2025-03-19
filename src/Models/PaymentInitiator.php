@@ -10,36 +10,20 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The person or party who initiated or triggered the payment.
  */
 class PaymentInitiator
 {
+    /**
+     * Payment is initiated with the active engagement of the customer. e.g. a customer checking out on a
+     * merchant website.
+     */
     public const CUSTOMER = 'CUSTOMER';
 
-    public const MERCHANT = 'MERCHANT';
-
-    private const _ALL_VALUES = [self::CUSTOMER, self::MERCHANT];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Payment is initiated by merchant on behalf of the customer without the active engagement of customer.
+     * e.g. a merchant charging the monthly payment of a subscription to the customer.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for PaymentInitiator.");
-    }
+    public const MERCHANT = 'MERCHANT';
 }

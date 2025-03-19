@@ -31,7 +31,7 @@ class BancontactPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new bancontact payment object Builder object.
+     * Initializes a new Bancontact Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class BancontactPaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -49,6 +51,8 @@ class BancontactPaymentObjectBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -58,6 +62,8 @@ class BancontactPaymentObjectBuilder
 
     /**
      * Sets bic field.
+     *
+     * @param string|null $value
      */
     public function bic(?string $value): self
     {
@@ -67,6 +73,8 @@ class BancontactPaymentObjectBuilder
 
     /**
      * Sets iban last chars field.
+     *
+     * @param string|null $value
      */
     public function ibanLastChars(?string $value): self
     {
@@ -76,6 +84,8 @@ class BancontactPaymentObjectBuilder
 
     /**
      * Sets card last digits field.
+     *
+     * @param string|null $value
      */
     public function cardLastDigits(?string $value): self
     {
@@ -84,7 +94,7 @@ class BancontactPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new bancontact payment object object.
+     * Initializes a new Bancontact Payment Object object.
      */
     public function build(): BancontactPaymentObject
     {

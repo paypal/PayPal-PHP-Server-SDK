@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\CustomerRequest;
+use PaypalServerSdkLib\Models\Customer;
 use PaypalServerSdkLib\Models\PaymentTokenRequest;
 use PaypalServerSdkLib\Models\PaymentTokenRequestPaymentSource;
 
@@ -33,7 +33,9 @@ class PaymentTokenRequestBuilder
     }
 
     /**
-     * Initializes a new payment token request Builder object.
+     * Initializes a new Payment Token Request Builder object.
+     *
+     * @param PaymentTokenRequestPaymentSource $paymentSource
      */
     public static function init(PaymentTokenRequestPaymentSource $paymentSource): self
     {
@@ -42,15 +44,17 @@ class PaymentTokenRequestBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param Customer|null $value
      */
-    public function customer(?CustomerRequest $value): self
+    public function customer(?Customer $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
     }
 
     /**
-     * Initializes a new payment token request object.
+     * Initializes a new Payment Token Request object.
      */
     public function build(): PaymentTokenRequest
     {

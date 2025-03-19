@@ -10,108 +10,134 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The card network or brand. Applies to credit, debit, gift, and payment cards.
  */
 class CardBrand
 {
+    /**
+     * Visa card.
+     */
     public const VISA = 'VISA';
 
+    /**
+     * Mastecard card.
+     */
     public const MASTERCARD = 'MASTERCARD';
 
+    /**
+     * Discover card.
+     */
     public const DISCOVER = 'DISCOVER';
 
+    /**
+     * American Express card.
+     */
     public const AMEX = 'AMEX';
 
+    /**
+     * Solo debit card.
+     */
     public const SOLO = 'SOLO';
 
+    /**
+     * Japan Credit Bureau card.
+     */
     public const JCB = 'JCB';
 
+    /**
+     * Military Star card.
+     */
     public const STAR = 'STAR';
 
+    /**
+     * Delta Airlines card.
+     */
     public const DELTA = 'DELTA';
 
+    /**
+     * Switch credit card.
+     */
     public const SWITCH_ = 'SWITCH';
 
+    /**
+     * Maestro credit card.
+     */
     public const MAESTRO = 'MAESTRO';
 
+    /**
+     * Carte Bancaire (CB) credit card.
+     */
     public const CB_NATIONALE = 'CB_NATIONALE';
 
+    /**
+     * Configoga credit card.
+     */
     public const CONFIGOGA = 'CONFIGOGA';
 
+    /**
+     * Confidis credit card.
+     */
     public const CONFIDIS = 'CONFIDIS';
 
+    /**
+     * Visa Electron credit card.
+     */
     public const ELECTRON = 'ELECTRON';
 
+    /**
+     * Cetelem credit card.
+     */
     public const CETELEM = 'CETELEM';
 
+    /**
+     * China union pay credit card.
+     */
     public const CHINA_UNION_PAY = 'CHINA_UNION_PAY';
 
+    /**
+     * The Diners Club International banking and payment services capability network owned by Discover
+     * Financial Services (DFS), one of the most recognized brands in US financial services.
+     */
     public const DINERS = 'DINERS';
 
+    /**
+     * The Brazilian Elo card payment network.
+     */
     public const ELO = 'ELO';
 
+    /**
+     * The Hiper - Ingenico ePayment network.
+     */
     public const HIPER = 'HIPER';
 
+    /**
+     * The Brazilian Hipercard payment network that's widely accepted in the retail market.
+     */
     public const HIPERCARD = 'HIPERCARD';
 
+    /**
+     * The RuPay payment network.
+     */
     public const RUPAY = 'RUPAY';
 
+    /**
+     * The GE Credit Union 3Point card payment network.
+     */
     public const GE = 'GE';
 
+    /**
+     * The Synchrony Financial (SYF) payment network.
+     */
     public const SYNCHRONY = 'SYNCHRONY';
 
+    /**
+     * The Electronic Fund Transfer At Point of Sale(EFTPOS) Debit card payment network.
+     */
     public const EFTPOS = 'EFTPOS';
 
-    public const UNKNOWN = 'UNKNOWN';
-
-    private const _ALL_VALUES = [
-        self::VISA,
-        self::MASTERCARD,
-        self::DISCOVER,
-        self::AMEX,
-        self::SOLO,
-        self::JCB,
-        self::STAR,
-        self::DELTA,
-        self::SWITCH_,
-        self::MAESTRO,
-        self::CB_NATIONALE,
-        self::CONFIGOGA,
-        self::CONFIDIS,
-        self::ELECTRON,
-        self::CETELEM,
-        self::CHINA_UNION_PAY,
-        self::DINERS,
-        self::ELO,
-        self::HIPER,
-        self::HIPERCARD,
-        self::RUPAY,
-        self::GE,
-        self::SYNCHRONY,
-        self::EFTPOS,
-        self::UNKNOWN
-    ];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * UNKNOWN payment network.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for CardBrand.");
-    }
+    public const UNKNOWN = 'UNKNOWN';
 }

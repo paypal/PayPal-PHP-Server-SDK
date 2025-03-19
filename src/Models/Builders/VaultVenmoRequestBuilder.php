@@ -33,7 +33,7 @@ class VaultVenmoRequestBuilder
     }
 
     /**
-     * Initializes a new vault venmo request Builder object.
+     * Initializes a new Vault Venmo Request Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class VaultVenmoRequestBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -50,7 +52,20 @@ class VaultVenmoRequestBuilder
     }
 
     /**
+     * Sets usage pattern field.
+     *
+     * @param string|null $value
+     */
+    public function usagePattern(?string $value): self
+    {
+        $this->instance->setUsagePattern($value);
+        return $this;
+    }
+
+    /**
      * Sets shipping field.
+     *
+     * @param VaultedDigitalWalletShippingDetails|null $value
      */
     public function shipping(?VaultedDigitalWalletShippingDetails $value): self
     {
@@ -60,6 +75,8 @@ class VaultVenmoRequestBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -69,6 +86,8 @@ class VaultVenmoRequestBuilder
 
     /**
      * Sets usage type field.
+     *
+     * @param string|null $value
      */
     public function usageType(?string $value): self
     {
@@ -78,6 +97,8 @@ class VaultVenmoRequestBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -87,6 +108,8 @@ class VaultVenmoRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param VaultVenmoExperienceContext|null $value
      */
     public function experienceContext(?VaultVenmoExperienceContext $value): self
     {
@@ -95,7 +118,7 @@ class VaultVenmoRequestBuilder
     }
 
     /**
-     * Initializes a new vault venmo request object.
+     * Initializes a new Vault Venmo Request object.
      */
     public function build(): VaultVenmoRequest
     {

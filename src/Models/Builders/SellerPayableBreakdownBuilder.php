@@ -12,6 +12,8 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Money;
+use PaypalServerSdkLib\Models\NetAmountBreakdownItem;
+use PaypalServerSdkLib\Models\PlatformFee;
 use PaypalServerSdkLib\Models\SellerPayableBreakdown;
 
 /**
@@ -32,7 +34,7 @@ class SellerPayableBreakdownBuilder
     }
 
     /**
-     * Initializes a new seller payable breakdown Builder object.
+     * Initializes a new Seller Payable Breakdown Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +43,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets gross amount field.
+     *
+     * @param Money|null $value
      */
     public function grossAmount(?Money $value): self
     {
@@ -50,6 +54,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets paypal fee field.
+     *
+     * @param Money|null $value
      */
     public function paypalFee(?Money $value): self
     {
@@ -59,6 +65,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets paypal fee in receivable currency field.
+     *
+     * @param Money|null $value
      */
     public function paypalFeeInReceivableCurrency(?Money $value): self
     {
@@ -68,6 +76,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets net amount field.
+     *
+     * @param Money|null $value
      */
     public function netAmount(?Money $value): self
     {
@@ -77,6 +87,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets net amount in receivable currency field.
+     *
+     * @param Money|null $value
      */
     public function netAmountInReceivableCurrency(?Money $value): self
     {
@@ -86,6 +98,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets platform fees field.
+     *
+     * @param PlatformFee[]|null $value
      */
     public function platformFees(?array $value): self
     {
@@ -95,6 +109,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets net amount breakdown field.
+     *
+     * @param NetAmountBreakdownItem[]|null $value
      */
     public function netAmountBreakdown(?array $value): self
     {
@@ -104,6 +120,8 @@ class SellerPayableBreakdownBuilder
 
     /**
      * Sets total refunded amount field.
+     *
+     * @param Money|null $value
      */
     public function totalRefundedAmount(?Money $value): self
     {
@@ -112,7 +130,7 @@ class SellerPayableBreakdownBuilder
     }
 
     /**
-     * Initializes a new seller payable breakdown object.
+     * Initializes a new Seller Payable Breakdown object.
      */
     public function build(): SellerPayableBreakdown
     {

@@ -32,7 +32,7 @@ class AmountBreakdownBuilder
     }
 
     /**
-     * Initializes a new amount breakdown Builder object.
+     * Initializes a new Amount Breakdown Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets item total field.
+     *
+     * @param Money|null $value
      */
     public function itemTotal(?Money $value): self
     {
@@ -50,6 +52,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets shipping field.
+     *
+     * @param Money|null $value
      */
     public function shipping(?Money $value): self
     {
@@ -59,6 +63,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets handling field.
+     *
+     * @param Money|null $value
      */
     public function handling(?Money $value): self
     {
@@ -68,6 +74,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets tax total field.
+     *
+     * @param Money|null $value
      */
     public function taxTotal(?Money $value): self
     {
@@ -77,6 +85,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets insurance field.
+     *
+     * @param Money|null $value
      */
     public function insurance(?Money $value): self
     {
@@ -86,6 +96,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets shipping discount field.
+     *
+     * @param Money|null $value
      */
     public function shippingDiscount(?Money $value): self
     {
@@ -95,6 +107,8 @@ class AmountBreakdownBuilder
 
     /**
      * Sets discount field.
+     *
+     * @param Money|null $value
      */
     public function discount(?Money $value): self
     {
@@ -103,7 +117,7 @@ class AmountBreakdownBuilder
     }
 
     /**
-     * Initializes a new amount breakdown object.
+     * Initializes a new Amount Breakdown object.
      */
     public function build(): AmountBreakdown
     {

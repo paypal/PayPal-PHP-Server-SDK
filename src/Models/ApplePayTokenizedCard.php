@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -201,6 +202,27 @@ class ApplePayTokenizedCard implements \JsonSerializable
     }
 
     /**
+     * Converts the ApplePayTokenizedCard object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayTokenizedCard object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ApplePayTokenizedCard',
+            [
+                'name' => $this->name,
+                'number' => $this->number,
+                'expiry' => $this->expiry,
+                'cardType' => $this->cardType,
+                'type' => $this->type,
+                'brand' => $this->brand,
+                'billingAddress' => $this->billingAddress
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -222,13 +244,13 @@ class ApplePayTokenizedCard implements \JsonSerializable
             $json['expiry']          = $this->expiry;
         }
         if (isset($this->cardType)) {
-            $json['card_type']       = CardBrand::checkValue($this->cardType);
+            $json['card_type']       = $this->cardType;
         }
         if (isset($this->type)) {
-            $json['type']            = CardType::checkValue($this->type);
+            $json['type']            = $this->type;
         }
         if (isset($this->brand)) {
-            $json['brand']           = CardBrand::checkValue($this->brand);
+            $json['brand']           = $this->brand;
         }
         if (isset($this->billingAddress)) {
             $json['billing_address'] = $this->billingAddress;

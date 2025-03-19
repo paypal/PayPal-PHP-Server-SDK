@@ -12,21 +12,21 @@ $paymentsController = $client->getPaymentsController();
 
 ## Methods
 
-* [Authorizations Get](../../doc/controllers/payments.md#authorizations-get)
-* [Authorizations Capture](../../doc/controllers/payments.md#authorizations-capture)
-* [Authorizations Reauthorize](../../doc/controllers/payments.md#authorizations-reauthorize)
-* [Authorizations Void](../../doc/controllers/payments.md#authorizations-void)
-* [Captures Get](../../doc/controllers/payments.md#captures-get)
-* [Captures Refund](../../doc/controllers/payments.md#captures-refund)
-* [Refunds Get](../../doc/controllers/payments.md#refunds-get)
+* [Get Authorized Payment](../../doc/controllers/payments.md#get-authorized-payment)
+* [Capture Authorized Payment](../../doc/controllers/payments.md#capture-authorized-payment)
+* [Reauthorize Payment](../../doc/controllers/payments.md#reauthorize-payment)
+* [Void Payment](../../doc/controllers/payments.md#void-payment)
+* [Get Captured Payment](../../doc/controllers/payments.md#get-captured-payment)
+* [Refund Captured Payment](../../doc/controllers/payments.md#refund-captured-payment)
+* [Get Refund](../../doc/controllers/payments.md#get-refund)
 
 
-# Authorizations Get
+# Get Authorized Payment
 
 Shows details for an authorized payment, by ID.
 
 ```php
-function authorizationsGet(array $options): ApiResponse
+function getAuthorizedPayment(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -34,11 +34,12 @@ function authorizationsGet(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorizationId` | `string` | Template, Required | The ID of the authorized payment for which to show details. |
-| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
+| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
 
@@ -47,7 +48,7 @@ $collect = [
     'authorizationId' => 'authorization_id8'
 ];
 
-$apiResponse = $paymentsController->authorizationsGet($collect);
+$apiResponse = $paymentsController->getAuthorizedPayment($collect);
 ```
 
 ## Errors
@@ -60,12 +61,12 @@ $apiResponse = $paymentsController->authorizationsGet($collect);
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Authorizations Capture
+# Capture Authorized Payment
 
 Captures an authorized payment, by ID.
 
 ```php
-function authorizationsCapture(array $options): ApiResponse
+function captureAuthorizedPayment(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -73,14 +74,15 @@ function authorizationsCapture(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorizationId` | `string` | Template, Required | The PayPal-generated ID for the authorized payment to capture. |
+| `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
 | `paypalRequestId` | `?string` | Header, Optional | The server stores keys for 45 days. |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
-| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br>**Default**: `'return=minimal'` |
+| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 | `body` | [`?CaptureRequest`](../../doc/models/capture-request.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
 ## Example Usage
 
@@ -93,7 +95,7 @@ $collect = [
         ->build()
 ];
 
-$apiResponse = $paymentsController->authorizationsCapture($collect);
+$apiResponse = $paymentsController->captureAuthorizedPayment($collect);
 ```
 
 ## Errors
@@ -110,12 +112,12 @@ $apiResponse = $paymentsController->authorizationsCapture($collect);
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Authorizations Reauthorize
+# Reauthorize Payment
 
-Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds are still available, reauthorize a payment after its initial three-day honor period expires. Within the 29-day authorization period, you can issue multiple re-authorizations after the honor period expires.<br/><br/>If 30 days have transpired since the date of the original authorization, you must create an authorized payment instead of reauthorizing the original authorized payment.<br/><br/>A reauthorized payment itself has a new honor period of three days.<br/><br/>You can reauthorize an authorized payment from 4 to 29 days after the 3-day honor period. The allowed amount depends on context and geography, for example in US it is up to 115% of the original authorized amount, not to exceed an increase of $75 USD.<br/><br/>Supports only the `amount` request parameter.<blockquote><strong>Note:</strong> This request is currently not supported for Partner use cases.</blockquote>
+Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds are still available, reauthorize a payment after its initial three-day honor period expires. Within the 29-day authorization period, you can issue multiple re-authorizations after the honor period expires. If 30 days have transpired since the date of the original authorization, you must create an authorized payment instead of reauthorizing the original authorized payment. A reauthorized payment itself has a new honor period of three days. You can reauthorize an authorized payment from 4 to 29 days after the 3-day honor period. The allowed amount depends on context and geography, for example in US it is up to 115% of the original authorized amount, not to exceed an increase of $75 USD. Supports only the `amount` request parameter. Note: This request is currently not supported for Partner use cases.
 
 ```php
-function authorizationsReauthorize(array $options): ApiResponse
+function reauthorizePayment(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -124,13 +126,13 @@ function authorizationsReauthorize(array $options): ApiResponse
 |  --- | --- | --- | --- |
 | `authorizationId` | `string` | Template, Required | The PayPal-generated ID for the authorized payment to reauthorize. |
 | `paypalRequestId` | `?string` | Header, Optional | The server stores keys for 45 days. |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
-| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br>**Default**: `'return=minimal'` |
+| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 | `body` | [`?ReauthorizeRequest`](../../doc/models/reauthorize-request.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
 
@@ -140,7 +142,7 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
-$apiResponse = $paymentsController->authorizationsReauthorize($collect);
+$apiResponse = $paymentsController->reauthorizePayment($collect);
 ```
 
 ## Errors
@@ -155,12 +157,12 @@ $apiResponse = $paymentsController->authorizationsReauthorize($collect);
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Authorizations Void
+# Void Payment
 
 Voids, or cancels, an authorized payment, by ID. You cannot void an authorized payment that has been fully captured.
 
 ```php
-function authorizationsVoid(array $options): ApiResponse
+function voidPayment(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -168,13 +170,14 @@ function authorizationsVoid(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorizationId` | `string` | Template, Required | The PayPal-generated ID for the authorized payment to void. |
-| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
+| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 | `paypalRequestId` | `?string` | Header, Optional | The server stores keys for 45 days. |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br>**Default**: `'return=minimal'` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`?PaymentAuthorization`](../../doc/models/payment-authorization.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`?PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
 
@@ -184,7 +187,7 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
-$apiResponse = $paymentsController->authorizationsVoid($collect);
+$apiResponse = $paymentsController->voidPayment($collect);
 ```
 
 ## Errors
@@ -200,12 +203,12 @@ $apiResponse = $paymentsController->authorizationsVoid($collect);
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Captures Get
+# Get Captured Payment
 
 Shows details for a captured payment, by ID.
 
 ```php
-function capturesGet(string $captureId): ApiResponse
+function getCapturedPayment(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -213,17 +216,20 @@ function capturesGet(string $captureId): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `captureId` | `string` | Template, Required | The PayPal-generated ID for the captured payment for which to show details. |
+| `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
 ## Example Usage
 
 ```php
-$captureId = 'capture_id2';
+$collect = [
+    'captureId' => 'capture_id2'
+];
 
-$apiResponse = $paymentsController->capturesGet($captureId);
+$apiResponse = $paymentsController->getCapturedPayment($collect);
 ```
 
 ## Errors
@@ -237,12 +243,12 @@ $apiResponse = $paymentsController->capturesGet($captureId);
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Captures Refund
+# Refund Captured Payment
 
-Refunds a captured payment, by ID. For a full refund, include an empty payload in the JSON request body. For a partial refund, include an <code>amount</code> object in the JSON request body.
+Refunds a captured payment, by ID. For a full refund, include an empty payload in the JSON request body. For a partial refund, include an amount object in the JSON request body.
 
 ```php
-function capturesRefund(array $options): ApiResponse
+function refundCapturedPayment(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -250,14 +256,15 @@ function capturesRefund(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `captureId` | `string` | Template, Required | The PayPal-generated ID for the captured payment to refund. |
+| `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
 | `paypalRequestId` | `?string` | Header, Optional | The server stores keys for 45 days. |
-| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
-| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `prefer` | `?string` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br>**Default**: `'return=minimal'` |
+| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 | `body` | [`?RefundRequest`](../../doc/models/refund-request.md) | Body, Optional | - |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
 ## Example Usage
 
@@ -267,7 +274,7 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
-$apiResponse = $paymentsController->capturesRefund($collect);
+$apiResponse = $paymentsController->refundCapturedPayment($collect);
 ```
 
 ## Errors
@@ -284,12 +291,12 @@ $apiResponse = $paymentsController->capturesRefund($collect);
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Refunds Get
+# Get Refund
 
 Shows details for a refund, by ID.
 
 ```php
-function refundsGet(array $options): ApiResponse
+function getRefund(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -297,11 +304,12 @@ function refundsGet(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `refundId` | `string` | Template, Required | The PayPal-generated ID for the refund for which to show details. |
-| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
+| `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
 ## Example Usage
 
@@ -310,7 +318,7 @@ $collect = [
     'refundId' => 'refund_id4'
 ];
 
-$apiResponse = $paymentsController->refundsGet($collect);
+$apiResponse = $paymentsController->getRefund($collect);
 ```
 
 ## Errors

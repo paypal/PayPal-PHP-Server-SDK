@@ -25,24 +25,21 @@ class OrdersController extends BaseController
 {
     /**
      * Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and
-     * payment processing costs. For more information about processing payments, see <a href="https:
-     * //developer.paypal.com/docs/checkout/advanced/processing/">checkout</a> or <a href="https:
-     * //developer.paypal.com/docs/multiparty/checkout/advanced/processing/">multiparty checkout</a>.
-     * <blockquote><strong>Note:</strong> For error handling and troubleshooting, see <a href="https:
-     * //developer.paypal.com/api/rest/reference/orders/v2/errors/#create-order">Orders v2 errors</a>.
-     * </blockquote>
+     * payment processing costs. For more information about processing payments, see checkout or multiparty
+     * checkout. Note: For error handling and troubleshooting, see Orders v2 errors.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersCreate(array $options): ApiResponse
+    public function createOrder(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders')
             ->auth('Oauth2')
             ->parameters(
                 HeaderParam::init('Content-Type', 'application/json'),
                 BodyParam::init($options)->extract('body'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('paypalPartnerAttributionId'),
                 HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
@@ -82,20 +79,20 @@ class OrdersController extends BaseController
     }
 
     /**
-     * Shows details for an order, by ID.<blockquote><strong>Note:</strong> For error handling and
-     * troubleshooting, see <a href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#get-
-     * order">Orders v2 errors</a>.</blockquote>
+     * Shows details for an order, by ID. Note: For error handling and troubleshooting, see Orders v2
+     * errors.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersGet(array $options): ApiResponse
+    public function getOrder(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/checkout/orders/{id}')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 QueryParam::init('fields', $options)->extract('fields')
             );
@@ -119,56 +116,39 @@ class OrdersController extends BaseController
 
     /**
      * Updates an order with a `CREATED` or `APPROVED` status. You cannot update an order with the
-     * `COMPLETED` status.<br/><br/>To make an update, you must provide a `reference_id`. If you omit this
-     * value with an order that contains only one purchase unit, PayPal sets the value to `default` which
-     * enables you to use the path: <code>\"/purchase_units/@reference_id=='default'/{attribute-or-
-     * object}\"</code>. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and
-     * payment processing costs. For more information about processing payments, see <a href="https:
-     * //developer.paypal.com/docs/checkout/advanced/processing/">checkout</a> or <a href="https:
-     * //developer.paypal.com/docs/multiparty/checkout/advanced/processing/">multiparty checkout</a>.
-     * <blockquote><strong>Note:</strong> For error handling and troubleshooting, see <a href="https:
-     * //developer.paypal.com/api/rest/reference/orders/v2/errors/#patch-order">Orders v2 errors</a>.
-     * </blockquote>Patchable attributes or objects:
-     * <br/><br/><table><thead><th>Attribute</th><th>Op</th><th>Notes</th></thead><tbody><tr><td><code>inte
-     * nt</code></td><td>replace</td><td></td></tr><tr><td><code>payer</code></td><td>replace,
-     * add</td><td>Using replace op for <code>payer</code> will replace the whole <code>payer</code> object
-     * with the value sent in request.</td></tr><tr><td><code>purchase_units</code></td><td>replace,
-     * add</td><td></td></tr><tr><td><code>purchase_units[].custom_id</code></td><td>replace, add,
-     * remove</td><td></td></tr><tr><td><code>purchase_units[].description</code></td><td>replace, add,
-     * remove</td><td></td></tr><tr><td><code>purchase_units[].payee.
-     * email</code></td><td>replace</td><td></td></tr><tr><td><code>purchase_units[].shipping.
-     * name</code></td><td>replace, add</td><td></td></tr><tr><td><code>purchase_units[].shipping.
-     * email_address</code></td><td>replace, add</td><td></td></tr><tr><td><code>purchase_units[].shipping.
-     * phone_number</code></td><td>replace, add</td><td></td></tr><tr><td><code>purchase_units[].shipping.
-     * options</code></td><td>replace, add</td><td></td></tr><tr><td><code>purchase_units[].shipping.
-     * address</code></td><td>replace, add</td><td></td></tr><tr><td><code>purchase_units[].shipping.
-     * type</code></td><td>replace, add</td><td></td></tr><tr><td><code>purchase_units[].
-     * soft_descriptor</code></td><td>replace, remove</td><td></td></tr><tr><td><code>purchase_units[].
-     * amount</code></td><td>replace</td><td></td></tr><tr><td><code>purchase_units[].
-     * items</code></td><td>replace, add, remove</td><td></td></tr><tr><td><code>purchase_units[].
-     * invoice_id</code></td><td>replace, add, remove</td><td></td></tr><tr><td><code>purchase_units[].
-     * payment_instruction</code></td><td>replace</td><td></td></tr><tr><td><code>purchase_units[].
-     * payment_instruction.disbursement_mode</code></td><td>replace</td><td>By default,
-     * <code>disbursement_mode</code> is <code>INSTANT</code>.</td></tr><tr><td><code>purchase_units[].
-     * payment_instruction.payee_receivable_fx_rate_id</code></td><td>replace, add,
-     * remove</td><td></td></tr><tr><td><code>purchase_units[].payment_instruction.
-     * platform_fees</code></td><td>replace, add, remove</td><td></td></tr><tr><td><code>purchase_units[].
-     * supplementary_data.airline</code></td><td>replace, add,
-     * remove</td><td></td></tr><tr><td><code>purchase_units[].supplementary_data.
-     * card</code></td><td>replace, add, remove</td><td></td></tr><tr><td><code>application_context.
-     * client_configuration</code></td><td>replace, add</td><td></td></tr></tbody></table>
+     * `COMPLETED` status. To make an update, you must provide a `reference_id`. If you omit this value
+     * with an order that contains only one purchase unit, PayPal sets the value to `default` which enables
+     * you to use the path: \"/purchase_units/@reference_id=='default'/{attribute-or-object}\". Merchants
+     * and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs. For
+     * more information about processing payments, see checkout or multiparty checkout. Note: For error
+     * handling and troubleshooting, see Orders v2 errors. Patchable attributes or objects: Attribute Op
+     * Notes intent replace payer replace, add Using replace op for payer will replace the whole payer
+     * object with the value sent in request. purchase_units replace, add purchase_units[].custom_id
+     * replace, add, remove purchase_units[].description replace, add, remove purchase_units[].payee.email
+     * replace purchase_units[].shipping.name replace, add purchase_units[].shipping.email_address replace,
+     * add purchase_units[].shipping.phone_number replace, add purchase_units[].shipping.options replace,
+     * add purchase_units[].shipping.address replace, add purchase_units[].shipping.type replace, add
+     * purchase_units[].soft_descriptor replace, remove purchase_units[].amount replace purchase_units[].
+     * items replace, add, remove purchase_units[].invoice_id replace, add, remove purchase_units[].
+     * payment_instruction replace purchase_units[].payment_instruction.disbursement_mode replace By
+     * default, disbursement_mode is INSTANT. purchase_units[].payment_instruction.
+     * payee_receivable_fx_rate_id replace, add, remove purchase_units[].payment_instruction.platform_fees
+     * replace, add, remove purchase_units[].supplementary_data.airline replace, add, remove
+     * purchase_units[].supplementary_data.card replace, add, remove application_context.
+     * client_configuration replace, add
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersPatch(array $options): ApiResponse
+    public function patchOrder(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::PATCH, '/v2/checkout/orders/{id}')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 BodyParam::init($options)->extract('body')
             );
@@ -211,7 +191,7 @@ class OrdersController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersConfirm(array $options): ApiResponse
+    public function confirmOrder(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::POST,
@@ -259,21 +239,21 @@ class OrdersController extends BaseController
      * Authorizes payment for an order. To successfully authorize payment for an order, the buyer must
      * first approve the order or a valid payment_source must be provided in the request. A buyer can
      * approve the order upon being redirected to the rel:approve URL that was returned in the HATEOAS
-     * links in the create order response.<blockquote><strong>Note:</strong> For error handling and
-     * troubleshooting, see <a href="https://developer.paypal.
-     * com/api/rest/reference/orders/v2/errors/#authorize-order">Orders v2 errors</a>.</blockquote>
+     * links in the create order response. Note: For error handling and troubleshooting, see Orders v2
+     * errors.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersAuthorize(array $options): ApiResponse
+    public function authorizeOrder(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders/{id}/authorize')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
@@ -325,21 +305,20 @@ class OrdersController extends BaseController
      * Captures payment for an order. To successfully capture payment for an order, the buyer must first
      * approve the order or a valid payment_source must be provided in the request. A buyer can approve the
      * order upon being redirected to the rel:approve URL that was returned in the HATEOAS links in the
-     * create order response.<blockquote><strong>Note:</strong> For error handling and troubleshooting, see
-     * <a href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#capture-order">Orders v2
-     * errors</a>.</blockquote>
+     * create order response. Note: For error handling and troubleshooting, see Orders v2 errors.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersCapture(array $options): ApiResponse
+    public function captureOrder(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders/{id}/capture')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('Content-Type', 'application/json'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
@@ -394,7 +373,7 @@ class OrdersController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersTrackCreate(array $options): ApiResponse
+    public function createOrderTracking(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders/{id}/track')
             ->auth('Oauth2')
@@ -436,19 +415,15 @@ class OrdersController extends BaseController
 
     /**
      * Updates or cancels the tracking information for a PayPal order, by ID. Updatable attributes or
-     * objects:
-     * <br/><br/><table><thead><th>Attribute</th><th>Op</th><th>Notes</th></thead><tbody></tr><tr><td><code
-     * >items</code></td><td>replace</td><td>Using replace op for <code>items</code> will replace the
-     * entire <code>items</code> object with the value sent in request.
-     * </td></tr><tr><td><code>notify_payer</code></td><td>replace,
-     * add</td><td></td></tr><tr><td><code>status</code></td><td>replace</td><td>Only patching status to
-     * CANCELLED is currently supported.</td></tr></tbody></table>
+     * objects: Attribute Op Notes items replace Using replace op for items will replace the entire items
+     * object with the value sent in request. notify_payer replace, add status replace Only patching status
+     * to CANCELLED is currently supported.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function ordersTrackersPatch(array $options): ApiResponse
+    public function updateOrderTracking(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::PATCH,

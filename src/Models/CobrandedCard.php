@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -96,6 +97,19 @@ class CobrandedCard implements \JsonSerializable
     public function setAmount(?Money $amount): void
     {
         $this->amount = $amount;
+    }
+
+    /**
+     * Converts the CobrandedCard object to a human-readable string representation.
+     *
+     * @return string The string representation of the CobrandedCard object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CobrandedCard',
+            ['labels' => $this->labels, 'payee' => $this->payee, 'amount' => $this->amount]
+        );
     }
 
     /**

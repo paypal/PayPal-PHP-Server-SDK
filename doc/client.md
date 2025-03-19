@@ -38,14 +38,6 @@ $client = PaypalServerSdkClientBuilder::init()
     ->build();
 ```
 
-API calls return an `ApiResponse` object that includes the following fields:
-
-| Field | Description |
-|  --- | --- |
-| `getStatusCode` | Status code of the HTTP response |
-| `getHeaders` | Headers of the HTTP response as a Hash |
-| `getResult` | The deserialized body of the HTTP response as a String |
-
 ## PayPal Server SDK Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.

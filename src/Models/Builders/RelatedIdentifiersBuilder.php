@@ -31,7 +31,7 @@ class RelatedIdentifiersBuilder
     }
 
     /**
-     * Initializes a new related identifiers Builder object.
+     * Initializes a new Related Identifiers Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class RelatedIdentifiersBuilder
 
     /**
      * Sets order id field.
+     *
+     * @param string|null $value
      */
     public function orderId(?string $value): self
     {
@@ -49,6 +51,8 @@ class RelatedIdentifiersBuilder
 
     /**
      * Sets authorization id field.
+     *
+     * @param string|null $value
      */
     public function authorizationId(?string $value): self
     {
@@ -58,6 +62,8 @@ class RelatedIdentifiersBuilder
 
     /**
      * Sets capture id field.
+     *
+     * @param string|null $value
      */
     public function captureId(?string $value): self
     {
@@ -66,7 +72,7 @@ class RelatedIdentifiersBuilder
     }
 
     /**
-     * Initializes a new related identifiers object.
+     * Initializes a new Related Identifiers object.
      */
     public function build(): RelatedIdentifiers
     {

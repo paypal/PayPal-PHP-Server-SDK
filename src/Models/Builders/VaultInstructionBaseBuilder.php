@@ -31,7 +31,7 @@ class VaultInstructionBaseBuilder
     }
 
     /**
-     * Initializes a new vault instruction base Builder object.
+     * Initializes a new Vault Instruction Base Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class VaultInstructionBaseBuilder
 
     /**
      * Sets store in vault field.
+     *
+     * @param string|null $value
      */
     public function storeInVault(?string $value): self
     {
@@ -48,7 +50,7 @@ class VaultInstructionBaseBuilder
     }
 
     /**
-     * Initializes a new vault instruction base object.
+     * Initializes a new Vault Instruction Base object.
      */
     public function build(): VaultInstructionBase
     {

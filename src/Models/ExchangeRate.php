@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -96,6 +97,23 @@ class ExchangeRate implements \JsonSerializable
     public function setValue(?string $value): void
     {
         $this->value = $value;
+    }
+
+    /**
+     * Converts the ExchangeRate object to a human-readable string representation.
+     *
+     * @return string The string representation of the ExchangeRate object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ExchangeRate',
+            [
+                'sourceCurrency' => $this->sourceCurrency,
+                'targetCurrency' => $this->targetCurrency,
+                'value' => $this->value
+            ]
+        );
     }
 
     /**

@@ -31,7 +31,7 @@ class BlikExperienceContextBuilder
     }
 
     /**
-     * Initializes a new blik experience context Builder object.
+     * Initializes a new Blik Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +51,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -58,6 +62,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -67,6 +73,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -76,6 +84,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -85,6 +95,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets consumer ip field.
+     *
+     * @param string|null $value
      */
     public function consumerIp(?string $value): self
     {
@@ -94,6 +106,8 @@ class BlikExperienceContextBuilder
 
     /**
      * Sets consumer user agent field.
+     *
+     * @param string|null $value
      */
     public function consumerUserAgent(?string $value): self
     {
@@ -102,7 +116,7 @@ class BlikExperienceContextBuilder
     }
 
     /**
-     * Initializes a new blik experience context object.
+     * Initializes a new Blik Experience Context object.
      */
     public function build(): BlikExperienceContext
     {

@@ -13,11 +13,12 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CapturedPayment;
 use PaypalServerSdkLib\Models\CaptureStatusDetails;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
 use PaypalServerSdkLib\Models\NetworkTransactionReference;
-use PaypalServerSdkLib\Models\Payee;
+use PaypalServerSdkLib\Models\PayeeBase;
+use PaypalServerSdkLib\Models\PaymentsProcessorResponse;
 use PaypalServerSdkLib\Models\PaymentSupplementaryData;
-use PaypalServerSdkLib\Models\ProcessorResponse;
 use PaypalServerSdkLib\Models\SellerProtection;
 use PaypalServerSdkLib\Models\SellerReceivableBreakdown;
 
@@ -39,7 +40,7 @@ class CapturedPaymentBuilder
     }
 
     /**
-     * Initializes a new captured payment Builder object.
+     * Initializes a new Captured Payment Builder object.
      */
     public static function init(): self
     {
@@ -48,6 +49,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -57,6 +60,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param CaptureStatusDetails|null $value
      */
     public function statusDetails(?CaptureStatusDetails $value): self
     {
@@ -66,6 +71,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -75,6 +82,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -84,6 +93,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -93,6 +104,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -102,6 +115,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets network transaction reference field.
+     *
+     * @param NetworkTransactionReference|null $value
      */
     public function networkTransactionReference(?NetworkTransactionReference $value): self
     {
@@ -111,6 +126,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets seller protection field.
+     *
+     * @param SellerProtection|null $value
      */
     public function sellerProtection(?SellerProtection $value): self
     {
@@ -120,6 +137,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets final capture field.
+     *
+     * @param bool|null $value
      */
     public function finalCapture(?bool $value): self
     {
@@ -129,6 +148,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets seller receivable breakdown field.
+     *
+     * @param SellerReceivableBreakdown|null $value
      */
     public function sellerReceivableBreakdown(?SellerReceivableBreakdown $value): self
     {
@@ -138,6 +159,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets disbursement mode field.
+     *
+     * @param string|null $value
      */
     public function disbursementMode(?string $value): self
     {
@@ -147,6 +170,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -156,8 +181,10 @@ class CapturedPaymentBuilder
 
     /**
      * Sets processor response field.
+     *
+     * @param PaymentsProcessorResponse|null $value
      */
-    public function processorResponse(?ProcessorResponse $value): self
+    public function processorResponse(?PaymentsProcessorResponse $value): self
     {
         $this->instance->setProcessorResponse($value);
         return $this;
@@ -165,6 +192,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -174,6 +203,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -183,6 +214,8 @@ class CapturedPaymentBuilder
 
     /**
      * Sets supplementary data field.
+     *
+     * @param PaymentSupplementaryData|null $value
      */
     public function supplementaryData(?PaymentSupplementaryData $value): self
     {
@@ -192,15 +225,17 @@ class CapturedPaymentBuilder
 
     /**
      * Sets payee field.
+     *
+     * @param PayeeBase|null $value
      */
-    public function payee(?Payee $value): self
+    public function payee(?PayeeBase $value): self
     {
         $this->instance->setPayee($value);
         return $this;
     }
 
     /**
-     * Initializes a new captured payment object.
+     * Initializes a new Captured Payment object.
      */
     public function build(): CapturedPayment
     {

@@ -31,7 +31,7 @@ class VaultCustomerBuilder
     }
 
     /**
-     * Initializes a new vault customer Builder object.
+     * Initializes a new Vault Customer Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class VaultCustomerBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -48,7 +50,7 @@ class VaultCustomerBuilder
     }
 
     /**
-     * Initializes a new vault customer object.
+     * Initializes a new Vault Customer object.
      */
     public function build(): VaultCustomer
     {

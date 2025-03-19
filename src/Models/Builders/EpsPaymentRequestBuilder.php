@@ -32,7 +32,10 @@ class EpsPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new eps payment request Builder object.
+     * Initializes a new Eps Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $countryCode
      */
     public static function init(string $name, string $countryCode): self
     {
@@ -41,6 +44,8 @@ class EpsPaymentRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param ExperienceContext|null $value
      */
     public function experienceContext(?ExperienceContext $value): self
     {
@@ -49,7 +54,7 @@ class EpsPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new eps payment request object.
+     * Initializes a new Eps Payment Request object.
      */
     public function build(): EpsPaymentRequest
     {

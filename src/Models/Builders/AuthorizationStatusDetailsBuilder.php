@@ -31,7 +31,7 @@ class AuthorizationStatusDetailsBuilder
     }
 
     /**
-     * Initializes a new authorization status details Builder object.
+     * Initializes a new Authorization Status Details Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class AuthorizationStatusDetailsBuilder
 
     /**
      * Sets reason field.
+     *
+     * @param string|null $value
      */
     public function reason(?string $value): self
     {
@@ -48,7 +50,7 @@ class AuthorizationStatusDetailsBuilder
     }
 
     /**
-     * Initializes a new authorization status details object.
+     * Initializes a new Authorization Status Details object.
      */
     public function build(): AuthorizationStatusDetails
     {

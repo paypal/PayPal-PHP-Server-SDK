@@ -31,7 +31,7 @@ class PaymentMethodPreferenceBuilder
     }
 
     /**
-     * Initializes a new payment method preference Builder object.
+     * Initializes a new Payment Method Preference Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class PaymentMethodPreferenceBuilder
 
     /**
      * Sets payee preferred field.
+     *
+     * @param string|null $value
      */
     public function payeePreferred(?string $value): self
     {
@@ -49,6 +51,8 @@ class PaymentMethodPreferenceBuilder
 
     /**
      * Sets standard entry class code field.
+     *
+     * @param string|null $value
      */
     public function standardEntryClassCode(?string $value): self
     {
@@ -57,7 +61,7 @@ class PaymentMethodPreferenceBuilder
     }
 
     /**
-     * Initializes a new payment method preference object.
+     * Initializes a new Payment Method Preference object.
      */
     public function build(): PaymentMethodPreference
     {

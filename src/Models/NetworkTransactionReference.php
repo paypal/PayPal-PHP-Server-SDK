@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -137,6 +138,24 @@ class NetworkTransactionReference implements \JsonSerializable
     }
 
     /**
+     * Converts the NetworkTransactionReference object to a human-readable string representation.
+     *
+     * @return string The string representation of the NetworkTransactionReference object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'NetworkTransactionReference',
+            [
+                'id' => $this->id,
+                'date' => $this->date,
+                'network' => $this->network,
+                'acquirerReferenceNumber' => $this->acquirerReferenceNumber
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -153,7 +172,7 @@ class NetworkTransactionReference implements \JsonSerializable
             $json['date']                      = $this->date;
         }
         if (isset($this->network)) {
-            $json['network']                   = CardBrand::checkValue($this->network);
+            $json['network']                   = $this->network;
         }
         if (isset($this->acquirerReferenceNumber)) {
             $json['acquirer_reference_number'] = $this->acquirerReferenceNumber;

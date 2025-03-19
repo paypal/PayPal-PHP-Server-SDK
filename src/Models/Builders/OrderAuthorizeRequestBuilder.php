@@ -32,7 +32,7 @@ class OrderAuthorizeRequestBuilder
     }
 
     /**
-     * Initializes a new order authorize request Builder object.
+     * Initializes a new Order Authorize Request Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class OrderAuthorizeRequestBuilder
 
     /**
      * Sets payment source field.
+     *
+     * @param OrderAuthorizeRequestPaymentSource|null $value
      */
     public function paymentSource(?OrderAuthorizeRequestPaymentSource $value): self
     {
@@ -49,7 +51,7 @@ class OrderAuthorizeRequestBuilder
     }
 
     /**
-     * Initializes a new order authorize request object.
+     * Initializes a new Order Authorize Request object.
      */
     public function build(): OrderAuthorizeRequest
     {

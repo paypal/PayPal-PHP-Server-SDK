@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\Address;
 use PaypalServerSdkLib\Models\GooglePayCard;
-use PaypalServerSdkLib\Models\PortablePostalAddressMediumGrained;
 
 /**
  * Builder for model GooglePayCard
@@ -32,7 +32,7 @@ class GooglePayCardBuilder
     }
 
     /**
-     * Initializes a new google pay card Builder object.
+     * Initializes a new Google Pay Card Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class GooglePayCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class GooglePayCardBuilder
 
     /**
      * Sets number field.
+     *
+     * @param string|null $value
      */
     public function number(?string $value): self
     {
@@ -59,6 +63,8 @@ class GooglePayCardBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -68,6 +74,8 @@ class GooglePayCardBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -77,6 +85,8 @@ class GooglePayCardBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -86,6 +96,8 @@ class GooglePayCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -95,15 +107,17 @@ class GooglePayCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
-    public function billingAddress(?PortablePostalAddressMediumGrained $value): self
+    public function billingAddress(?Address $value): self
     {
         $this->instance->setBillingAddress($value);
         return $this;
     }
 
     /**
-     * Initializes a new google pay card object.
+     * Initializes a new Google Pay Card object.
      */
     public function build(): GooglePayCard
     {

@@ -16,6 +16,7 @@ use PaypalServerSdkLib\Models\BinDetails;
 use PaypalServerSdkLib\Models\CardAttributesResponse;
 use PaypalServerSdkLib\Models\CardFromRequest;
 use PaypalServerSdkLib\Models\CardResponse;
+use PaypalServerSdkLib\Models\CardStoredCredential;
 
 /**
  * Builder for model CardResponse
@@ -35,7 +36,7 @@ class CardResponseBuilder
     }
 
     /**
-     * Initializes a new card response Builder object.
+     * Initializes a new Card Response Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +45,8 @@ class CardResponseBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -53,6 +56,8 @@ class CardResponseBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -62,6 +67,8 @@ class CardResponseBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -71,6 +78,8 @@ class CardResponseBuilder
 
     /**
      * Sets available networks field.
+     *
+     * @param string[]|null $value
      */
     public function availableNetworks(?array $value): self
     {
@@ -80,6 +89,8 @@ class CardResponseBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -89,6 +100,8 @@ class CardResponseBuilder
 
     /**
      * Sets authentication result field.
+     *
+     * @param AuthenticationResponse|null $value
      */
     public function authenticationResult(?AuthenticationResponse $value): self
     {
@@ -98,6 +111,8 @@ class CardResponseBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param CardAttributesResponse|null $value
      */
     public function attributes(?CardAttributesResponse $value): self
     {
@@ -107,6 +122,8 @@ class CardResponseBuilder
 
     /**
      * Sets from request field.
+     *
+     * @param CardFromRequest|null $value
      */
     public function fromRequest(?CardFromRequest $value): self
     {
@@ -116,6 +133,8 @@ class CardResponseBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -125,6 +144,8 @@ class CardResponseBuilder
 
     /**
      * Sets bin details field.
+     *
+     * @param BinDetails|null $value
      */
     public function binDetails(?BinDetails $value): self
     {
@@ -133,7 +154,18 @@ class CardResponseBuilder
     }
 
     /**
-     * Initializes a new card response object.
+     * Sets stored credential field.
+     *
+     * @param CardStoredCredential|null $value
+     */
+    public function storedCredential(?CardStoredCredential $value): self
+    {
+        $this->instance->setStoredCredential($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Card Response object.
      */
     public function build(): CardResponse
     {

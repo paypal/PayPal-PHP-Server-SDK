@@ -31,7 +31,9 @@ class PaypalWalletVaultInstructionBuilder
     }
 
     /**
-     * Initializes a new paypal wallet vault instruction Builder object.
+     * Initializes a new Paypal Wallet Vault Instruction Builder object.
+     *
+     * @param string $usageType
      */
     public static function init(string $usageType): self
     {
@@ -40,6 +42,8 @@ class PaypalWalletVaultInstructionBuilder
 
     /**
      * Sets store in vault field.
+     *
+     * @param string|null $value
      */
     public function storeInVault(?string $value): self
     {
@@ -49,6 +53,8 @@ class PaypalWalletVaultInstructionBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -58,6 +64,8 @@ class PaypalWalletVaultInstructionBuilder
 
     /**
      * Sets usage pattern field.
+     *
+     * @param string|null $value
      */
     public function usagePattern(?string $value): self
     {
@@ -67,6 +75,8 @@ class PaypalWalletVaultInstructionBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -76,6 +86,8 @@ class PaypalWalletVaultInstructionBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -84,7 +96,7 @@ class PaypalWalletVaultInstructionBuilder
     }
 
     /**
-     * Initializes a new paypal wallet vault instruction object.
+     * Initializes a new Paypal Wallet Vault Instruction object.
      */
     public function build(): PaypalWalletVaultInstruction
     {

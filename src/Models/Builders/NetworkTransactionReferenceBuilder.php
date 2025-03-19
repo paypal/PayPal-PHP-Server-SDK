@@ -31,7 +31,9 @@ class NetworkTransactionReferenceBuilder
     }
 
     /**
-     * Initializes a new network transaction reference Builder object.
+     * Initializes a new Network Transaction Reference Builder object.
+     *
+     * @param string $id
      */
     public static function init(string $id): self
     {
@@ -40,6 +42,8 @@ class NetworkTransactionReferenceBuilder
 
     /**
      * Sets date field.
+     *
+     * @param string|null $value
      */
     public function date(?string $value): self
     {
@@ -49,6 +53,8 @@ class NetworkTransactionReferenceBuilder
 
     /**
      * Sets network field.
+     *
+     * @param string|null $value
      */
     public function network(?string $value): self
     {
@@ -58,6 +64,8 @@ class NetworkTransactionReferenceBuilder
 
     /**
      * Sets acquirer reference number field.
+     *
+     * @param string|null $value
      */
     public function acquirerReferenceNumber(?string $value): self
     {
@@ -66,7 +74,7 @@ class NetworkTransactionReferenceBuilder
     }
 
     /**
-     * Initializes a new network transaction reference object.
+     * Initializes a new Network Transaction Reference object.
      */
     public function build(): NetworkTransactionReference
     {

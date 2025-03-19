@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -21,6 +22,11 @@ class VaultedDigitalWallet implements \JsonSerializable
      * @var string|null
      */
     private $description;
+
+    /**
+     * @var string|null
+     */
+    private $usagePattern;
 
     /**
      * @var VaultedDigitalWalletShippingDetails|null
@@ -62,6 +68,26 @@ class VaultedDigitalWallet implements \JsonSerializable
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * Returns Usage Pattern.
+     * Expected business/charge model for the billing agreement.
+     */
+    public function getUsagePattern(): ?string
+    {
+        return $this->usagePattern;
+    }
+
+    /**
+     * Sets Usage Pattern.
+     * Expected business/charge model for the billing agreement.
+     *
+     * @maps usage_pattern
+     */
+    public function setUsagePattern(?string $usagePattern): void
+    {
+        $this->usagePattern = $usagePattern;
     }
 
     /**
@@ -157,6 +183,26 @@ class VaultedDigitalWallet implements \JsonSerializable
     }
 
     /**
+     * Converts the VaultedDigitalWallet object to a human-readable string representation.
+     *
+     * @return string The string representation of the VaultedDigitalWallet object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VaultedDigitalWallet',
+            [
+                'description' => $this->description,
+                'usagePattern' => $this->usagePattern,
+                'shipping' => $this->shipping,
+                'permitMultiplePaymentTokens' => $this->permitMultiplePaymentTokens,
+                'usageType' => $this->usageType,
+                'customerType' => $this->customerType
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -170,6 +216,9 @@ class VaultedDigitalWallet implements \JsonSerializable
         $json = [];
         if (isset($this->description)) {
             $json['description']                    = $this->description;
+        }
+        if (isset($this->usagePattern)) {
+            $json['usage_pattern']                  = $this->usagePattern;
         }
         if (isset($this->shipping)) {
             $json['shipping']                       = $this->shipping;

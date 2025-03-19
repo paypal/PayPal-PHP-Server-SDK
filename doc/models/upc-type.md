@@ -11,11 +11,11 @@ The Universal Product Code type.
 
 | Name |
 |  --- |
-| `UPCA` |
-| `UPCB` |
-| `UPCC` |
-| `UPCD` |
-| `UPCE` |
-| `UPC2` |
-| `UPC5` |
+| `UPC_A` |
+| `UPC_B` |
+| `UPC_C` |
+| `UPC_D` |
+| `UPC_E` |
+| `UPC_2` |
+| `UPC_5` |
 

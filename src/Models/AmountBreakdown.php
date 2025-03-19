@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -191,6 +192,27 @@ class AmountBreakdown implements \JsonSerializable
     public function setDiscount(?Money $discount): void
     {
         $this->discount = $discount;
+    }
+
+    /**
+     * Converts the AmountBreakdown object to a human-readable string representation.
+     *
+     * @return string The string representation of the AmountBreakdown object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'AmountBreakdown',
+            [
+                'itemTotal' => $this->itemTotal,
+                'shipping' => $this->shipping,
+                'handling' => $this->handling,
+                'taxTotal' => $this->taxTotal,
+                'insurance' => $this->insurance,
+                'shippingDiscount' => $this->shippingDiscount,
+                'discount' => $this->discount
+            ]
+        );
     }
 
     /**

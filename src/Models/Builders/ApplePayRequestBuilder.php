@@ -35,7 +35,7 @@ class ApplePayRequestBuilder
     }
 
     /**
-     * Initializes a new apple pay request Builder object.
+     * Initializes a new Apple Pay Request Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +44,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -53,6 +55,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -62,6 +66,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -71,6 +77,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param PhoneNumber|null $value
      */
     public function phoneNumber(?PhoneNumber $value): self
     {
@@ -80,6 +88,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets decrypted token field.
+     *
+     * @param ApplePayDecryptedTokenData|null $value
      */
     public function decryptedToken(?ApplePayDecryptedTokenData $value): self
     {
@@ -89,6 +99,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets stored credential field.
+     *
+     * @param CardStoredCredential|null $value
      */
     public function storedCredential(?CardStoredCredential $value): self
     {
@@ -98,6 +110,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets vault id field.
+     *
+     * @param string|null $value
      */
     public function vaultId(?string $value): self
     {
@@ -107,6 +121,8 @@ class ApplePayRequestBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param ApplePayAttributes|null $value
      */
     public function attributes(?ApplePayAttributes $value): self
     {
@@ -115,7 +131,7 @@ class ApplePayRequestBuilder
     }
 
     /**
-     * Initializes a new apple pay request object.
+     * Initializes a new Apple Pay Request object.
      */
     public function build(): ApplePayRequest
     {

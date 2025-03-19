@@ -13,6 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Address;
 use PaypalServerSdkLib\Models\Level3CardProcessingData;
+use PaypalServerSdkLib\Models\LineItem;
 use PaypalServerSdkLib\Models\Money;
 
 /**
@@ -33,7 +34,7 @@ class Level3CardProcessingDataBuilder
     }
 
     /**
-     * Initializes a new level 3 card processing data Builder object.
+     * Initializes a new Level 3 Card Processing Data Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +43,8 @@ class Level3CardProcessingDataBuilder
 
     /**
      * Sets shipping amount field.
+     *
+     * @param Money|null $value
      */
     public function shippingAmount(?Money $value): self
     {
@@ -51,6 +54,8 @@ class Level3CardProcessingDataBuilder
 
     /**
      * Sets duty amount field.
+     *
+     * @param Money|null $value
      */
     public function dutyAmount(?Money $value): self
     {
@@ -60,6 +65,8 @@ class Level3CardProcessingDataBuilder
 
     /**
      * Sets discount amount field.
+     *
+     * @param Money|null $value
      */
     public function discountAmount(?Money $value): self
     {
@@ -69,6 +76,8 @@ class Level3CardProcessingDataBuilder
 
     /**
      * Sets shipping address field.
+     *
+     * @param Address|null $value
      */
     public function shippingAddress(?Address $value): self
     {
@@ -78,6 +87,8 @@ class Level3CardProcessingDataBuilder
 
     /**
      * Sets ships from postal code field.
+     *
+     * @param string|null $value
      */
     public function shipsFromPostalCode(?string $value): self
     {
@@ -87,6 +98,8 @@ class Level3CardProcessingDataBuilder
 
     /**
      * Sets line items field.
+     *
+     * @param LineItem[]|null $value
      */
     public function lineItems(?array $value): self
     {
@@ -95,7 +108,7 @@ class Level3CardProcessingDataBuilder
     }
 
     /**
-     * Initializes a new level 3 card processing data object.
+     * Initializes a new Level 3 Card Processing Data object.
      */
     public function build(): Level3CardProcessingData
     {

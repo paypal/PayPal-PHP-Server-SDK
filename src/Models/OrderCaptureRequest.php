@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -40,6 +41,16 @@ class OrderCaptureRequest implements \JsonSerializable
     public function setPaymentSource(?OrderCaptureRequestPaymentSource $paymentSource): void
     {
         $this->paymentSource = $paymentSource;
+    }
+
+    /**
+     * Converts the OrderCaptureRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderCaptureRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('OrderCaptureRequest', ['paymentSource' => $this->paymentSource]);
     }
 
     /**

@@ -32,7 +32,11 @@ class GooglePayDecryptedTokenDataBuilder
     }
 
     /**
-     * Initializes a new google pay decrypted token data Builder object.
+     * Initializes a new Google Pay Decrypted Token Data Builder object.
+     *
+     * @param string $paymentMethod
+     * @param GooglePayCard $card
+     * @param string $authenticationMethod
      */
     public static function init(string $paymentMethod, GooglePayCard $card, string $authenticationMethod): self
     {
@@ -41,6 +45,8 @@ class GooglePayDecryptedTokenDataBuilder
 
     /**
      * Sets message id field.
+     *
+     * @param string|null $value
      */
     public function messageId(?string $value): self
     {
@@ -50,6 +56,8 @@ class GooglePayDecryptedTokenDataBuilder
 
     /**
      * Sets message expiration field.
+     *
+     * @param string|null $value
      */
     public function messageExpiration(?string $value): self
     {
@@ -59,6 +67,8 @@ class GooglePayDecryptedTokenDataBuilder
 
     /**
      * Sets cryptogram field.
+     *
+     * @param string|null $value
      */
     public function cryptogram(?string $value): self
     {
@@ -68,6 +78,8 @@ class GooglePayDecryptedTokenDataBuilder
 
     /**
      * Sets eci indicator field.
+     *
+     * @param string|null $value
      */
     public function eciIndicator(?string $value): self
     {
@@ -76,7 +88,7 @@ class GooglePayDecryptedTokenDataBuilder
     }
 
     /**
-     * Initializes a new google pay decrypted token data object.
+     * Initializes a new Google Pay Decrypted Token Data object.
      */
     public function build(): GooglePayDecryptedTokenData
     {

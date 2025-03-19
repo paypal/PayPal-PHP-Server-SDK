@@ -33,7 +33,7 @@ class CardSupplementaryDataBuilder
     }
 
     /**
-     * Initializes a new card supplementary data Builder object.
+     * Initializes a new Card Supplementary Data Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class CardSupplementaryDataBuilder
 
     /**
      * Sets level 2 field.
+     *
+     * @param Level2CardProcessingData|null $value
      */
     public function level2(?Level2CardProcessingData $value): self
     {
@@ -51,6 +53,8 @@ class CardSupplementaryDataBuilder
 
     /**
      * Sets level 3 field.
+     *
+     * @param Level3CardProcessingData|null $value
      */
     public function level3(?Level3CardProcessingData $value): self
     {
@@ -59,7 +63,7 @@ class CardSupplementaryDataBuilder
     }
 
     /**
-     * Initializes a new card supplementary data object.
+     * Initializes a new Card Supplementary Data object.
      */
     public function build(): CardSupplementaryData
     {

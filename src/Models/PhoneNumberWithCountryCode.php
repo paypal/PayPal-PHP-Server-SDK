@@ -10,11 +10,13 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
  * The phone number in its canonical international [E.164 numbering plan format](https://www.itu.
- * int/rec/T-REC-E.164/en).
+ * int/rec/T-REC-E.164/en)., The phone number, in its canonical international [E.164 numbering plan
+ * format](https://www.itu.int/rec/T-REC-E.164/en).
  */
 class PhoneNumberWithCountryCode implements \JsonSerializable
 {
@@ -90,6 +92,19 @@ class PhoneNumberWithCountryCode implements \JsonSerializable
     public function setNationalNumber(string $nationalNumber): void
     {
         $this->nationalNumber = $nationalNumber;
+    }
+
+    /**
+     * Converts the PhoneNumberWithCountryCode object to a human-readable string representation.
+     *
+     * @return string The string representation of the PhoneNumberWithCountryCode object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PhoneNumberWithCountryCode',
+            ['countryCode' => $this->countryCode, 'nationalNumber' => $this->nationalNumber]
+        );
     }
 
     /**

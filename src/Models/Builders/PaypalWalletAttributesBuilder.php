@@ -33,7 +33,7 @@ class PaypalWalletAttributesBuilder
     }
 
     /**
-     * Initializes a new paypal wallet attributes Builder object.
+     * Initializes a new Paypal Wallet Attributes Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class PaypalWalletAttributesBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param PaypalWalletCustomerRequest|null $value
      */
     public function customer(?PaypalWalletCustomerRequest $value): self
     {
@@ -51,6 +53,8 @@ class PaypalWalletAttributesBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param PaypalWalletVaultInstruction|null $value
      */
     public function vault(?PaypalWalletVaultInstruction $value): self
     {
@@ -59,7 +63,7 @@ class PaypalWalletAttributesBuilder
     }
 
     /**
-     * Initializes a new paypal wallet attributes object.
+     * Initializes a new Paypal Wallet Attributes object.
      */
     public function build(): PaypalWalletAttributes
     {

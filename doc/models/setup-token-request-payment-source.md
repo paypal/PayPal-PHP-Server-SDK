@@ -29,9 +29,14 @@ The payment method to vault with the instrument details.
   },
   "paypal": {
     "description": "description2",
+    "usage_pattern": "THRESHOLD_PREPAID",
     "shipping": {
       "name": {
         "full_name": "full_name6"
+      },
+      "phone_number": {
+        "country_code": "country_code2",
+        "national_number": "national_number6"
       },
       "type": "SHIPPING",
       "address": {
@@ -44,14 +49,18 @@ The payment method to vault with the instrument details.
       }
     },
     "permit_multiple_payment_tokens": false,
-    "usage_type": "usage_type2",
-    "customer_type": "customer_type6"
+    "usage_type": "MERCHANT"
   },
   "venmo": {
     "description": "description6",
+    "usage_pattern": "UNSCHEDULED_PREPAID",
     "shipping": {
       "name": {
         "full_name": "full_name6"
+      },
+      "phone_number": {
+        "country_code": "country_code2",
+        "national_number": "national_number6"
       },
       "type": "SHIPPING",
       "address": {
@@ -64,8 +73,7 @@ The payment method to vault with the instrument details.
       }
     },
     "permit_multiple_payment_tokens": false,
-    "usage_type": "usage_type6",
-    "customer_type": "customer_type0"
+    "usage_type": "MERCHANT"
   },
   "token": {
     "id": "id6",

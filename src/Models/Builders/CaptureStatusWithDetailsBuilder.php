@@ -32,7 +32,7 @@ class CaptureStatusWithDetailsBuilder
     }
 
     /**
-     * Initializes a new capture status with details Builder object.
+     * Initializes a new Capture Status With Details Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class CaptureStatusWithDetailsBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -50,6 +52,8 @@ class CaptureStatusWithDetailsBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param CaptureStatusDetails|null $value
      */
     public function statusDetails(?CaptureStatusDetails $value): self
     {
@@ -58,7 +62,7 @@ class CaptureStatusWithDetailsBuilder
     }
 
     /**
-     * Initializes a new capture status with details object.
+     * Initializes a new Capture Status With Details object.
      */
     public function build(): CaptureStatusWithDetails
     {

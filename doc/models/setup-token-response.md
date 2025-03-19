@@ -12,9 +12,8 @@ Minimal representation of a cached setup token.
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `id` | `?string` | Optional | The PayPal-generated ID for the vault token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getId(): ?string | setId(?string id): void |
-| `ordinal` | `?int` | Optional | Ordinal number for sorting.<br>**Constraints**: `>= 1`, `<= 99` | getOrdinal(): ?int | setOrdinal(?int ordinal): void |
-| `customer` | [`?CustomerRequest`](../../doc/models/customer-request.md) | Optional | Customer in merchant's or partner's system of records. | getCustomer(): ?CustomerRequest | setCustomer(?CustomerRequest customer): void |
-| `status` | `?string` | Optional | The status of the payment token.<br>**Default**: `'CREATED'`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getStatus(): ?string | setStatus(?string status): void |
+| `customer` | [`?Customer`](../../doc/models/customer.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. | getCustomer(): ?Customer | setCustomer(?Customer customer): void |
+| `status` | [`?string(PaymentTokenStatus)`](../../doc/models/payment-token-status.md) | Optional | The status of the payment token.<br>**Default**: `PaymentTokenStatus::CREATED`<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getStatus(): ?string | setStatus(?string status): void |
 | `paymentSource` | [`?SetupTokenResponsePaymentSource`](../../doc/models/setup-token-response-payment-source.md) | Optional | The setup payment method details. | getPaymentSource(): ?SetupTokenResponsePaymentSource | setPaymentSource(?SetupTokenResponsePaymentSource paymentSource): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
 
@@ -24,7 +23,6 @@ Minimal representation of a cached setup token.
 {
   "status": "CREATED",
   "id": "id6",
-  "ordinal": 0,
   "customer": {
     "id": "id0",
     "merchant_customer_id": "merchant_customer_id2"
@@ -46,9 +44,14 @@ Minimal representation of a cached setup token.
     },
     "paypal": {
       "description": "description2",
+      "usage_pattern": "THRESHOLD_PREPAID",
       "shipping": {
         "name": {
           "full_name": "full_name6"
+        },
+        "phone_number": {
+          "country_code": "country_code2",
+          "national_number": "national_number6"
         },
         "type": "SHIPPING",
         "address": {
@@ -61,14 +64,18 @@ Minimal representation of a cached setup token.
         }
       },
       "permit_multiple_payment_tokens": false,
-      "usage_type": "usage_type2",
-      "customer_type": "customer_type6"
+      "usage_type": "MERCHANT"
     },
     "venmo": {
       "description": "description6",
+      "usage_pattern": "UNSCHEDULED_PREPAID",
       "shipping": {
         "name": {
           "full_name": "full_name6"
+        },
+        "phone_number": {
+          "country_code": "country_code2",
+          "national_number": "national_number6"
         },
         "type": "SHIPPING",
         "address": {
@@ -81,10 +88,16 @@ Minimal representation of a cached setup token.
         }
       },
       "permit_multiple_payment_tokens": false,
-      "usage_type": "usage_type6",
-      "customer_type": "customer_type0"
+      "usage_type": "MERCHANT"
     }
-  }
+  },
+  "links": [
+    {
+      "href": "href6",
+      "rel": "rel0",
+      "method": "HEAD"
+    }
+  ]
 }
 ```
 

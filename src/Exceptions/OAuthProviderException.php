@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Exceptions;
 
+use PaypalServerSdkLib\ApiHelper;
+
 /**
  * OAuth 2 Authorization endpoint exception.
  */
@@ -110,5 +112,19 @@ class OAuthProviderException extends ApiException
     public function setErrorUri(?string $errorUri): void
     {
         $this->errorUri = $errorUri;
+    }
+
+    /**
+     * Converts the OAuthProviderException object to a human-readable string representation.
+     *
+     * @return string The string representation of the OAuthProviderException object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OAuthProviderException',
+            ['error' => $this->error, 'errorDescription' => $this->errorDescription, 'errorUri' => $this->errorUri],
+            parent::__toString()
+        );
     }
 }

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -23,7 +24,7 @@ class PaymentTokenResponse implements \JsonSerializable
     private $id;
 
     /**
-     * @var CustomerRequest|null
+     * @var CustomerResponse|null
      */
     private $customer;
 
@@ -59,20 +60,22 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Returns Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      */
-    public function getCustomer(): ?CustomerRequest
+    public function getCustomer(): ?CustomerResponse
     {
         return $this->customer;
     }
 
     /**
      * Sets Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      *
      * @maps customer
      */
-    public function setCustomer(?CustomerRequest $customer): void
+    public function setCustomer(?CustomerResponse $customer): void
     {
         $this->customer = $customer;
     }
@@ -119,6 +122,24 @@ class PaymentTokenResponse implements \JsonSerializable
     public function setLinks(?array $links): void
     {
         $this->links = $links;
+    }
+
+    /**
+     * Converts the PaymentTokenResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaymentTokenResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaymentTokenResponse',
+            [
+                'id' => $this->id,
+                'customer' => $this->customer,
+                'paymentSource' => $this->paymentSource,
+                'links' => $this->links
+            ]
+        );
     }
 
     /**

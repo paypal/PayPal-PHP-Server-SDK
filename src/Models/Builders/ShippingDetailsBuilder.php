@@ -15,6 +15,7 @@ use PaypalServerSdkLib\Models\Address;
 use PaypalServerSdkLib\Models\PhoneNumberWithCountryCode;
 use PaypalServerSdkLib\Models\ShippingDetails;
 use PaypalServerSdkLib\Models\ShippingName;
+use PaypalServerSdkLib\Models\ShippingOption;
 
 /**
  * Builder for model ShippingDetails
@@ -34,7 +35,7 @@ class ShippingDetailsBuilder
     }
 
     /**
-     * Initializes a new shipping details Builder object.
+     * Initializes a new Shipping Details Builder object.
      */
     public static function init(): self
     {
@@ -43,6 +44,8 @@ class ShippingDetailsBuilder
 
     /**
      * Sets name field.
+     *
+     * @param ShippingName|null $value
      */
     public function name(?ShippingName $value): self
     {
@@ -51,7 +54,20 @@ class ShippingDetailsBuilder
     }
 
     /**
+     * Sets email address field.
+     *
+     * @param string|null $value
+     */
+    public function emailAddress(?string $value): self
+    {
+        $this->instance->setEmailAddress($value);
+        return $this;
+    }
+
+    /**
      * Sets phone number field.
+     *
+     * @param PhoneNumberWithCountryCode|null $value
      */
     public function phoneNumber(?PhoneNumberWithCountryCode $value): self
     {
@@ -61,6 +77,8 @@ class ShippingDetailsBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -70,6 +88,8 @@ class ShippingDetailsBuilder
 
     /**
      * Sets options field.
+     *
+     * @param ShippingOption[]|null $value
      */
     public function options(?array $value): self
     {
@@ -79,6 +99,8 @@ class ShippingDetailsBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -87,7 +109,7 @@ class ShippingDetailsBuilder
     }
 
     /**
-     * Initializes a new shipping details object.
+     * Initializes a new Shipping Details object.
      */
     public function build(): ShippingDetails
     {

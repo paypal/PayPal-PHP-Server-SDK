@@ -32,7 +32,7 @@ class PaymentSupplementaryDataBuilder
     }
 
     /**
-     * Initializes a new payment supplementary data Builder object.
+     * Initializes a new Payment Supplementary Data Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class PaymentSupplementaryDataBuilder
 
     /**
      * Sets related ids field.
+     *
+     * @param RelatedIdentifiers|null $value
      */
     public function relatedIds(?RelatedIdentifiers $value): self
     {
@@ -49,7 +51,7 @@ class PaymentSupplementaryDataBuilder
     }
 
     /**
-     * Initializes a new payment supplementary data object.
+     * Initializes a new Payment Supplementary Data object.
      */
     public function build(): PaymentSupplementaryData
     {

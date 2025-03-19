@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -40,6 +41,16 @@ class ApplePayPaymentToken implements \JsonSerializable
     public function setCard(?ApplePayCard $card): void
     {
         $this->card = $card;
+    }
+
+    /**
+     * Converts the ApplePayPaymentToken object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayPaymentToken object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('ApplePayPaymentToken', ['card' => $this->card]);
     }
 
     /**

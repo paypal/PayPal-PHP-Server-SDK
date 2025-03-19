@@ -12,7 +12,8 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\AmountWithBreakdown;
-use PaypalServerSdkLib\Models\Payee;
+use PaypalServerSdkLib\Models\Item;
+use PaypalServerSdkLib\Models\PayeeBase;
 use PaypalServerSdkLib\Models\PaymentCollection;
 use PaypalServerSdkLib\Models\PaymentInstruction;
 use PaypalServerSdkLib\Models\PurchaseUnit;
@@ -37,7 +38,7 @@ class PurchaseUnitBuilder
     }
 
     /**
-     * Initializes a new purchase unit Builder object.
+     * Initializes a new Purchase Unit Builder object.
      */
     public static function init(): self
     {
@@ -46,6 +47,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets reference id field.
+     *
+     * @param string|null $value
      */
     public function referenceId(?string $value): self
     {
@@ -55,6 +58,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param AmountWithBreakdown|null $value
      */
     public function amount(?AmountWithBreakdown $value): self
     {
@@ -64,8 +69,10 @@ class PurchaseUnitBuilder
 
     /**
      * Sets payee field.
+     *
+     * @param PayeeBase|null $value
      */
-    public function payee(?Payee $value): self
+    public function payee(?PayeeBase $value): self
     {
         $this->instance->setPayee($value);
         return $this;
@@ -73,6 +80,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets payment instruction field.
+     *
+     * @param PaymentInstruction|null $value
      */
     public function paymentInstruction(?PaymentInstruction $value): self
     {
@@ -82,6 +91,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -91,6 +102,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -100,6 +113,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -109,6 +124,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -118,6 +135,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets soft descriptor field.
+     *
+     * @param string|null $value
      */
     public function softDescriptor(?string $value): self
     {
@@ -127,6 +146,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets items field.
+     *
+     * @param Item[]|null $value
      */
     public function items(?array $value): self
     {
@@ -136,6 +157,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets shipping field.
+     *
+     * @param ShippingWithTrackingDetails|null $value
      */
     public function shipping(?ShippingWithTrackingDetails $value): self
     {
@@ -145,6 +168,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets supplementary data field.
+     *
+     * @param SupplementaryData|null $value
      */
     public function supplementaryData(?SupplementaryData $value): self
     {
@@ -154,6 +179,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets payments field.
+     *
+     * @param PaymentCollection|null $value
      */
     public function payments(?PaymentCollection $value): self
     {
@@ -163,6 +190,8 @@ class PurchaseUnitBuilder
 
     /**
      * Sets most recent errors field.
+     *
+     * @param array $value
      */
     public function mostRecentErrors(array $value): self
     {
@@ -171,7 +200,7 @@ class PurchaseUnitBuilder
     }
 
     /**
-     * Initializes a new purchase unit object.
+     * Initializes a new Purchase Unit object.
      */
     public function build(): PurchaseUnit
     {

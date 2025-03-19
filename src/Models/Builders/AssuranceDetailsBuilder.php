@@ -31,7 +31,7 @@ class AssuranceDetailsBuilder
     }
 
     /**
-     * Initializes a new assurance details Builder object.
+     * Initializes a new Assurance Details Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class AssuranceDetailsBuilder
 
     /**
      * Sets account verified field.
+     *
+     * @param bool|null $value
      */
     public function accountVerified(?bool $value): self
     {
@@ -49,6 +51,8 @@ class AssuranceDetailsBuilder
 
     /**
      * Sets card holder authenticated field.
+     *
+     * @param bool|null $value
      */
     public function cardHolderAuthenticated(?bool $value): self
     {
@@ -57,7 +61,7 @@ class AssuranceDetailsBuilder
     }
 
     /**
-     * Initializes a new assurance details object.
+     * Initializes a new Assurance Details object.
      */
     public function build(): AssuranceDetails
     {

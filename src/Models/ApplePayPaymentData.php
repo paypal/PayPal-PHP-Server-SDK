@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -121,6 +122,24 @@ class ApplePayPaymentData implements \JsonSerializable
     public function setPin(?string $pin): void
     {
         $this->pin = $pin;
+    }
+
+    /**
+     * Converts the ApplePayPaymentData object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayPaymentData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ApplePayPaymentData',
+            [
+                'cryptogram' => $this->cryptogram,
+                'eciIndicator' => $this->eciIndicator,
+                'emvData' => $this->emvData,
+                'pin' => $this->pin
+            ]
+        );
     }
 
     /**

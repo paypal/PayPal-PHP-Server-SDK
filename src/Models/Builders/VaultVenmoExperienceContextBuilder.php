@@ -31,7 +31,7 @@ class VaultVenmoExperienceContextBuilder
     }
 
     /**
-     * Initializes a new vault venmo experience context Builder object.
+     * Initializes a new Vault Venmo Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class VaultVenmoExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +51,8 @@ class VaultVenmoExperienceContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -58,6 +62,8 @@ class VaultVenmoExperienceContextBuilder
 
     /**
      * Sets vault instruction field.
+     *
+     * @param string|null $value
      */
     public function vaultInstruction(?string $value): self
     {
@@ -66,7 +72,7 @@ class VaultVenmoExperienceContextBuilder
     }
 
     /**
-     * Initializes a new vault venmo experience context object.
+     * Initializes a new Vault Venmo Experience Context object.
      */
     public function build(): VaultVenmoExperienceContext
     {

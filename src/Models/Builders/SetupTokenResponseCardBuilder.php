@@ -11,9 +11,9 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\AddressDetails;
 use PaypalServerSdkLib\Models\BinDetails;
 use PaypalServerSdkLib\Models\CardAuthenticationResponse;
+use PaypalServerSdkLib\Models\CardResponseAddress;
 use PaypalServerSdkLib\Models\CardVerificationDetails;
 use PaypalServerSdkLib\Models\NetworkTransactionReferenceEntity;
 use PaypalServerSdkLib\Models\SetupTokenResponseCard;
@@ -36,7 +36,7 @@ class SetupTokenResponseCardBuilder
     }
 
     /**
-     * Initializes a new setup token response card Builder object.
+     * Initializes a new Setup Token Response Card Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +45,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -54,6 +56,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -63,6 +67,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -72,6 +78,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -81,8 +89,10 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param CardResponseAddress|null $value
      */
-    public function billingAddress(?AddressDetails $value): self
+    public function billingAddress(?CardResponseAddress $value): self
     {
         $this->instance->setBillingAddress($value);
         return $this;
@@ -90,6 +100,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets verification status field.
+     *
+     * @param string|null $value
      */
     public function verificationStatus(?string $value): self
     {
@@ -99,6 +111,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets verification field.
+     *
+     * @param CardVerificationDetails|null $value
      */
     public function verification(?CardVerificationDetails $value): self
     {
@@ -108,6 +122,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets network transaction reference field.
+     *
+     * @param NetworkTransactionReferenceEntity|null $value
      */
     public function networkTransactionReference(?NetworkTransactionReferenceEntity $value): self
     {
@@ -117,6 +133,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets authentication result field.
+     *
+     * @param CardAuthenticationResponse|null $value
      */
     public function authenticationResult(?CardAuthenticationResponse $value): self
     {
@@ -126,6 +144,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets bin details field.
+     *
+     * @param BinDetails|null $value
      */
     public function binDetails(?BinDetails $value): self
     {
@@ -135,6 +155,8 @@ class SetupTokenResponseCardBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -143,7 +165,7 @@ class SetupTokenResponseCardBuilder
     }
 
     /**
-     * Initializes a new setup token response card object.
+     * Initializes a new Setup Token Response Card object.
      */
     public function build(): SetupTokenResponseCard
     {

@@ -34,7 +34,9 @@ class ApplePayDecryptedTokenDataBuilder
     }
 
     /**
-     * Initializes a new apple pay decrypted token data Builder object.
+     * Initializes a new Apple Pay Decrypted Token Data Builder object.
+     *
+     * @param ApplePayTokenizedCard $tokenizedCard
      */
     public static function init(ApplePayTokenizedCard $tokenizedCard): self
     {
@@ -43,6 +45,8 @@ class ApplePayDecryptedTokenDataBuilder
 
     /**
      * Sets transaction amount field.
+     *
+     * @param Money|null $value
      */
     public function transactionAmount(?Money $value): self
     {
@@ -52,6 +56,8 @@ class ApplePayDecryptedTokenDataBuilder
 
     /**
      * Sets device manufacturer id field.
+     *
+     * @param string|null $value
      */
     public function deviceManufacturerId(?string $value): self
     {
@@ -61,6 +67,8 @@ class ApplePayDecryptedTokenDataBuilder
 
     /**
      * Sets payment data type field.
+     *
+     * @param string|null $value
      */
     public function paymentDataType(?string $value): self
     {
@@ -70,6 +78,8 @@ class ApplePayDecryptedTokenDataBuilder
 
     /**
      * Sets payment data field.
+     *
+     * @param ApplePayPaymentData|null $value
      */
     public function paymentData(?ApplePayPaymentData $value): self
     {
@@ -78,7 +88,7 @@ class ApplePayDecryptedTokenDataBuilder
     }
 
     /**
-     * Initializes a new apple pay decrypted token data object.
+     * Initializes a new Apple Pay Decrypted Token Data object.
      */
     public function build(): ApplePayDecryptedTokenData
     {

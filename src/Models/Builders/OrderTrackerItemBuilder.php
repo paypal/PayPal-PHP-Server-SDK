@@ -32,7 +32,7 @@ class OrderTrackerItemBuilder
     }
 
     /**
-     * Initializes a new order tracker item Builder object.
+     * Initializes a new Order Tracker Item Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class OrderTrackerItemBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class OrderTrackerItemBuilder
 
     /**
      * Sets quantity field.
+     *
+     * @param string|null $value
      */
     public function quantity(?string $value): self
     {
@@ -59,6 +63,8 @@ class OrderTrackerItemBuilder
 
     /**
      * Sets sku field.
+     *
+     * @param string|null $value
      */
     public function sku(?string $value): self
     {
@@ -68,6 +74,8 @@ class OrderTrackerItemBuilder
 
     /**
      * Sets url field.
+     *
+     * @param string|null $value
      */
     public function url(?string $value): self
     {
@@ -77,6 +85,8 @@ class OrderTrackerItemBuilder
 
     /**
      * Sets image url field.
+     *
+     * @param string|null $value
      */
     public function imageUrl(?string $value): self
     {
@@ -86,6 +96,8 @@ class OrderTrackerItemBuilder
 
     /**
      * Sets upc field.
+     *
+     * @param UniversalProductCode|null $value
      */
     public function upc(?UniversalProductCode $value): self
     {
@@ -94,7 +106,7 @@ class OrderTrackerItemBuilder
     }
 
     /**
-     * Initializes a new order tracker item object.
+     * Initializes a new Order Tracker Item object.
      */
     public function build(): OrderTrackerItem
     {

@@ -35,7 +35,7 @@ class VenmoPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new venmo payment token Builder object.
+     * Initializes a new Venmo Payment Token Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +44,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -52,7 +54,20 @@ class VenmoPaymentTokenBuilder
     }
 
     /**
+     * Sets usage pattern field.
+     *
+     * @param string|null $value
+     */
+    public function usagePattern(?string $value): self
+    {
+        $this->instance->setUsagePattern($value);
+        return $this;
+    }
+
+    /**
      * Sets shipping field.
+     *
+     * @param VaultedDigitalWalletShippingDetails|null $value
      */
     public function shipping(?VaultedDigitalWalletShippingDetails $value): self
     {
@@ -62,6 +77,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -71,6 +88,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets usage type field.
+     *
+     * @param string|null $value
      */
     public function usageType(?string $value): self
     {
@@ -80,6 +99,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -89,6 +110,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -98,6 +121,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets payer id field.
+     *
+     * @param string|null $value
      */
     public function payerId(?string $value): self
     {
@@ -107,6 +132,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets name field.
+     *
+     * @param Name|null $value
      */
     public function name(?Name $value): self
     {
@@ -116,6 +143,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
      */
     public function phone(?PhoneWithType $value): self
     {
@@ -125,6 +154,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -134,6 +165,8 @@ class VenmoPaymentTokenBuilder
 
     /**
      * Sets user name field.
+     *
+     * @param string|null $value
      */
     public function userName(?string $value): self
     {
@@ -142,7 +175,7 @@ class VenmoPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new venmo payment token object.
+     * Initializes a new Venmo Payment Token object.
      */
     public function build(): VenmoPaymentToken
     {

@@ -31,7 +31,7 @@ class CardExperienceContextBuilder
     }
 
     /**
-     * Initializes a new card experience context Builder object.
+     * Initializes a new Card Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class CardExperienceContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -49,6 +51,8 @@ class CardExperienceContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -57,7 +61,7 @@ class CardExperienceContextBuilder
     }
 
     /**
-     * Initializes a new card experience context object.
+     * Initializes a new Card Experience Context object.
      */
     public function build(): CardExperienceContext
     {

@@ -31,7 +31,7 @@ class BinDetailsBuilder
     }
 
     /**
-     * Initializes a new bin details Builder object.
+     * Initializes a new Bin Details Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class BinDetailsBuilder
 
     /**
      * Sets bin field.
+     *
+     * @param string|null $value
      */
     public function bin(?string $value): self
     {
@@ -49,6 +51,8 @@ class BinDetailsBuilder
 
     /**
      * Sets issuing bank field.
+     *
+     * @param string|null $value
      */
     public function issuingBank(?string $value): self
     {
@@ -58,6 +62,8 @@ class BinDetailsBuilder
 
     /**
      * Sets bin country code field.
+     *
+     * @param string|null $value
      */
     public function binCountryCode(?string $value): self
     {
@@ -67,6 +73,8 @@ class BinDetailsBuilder
 
     /**
      * Sets products field.
+     *
+     * @param string[]|null $value
      */
     public function products(?array $value): self
     {
@@ -75,7 +83,7 @@ class BinDetailsBuilder
     }
 
     /**
-     * Initializes a new bin details object.
+     * Initializes a new Bin Details object.
      */
     public function build(): BinDetails
     {

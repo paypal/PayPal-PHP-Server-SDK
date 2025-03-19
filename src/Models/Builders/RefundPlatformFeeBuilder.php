@@ -32,7 +32,9 @@ class RefundPlatformFeeBuilder
     }
 
     /**
-     * Initializes a new refund platform fee Builder object.
+     * Initializes a new Refund Platform Fee Builder object.
+     *
+     * @param Money $amount
      */
     public static function init(Money $amount): self
     {
@@ -40,7 +42,7 @@ class RefundPlatformFeeBuilder
     }
 
     /**
-     * Initializes a new refund platform fee object.
+     * Initializes a new Refund Platform Fee object.
      */
     public function build(): RefundPlatformFee
     {

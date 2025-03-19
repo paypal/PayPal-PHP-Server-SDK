@@ -10,38 +10,23 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Liability shift indicator. The outcome of the issuer's authentication.
  */
 class LiabilityShiftIndicator
 {
+    /**
+     * Liability is with the merchant.
+     */
     public const NO = 'NO';
 
+    /**
+     * Liability may shift to the card issuer.
+     */
     public const POSSIBLE = 'POSSIBLE';
 
-    public const UNKNOWN = 'UNKNOWN';
-
-    private const _ALL_VALUES = [self::NO, self::POSSIBLE, self::UNKNOWN];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The authentication system is not available.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for LiabilityShiftIndicator.");
-    }
+    public const UNKNOWN = 'UNKNOWN';
 }

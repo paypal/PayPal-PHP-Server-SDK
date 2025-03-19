@@ -31,7 +31,7 @@ class ActivityTimestampsBuilder
     }
 
     /**
-     * Initializes a new activity timestamps Builder object.
+     * Initializes a new Activity Timestamps Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ActivityTimestampsBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -49,6 +51,8 @@ class ActivityTimestampsBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -57,7 +61,7 @@ class ActivityTimestampsBuilder
     }
 
     /**
-     * Initializes a new activity timestamps object.
+     * Initializes a new Activity Timestamps object.
      */
     public function build(): ActivityTimestamps
     {

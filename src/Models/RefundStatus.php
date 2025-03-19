@@ -10,40 +10,28 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The status of the refund.
  */
 class RefundStatus
 {
+    /**
+     * The refund was cancelled.
+     */
     public const CANCELLED = 'CANCELLED';
 
+    /**
+     * The refund could not be processed.
+     */
     public const FAILED = 'FAILED';
 
+    /**
+     * The refund is pending. For more information, see status_details.reason.
+     */
     public const PENDING = 'PENDING';
 
-    public const COMPLETED = 'COMPLETED';
-
-    private const _ALL_VALUES = [self::CANCELLED, self::FAILED, self::PENDING, self::COMPLETED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The funds for this transaction were debited to the customer's account.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for RefundStatus.");
-    }
+    public const COMPLETED = 'COMPLETED';
 }

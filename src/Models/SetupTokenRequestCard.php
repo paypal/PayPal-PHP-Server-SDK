@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -56,11 +57,6 @@ class SetupTokenRequestCard implements \JsonSerializable
      * @var SetupTokenCardExperienceContext|null
      */
     private $experienceContext;
-
-    /**
-     * @var mixed
-     */
-    private $networkTransactionReference;
 
     /**
      * Returns Name.
@@ -233,25 +229,25 @@ class SetupTokenRequestCard implements \JsonSerializable
     }
 
     /**
-     * Returns Network Transaction Reference.
+     * Converts the SetupTokenRequestCard object to a human-readable string representation.
      *
-     * @return mixed
+     * @return string The string representation of the SetupTokenRequestCard object.
      */
-    public function getNetworkTransactionReference()
+    public function __toString(): string
     {
-        return $this->networkTransactionReference;
-    }
-
-    /**
-     * Sets Network Transaction Reference.
-     *
-     * @maps network_transaction_reference
-     *
-     * @param mixed $networkTransactionReference
-     */
-    public function setNetworkTransactionReference($networkTransactionReference): void
-    {
-        $this->networkTransactionReference = $networkTransactionReference;
+        return ApiHelper::stringify(
+            'SetupTokenRequestCard',
+            [
+                'name' => $this->name,
+                'number' => $this->number,
+                'expiry' => $this->expiry,
+                'securityCode' => $this->securityCode,
+                'brand' => $this->brand,
+                'billingAddress' => $this->billingAddress,
+                'verificationMethod' => $this->verificationMethod,
+                'experienceContext' => $this->experienceContext
+            ]
+        );
     }
 
     /**
@@ -267,31 +263,28 @@ class SetupTokenRequestCard implements \JsonSerializable
     {
         $json = [];
         if (isset($this->name)) {
-            $json['name']                          = $this->name;
+            $json['name']                = $this->name;
         }
         if (isset($this->number)) {
-            $json['number']                        = $this->number;
+            $json['number']              = $this->number;
         }
         if (isset($this->expiry)) {
-            $json['expiry']                        = $this->expiry;
+            $json['expiry']              = $this->expiry;
         }
         if (isset($this->securityCode)) {
-            $json['security_code']                 = $this->securityCode;
+            $json['security_code']       = $this->securityCode;
         }
         if (isset($this->brand)) {
-            $json['brand']                         = CardBrand::checkValue($this->brand);
+            $json['brand']               = $this->brand;
         }
         if (isset($this->billingAddress)) {
-            $json['billing_address']               = $this->billingAddress;
+            $json['billing_address']     = $this->billingAddress;
         }
         if (isset($this->verificationMethod)) {
-            $json['verification_method']           = $this->verificationMethod;
+            $json['verification_method'] = $this->verificationMethod;
         }
         if (isset($this->experienceContext)) {
-            $json['experience_context']            = $this->experienceContext;
-        }
-        if (isset($this->networkTransactionReference)) {
-            $json['network_transaction_reference'] = $this->networkTransactionReference;
+            $json['experience_context']  = $this->experienceContext;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

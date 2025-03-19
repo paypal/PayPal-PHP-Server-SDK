@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -42,6 +43,16 @@ class BlikOneClickPaymentObject implements \JsonSerializable
     public function setConsumerReference(?string $consumerReference): void
     {
         $this->consumerReference = $consumerReference;
+    }
+
+    /**
+     * Converts the BlikOneClickPaymentObject object to a human-readable string representation.
+     *
+     * @return string The string representation of the BlikOneClickPaymentObject object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('BlikOneClickPaymentObject', ['consumerReference' => $this->consumerReference]);
     }
 
     /**

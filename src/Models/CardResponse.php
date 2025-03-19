@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -66,6 +67,11 @@ class CardResponse implements \JsonSerializable
      * @var BinDetails|null
      */
     private $binDetails;
+
+    /**
+     * @var CardStoredCredential|null
+     */
+    private $storedCredential;
 
     /**
      * Returns Name.
@@ -274,6 +280,63 @@ class CardResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Stored Credential.
+     * Provides additional details to process a payment using a `card` that has been stored or is intended
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
+     */
+    public function getStoredCredential(): ?CardStoredCredential
+    {
+        return $this->storedCredential;
+    }
+
+    /**
+     * Sets Stored Credential.
+     * Provides additional details to process a payment using a `card` that has been stored or is intended
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
+     *
+     * @maps stored_credential
+     */
+    public function setStoredCredential(?CardStoredCredential $storedCredential): void
+    {
+        $this->storedCredential = $storedCredential;
+    }
+
+    /**
+     * Converts the CardResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardResponse',
+            [
+                'name' => $this->name,
+                'lastDigits' => $this->lastDigits,
+                'brand' => $this->brand,
+                'availableNetworks' => $this->availableNetworks,
+                'type' => $this->type,
+                'authenticationResult' => $this->authenticationResult,
+                'attributes' => $this->attributes,
+                'fromRequest' => $this->fromRequest,
+                'expiry' => $this->expiry,
+                'binDetails' => $this->binDetails,
+                'storedCredential' => $this->storedCredential
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -292,13 +355,13 @@ class CardResponse implements \JsonSerializable
             $json['last_digits']           = $this->lastDigits;
         }
         if (isset($this->brand)) {
-            $json['brand']                 = CardBrand::checkValue($this->brand);
+            $json['brand']                 = $this->brand;
         }
         if (isset($this->availableNetworks)) {
-            $json['available_networks']    = CardBrand::checkValue($this->availableNetworks);
+            $json['available_networks']    = $this->availableNetworks;
         }
         if (isset($this->type)) {
-            $json['type']                  = CardType::checkValue($this->type);
+            $json['type']                  = $this->type;
         }
         if (isset($this->authenticationResult)) {
             $json['authentication_result'] = $this->authenticationResult;
@@ -314,6 +377,9 @@ class CardResponse implements \JsonSerializable
         }
         if (isset($this->binDetails)) {
             $json['bin_details']           = $this->binDetails;
+        }
+        if (isset($this->storedCredential)) {
+            $json['stored_credential']     = $this->storedCredential;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

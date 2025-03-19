@@ -32,14 +32,14 @@ class VaultController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function paymentTokensCreate(array $options): ApiResponse
+    public function createPaymentToken(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v3/vault/payment-tokens')
             ->auth('Oauth2')
             ->parameters(
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                BodyParam::init($options)->extract('body')
+                BodyParam::init($options)->extract('body'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId')
             );
 
         $_resHandler = $this->responseHandler()
@@ -83,7 +83,7 @@ class VaultController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function customerPaymentTokensGet(array $options): ApiResponse
+    public function listCustomerPaymentTokens(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v3/vault/payment-tokens')
             ->auth('Oauth2')
@@ -120,7 +120,7 @@ class VaultController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function paymentTokensGet(string $id): ApiResponse
+    public function getPaymentToken(string $id): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v3/vault/payment-tokens/{id}')
             ->auth('Oauth2')
@@ -154,7 +154,7 @@ class VaultController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function paymentTokensDelete(string $id): ApiResponse
+    public function deletePaymentToken(string $id): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::DELETE, '/v3/vault/payment-tokens/{id}')
             ->auth('Oauth2')
@@ -186,14 +186,14 @@ class VaultController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function setupTokensCreate(array $options): ApiResponse
+    public function createSetupToken(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v3/vault/setup-tokens')
             ->auth('Oauth2')
             ->parameters(
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                BodyParam::init($options)->extract('body')
+                BodyParam::init($options)->extract('body'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId')
             );
 
         $_resHandler = $this->responseHandler()
@@ -231,7 +231,7 @@ class VaultController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function setupTokensGet(string $id): ApiResponse
+    public function getSetupToken(string $id): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v3/vault/setup-tokens/{id}')
             ->auth('Oauth2')

@@ -12,7 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\ApplePayPaymentToken;
-use PaypalServerSdkLib\Models\CardPaymentToken;
+use PaypalServerSdkLib\Models\CardPaymentTokenEntity;
 use PaypalServerSdkLib\Models\PaymentTokenResponsePaymentSource;
 use PaypalServerSdkLib\Models\PaypalPaymentToken;
 use PaypalServerSdkLib\Models\VenmoPaymentToken;
@@ -35,7 +35,7 @@ class PaymentTokenResponsePaymentSourceBuilder
     }
 
     /**
-     * Initializes a new payment token response payment source Builder object.
+     * Initializes a new Payment Token Response Payment Source Builder object.
      */
     public static function init(): self
     {
@@ -44,8 +44,10 @@ class PaymentTokenResponsePaymentSourceBuilder
 
     /**
      * Sets card field.
+     *
+     * @param CardPaymentTokenEntity|null $value
      */
-    public function card(?CardPaymentToken $value): self
+    public function card(?CardPaymentTokenEntity $value): self
     {
         $this->instance->setCard($value);
         return $this;
@@ -53,6 +55,8 @@ class PaymentTokenResponsePaymentSourceBuilder
 
     /**
      * Sets paypal field.
+     *
+     * @param PaypalPaymentToken|null $value
      */
     public function paypal(?PaypalPaymentToken $value): self
     {
@@ -62,6 +66,8 @@ class PaymentTokenResponsePaymentSourceBuilder
 
     /**
      * Sets venmo field.
+     *
+     * @param VenmoPaymentToken|null $value
      */
     public function venmo(?VenmoPaymentToken $value): self
     {
@@ -71,6 +77,8 @@ class PaymentTokenResponsePaymentSourceBuilder
 
     /**
      * Sets apple pay field.
+     *
+     * @param ApplePayPaymentToken|null $value
      */
     public function applePay(?ApplePayPaymentToken $value): self
     {
@@ -79,16 +87,7 @@ class PaymentTokenResponsePaymentSourceBuilder
     }
 
     /**
-     * Sets bank field.
-     */
-    public function bank($value): self
-    {
-        $this->instance->setBank($value);
-        return $this;
-    }
-
-    /**
-     * Initializes a new payment token response payment source object.
+     * Initializes a new Payment Token Response Payment Source object.
      */
     public function build(): PaymentTokenResponsePaymentSource
     {

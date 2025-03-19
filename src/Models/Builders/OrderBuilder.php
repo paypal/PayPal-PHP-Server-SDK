@@ -11,9 +11,11 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Order;
 use PaypalServerSdkLib\Models\Payer;
 use PaypalServerSdkLib\Models\PaymentSourceResponse;
+use PaypalServerSdkLib\Models\PurchaseUnit;
 
 /**
  * Builder for model Order
@@ -33,7 +35,7 @@ class OrderBuilder
     }
 
     /**
-     * Initializes a new order Builder object.
+     * Initializes a new Order Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +44,8 @@ class OrderBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -51,6 +55,8 @@ class OrderBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -60,6 +66,8 @@ class OrderBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -69,6 +77,8 @@ class OrderBuilder
 
     /**
      * Sets payment source field.
+     *
+     * @param PaymentSourceResponse|null $value
      */
     public function paymentSource(?PaymentSourceResponse $value): self
     {
@@ -78,6 +88,8 @@ class OrderBuilder
 
     /**
      * Sets intent field.
+     *
+     * @param string|null $value
      */
     public function intent(?string $value): self
     {
@@ -86,16 +98,9 @@ class OrderBuilder
     }
 
     /**
-     * Sets processing instruction field.
-     */
-    public function processingInstruction($value): self
-    {
-        $this->instance->setProcessingInstruction($value);
-        return $this;
-    }
-
-    /**
      * Sets payer field.
+     *
+     * @param Payer|null $value
      */
     public function payer(?Payer $value): self
     {
@@ -105,6 +110,8 @@ class OrderBuilder
 
     /**
      * Sets purchase units field.
+     *
+     * @param PurchaseUnit[]|null $value
      */
     public function purchaseUnits(?array $value): self
     {
@@ -114,6 +121,8 @@ class OrderBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -123,6 +132,8 @@ class OrderBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -131,7 +142,7 @@ class OrderBuilder
     }
 
     /**
-     * Initializes a new order object.
+     * Initializes a new Order object.
      */
     public function build(): Order
     {

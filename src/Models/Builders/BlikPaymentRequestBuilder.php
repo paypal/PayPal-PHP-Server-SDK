@@ -34,7 +34,10 @@ class BlikPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new blik payment request Builder object.
+     * Initializes a new Blik Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $countryCode
      */
     public static function init(string $name, string $countryCode): self
     {
@@ -43,6 +46,8 @@ class BlikPaymentRequestBuilder
 
     /**
      * Sets email field.
+     *
+     * @param string|null $value
      */
     public function email(?string $value): self
     {
@@ -52,6 +57,8 @@ class BlikPaymentRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param BlikExperienceContext|null $value
      */
     public function experienceContext(?BlikExperienceContext $value): self
     {
@@ -61,6 +68,8 @@ class BlikPaymentRequestBuilder
 
     /**
      * Sets level 0 field.
+     *
+     * @param BlikLevel0PaymentObject|null $value
      */
     public function level0(?BlikLevel0PaymentObject $value): self
     {
@@ -70,6 +79,8 @@ class BlikPaymentRequestBuilder
 
     /**
      * Sets one click field.
+     *
+     * @param BlikOneClickPaymentRequest|null $value
      */
     public function oneClick(?BlikOneClickPaymentRequest $value): self
     {
@@ -78,7 +89,7 @@ class BlikPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new blik payment request object.
+     * Initializes a new Blik Payment Request object.
      */
     public function build(): BlikPaymentRequest
     {

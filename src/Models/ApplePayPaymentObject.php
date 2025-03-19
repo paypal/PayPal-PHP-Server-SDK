@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -51,6 +52,11 @@ class ApplePayPaymentObject implements \JsonSerializable
      * @var ApplePayAttributesResponse|null
      */
     private $attributes;
+
+    /**
+     * @var CardStoredCredential|null
+     */
+    private $storedCredential;
 
     /**
      * Returns Id.
@@ -118,10 +124,9 @@ class ApplePayPaymentObject implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -130,10 +135,9 @@ class ApplePayPaymentObject implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -205,6 +209,60 @@ class ApplePayPaymentObject implements \JsonSerializable
     }
 
     /**
+     * Returns Stored Credential.
+     * Provides additional details to process a payment using a `card` that has been stored or is intended
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
+     */
+    public function getStoredCredential(): ?CardStoredCredential
+    {
+        return $this->storedCredential;
+    }
+
+    /**
+     * Sets Stored Credential.
+     * Provides additional details to process a payment using a `card` that has been stored or is intended
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
+     *
+     * @maps stored_credential
+     */
+    public function setStoredCredential(?CardStoredCredential $storedCredential): void
+    {
+        $this->storedCredential = $storedCredential;
+    }
+
+    /**
+     * Converts the ApplePayPaymentObject object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayPaymentObject object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ApplePayPaymentObject',
+            [
+                'id' => $this->id,
+                'token' => $this->token,
+                'name' => $this->name,
+                'emailAddress' => $this->emailAddress,
+                'phoneNumber' => $this->phoneNumber,
+                'card' => $this->card,
+                'attributes' => $this->attributes,
+                'storedCredential' => $this->storedCredential
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -217,25 +275,28 @@ class ApplePayPaymentObject implements \JsonSerializable
     {
         $json = [];
         if (isset($this->id)) {
-            $json['id']            = $this->id;
+            $json['id']                = $this->id;
         }
         if (isset($this->token)) {
-            $json['token']         = $this->token;
+            $json['token']             = $this->token;
         }
         if (isset($this->name)) {
-            $json['name']          = $this->name;
+            $json['name']              = $this->name;
         }
         if (isset($this->emailAddress)) {
-            $json['email_address'] = $this->emailAddress;
+            $json['email_address']     = $this->emailAddress;
         }
         if (isset($this->phoneNumber)) {
-            $json['phone_number']  = $this->phoneNumber;
+            $json['phone_number']      = $this->phoneNumber;
         }
         if (isset($this->card)) {
-            $json['card']          = $this->card;
+            $json['card']              = $this->card;
         }
         if (isset($this->attributes)) {
-            $json['attributes']    = $this->attributes;
+            $json['attributes']        = $this->attributes;
+        }
+        if (isset($this->storedCredential)) {
+            $json['stored_credential'] = $this->storedCredential;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

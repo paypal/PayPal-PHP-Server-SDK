@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -80,6 +81,16 @@ class VaultTokenRequest implements \JsonSerializable
     }
 
     /**
+     * Converts the VaultTokenRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the VaultTokenRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('VaultTokenRequest', ['id' => $this->id, 'type' => $this->type]);
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -92,7 +103,7 @@ class VaultTokenRequest implements \JsonSerializable
     {
         $json = [];
         $json['id']   = $this->id;
-        $json['type'] = TokenRequestType::checkValue($this->type);
+        $json['type'] = $this->type;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

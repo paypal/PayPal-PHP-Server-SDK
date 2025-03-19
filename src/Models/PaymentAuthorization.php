@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -83,7 +84,7 @@ class PaymentAuthorization implements \JsonSerializable
     private $supplementaryData;
 
     /**
-     * @var Payee|null
+     * @var PayeeBase|null
      */
     private $payee;
 
@@ -256,8 +257,8 @@ class PaymentAuthorization implements \JsonSerializable
     /**
      * Returns Expiration Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getExpirationTime(): ?string
     {
@@ -267,8 +268,8 @@ class PaymentAuthorization implements \JsonSerializable
     /**
      * Sets Expiration Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps expiration_time
      */
@@ -304,8 +305,8 @@ class PaymentAuthorization implements \JsonSerializable
     /**
      * Returns Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getCreateTime(): ?string
     {
@@ -315,8 +316,8 @@ class PaymentAuthorization implements \JsonSerializable
     /**
      * Sets Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps create_time
      */
@@ -328,8 +329,8 @@ class PaymentAuthorization implements \JsonSerializable
     /**
      * Returns Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getUpdateTime(): ?string
     {
@@ -339,8 +340,8 @@ class PaymentAuthorization implements \JsonSerializable
     /**
      * Sets Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps update_time
      */
@@ -374,7 +375,7 @@ class PaymentAuthorization implements \JsonSerializable
      * The details for the merchant who receives the funds and fulfills the order. The merchant is also
      * known as the payee.
      */
-    public function getPayee(): ?Payee
+    public function getPayee(): ?PayeeBase
     {
         return $this->payee;
     }
@@ -386,9 +387,37 @@ class PaymentAuthorization implements \JsonSerializable
      *
      * @maps payee
      */
-    public function setPayee(?Payee $payee): void
+    public function setPayee(?PayeeBase $payee): void
     {
         $this->payee = $payee;
+    }
+
+    /**
+     * Converts the PaymentAuthorization object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaymentAuthorization object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaymentAuthorization',
+            [
+                'status' => $this->status,
+                'statusDetails' => $this->statusDetails,
+                'id' => $this->id,
+                'amount' => $this->amount,
+                'invoiceId' => $this->invoiceId,
+                'customId' => $this->customId,
+                'networkTransactionReference' => $this->networkTransactionReference,
+                'sellerProtection' => $this->sellerProtection,
+                'expirationTime' => $this->expirationTime,
+                'links' => $this->links,
+                'createTime' => $this->createTime,
+                'updateTime' => $this->updateTime,
+                'supplementaryData' => $this->supplementaryData,
+                'payee' => $this->payee
+            ]
+        );
     }
 
     /**
@@ -404,7 +433,7 @@ class PaymentAuthorization implements \JsonSerializable
     {
         $json = [];
         if (isset($this->status)) {
-            $json['status']                        = AuthorizationStatus::checkValue($this->status);
+            $json['status']                        = $this->status;
         }
         if (isset($this->statusDetails)) {
             $json['status_details']                = $this->statusDetails;

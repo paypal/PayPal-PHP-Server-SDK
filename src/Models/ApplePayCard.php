@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -149,6 +150,25 @@ class ApplePayCard implements \JsonSerializable
     }
 
     /**
+     * Converts the ApplePayCard object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayCard object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ApplePayCard',
+            [
+                'name' => $this->name,
+                'lastDigits' => $this->lastDigits,
+                'type' => $this->type,
+                'brand' => $this->brand,
+                'billingAddress' => $this->billingAddress
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -167,10 +187,10 @@ class ApplePayCard implements \JsonSerializable
             $json['last_digits']     = $this->lastDigits;
         }
         if (isset($this->type)) {
-            $json['type']            = CardType::checkValue($this->type);
+            $json['type']            = $this->type;
         }
         if (isset($this->brand)) {
-            $json['brand']           = CardBrand::checkValue($this->brand);
+            $json['brand']           = $this->brand;
         }
         if (isset($this->billingAddress)) {
             $json['billing_address'] = $this->billingAddress;

@@ -31,7 +31,9 @@ class AddressBuilder
     }
 
     /**
-     * Initializes a new address Builder object.
+     * Initializes a new Address Builder object.
+     *
+     * @param string $countryCode
      */
     public static function init(string $countryCode): self
     {
@@ -40,6 +42,8 @@ class AddressBuilder
 
     /**
      * Sets address line 1 field.
+     *
+     * @param string|null $value
      */
     public function addressLine1(?string $value): self
     {
@@ -49,6 +53,8 @@ class AddressBuilder
 
     /**
      * Sets address line 2 field.
+     *
+     * @param string|null $value
      */
     public function addressLine2(?string $value): self
     {
@@ -58,6 +64,8 @@ class AddressBuilder
 
     /**
      * Sets admin area 2 field.
+     *
+     * @param string|null $value
      */
     public function adminArea2(?string $value): self
     {
@@ -67,6 +75,8 @@ class AddressBuilder
 
     /**
      * Sets admin area 1 field.
+     *
+     * @param string|null $value
      */
     public function adminArea1(?string $value): self
     {
@@ -76,6 +86,8 @@ class AddressBuilder
 
     /**
      * Sets postal code field.
+     *
+     * @param string|null $value
      */
     public function postalCode(?string $value): self
     {
@@ -84,7 +96,7 @@ class AddressBuilder
     }
 
     /**
-     * Initializes a new address object.
+     * Initializes a new Address object.
      */
     public function build(): Address
     {

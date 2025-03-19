@@ -13,6 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\AuthorizationStatusDetails;
 use PaypalServerSdkLib\Models\AuthorizationWithAdditionalData;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
 use PaypalServerSdkLib\Models\NetworkTransactionReference;
 use PaypalServerSdkLib\Models\ProcessorResponse;
@@ -36,7 +37,7 @@ class AuthorizationWithAdditionalDataBuilder
     }
 
     /**
-     * Initializes a new authorization with additional data Builder object.
+     * Initializes a new Authorization With Additional Data Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +46,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -54,6 +57,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param AuthorizationStatusDetails|null $value
      */
     public function statusDetails(?AuthorizationStatusDetails $value): self
     {
@@ -63,6 +68,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -72,6 +79,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -81,6 +90,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -90,6 +101,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -99,6 +112,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets network transaction reference field.
+     *
+     * @param NetworkTransactionReference|null $value
      */
     public function networkTransactionReference(?NetworkTransactionReference $value): self
     {
@@ -108,6 +123,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets seller protection field.
+     *
+     * @param SellerProtection|null $value
      */
     public function sellerProtection(?SellerProtection $value): self
     {
@@ -117,6 +134,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets expiration time field.
+     *
+     * @param string|null $value
      */
     public function expirationTime(?string $value): self
     {
@@ -126,6 +145,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -135,6 +156,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -144,6 +167,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -153,6 +178,8 @@ class AuthorizationWithAdditionalDataBuilder
 
     /**
      * Sets processor response field.
+     *
+     * @param ProcessorResponse|null $value
      */
     public function processorResponse(?ProcessorResponse $value): self
     {
@@ -161,7 +188,7 @@ class AuthorizationWithAdditionalDataBuilder
     }
 
     /**
-     * Initializes a new authorization with additional data object.
+     * Initializes a new Authorization With Additional Data object.
      */
     public function build(): AuthorizationWithAdditionalData
     {

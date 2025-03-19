@@ -10,17 +10,17 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
  * Provides additional details to process a payment using a `card` that has been stored or is intended
- * to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:
- * <br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
- * </li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.
- * </li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible
- * only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
- * `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in
- * the request.</li></ul>
+ * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+ * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+ * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+ * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+ * one of the parameters - `previous_transaction_reference` and
+ * `previous_network_transaction_reference` - can be present in the request.
  */
 class CardStoredCredential implements \JsonSerializable
 {
@@ -140,6 +140,24 @@ class CardStoredCredential implements \JsonSerializable
     }
 
     /**
+     * Converts the CardStoredCredential object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardStoredCredential object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardStoredCredential',
+            [
+                'paymentInitiator' => $this->paymentInitiator,
+                'paymentType' => $this->paymentType,
+                'usage' => $this->usage,
+                'previousNetworkTransactionReference' => $this->previousNetworkTransactionReference
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -151,13 +169,10 @@ class CardStoredCredential implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['payment_initiator']                          = PaymentInitiator::checkValue($this->paymentInitiator);
-        $json['payment_type']                               =
-            StoredPaymentSourcePaymentType::checkValue(
-                $this->paymentType
-            );
+        $json['payment_initiator']                          = $this->paymentInitiator;
+        $json['payment_type']                               = $this->paymentType;
         if (isset($this->usage)) {
-            $json['usage']                                  = StoredPaymentSourceUsageType::checkValue($this->usage);
+            $json['usage']                                  = $this->usage;
         }
         if (isset($this->previousNetworkTransactionReference)) {
             $json['previous_network_transaction_reference'] = $this->previousNetworkTransactionReference;

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -130,6 +131,24 @@ class BlikOneClickPaymentRequest implements \JsonSerializable
     public function setAliasKey(?string $aliasKey): void
     {
         $this->aliasKey = $aliasKey;
+    }
+
+    /**
+     * Converts the BlikOneClickPaymentRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the BlikOneClickPaymentRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'BlikOneClickPaymentRequest',
+            [
+                'authCode' => $this->authCode,
+                'consumerReference' => $this->consumerReference,
+                'aliasLabel' => $this->aliasLabel,
+                'aliasKey' => $this->aliasKey
+            ]
+        );
     }
 
     /**

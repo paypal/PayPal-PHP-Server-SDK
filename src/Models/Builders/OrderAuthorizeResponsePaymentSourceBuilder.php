@@ -36,7 +36,7 @@ class OrderAuthorizeResponsePaymentSourceBuilder
     }
 
     /**
-     * Initializes a new order authorize response payment source Builder object.
+     * Initializes a new Order Authorize Response Payment Source Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +45,8 @@ class OrderAuthorizeResponsePaymentSourceBuilder
 
     /**
      * Sets card field.
+     *
+     * @param CardResponse|null $value
      */
     public function card(?CardResponse $value): self
     {
@@ -54,6 +56,8 @@ class OrderAuthorizeResponsePaymentSourceBuilder
 
     /**
      * Sets paypal field.
+     *
+     * @param PaypalWalletResponse|null $value
      */
     public function paypal(?PaypalWalletResponse $value): self
     {
@@ -63,6 +67,8 @@ class OrderAuthorizeResponsePaymentSourceBuilder
 
     /**
      * Sets apple pay field.
+     *
+     * @param ApplePayPaymentObject|null $value
      */
     public function applePay(?ApplePayPaymentObject $value): self
     {
@@ -72,6 +78,8 @@ class OrderAuthorizeResponsePaymentSourceBuilder
 
     /**
      * Sets google pay field.
+     *
+     * @param GooglePayWalletResponse|null $value
      */
     public function googlePay(?GooglePayWalletResponse $value): self
     {
@@ -81,6 +89,8 @@ class OrderAuthorizeResponsePaymentSourceBuilder
 
     /**
      * Sets venmo field.
+     *
+     * @param VenmoWalletResponse|null $value
      */
     public function venmo(?VenmoWalletResponse $value): self
     {
@@ -89,7 +99,7 @@ class OrderAuthorizeResponsePaymentSourceBuilder
     }
 
     /**
-     * Initializes a new order authorize response payment source object.
+     * Initializes a new Order Authorize Response Payment Source object.
      */
     public function build(): OrderAuthorizeResponsePaymentSource
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -167,6 +168,25 @@ class NetworkToken implements \JsonSerializable
     }
 
     /**
+     * Converts the NetworkToken object to a human-readable string representation.
+     *
+     * @return string The string representation of the NetworkToken object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'NetworkToken',
+            [
+                'number' => $this->number,
+                'expiry' => $this->expiry,
+                'cryptogram' => $this->cryptogram,
+                'eciFlag' => $this->eciFlag,
+                'tokenRequestorId' => $this->tokenRequestorId
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -184,7 +204,7 @@ class NetworkToken implements \JsonSerializable
             $json['cryptogram']         = $this->cryptogram;
         }
         if (isset($this->eciFlag)) {
-            $json['eci_flag']           = EciFlag::checkValue($this->eciFlag);
+            $json['eci_flag']           = $this->eciFlag;
         }
         if (isset($this->tokenRequestorId)) {
             $json['token_requestor_id'] = $this->tokenRequestorId;

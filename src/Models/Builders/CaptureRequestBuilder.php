@@ -33,7 +33,7 @@ class CaptureRequestBuilder
     }
 
     /**
-     * Initializes a new capture request Builder object.
+     * Initializes a new Capture Request Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class CaptureRequestBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -51,6 +53,8 @@ class CaptureRequestBuilder
 
     /**
      * Sets note to payer field.
+     *
+     * @param string|null $value
      */
     public function noteToPayer(?string $value): self
     {
@@ -60,6 +64,8 @@ class CaptureRequestBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -69,6 +75,8 @@ class CaptureRequestBuilder
 
     /**
      * Sets final capture field.
+     *
+     * @param bool|null $value
      */
     public function finalCapture(?bool $value): self
     {
@@ -78,6 +86,8 @@ class CaptureRequestBuilder
 
     /**
      * Sets payment instruction field.
+     *
+     * @param CapturePaymentInstruction|null $value
      */
     public function paymentInstruction(?CapturePaymentInstruction $value): self
     {
@@ -87,6 +97,8 @@ class CaptureRequestBuilder
 
     /**
      * Sets soft descriptor field.
+     *
+     * @param string|null $value
      */
     public function softDescriptor(?string $value): self
     {
@@ -95,7 +107,7 @@ class CaptureRequestBuilder
     }
 
     /**
-     * Initializes a new capture request object.
+     * Initializes a new Capture Request object.
      */
     public function build(): CaptureRequest
     {

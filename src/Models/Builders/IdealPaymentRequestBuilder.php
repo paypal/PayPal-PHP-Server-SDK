@@ -32,7 +32,10 @@ class IdealPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new ideal payment request Builder object.
+     * Initializes a new Ideal Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $countryCode
      */
     public static function init(string $name, string $countryCode): self
     {
@@ -41,6 +44,8 @@ class IdealPaymentRequestBuilder
 
     /**
      * Sets bic field.
+     *
+     * @param string|null $value
      */
     public function bic(?string $value): self
     {
@@ -50,6 +55,8 @@ class IdealPaymentRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param ExperienceContext|null $value
      */
     public function experienceContext(?ExperienceContext $value): self
     {
@@ -58,7 +65,7 @@ class IdealPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new ideal payment request object.
+     * Initializes a new Ideal Payment Request object.
      */
     public function build(): IdealPaymentRequest
     {

@@ -31,7 +31,10 @@ class MoneyBuilder
     }
 
     /**
-     * Initializes a new money Builder object.
+     * Initializes a new Money Builder object.
+     *
+     * @param string $currencyCode
+     * @param string $value
      */
     public static function init(string $currencyCode, string $value): self
     {
@@ -39,7 +42,7 @@ class MoneyBuilder
     }
 
     /**
-     * Initializes a new money object.
+     * Initializes a new Money object.
      */
     public function build(): Money
     {

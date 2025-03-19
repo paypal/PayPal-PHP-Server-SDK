@@ -32,7 +32,7 @@ class ApplePayCardBuilder
     }
 
     /**
-     * Initializes a new apple pay card Builder object.
+     * Initializes a new Apple Pay Card Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class ApplePayCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class ApplePayCardBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -59,6 +63,8 @@ class ApplePayCardBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -68,6 +74,8 @@ class ApplePayCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -77,6 +85,8 @@ class ApplePayCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -85,7 +95,7 @@ class ApplePayCardBuilder
     }
 
     /**
-     * Initializes a new apple pay card object.
+     * Initializes a new Apple Pay Card object.
      */
     public function build(): ApplePayCard
     {

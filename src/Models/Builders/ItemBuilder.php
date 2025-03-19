@@ -33,7 +33,11 @@ class ItemBuilder
     }
 
     /**
-     * Initializes a new item Builder object.
+     * Initializes a new Item Builder object.
+     *
+     * @param string $name
+     * @param Money $unitAmount
+     * @param string $quantity
      */
     public static function init(string $name, Money $unitAmount, string $quantity): self
     {
@@ -42,6 +46,8 @@ class ItemBuilder
 
     /**
      * Sets tax field.
+     *
+     * @param Money|null $value
      */
     public function tax(?Money $value): self
     {
@@ -51,6 +57,8 @@ class ItemBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -60,6 +68,8 @@ class ItemBuilder
 
     /**
      * Sets sku field.
+     *
+     * @param string|null $value
      */
     public function sku(?string $value): self
     {
@@ -69,6 +79,8 @@ class ItemBuilder
 
     /**
      * Sets url field.
+     *
+     * @param string|null $value
      */
     public function url(?string $value): self
     {
@@ -78,6 +90,8 @@ class ItemBuilder
 
     /**
      * Sets category field.
+     *
+     * @param string|null $value
      */
     public function category(?string $value): self
     {
@@ -87,6 +101,8 @@ class ItemBuilder
 
     /**
      * Sets image url field.
+     *
+     * @param string|null $value
      */
     public function imageUrl(?string $value): self
     {
@@ -96,6 +112,8 @@ class ItemBuilder
 
     /**
      * Sets upc field.
+     *
+     * @param UniversalProductCode|null $value
      */
     public function upc(?UniversalProductCode $value): self
     {
@@ -104,7 +122,7 @@ class ItemBuilder
     }
 
     /**
-     * Initializes a new item object.
+     * Initializes a new Item object.
      */
     public function build(): Item
     {

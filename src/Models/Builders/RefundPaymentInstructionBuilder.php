@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\RefundPaymentInstruction;
+use PaypalServerSdkLib\Models\RefundPlatformFee;
 
 /**
  * Builder for model RefundPaymentInstruction
@@ -31,7 +32,7 @@ class RefundPaymentInstructionBuilder
     }
 
     /**
-     * Initializes a new refund payment instruction Builder object.
+     * Initializes a new Refund Payment Instruction Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +41,8 @@ class RefundPaymentInstructionBuilder
 
     /**
      * Sets platform fees field.
+     *
+     * @param RefundPlatformFee[]|null $value
      */
     public function platformFees(?array $value): self
     {
@@ -48,7 +51,7 @@ class RefundPaymentInstructionBuilder
     }
 
     /**
-     * Initializes a new refund payment instruction object.
+     * Initializes a new Refund Payment Instruction object.
      */
     public function build(): RefundPaymentInstruction
     {

@@ -32,7 +32,7 @@ class GooglePayRequestCardBuilder
     }
 
     /**
-     * Initializes a new google pay request card Builder object.
+     * Initializes a new Google Pay Request Card Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class GooglePayRequestCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class GooglePayRequestCardBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -59,6 +63,8 @@ class GooglePayRequestCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -68,6 +74,8 @@ class GooglePayRequestCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -76,7 +84,7 @@ class GooglePayRequestCardBuilder
     }
 
     /**
-     * Initializes a new google pay request card object.
+     * Initializes a new Google Pay Request Card object.
      */
     public function build(): GooglePayRequestCard
     {

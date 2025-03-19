@@ -10,39 +10,27 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Indicates if this is a `first` or `subsequent` payment using a stored payment source (also referred
  * to as stored credential or card on file).
  */
 class StoredPaymentSourceUsageType
 {
+    /**
+     * Indicates the Initial/First payment with a payment_source that is intended to be stored upon
+     * successful processing of the payment.
+     */
     public const FIRST = 'FIRST';
 
+    /**
+     * Indicates a payment using a stored payment_source which has been successfully used previously for a
+     * payment.
+     */
     public const SUBSEQUENT = 'SUBSEQUENT';
 
-    public const DERIVED = 'DERIVED';
-
-    private const _ALL_VALUES = [self::FIRST, self::SUBSEQUENT, self::DERIVED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Indicates that PayPal will derive the value of `FIRST` or `SUBSEQUENT` based on data available to
+     * PayPal.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for StoredPaymentSourceUsageType.");
-    }
+    public const DERIVED = 'DERIVED';
 }

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -156,6 +157,25 @@ class ApplePayDecryptedTokenData implements \JsonSerializable
     }
 
     /**
+     * Converts the ApplePayDecryptedTokenData object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayDecryptedTokenData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ApplePayDecryptedTokenData',
+            [
+                'transactionAmount' => $this->transactionAmount,
+                'tokenizedCard' => $this->tokenizedCard,
+                'deviceManufacturerId' => $this->deviceManufacturerId,
+                'paymentDataType' => $this->paymentDataType,
+                'paymentData' => $this->paymentData
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -175,7 +195,7 @@ class ApplePayDecryptedTokenData implements \JsonSerializable
             $json['device_manufacturer_id'] = $this->deviceManufacturerId;
         }
         if (isset($this->paymentDataType)) {
-            $json['payment_data_type']      = ApplePayPaymentDataType::checkValue($this->paymentDataType);
+            $json['payment_data_type']      = $this->paymentDataType;
         }
         if (isset($this->paymentData)) {
             $json['payment_data']           = $this->paymentData;

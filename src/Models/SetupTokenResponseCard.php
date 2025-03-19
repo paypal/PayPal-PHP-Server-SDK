@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 class SetupTokenResponseCard implements \JsonSerializable
@@ -35,7 +36,7 @@ class SetupTokenResponseCard implements \JsonSerializable
     private $expiry;
 
     /**
-     * @var AddressDetails|null
+     * @var CardResponseAddress|null
      */
     private $billingAddress;
 
@@ -155,7 +156,7 @@ class SetupTokenResponseCard implements \JsonSerializable
      * Returns Billing Address.
      * Address request details.
      */
-    public function getBillingAddress(): ?AddressDetails
+    public function getBillingAddress(): ?CardResponseAddress
     {
         return $this->billingAddress;
     }
@@ -166,7 +167,7 @@ class SetupTokenResponseCard implements \JsonSerializable
      *
      * @maps billing_address
      */
-    public function setBillingAddress(?AddressDetails $billingAddress): void
+    public function setBillingAddress(?CardResponseAddress $billingAddress): void
     {
         $this->billingAddress = $billingAddress;
     }
@@ -293,6 +294,31 @@ class SetupTokenResponseCard implements \JsonSerializable
     }
 
     /**
+     * Converts the SetupTokenResponseCard object to a human-readable string representation.
+     *
+     * @return string The string representation of the SetupTokenResponseCard object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SetupTokenResponseCard',
+            [
+                'name' => $this->name,
+                'lastDigits' => $this->lastDigits,
+                'brand' => $this->brand,
+                'expiry' => $this->expiry,
+                'billingAddress' => $this->billingAddress,
+                'verificationStatus' => $this->verificationStatus,
+                'verification' => $this->verification,
+                'networkTransactionReference' => $this->networkTransactionReference,
+                'authenticationResult' => $this->authenticationResult,
+                'binDetails' => $this->binDetails,
+                'type' => $this->type
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -311,7 +337,7 @@ class SetupTokenResponseCard implements \JsonSerializable
             $json['last_digits']                   = $this->lastDigits;
         }
         if (isset($this->brand)) {
-            $json['brand']                         = CardBrand::checkValue($this->brand);
+            $json['brand']                         = $this->brand;
         }
         if (isset($this->expiry)) {
             $json['expiry']                        = $this->expiry;
@@ -335,7 +361,7 @@ class SetupTokenResponseCard implements \JsonSerializable
             $json['bin_details']                   = $this->binDetails;
         }
         if (isset($this->type)) {
-            $json['type']                          = CardType::checkValue($this->type);
+            $json['type']                          = $this->type;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

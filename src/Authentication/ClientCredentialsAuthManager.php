@@ -111,17 +111,22 @@ class ClientCredentialsAuthManager extends CoreAuth implements ClientCredentials
     public function fetchToken(?array $additionalParams = null): OAuthToken
     {
         //send request for access token
-        $oAuthToken = $this->oAuthApi->requestToken(
+        $response = $this->oAuthApi->requestToken(
             [
                 'authorization' => $this->buildBasicHeader(),
                 'scope' => null,
             ],
             $additionalParams
-        )->getResult();
+        );
 
-        $this->addExpiryTime($oAuthToken);
+        if ($response->isError()) {
+            $reason = CoreHelper::serialize($response->getResult());
+            throw new InvalidArgumentException("Failed to fetch OAuthToken: $reason");
+        }
 
-        return $oAuthToken;
+        $this->addExpiryTime($response->getResult());
+
+        return $response->getResult();
     }
 
     /**

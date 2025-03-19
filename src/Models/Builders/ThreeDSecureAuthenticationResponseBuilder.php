@@ -31,7 +31,7 @@ class ThreeDSecureAuthenticationResponseBuilder
     }
 
     /**
-     * Initializes a new three dsecure authentication response Builder object.
+     * Initializes a new Three D Secure Authentication Response Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ThreeDSecureAuthenticationResponseBuilder
 
     /**
      * Sets authentication status field.
+     *
+     * @param string|null $value
      */
     public function authenticationStatus(?string $value): self
     {
@@ -49,6 +51,8 @@ class ThreeDSecureAuthenticationResponseBuilder
 
     /**
      * Sets enrollment status field.
+     *
+     * @param string|null $value
      */
     public function enrollmentStatus(?string $value): self
     {
@@ -57,7 +61,7 @@ class ThreeDSecureAuthenticationResponseBuilder
     }
 
     /**
-     * Initializes a new three dsecure authentication response object.
+     * Initializes a new Three D Secure Authentication Response object.
      */
     public function build(): ThreeDSecureAuthenticationResponse
     {

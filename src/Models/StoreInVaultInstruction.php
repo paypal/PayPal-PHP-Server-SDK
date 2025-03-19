@@ -10,34 +10,14 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Defines how and when the payment source gets vaulted.
  */
 class StoreInVaultInstruction
 {
-    public const ON_SUCCESS = 'ON_SUCCESS';
-
-    private const _ALL_VALUES = [self::ON_SUCCESS];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Defines that the payment_source will be vaulted only when at least one authorization or capture
+     * using that payment_source is successful.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for StoreInVaultInstruction.");
-    }
+    public const ON_SUCCESS = 'ON_SUCCESS';
 }

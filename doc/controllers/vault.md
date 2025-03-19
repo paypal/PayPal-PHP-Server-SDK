@@ -12,44 +12,43 @@ $vaultController = $client->getVaultController();
 
 ## Methods
 
-* [Payment-Tokens Create](../../doc/controllers/vault.md#payment-tokens-create)
-* [Customer Payment-Tokens Get](../../doc/controllers/vault.md#customer-payment-tokens-get)
-* [Payment-Tokens Get](../../doc/controllers/vault.md#payment-tokens-get)
-* [Payment-Tokens Delete](../../doc/controllers/vault.md#payment-tokens-delete)
-* [Setup-Tokens Create](../../doc/controllers/vault.md#setup-tokens-create)
-* [Setup-Tokens Get](../../doc/controllers/vault.md#setup-tokens-get)
+* [Create Payment Token](../../doc/controllers/vault.md#create-payment-token)
+* [List Customer Payment Tokens](../../doc/controllers/vault.md#list-customer-payment-tokens)
+* [Get Payment Token](../../doc/controllers/vault.md#get-payment-token)
+* [Delete Payment Token](../../doc/controllers/vault.md#delete-payment-token)
+* [Create Setup Token](../../doc/controllers/vault.md#create-setup-token)
+* [Get Setup Token](../../doc/controllers/vault.md#get-setup-token)
 
 
-# Payment-Tokens Create
+# Create Payment Token
 
 Creates a Payment Token from the given payment source and adds it to the Vault of the associated customer.
 
 ```php
-function paymentTokensCreate(array $options): ApiResponse
+function createPaymentToken(array $options): ApiResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paypalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
+| `paypalRequestId` | `?string` | Header, Optional | The server stores keys for 3 hours.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `10000`, *Pattern*: `^.*$` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
 ## Example Usage
 
 ```php
 $collect = [
-    'paypalRequestId' => 'PayPal-Request-Id6',
     'body' => PaymentTokenRequestBuilder::init(
         PaymentTokenRequestPaymentSourceBuilder::init()->build()
     )->build()
 ];
 
-$apiResponse = $vaultController->paymentTokensCreate($collect);
+$apiResponse = $vaultController->createPaymentToken($collect);
 ```
 
 ## Errors
@@ -63,12 +62,12 @@ $apiResponse = $vaultController->paymentTokensCreate($collect);
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Customer Payment-Tokens Get
+# List Customer Payment Tokens
 
 Returns all payment tokens for a customer.
 
 ```php
-function customerPaymentTokensGet(array $options): ApiResponse
+function listCustomerPaymentTokens(array $options): ApiResponse
 ```
 
 ## Parameters
@@ -76,13 +75,13 @@ function customerPaymentTokensGet(array $options): ApiResponse
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customerId` | `string` | Query, Required | A unique identifier representing a specific customer in merchant's/partner's system or records.<br>**Constraints**: *Minimum Length*: `7`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
-| `pageSize` | `?int` | Query, Optional | A non-negative, non-zero integer indicating the maximum number of results to return at one time.<br>**Default**: `5`<br>**Constraints**: `>= 1` |
-| `page` | `?int` | Query, Optional | A non-negative, non-zero integer representing the page of the results.<br>**Default**: `1`<br>**Constraints**: `>= 1` |
+| `pageSize` | `?int` | Query, Optional | A non-negative, non-zero integer indicating the maximum number of results to return at one time.<br>**Default**: `5`<br>**Constraints**: `>= 1`, `<= 5` |
+| `page` | `?int` | Query, Optional | A non-negative, non-zero integer representing the page of the results.<br>**Default**: `1`<br>**Constraints**: `>= 1`, `<= 10` |
 | `totalRequired` | `?bool` | Query, Optional | A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response.<br>**Default**: `false` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
 
 ## Example Usage
 
@@ -94,7 +93,7 @@ $collect = [
     'totalRequired' => false
 ];
 
-$apiResponse = $vaultController->customerPaymentTokensGet($collect);
+$apiResponse = $vaultController->listCustomerPaymentTokens($collect);
 ```
 
 ## Errors
@@ -106,30 +105,30 @@ $apiResponse = $vaultController->customerPaymentTokensGet($collect);
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Payment-Tokens Get
+# Get Payment Token
 
 Returns a readable representation of vaulted payment source associated with the payment token id.
 
 ```php
-function paymentTokensGet(string $id): ApiResponse
+function getPaymentToken(string $id): ApiResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
+| `id` | `string` | Template, Required | ID of the payment token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
 ## Example Usage
 
 ```php
 $id = 'id0';
 
-$apiResponse = $vaultController->paymentTokensGet($id);
+$apiResponse = $vaultController->getPaymentToken($id);
 ```
 
 ## Errors
@@ -142,30 +141,30 @@ $apiResponse = $vaultController->paymentTokensGet($id);
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Payment-Tokens Delete
+# Delete Payment Token
 
 Delete the payment token associated with the payment token id.
 
 ```php
-function paymentTokensDelete(string $id): ApiResponse
+function deletePaymentToken(string $id): ApiResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
+| `id` | `string` | Template, Required | ID of the payment token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance.
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
 ## Example Usage
 
 ```php
 $id = 'id0';
 
-$apiResponse = $vaultController->paymentTokensDelete($id);
+$apiResponse = $vaultController->deletePaymentToken($id);
 ```
 
 ## Errors
@@ -177,36 +176,35 @@ $apiResponse = $vaultController->paymentTokensDelete($id);
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Setup-Tokens Create
+# Create Setup Token
 
 Creates a Setup Token from the given payment source and adds it to the Vault of the associated customer.
 
 ```php
-function setupTokensCreate(array $options): ApiResponse
+function createSetupToken(array $options): ApiResponse
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paypalRequestId` | `string` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`SetupTokenRequest`](../../doc/models/setup-token-request.md) | Body, Required | Setup Token creation with a instrument type optional financial instrument details and customer_id. |
+| `paypalRequestId` | `?string` | Header, Optional | The server stores keys for 3 hours.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `10000`, *Pattern*: `^.*$` |
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
 ## Example Usage
 
 ```php
 $collect = [
-    'paypalRequestId' => 'PayPal-Request-Id6',
     'body' => SetupTokenRequestBuilder::init(
         SetupTokenRequestPaymentSourceBuilder::init()->build()
     )->build()
 ];
 
-$apiResponse = $vaultController->setupTokensCreate($collect);
+$apiResponse = $vaultController->createSetupToken($collect);
 ```
 
 ## Errors
@@ -219,12 +217,12 @@ $apiResponse = $vaultController->setupTokensCreate($collect);
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Setup-Tokens Get
+# Get Setup Token
 
 Returns a readable representation of temporarily vaulted payment source associated with the setup token id.
 
 ```php
-function setupTokensGet(string $id): ApiResponse
+function getSetupToken(string $id): ApiResponse
 ```
 
 ## Parameters
@@ -235,14 +233,14 @@ function setupTokensGet(string $id): ApiResponse
 
 ## Response Type
 
-This method returns a `PaypalServerSdkLib\Utils\ApiResponse` instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
 ## Example Usage
 
 ```php
 $id = 'id0';
 
-$apiResponse = $vaultController->setupTokensGet($id);
+$apiResponse = $vaultController->getSetupToken($id);
 ```
 
 ## Errors

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -78,6 +79,16 @@ class PlatformFee implements \JsonSerializable
     public function setPayee(?PayeeBase $payee): void
     {
         $this->payee = $payee;
+    }
+
+    /**
+     * Converts the PlatformFee object to a human-readable string representation.
+     *
+     * @return string The string representation of the PlatformFee object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('PlatformFee', ['amount' => $this->amount, 'payee' => $this->payee]);
     }
 
     /**

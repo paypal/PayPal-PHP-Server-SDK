@@ -31,7 +31,7 @@ class CardFromRequestBuilder
     }
 
     /**
-     * Initializes a new card from request Builder object.
+     * Initializes a new Card From Request Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class CardFromRequestBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -49,6 +51,8 @@ class CardFromRequestBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -57,7 +61,7 @@ class CardFromRequestBuilder
     }
 
     /**
-     * Initializes a new card from request object.
+     * Initializes a new Card From Request object.
      */
     public function build(): CardFromRequest
     {

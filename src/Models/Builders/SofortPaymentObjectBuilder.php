@@ -31,7 +31,7 @@ class SofortPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new sofort payment object Builder object.
+     * Initializes a new Sofort Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class SofortPaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -49,6 +51,8 @@ class SofortPaymentObjectBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -58,6 +62,8 @@ class SofortPaymentObjectBuilder
 
     /**
      * Sets bic field.
+     *
+     * @param string|null $value
      */
     public function bic(?string $value): self
     {
@@ -67,6 +73,8 @@ class SofortPaymentObjectBuilder
 
     /**
      * Sets iban last chars field.
+     *
+     * @param string|null $value
      */
     public function ibanLastChars(?string $value): self
     {
@@ -75,7 +83,7 @@ class SofortPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new sofort payment object object.
+     * Initializes a new Sofort Payment Object object.
      */
     public function build(): SofortPaymentObject
     {

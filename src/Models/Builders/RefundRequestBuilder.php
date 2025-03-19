@@ -33,7 +33,7 @@ class RefundRequestBuilder
     }
 
     /**
-     * Initializes a new refund request Builder object.
+     * Initializes a new Refund Request Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class RefundRequestBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -51,6 +53,8 @@ class RefundRequestBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -60,6 +64,8 @@ class RefundRequestBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -69,6 +75,8 @@ class RefundRequestBuilder
 
     /**
      * Sets note to payer field.
+     *
+     * @param string|null $value
      */
     public function noteToPayer(?string $value): self
     {
@@ -78,6 +86,8 @@ class RefundRequestBuilder
 
     /**
      * Sets payment instruction field.
+     *
+     * @param RefundPaymentInstruction|null $value
      */
     public function paymentInstruction(?RefundPaymentInstruction $value): self
     {
@@ -86,7 +96,7 @@ class RefundRequestBuilder
     }
 
     /**
-     * Initializes a new refund request object.
+     * Initializes a new Refund Request object.
      */
     public function build(): RefundRequest
     {

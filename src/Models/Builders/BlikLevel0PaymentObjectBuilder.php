@@ -31,7 +31,9 @@ class BlikLevel0PaymentObjectBuilder
     }
 
     /**
-     * Initializes a new blik level 0 payment object Builder object.
+     * Initializes a new Blik Level 0 Payment Object Builder object.
+     *
+     * @param string $authCode
      */
     public static function init(string $authCode): self
     {
@@ -39,7 +41,7 @@ class BlikLevel0PaymentObjectBuilder
     }
 
     /**
-     * Initializes a new blik level 0 payment object object.
+     * Initializes a new Blik Level 0 Payment Object object.
      */
     public function build(): BlikLevel0PaymentObject
     {

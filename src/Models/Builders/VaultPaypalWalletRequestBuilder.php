@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\Plan;
 use PaypalServerSdkLib\Models\VaultedDigitalWalletShippingDetails;
 use PaypalServerSdkLib\Models\VaultExperienceContext;
 use PaypalServerSdkLib\Models\VaultPaypalWalletRequest;
@@ -33,7 +34,7 @@ class VaultPaypalWalletRequestBuilder
     }
 
     /**
-     * Initializes a new vault paypal wallet request Builder object.
+     * Initializes a new Vault Paypal Wallet Request Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +43,8 @@ class VaultPaypalWalletRequestBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -50,7 +53,20 @@ class VaultPaypalWalletRequestBuilder
     }
 
     /**
+     * Sets usage pattern field.
+     *
+     * @param string|null $value
+     */
+    public function usagePattern(?string $value): self
+    {
+        $this->instance->setUsagePattern($value);
+        return $this;
+    }
+
+    /**
      * Sets shipping field.
+     *
+     * @param VaultedDigitalWalletShippingDetails|null $value
      */
     public function shipping(?VaultedDigitalWalletShippingDetails $value): self
     {
@@ -60,6 +76,8 @@ class VaultPaypalWalletRequestBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -69,6 +87,8 @@ class VaultPaypalWalletRequestBuilder
 
     /**
      * Sets usage type field.
+     *
+     * @param string|null $value
      */
     public function usageType(?string $value): self
     {
@@ -78,6 +98,8 @@ class VaultPaypalWalletRequestBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -86,7 +108,20 @@ class VaultPaypalWalletRequestBuilder
     }
 
     /**
+     * Sets billing plan field.
+     *
+     * @param Plan|null $value
+     */
+    public function billingPlan(?Plan $value): self
+    {
+        $this->instance->setBillingPlan($value);
+        return $this;
+    }
+
+    /**
      * Sets experience context field.
+     *
+     * @param VaultExperienceContext|null $value
      */
     public function experienceContext(?VaultExperienceContext $value): self
     {
@@ -95,7 +130,7 @@ class VaultPaypalWalletRequestBuilder
     }
 
     /**
-     * Initializes a new vault paypal wallet request object.
+     * Initializes a new Vault Paypal Wallet Request object.
      */
     public function build(): VaultPaypalWalletRequest
     {

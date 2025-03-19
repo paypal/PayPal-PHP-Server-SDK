@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -31,8 +32,8 @@ class ActivityTimestamps implements \JsonSerializable
     /**
      * Returns Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getCreateTime(): ?string
     {
@@ -42,8 +43,8 @@ class ActivityTimestamps implements \JsonSerializable
     /**
      * Sets Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps create_time
      */
@@ -55,8 +56,8 @@ class ActivityTimestamps implements \JsonSerializable
     /**
      * Returns Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getUpdateTime(): ?string
     {
@@ -66,14 +67,27 @@ class ActivityTimestamps implements \JsonSerializable
     /**
      * Sets Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps update_time
      */
     public function setUpdateTime(?string $updateTime): void
     {
         $this->updateTime = $updateTime;
+    }
+
+    /**
+     * Converts the ActivityTimestamps object to a human-readable string representation.
+     *
+     * @return string The string representation of the ActivityTimestamps object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ActivityTimestamps',
+            ['createTime' => $this->createTime, 'updateTime' => $this->updateTime]
+        );
     }
 
     /**

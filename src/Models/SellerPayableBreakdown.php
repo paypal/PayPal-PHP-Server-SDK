@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -225,6 +226,28 @@ class SellerPayableBreakdown implements \JsonSerializable
     public function setTotalRefundedAmount(?Money $totalRefundedAmount): void
     {
         $this->totalRefundedAmount = $totalRefundedAmount;
+    }
+
+    /**
+     * Converts the SellerPayableBreakdown object to a human-readable string representation.
+     *
+     * @return string The string representation of the SellerPayableBreakdown object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SellerPayableBreakdown',
+            [
+                'grossAmount' => $this->grossAmount,
+                'paypalFee' => $this->paypalFee,
+                'paypalFeeInReceivableCurrency' => $this->paypalFeeInReceivableCurrency,
+                'netAmount' => $this->netAmount,
+                'netAmountInReceivableCurrency' => $this->netAmountInReceivableCurrency,
+                'platformFees' => $this->platformFees,
+                'netAmountBreakdown' => $this->netAmountBreakdown,
+                'totalRefundedAmount' => $this->totalRefundedAmount
+            ]
+        );
     }
 
     /**

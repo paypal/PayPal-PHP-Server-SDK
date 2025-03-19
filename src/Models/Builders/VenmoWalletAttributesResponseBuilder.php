@@ -32,7 +32,7 @@ class VenmoWalletAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new venmo wallet attributes response Builder object.
+     * Initializes a new Venmo Wallet Attributes Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class VenmoWalletAttributesResponseBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param VaultResponse|null $value
      */
     public function vault(?VaultResponse $value): self
     {
@@ -49,7 +51,7 @@ class VenmoWalletAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new venmo wallet attributes response object.
+     * Initializes a new Venmo Wallet Attributes Response object.
      */
     public function build(): VenmoWalletAttributesResponse
     {

@@ -32,7 +32,7 @@ class BlikPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new blik payment object Builder object.
+     * Initializes a new Blik Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class BlikPaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class BlikPaymentObjectBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -59,6 +63,8 @@ class BlikPaymentObjectBuilder
 
     /**
      * Sets email field.
+     *
+     * @param string|null $value
      */
     public function email(?string $value): self
     {
@@ -68,6 +74,8 @@ class BlikPaymentObjectBuilder
 
     /**
      * Sets one click field.
+     *
+     * @param BlikOneClickPaymentObject|null $value
      */
     public function oneClick(?BlikOneClickPaymentObject $value): self
     {
@@ -76,7 +84,7 @@ class BlikPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new blik payment object object.
+     * Initializes a new Blik Payment Object object.
      */
     public function build(): BlikPaymentObject
     {

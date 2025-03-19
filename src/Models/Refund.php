@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -319,8 +320,8 @@ class Refund implements \JsonSerializable
     /**
      * Returns Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getCreateTime(): ?string
     {
@@ -330,8 +331,8 @@ class Refund implements \JsonSerializable
     /**
      * Sets Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps create_time
      */
@@ -343,8 +344,8 @@ class Refund implements \JsonSerializable
     /**
      * Returns Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getUpdateTime(): ?string
     {
@@ -354,14 +355,41 @@ class Refund implements \JsonSerializable
     /**
      * Sets Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps update_time
      */
     public function setUpdateTime(?string $updateTime): void
     {
         $this->updateTime = $updateTime;
+    }
+
+    /**
+     * Converts the Refund object to a human-readable string representation.
+     *
+     * @return string The string representation of the Refund object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Refund',
+            [
+                'status' => $this->status,
+                'statusDetails' => $this->statusDetails,
+                'id' => $this->id,
+                'amount' => $this->amount,
+                'invoiceId' => $this->invoiceId,
+                'customId' => $this->customId,
+                'acquirerReferenceNumber' => $this->acquirerReferenceNumber,
+                'noteToPayer' => $this->noteToPayer,
+                'sellerPayableBreakdown' => $this->sellerPayableBreakdown,
+                'payer' => $this->payer,
+                'links' => $this->links,
+                'createTime' => $this->createTime,
+                'updateTime' => $this->updateTime
+            ]
+        );
     }
 
     /**
@@ -377,7 +405,7 @@ class Refund implements \JsonSerializable
     {
         $json = [];
         if (isset($this->status)) {
-            $json['status']                    = RefundStatus::checkValue($this->status);
+            $json['status']                    = $this->status;
         }
         if (isset($this->statusDetails)) {
             $json['status_details']            = $this->statusDetails;

@@ -10,45 +10,39 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The status of the captured payment.
  */
 class CaptureStatus
 {
+    /**
+     * The funds for this captured payment were credited to the payee's PayPal account.
+     */
     public const COMPLETED = 'COMPLETED';
 
+    /**
+     * The funds could not be captured.
+     */
     public const DECLINED = 'DECLINED';
 
+    /**
+     * An amount less than this captured payment's amount was partially refunded to the payer.
+     */
     public const PARTIALLY_REFUNDED = 'PARTIALLY_REFUNDED';
 
+    /**
+     * The funds for this captured payment was not yet credited to the payee's PayPal account. For more
+     * information, see status.details.
+     */
     public const PENDING = 'PENDING';
 
+    /**
+     * An amount greater than or equal to this captured payment's amount was refunded to the payer.
+     */
     public const REFUNDED = 'REFUNDED';
 
-    public const FAILED = 'FAILED';
-
-    private const _ALL_VALUES =
-        [self::COMPLETED, self::DECLINED, self::PARTIALLY_REFUNDED, self::PENDING, self::REFUNDED, self::FAILED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * There was an error while capturing payment.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for CaptureStatus.");
-    }
+    public const FAILED = 'FAILED';
 }

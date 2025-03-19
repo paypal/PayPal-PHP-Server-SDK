@@ -31,7 +31,7 @@ class ProcessorResponseBuilder
     }
 
     /**
-     * Initializes a new processor response Builder object.
+     * Initializes a new Processor Response Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ProcessorResponseBuilder
 
     /**
      * Sets avs code field.
+     *
+     * @param string|null $value
      */
     public function avsCode(?string $value): self
     {
@@ -49,6 +51,8 @@ class ProcessorResponseBuilder
 
     /**
      * Sets cvv code field.
+     *
+     * @param string|null $value
      */
     public function cvvCode(?string $value): self
     {
@@ -58,6 +62,8 @@ class ProcessorResponseBuilder
 
     /**
      * Sets response code field.
+     *
+     * @param string|null $value
      */
     public function responseCode(?string $value): self
     {
@@ -67,6 +73,8 @@ class ProcessorResponseBuilder
 
     /**
      * Sets payment advice code field.
+     *
+     * @param string|null $value
      */
     public function paymentAdviceCode(?string $value): self
     {
@@ -75,7 +83,7 @@ class ProcessorResponseBuilder
     }
 
     /**
-     * Initializes a new processor response object.
+     * Initializes a new Processor Response object.
      */
     public function build(): ProcessorResponse
     {

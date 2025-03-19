@@ -15,6 +15,7 @@ use PaypalServerSdkLib\Models\Address;
 use PaypalServerSdkLib\Models\Name;
 use PaypalServerSdkLib\Models\PaypalWalletAttributesResponse;
 use PaypalServerSdkLib\Models\PaypalWalletResponse;
+use PaypalServerSdkLib\Models\PaypalWalletStoredCredential;
 use PaypalServerSdkLib\Models\PhoneNumber;
 use PaypalServerSdkLib\Models\TaxInfo;
 
@@ -36,7 +37,7 @@ class PaypalWalletResponseBuilder
     }
 
     /**
-     * Initializes a new paypal wallet response Builder object.
+     * Initializes a new Paypal Wallet Response Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +46,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -54,6 +57,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets account id field.
+     *
+     * @param string|null $value
      */
     public function accountId(?string $value): self
     {
@@ -63,6 +68,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets account status field.
+     *
+     * @param string|null $value
      */
     public function accountStatus(?string $value): self
     {
@@ -72,6 +79,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets name field.
+     *
+     * @param Name|null $value
      */
     public function name(?Name $value): self
     {
@@ -81,6 +90,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets phone type field.
+     *
+     * @param string|null $value
      */
     public function phoneType(?string $value): self
     {
@@ -90,6 +101,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param PhoneNumber|null $value
      */
     public function phoneNumber(?PhoneNumber $value): self
     {
@@ -99,6 +112,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets birth date field.
+     *
+     * @param string|null $value
      */
     public function birthDate(?string $value): self
     {
@@ -108,6 +123,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets business name field.
+     *
+     * @param string|null $value
      */
     public function businessName(?string $value): self
     {
@@ -117,6 +134,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets tax info field.
+     *
+     * @param TaxInfo|null $value
      */
     public function taxInfo(?TaxInfo $value): self
     {
@@ -126,6 +145,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -135,6 +156,8 @@ class PaypalWalletResponseBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param PaypalWalletAttributesResponse|null $value
      */
     public function attributes(?PaypalWalletAttributesResponse $value): self
     {
@@ -143,7 +166,18 @@ class PaypalWalletResponseBuilder
     }
 
     /**
-     * Initializes a new paypal wallet response object.
+     * Sets stored credential field.
+     *
+     * @param PaypalWalletStoredCredential|null $value
+     */
+    public function storedCredential(?PaypalWalletStoredCredential $value): self
+    {
+        $this->instance->setStoredCredential($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Paypal Wallet Response object.
      */
     public function build(): PaypalWalletResponse
     {

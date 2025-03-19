@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -124,8 +125,8 @@ class Address implements \JsonSerializable
      * Returns Admin Area 1.
      * The highest-level sub-division in a country, which is usually a province, state, or ISO-3166-2
      * subdivision. This data is formatted for postal delivery, for example, `CA` and not `California`.
-     * Value, by country, is:<ul><li>UK. A county.</li><li>US. A state.</li><li>Canada. A province.
-     * </li><li>Japan. A prefecture.</li><li>Switzerland. A *kanton*.</li></ul>
+     * Value, by country, is: UK. A county. US. A state. Canada. A province. Japan. A prefecture.
+     * Switzerland. A *kanton*.
      */
     public function getAdminArea1(): ?string
     {
@@ -136,8 +137,8 @@ class Address implements \JsonSerializable
      * Sets Admin Area 1.
      * The highest-level sub-division in a country, which is usually a province, state, or ISO-3166-2
      * subdivision. This data is formatted for postal delivery, for example, `CA` and not `California`.
-     * Value, by country, is:<ul><li>UK. A county.</li><li>US. A state.</li><li>Canada. A province.
-     * </li><li>Japan. A prefecture.</li><li>Switzerland. A *kanton*.</li></ul>
+     * Value, by country, is: UK. A county. US. A state. Canada. A province. Japan. A prefecture.
+     * Switzerland. A *kanton*.
      *
      * @maps admin_area_1
      */
@@ -171,10 +172,9 @@ class Address implements \JsonSerializable
     /**
      * Returns Country Code.
      * The [2-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country or
-     * region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code> and
-     * not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      */
     public function getCountryCode(): string
     {
@@ -184,10 +184,9 @@ class Address implements \JsonSerializable
     /**
      * Sets Country Code.
      * The [2-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country or
-     * region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code> and
-     * not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      *
      * @required
      * @maps country_code
@@ -195,6 +194,26 @@ class Address implements \JsonSerializable
     public function setCountryCode(string $countryCode): void
     {
         $this->countryCode = $countryCode;
+    }
+
+    /**
+     * Converts the Address object to a human-readable string representation.
+     *
+     * @return string The string representation of the Address object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Address',
+            [
+                'addressLine1' => $this->addressLine1,
+                'addressLine2' => $this->addressLine2,
+                'adminArea2' => $this->adminArea2,
+                'adminArea1' => $this->adminArea1,
+                'postalCode' => $this->postalCode,
+                'countryCode' => $this->countryCode
+            ]
+        );
     }
 
     /**

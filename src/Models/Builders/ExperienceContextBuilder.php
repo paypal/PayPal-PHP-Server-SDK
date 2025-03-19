@@ -31,7 +31,7 @@ class ExperienceContextBuilder
     }
 
     /**
-     * Initializes a new experience context Builder object.
+     * Initializes a new Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +51,8 @@ class ExperienceContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -58,6 +62,8 @@ class ExperienceContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -67,6 +73,8 @@ class ExperienceContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -76,6 +84,8 @@ class ExperienceContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -84,7 +94,7 @@ class ExperienceContextBuilder
     }
 
     /**
-     * Initializes a new experience context object.
+     * Initializes a new Experience Context object.
      */
     public function build(): ExperienceContext
     {

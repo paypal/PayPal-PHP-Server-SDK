@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\PaymentInstruction;
+use PaypalServerSdkLib\Models\PlatformFee;
 
 /**
  * Builder for model PaymentInstruction
@@ -31,7 +32,7 @@ class PaymentInstructionBuilder
     }
 
     /**
-     * Initializes a new payment instruction Builder object.
+     * Initializes a new Payment Instruction Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +41,8 @@ class PaymentInstructionBuilder
 
     /**
      * Sets platform fees field.
+     *
+     * @param PlatformFee[]|null $value
      */
     public function platformFees(?array $value): self
     {
@@ -49,6 +52,8 @@ class PaymentInstructionBuilder
 
     /**
      * Sets disbursement mode field.
+     *
+     * @param string|null $value
      */
     public function disbursementMode(?string $value): self
     {
@@ -58,6 +63,8 @@ class PaymentInstructionBuilder
 
     /**
      * Sets payee pricing tier id field.
+     *
+     * @param string|null $value
      */
     public function payeePricingTierId(?string $value): self
     {
@@ -67,6 +74,8 @@ class PaymentInstructionBuilder
 
     /**
      * Sets payee receivable fx rate id field.
+     *
+     * @param string|null $value
      */
     public function payeeReceivableFxRateId(?string $value): self
     {
@@ -75,7 +84,7 @@ class PaymentInstructionBuilder
     }
 
     /**
-     * Initializes a new payment instruction object.
+     * Initializes a new Payment Instruction object.
      */
     public function build(): PaymentInstruction
     {

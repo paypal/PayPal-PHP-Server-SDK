@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -81,8 +82,7 @@ class OrderTrackerRequest implements \JsonSerializable
      * subsidiaries are repeated over many countries and might also have an entry in the global list.
      * Choose the carrier for your country. If the carrier is not available for your country, choose the
      * global version of the carrier. If your carrier name is not in the list, set `carrier` to `OTHER` and
-     * set carrier name in `carrier_name_other`. For allowed values, see <a
-     * href="/docs/tracking/reference/carriers/">Carriers</a>.
+     * set carrier name in `carrier_name_other`. For allowed values, see Carriers.
      */
     public function getCarrier(): ?string
     {
@@ -95,8 +95,7 @@ class OrderTrackerRequest implements \JsonSerializable
      * subsidiaries are repeated over many countries and might also have an entry in the global list.
      * Choose the carrier for your country. If the carrier is not available for your country, choose the
      * global version of the carrier. If your carrier name is not in the list, set `carrier` to `OTHER` and
-     * set carrier name in `carrier_name_other`. For allowed values, see <a
-     * href="/docs/tracking/reference/carriers/">Carriers</a>.
+     * set carrier name in `carrier_name_other`. For allowed values, see Carriers.
      *
      * @maps carrier
      */
@@ -150,8 +149,10 @@ class OrderTrackerRequest implements \JsonSerializable
 
     /**
      * Returns Notify Payer.
-     * If true, sends an email notification to the payer of the PayPal transaction. The email contains the
-     * tracking information that was uploaded through the API.
+     * If true, PayPal will send an email notification to the payer of the PayPal transaction. The email
+     * contains the tracking details provided through the Orders tracking API request. Independent of any
+     * value passed for `notify_payer`, the payer may receive tracking notifications within the PayPal app,
+     * based on the user's notification preferences.
      */
     public function getNotifyPayer(): ?bool
     {
@@ -160,8 +161,10 @@ class OrderTrackerRequest implements \JsonSerializable
 
     /**
      * Sets Notify Payer.
-     * If true, sends an email notification to the payer of the PayPal transaction. The email contains the
-     * tracking information that was uploaded through the API.
+     * If true, PayPal will send an email notification to the payer of the PayPal transaction. The email
+     * contains the tracking details provided through the Orders tracking API request. Independent of any
+     * value passed for `notify_payer`, the payer may receive tracking notifications within the PayPal app,
+     * based on the user's notification preferences.
      *
      * @maps notify_payer
      */
@@ -195,6 +198,26 @@ class OrderTrackerRequest implements \JsonSerializable
     }
 
     /**
+     * Converts the OrderTrackerRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderTrackerRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OrderTrackerRequest',
+            [
+                'trackingNumber' => $this->trackingNumber,
+                'carrier' => $this->carrier,
+                'carrierNameOther' => $this->carrierNameOther,
+                'captureId' => $this->captureId,
+                'notifyPayer' => $this->notifyPayer,
+                'items' => $this->items
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -210,7 +233,7 @@ class OrderTrackerRequest implements \JsonSerializable
             $json['tracking_number']    = $this->trackingNumber;
         }
         if (isset($this->carrier)) {
-            $json['carrier']            = ShipmentCarrier::checkValue($this->carrier);
+            $json['carrier']            = $this->carrier;
         }
         if (isset($this->carrierNameOther)) {
             $json['carrier_name_other'] = $this->carrierNameOther;

@@ -32,7 +32,7 @@ class PaymentTokenRequestCardBuilder
     }
 
     /**
-     * Initializes a new payment token request card Builder object.
+     * Initializes a new Payment Token Request Card Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class PaymentTokenRequestCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class PaymentTokenRequestCardBuilder
 
     /**
      * Sets number field.
+     *
+     * @param string|null $value
      */
     public function number(?string $value): self
     {
@@ -59,6 +63,8 @@ class PaymentTokenRequestCardBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -68,6 +74,8 @@ class PaymentTokenRequestCardBuilder
 
     /**
      * Sets security code field.
+     *
+     * @param string|null $value
      */
     public function securityCode(?string $value): self
     {
@@ -77,6 +85,8 @@ class PaymentTokenRequestCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -86,6 +96,8 @@ class PaymentTokenRequestCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -94,16 +106,7 @@ class PaymentTokenRequestCardBuilder
     }
 
     /**
-     * Sets network transaction reference field.
-     */
-    public function networkTransactionReference($value): self
-    {
-        $this->instance->setNetworkTransactionReference($value);
-        return $this;
-    }
-
-    /**
-     * Initializes a new payment token request card object.
+     * Initializes a new Payment Token Request Card object.
      */
     public function build(): PaymentTokenRequestCard
     {
