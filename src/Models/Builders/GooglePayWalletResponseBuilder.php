@@ -33,7 +33,7 @@ class GooglePayWalletResponseBuilder
     }
 
     /**
-     * Initializes a new google pay wallet response Builder object.
+     * Initializes a new Google Pay Wallet Response Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class GooglePayWalletResponseBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -51,6 +53,8 @@ class GooglePayWalletResponseBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -60,6 +64,8 @@ class GooglePayWalletResponseBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param PhoneNumberWithCountryCode|null $value
      */
     public function phoneNumber(?PhoneNumberWithCountryCode $value): self
     {
@@ -69,6 +75,8 @@ class GooglePayWalletResponseBuilder
 
     /**
      * Sets card field.
+     *
+     * @param GooglePayCardResponse|null $value
      */
     public function card(?GooglePayCardResponse $value): self
     {
@@ -77,7 +85,7 @@ class GooglePayWalletResponseBuilder
     }
 
     /**
-     * Initializes a new google pay wallet response object.
+     * Initializes a new Google Pay Wallet Response object.
      */
     public function build(): GooglePayWalletResponse
     {

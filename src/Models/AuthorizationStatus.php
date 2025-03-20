@@ -10,45 +10,41 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The status for the authorized payment.
  */
 class AuthorizationStatus
 {
+    /**
+     * The authorized payment is created. No captured payments have been made for this authorized payment.
+     */
     public const CREATED = 'CREATED';
 
+    /**
+     * The authorized payment has one or more captures against it. The sum of these captured payments is
+     * greater than the amount of the original authorized payment.
+     */
     public const CAPTURED = 'CAPTURED';
 
+    /**
+     * PayPal cannot authorize funds for this authorized payment.
+     */
     public const DENIED = 'DENIED';
 
+    /**
+     * A captured payment was made for the authorized payment for an amount that is less than the amount of
+     * the original authorized payment.
+     */
     public const PARTIALLY_CAPTURED = 'PARTIALLY_CAPTURED';
 
+    /**
+     * The authorized payment was voided. No more captured payments can be made against this authorized
+     * payment.
+     */
     public const VOIDED = 'VOIDED';
 
-    public const PENDING = 'PENDING';
-
-    private const _ALL_VALUES =
-        [self::CREATED, self::CAPTURED, self::DENIED, self::PARTIALLY_CAPTURED, self::VOIDED, self::PENDING];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The created authorization is in pending state. For more information, see status.details.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for AuthorizationStatus.");
-    }
+    public const PENDING = 'PENDING';
 }

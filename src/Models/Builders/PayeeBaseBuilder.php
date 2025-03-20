@@ -31,7 +31,7 @@ class PayeeBaseBuilder
     }
 
     /**
-     * Initializes a new payee base Builder object.
+     * Initializes a new Payee Base Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class PayeeBaseBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -49,6 +51,8 @@ class PayeeBaseBuilder
 
     /**
      * Sets merchant id field.
+     *
+     * @param string|null $value
      */
     public function merchantId(?string $value): self
     {
@@ -57,7 +61,7 @@ class PayeeBaseBuilder
     }
 
     /**
-     * Initializes a new payee base object.
+     * Initializes a new Payee Base object.
      */
     public function build(): PayeeBase
     {

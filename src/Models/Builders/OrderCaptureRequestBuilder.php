@@ -32,7 +32,7 @@ class OrderCaptureRequestBuilder
     }
 
     /**
-     * Initializes a new order capture request Builder object.
+     * Initializes a new Order Capture Request Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class OrderCaptureRequestBuilder
 
     /**
      * Sets payment source field.
+     *
+     * @param OrderCaptureRequestPaymentSource|null $value
      */
     public function paymentSource(?OrderCaptureRequestPaymentSource $value): self
     {
@@ -49,7 +51,7 @@ class OrderCaptureRequestBuilder
     }
 
     /**
-     * Initializes a new order capture request object.
+     * Initializes a new Order Capture Request object.
      */
     public function build(): OrderCaptureRequest
     {

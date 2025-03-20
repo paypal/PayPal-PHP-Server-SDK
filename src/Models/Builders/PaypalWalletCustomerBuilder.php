@@ -32,7 +32,7 @@ class PaypalWalletCustomerBuilder
     }
 
     /**
-     * Initializes a new paypal wallet customer Builder object.
+     * Initializes a new Paypal Wallet Customer Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class PaypalWalletCustomerBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -50,6 +52,8 @@ class PaypalWalletCustomerBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -59,6 +63,8 @@ class PaypalWalletCustomerBuilder
 
     /**
      * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
      */
     public function phone(?PhoneWithType $value): self
     {
@@ -68,6 +74,8 @@ class PaypalWalletCustomerBuilder
 
     /**
      * Sets merchant customer id field.
+     *
+     * @param string|null $value
      */
     public function merchantCustomerId(?string $value): self
     {
@@ -76,7 +84,7 @@ class PaypalWalletCustomerBuilder
     }
 
     /**
-     * Initializes a new paypal wallet customer object.
+     * Initializes a new Paypal Wallet Customer object.
      */
     public function build(): PaypalWalletCustomer
     {

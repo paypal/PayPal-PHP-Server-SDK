@@ -31,7 +31,7 @@ class SupplementaryPurchaseDataBuilder
     }
 
     /**
-     * Initializes a new supplementary purchase data Builder object.
+     * Initializes a new Supplementary Purchase Data Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class SupplementaryPurchaseDataBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -49,6 +51,8 @@ class SupplementaryPurchaseDataBuilder
 
     /**
      * Sets note to payer field.
+     *
+     * @param string|null $value
      */
     public function noteToPayer(?string $value): self
     {
@@ -57,7 +61,7 @@ class SupplementaryPurchaseDataBuilder
     }
 
     /**
-     * Initializes a new supplementary purchase data object.
+     * Initializes a new Supplementary Purchase Data object.
      */
     public function build(): SupplementaryPurchaseData
     {

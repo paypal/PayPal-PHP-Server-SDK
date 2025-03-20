@@ -12,7 +12,7 @@ The collection of payments, or transactions, for a purchase unit in an order. Fo
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `authorizations` | [`?(AuthorizationWithAdditionalData[])`](../../doc/models/authorization-with-additional-data.md) | Optional | An array of authorized payments for a purchase unit. A purchase unit can have zero or more authorized payments. | getAuthorizations(): ?array | setAuthorizations(?array authorizations): void |
-| `captures` | [`?(Capture[])`](../../doc/models/capture.md) | Optional | An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. | getCaptures(): ?array | setCaptures(?array captures): void |
+| `captures` | [`?(OrdersCapture[])`](../../doc/models/orders-capture.md) | Optional | An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. | getCaptures(): ?array | setCaptures(?array captures): void |
 | `refunds` | [`?(Refund[])`](../../doc/models/refund.md) | Optional | An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. | getRefunds(): ?array | setRefunds(?array refunds): void |
 
 ## Example (as JSON)

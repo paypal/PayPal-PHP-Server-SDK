@@ -31,7 +31,7 @@ class VaultExperienceContextBuilder
     }
 
     /**
-     * Initializes a new vault experience context Builder object.
+     * Initializes a new Vault Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class VaultExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +51,8 @@ class VaultExperienceContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -58,6 +62,8 @@ class VaultExperienceContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -67,6 +73,8 @@ class VaultExperienceContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -76,6 +84,8 @@ class VaultExperienceContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -85,6 +95,8 @@ class VaultExperienceContextBuilder
 
     /**
      * Sets vault instruction field.
+     *
+     * @param string|null $value
      */
     public function vaultInstruction(?string $value): self
     {
@@ -93,7 +105,7 @@ class VaultExperienceContextBuilder
     }
 
     /**
-     * Initializes a new vault experience context object.
+     * Initializes a new Vault Experience Context object.
      */
     public function build(): VaultExperienceContext
     {

@@ -31,7 +31,7 @@ class ExchangeRateBuilder
     }
 
     /**
-     * Initializes a new exchange rate Builder object.
+     * Initializes a new Exchange Rate Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ExchangeRateBuilder
 
     /**
      * Sets source currency field.
+     *
+     * @param string|null $value
      */
     public function sourceCurrency(?string $value): self
     {
@@ -49,6 +51,8 @@ class ExchangeRateBuilder
 
     /**
      * Sets target currency field.
+     *
+     * @param string|null $value
      */
     public function targetCurrency(?string $value): self
     {
@@ -58,6 +62,8 @@ class ExchangeRateBuilder
 
     /**
      * Sets value field.
+     *
+     * @param string|null $value
      */
     public function value(?string $value): self
     {
@@ -66,7 +72,7 @@ class ExchangeRateBuilder
     }
 
     /**
-     * Initializes a new exchange rate object.
+     * Initializes a new Exchange Rate object.
      */
     public function build(): ExchangeRate
     {

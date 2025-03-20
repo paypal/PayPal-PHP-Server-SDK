@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -24,7 +25,7 @@ class PaymentCollection implements \JsonSerializable
     private $authorizations;
 
     /**
-     * @var Capture[]|null
+     * @var OrdersCapture[]|null
      */
     private $captures;
 
@@ -64,7 +65,7 @@ class PaymentCollection implements \JsonSerializable
      * An array of captured payments for a purchase unit. A purchase unit can have zero or more captured
      * payments.
      *
-     * @return Capture[]|null
+     * @return OrdersCapture[]|null
      */
     public function getCaptures(): ?array
     {
@@ -78,7 +79,7 @@ class PaymentCollection implements \JsonSerializable
      *
      * @maps captures
      *
-     * @param Capture[]|null $captures
+     * @param OrdersCapture[]|null $captures
      */
     public function setCaptures(?array $captures): void
     {
@@ -107,6 +108,19 @@ class PaymentCollection implements \JsonSerializable
     public function setRefunds(?array $refunds): void
     {
         $this->refunds = $refunds;
+    }
+
+    /**
+     * Converts the PaymentCollection object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaymentCollection object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaymentCollection',
+            ['authorizations' => $this->authorizations, 'captures' => $this->captures, 'refunds' => $this->refunds]
+        );
     }
 
     /**

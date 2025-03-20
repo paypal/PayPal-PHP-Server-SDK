@@ -9,14 +9,14 @@ Transactions status result identifier. The outcome of the issuer's authenticatio
 
 ## Fields
 
-| Name |
-|  --- |
-| `Y` |
-| `N` |
-| `U` |
-| `A` |
-| `C` |
-| `R` |
-| `D` |
-| `I` |
+| Name | Description |
+|  --- | --- |
+| `SUCCESSFULAUTHENTICATION` | Successful authentication. |
+| `FAILEDAUTHENTICATION` | Failed authentication / account not verified / transaction denied. |
+| `UNABLETOCOMPLETEAUTHENTICATION` | Unable to complete authentication. |
+| `SUCCESSFULATTEMPTSTRANSACTION` | Successful attempts transaction. |
+| `CHALLENGEREQUIRED` | Challenge required for authentication. |
+| `AUTHENTICATIONREJECTED` | Authentication rejected (merchant must not submit for authorization). |
+| `DECOUPLEDAUTHENTICATION` | Challenge required; decoupled authentication confirmed. |
+| `INFORMATIONALONLY` | Informational only; 3DS requestor challenge preference acknowledged. |
 

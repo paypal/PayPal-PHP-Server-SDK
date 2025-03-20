@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 class CaptureRequest implements \JsonSerializable
@@ -172,6 +173,26 @@ class CaptureRequest implements \JsonSerializable
     public function setSoftDescriptor(?string $softDescriptor): void
     {
         $this->softDescriptor = $softDescriptor;
+    }
+
+    /**
+     * Converts the CaptureRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the CaptureRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CaptureRequest',
+            [
+                'invoiceId' => $this->invoiceId,
+                'noteToPayer' => $this->noteToPayer,
+                'amount' => $this->amount,
+                'finalCapture' => $this->finalCapture,
+                'paymentInstruction' => $this->paymentInstruction,
+                'softDescriptor' => $this->softDescriptor
+            ]
+        );
     }
 
     /**

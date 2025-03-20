@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -68,8 +69,7 @@ class Patch implements \JsonSerializable
 
     /**
      * Returns Path.
-     * The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location
-     * at which to complete the operation.
+     * The JSON Pointer to the target document location at which to complete the operation.
      */
     public function getPath(): ?string
     {
@@ -78,8 +78,7 @@ class Patch implements \JsonSerializable
 
     /**
      * Sets Path.
-     * The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location
-     * at which to complete the operation.
+     * The JSON Pointer to the target document location at which to complete the operation.
      *
      * @maps path
      */
@@ -90,9 +89,8 @@ class Patch implements \JsonSerializable
 
     /**
      * Returns Value.
-     * The value to apply. The <code>remove</code>, <code>copy</code>, and <code>move</code> operations do
-     * not require a value. Since <a href="https://www.rfc-editor.org/rfc/rfc69021">JSON Patch</a> allows
-     * any type for <code>value</code>, the <code>type</code> property is not specified.
+     * The value to apply. The remove, copy, and move operations do not require a value. Since JSON Patch
+     * allows any type for value, the type property is not specified.
      *
      * @return mixed
      */
@@ -103,9 +101,8 @@ class Patch implements \JsonSerializable
 
     /**
      * Sets Value.
-     * The value to apply. The <code>remove</code>, <code>copy</code>, and <code>move</code> operations do
-     * not require a value. Since <a href="https://www.rfc-editor.org/rfc/rfc69021">JSON Patch</a> allows
-     * any type for <code>value</code>, the <code>type</code> property is not specified.
+     * The value to apply. The remove, copy, and move operations do not require a value. Since JSON Patch
+     * allows any type for value, the type property is not specified.
      *
      * @maps value
      *
@@ -118,8 +115,8 @@ class Patch implements \JsonSerializable
 
     /**
      * Returns From.
-     * The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location
-     * from which to move the value. Required for the <code>move</code> operation.
+     * The JSON Pointer to the target document location from which to move the value. Required for the move
+     * operation.
      */
     public function getFrom(): ?string
     {
@@ -128,14 +125,27 @@ class Patch implements \JsonSerializable
 
     /**
      * Sets From.
-     * The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location
-     * from which to move the value. Required for the <code>move</code> operation.
+     * The JSON Pointer to the target document location from which to move the value. Required for the move
+     * operation.
      *
      * @maps from
      */
     public function setFrom(?string $from): void
     {
         $this->from = $from;
+    }
+
+    /**
+     * Converts the Patch object to a human-readable string representation.
+     *
+     * @return string The string representation of the Patch object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Patch',
+            ['op' => $this->op, 'path' => $this->path, 'value' => $this->value, 'from' => $this->from]
+        );
     }
 
     /**
@@ -150,7 +160,7 @@ class Patch implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['op']        = PatchOp::checkValue($this->op);
+        $json['op']        = $this->op;
         if (isset($this->path)) {
             $json['path']  = $this->path;
         }

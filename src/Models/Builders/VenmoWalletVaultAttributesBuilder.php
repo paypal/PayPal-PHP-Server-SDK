@@ -31,7 +31,10 @@ class VenmoWalletVaultAttributesBuilder
     }
 
     /**
-     * Initializes a new venmo wallet vault attributes Builder object.
+     * Initializes a new Venmo Wallet Vault Attributes Builder object.
+     *
+     * @param string $storeInVault
+     * @param string $usageType
      */
     public static function init(string $storeInVault, string $usageType): self
     {
@@ -40,6 +43,8 @@ class VenmoWalletVaultAttributesBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -49,6 +54,8 @@ class VenmoWalletVaultAttributesBuilder
 
     /**
      * Sets usage pattern field.
+     *
+     * @param string|null $value
      */
     public function usagePattern(?string $value): self
     {
@@ -58,6 +65,8 @@ class VenmoWalletVaultAttributesBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -67,6 +76,8 @@ class VenmoWalletVaultAttributesBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -75,7 +86,7 @@ class VenmoWalletVaultAttributesBuilder
     }
 
     /**
-     * Initializes a new venmo wallet vault attributes object.
+     * Initializes a new Venmo Wallet Vault Attributes object.
      */
     public function build(): VenmoWalletVaultAttributes
     {

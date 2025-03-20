@@ -32,7 +32,10 @@ class SofortPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new sofort payment request Builder object.
+     * Initializes a new Sofort Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $countryCode
      */
     public static function init(string $name, string $countryCode): self
     {
@@ -41,6 +44,8 @@ class SofortPaymentRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param ExperienceContext|null $value
      */
     public function experienceContext(?ExperienceContext $value): self
     {
@@ -49,7 +54,7 @@ class SofortPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new sofort payment request object.
+     * Initializes a new Sofort Payment Request object.
      */
     public function build(): SofortPaymentRequest
     {

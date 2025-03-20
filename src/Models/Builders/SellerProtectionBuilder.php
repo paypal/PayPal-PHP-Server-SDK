@@ -31,7 +31,7 @@ class SellerProtectionBuilder
     }
 
     /**
-     * Initializes a new seller protection Builder object.
+     * Initializes a new Seller Protection Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class SellerProtectionBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -49,6 +51,8 @@ class SellerProtectionBuilder
 
     /**
      * Sets dispute categories field.
+     *
+     * @param string[]|null $value
      */
     public function disputeCategories(?array $value): self
     {
@@ -57,7 +61,7 @@ class SellerProtectionBuilder
     }
 
     /**
-     * Initializes a new seller protection object.
+     * Initializes a new Seller Protection object.
      */
     public function build(): SellerProtection
     {

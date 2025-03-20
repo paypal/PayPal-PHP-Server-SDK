@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -184,6 +185,26 @@ class ErrorDetails implements \JsonSerializable
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * Converts the ErrorDetails object to a human-readable string representation.
+     *
+     * @return string The string representation of the ErrorDetails object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ErrorDetails',
+            [
+                'field' => $this->field,
+                'value' => $this->value,
+                'location' => $this->location,
+                'issue' => $this->issue,
+                'links' => $this->links,
+                'description' => $this->description
+            ]
+        );
     }
 
     /**

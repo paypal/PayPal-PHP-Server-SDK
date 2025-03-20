@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -21,6 +22,11 @@ class VaultPaypalWalletRequest implements \JsonSerializable
      * @var string|null
      */
     private $description;
+
+    /**
+     * @var string|null
+     */
+    private $usagePattern;
 
     /**
      * @var VaultedDigitalWalletShippingDetails|null
@@ -41,6 +47,11 @@ class VaultPaypalWalletRequest implements \JsonSerializable
      * @var string|null
      */
     private $customerType;
+
+    /**
+     * @var Plan|null
+     */
+    private $billingPlan;
 
     /**
      * @var VaultExperienceContext|null
@@ -67,6 +78,26 @@ class VaultPaypalWalletRequest implements \JsonSerializable
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * Returns Usage Pattern.
+     * Expected business/charge model for the billing agreement.
+     */
+    public function getUsagePattern(): ?string
+    {
+        return $this->usagePattern;
+    }
+
+    /**
+     * Sets Usage Pattern.
+     * Expected business/charge model for the billing agreement.
+     *
+     * @maps usage_pattern
+     */
+    public function setUsagePattern(?string $usagePattern): void
+    {
+        $this->usagePattern = $usagePattern;
     }
 
     /**
@@ -162,6 +193,26 @@ class VaultPaypalWalletRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Billing Plan.
+     * The merchant level Recurring Billing plan metadata for the Billing Agreement.
+     */
+    public function getBillingPlan(): ?Plan
+    {
+        return $this->billingPlan;
+    }
+
+    /**
+     * Sets Billing Plan.
+     * The merchant level Recurring Billing plan metadata for the Billing Agreement.
+     *
+     * @maps billing_plan
+     */
+    public function setBillingPlan(?Plan $billingPlan): void
+    {
+        $this->billingPlan = $billingPlan;
+    }
+
+    /**
      * Returns Experience Context.
      * Customizes the Vault creation flow experience for your customers.
      */
@@ -182,6 +233,28 @@ class VaultPaypalWalletRequest implements \JsonSerializable
     }
 
     /**
+     * Converts the VaultPaypalWalletRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the VaultPaypalWalletRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VaultPaypalWalletRequest',
+            [
+                'description' => $this->description,
+                'usagePattern' => $this->usagePattern,
+                'shipping' => $this->shipping,
+                'permitMultiplePaymentTokens' => $this->permitMultiplePaymentTokens,
+                'usageType' => $this->usageType,
+                'customerType' => $this->customerType,
+                'billingPlan' => $this->billingPlan,
+                'experienceContext' => $this->experienceContext
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -196,6 +269,9 @@ class VaultPaypalWalletRequest implements \JsonSerializable
         if (isset($this->description)) {
             $json['description']                    = $this->description;
         }
+        if (isset($this->usagePattern)) {
+            $json['usage_pattern']                  = $this->usagePattern;
+        }
         if (isset($this->shipping)) {
             $json['shipping']                       = $this->shipping;
         }
@@ -207,6 +283,9 @@ class VaultPaypalWalletRequest implements \JsonSerializable
         }
         if (isset($this->customerType)) {
             $json['customer_type']                  = $this->customerType;
+        }
+        if (isset($this->billingPlan)) {
+            $json['billing_plan']                   = $this->billingPlan;
         }
         if (isset($this->experienceContext)) {
             $json['experience_context']             = $this->experienceContext;

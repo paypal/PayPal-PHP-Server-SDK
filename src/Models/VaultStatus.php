@@ -10,38 +10,26 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The vault status.
  */
 class VaultStatus
 {
+    /**
+     * The payment source has been saved in your customer's vault. This vault status reflects `/v3/vault`
+     * status.
+     */
     public const VAULTED = 'VAULTED';
 
+    /**
+     * DEPRECATED. The payment source has been saved in your customer's vault. This status applies to
+     * deprecated integration patterns and will not be returned for v3/vault integrations.
+     */
     public const CREATED = 'CREATED';
 
-    public const APPROVED = 'APPROVED';
-
-    private const _ALL_VALUES = [self::VAULTED, self::CREATED, self::APPROVED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Customer has approved the action of saving the specified payment_source into their vault. Use
+     * v3/vault/payment-tokens with given setup_token to save the payment source in the vault
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for VaultStatus.");
-    }
+    public const APPROVED = 'APPROVED';
 }

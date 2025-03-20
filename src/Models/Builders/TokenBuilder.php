@@ -31,7 +31,10 @@ class TokenBuilder
     }
 
     /**
-     * Initializes a new token Builder object.
+     * Initializes a new Token Builder object.
+     *
+     * @param string $id
+     * @param string $type
      */
     public static function init(string $id, string $type): self
     {
@@ -39,7 +42,7 @@ class TokenBuilder
     }
 
     /**
-     * Initializes a new token object.
+     * Initializes a new Token object.
      */
     public function build(): Token
     {

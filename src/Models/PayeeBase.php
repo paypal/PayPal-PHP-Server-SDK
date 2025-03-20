@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -30,10 +31,9 @@ class PayeeBase implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -42,10 +42,9 @@ class PayeeBase implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -72,6 +71,19 @@ class PayeeBase implements \JsonSerializable
     public function setMerchantId(?string $merchantId): void
     {
         $this->merchantId = $merchantId;
+    }
+
+    /**
+     * Converts the PayeeBase object to a human-readable string representation.
+     *
+     * @return string The string representation of the PayeeBase object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PayeeBase',
+            ['emailAddress' => $this->emailAddress, 'merchantId' => $this->merchantId]
+        );
     }
 
     /**

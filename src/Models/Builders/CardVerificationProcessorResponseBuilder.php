@@ -31,7 +31,7 @@ class CardVerificationProcessorResponseBuilder
     }
 
     /**
-     * Initializes a new card verification processor response Builder object.
+     * Initializes a new Card Verification Processor Response Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class CardVerificationProcessorResponseBuilder
 
     /**
      * Sets avs code field.
+     *
+     * @param string|null $value
      */
     public function avsCode(?string $value): self
     {
@@ -49,6 +51,8 @@ class CardVerificationProcessorResponseBuilder
 
     /**
      * Sets cvv code field.
+     *
+     * @param string|null $value
      */
     public function cvvCode(?string $value): self
     {
@@ -57,7 +61,7 @@ class CardVerificationProcessorResponseBuilder
     }
 
     /**
-     * Initializes a new card verification processor response object.
+     * Initializes a new Card Verification Processor Response object.
      */
     public function build(): CardVerificationProcessorResponse
     {

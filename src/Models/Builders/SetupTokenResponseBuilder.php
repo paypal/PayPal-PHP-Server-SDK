@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\CustomerRequest;
+use PaypalServerSdkLib\Models\Customer;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\SetupTokenResponse;
 use PaypalServerSdkLib\Models\SetupTokenResponsePaymentSource;
 
@@ -33,7 +34,7 @@ class SetupTokenResponseBuilder
     }
 
     /**
-     * Initializes a new setup token response Builder object.
+     * Initializes a new Setup Token Response Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +43,8 @@ class SetupTokenResponseBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -50,18 +53,11 @@ class SetupTokenResponseBuilder
     }
 
     /**
-     * Sets ordinal field.
-     */
-    public function ordinal(?int $value): self
-    {
-        $this->instance->setOrdinal($value);
-        return $this;
-    }
-
-    /**
      * Sets customer field.
+     *
+     * @param Customer|null $value
      */
-    public function customer(?CustomerRequest $value): self
+    public function customer(?Customer $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
@@ -69,6 +65,8 @@ class SetupTokenResponseBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -78,6 +76,8 @@ class SetupTokenResponseBuilder
 
     /**
      * Sets payment source field.
+     *
+     * @param SetupTokenResponsePaymentSource|null $value
      */
     public function paymentSource(?SetupTokenResponsePaymentSource $value): self
     {
@@ -87,6 +87,8 @@ class SetupTokenResponseBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -95,7 +97,7 @@ class SetupTokenResponseBuilder
     }
 
     /**
-     * Initializes a new setup token response object.
+     * Initializes a new Setup Token Response object.
      */
     public function build(): SetupTokenResponse
     {

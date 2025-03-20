@@ -32,7 +32,7 @@ class CustomerInformationBuilder
     }
 
     /**
-     * Initializes a new customer information Builder object.
+     * Initializes a new Customer Information Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class CustomerInformationBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -50,6 +52,8 @@ class CustomerInformationBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -59,6 +63,8 @@ class CustomerInformationBuilder
 
     /**
      * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
      */
     public function phone(?PhoneWithType $value): self
     {
@@ -67,7 +73,7 @@ class CustomerInformationBuilder
     }
 
     /**
-     * Initializes a new customer information object.
+     * Initializes a new Customer Information object.
      */
     public function build(): CustomerInformation
     {

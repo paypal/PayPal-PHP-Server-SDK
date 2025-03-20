@@ -31,7 +31,10 @@ class LinkDescriptionBuilder
     }
 
     /**
-     * Initializes a new link description Builder object.
+     * Initializes a new Link Description Builder object.
+     *
+     * @param string $href
+     * @param string $rel
      */
     public static function init(string $href, string $rel): self
     {
@@ -40,6 +43,8 @@ class LinkDescriptionBuilder
 
     /**
      * Sets method field.
+     *
+     * @param string|null $value
      */
     public function method(?string $value): self
     {
@@ -48,7 +53,7 @@ class LinkDescriptionBuilder
     }
 
     /**
-     * Initializes a new link description object.
+     * Initializes a new Link Description object.
      */
     public function build(): LinkDescription
     {

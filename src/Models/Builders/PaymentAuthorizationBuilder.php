@@ -12,9 +12,10 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\AuthorizationStatusDetails;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
 use PaypalServerSdkLib\Models\NetworkTransactionReference;
-use PaypalServerSdkLib\Models\Payee;
+use PaypalServerSdkLib\Models\PayeeBase;
 use PaypalServerSdkLib\Models\PaymentAuthorization;
 use PaypalServerSdkLib\Models\PaymentSupplementaryData;
 use PaypalServerSdkLib\Models\SellerProtection;
@@ -37,7 +38,7 @@ class PaymentAuthorizationBuilder
     }
 
     /**
-     * Initializes a new payment authorization Builder object.
+     * Initializes a new Payment Authorization Builder object.
      */
     public static function init(): self
     {
@@ -46,6 +47,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -55,6 +58,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param AuthorizationStatusDetails|null $value
      */
     public function statusDetails(?AuthorizationStatusDetails $value): self
     {
@@ -64,6 +69,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -73,6 +80,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -82,6 +91,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -91,6 +102,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -100,6 +113,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets network transaction reference field.
+     *
+     * @param NetworkTransactionReference|null $value
      */
     public function networkTransactionReference(?NetworkTransactionReference $value): self
     {
@@ -109,6 +124,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets seller protection field.
+     *
+     * @param SellerProtection|null $value
      */
     public function sellerProtection(?SellerProtection $value): self
     {
@@ -118,6 +135,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets expiration time field.
+     *
+     * @param string|null $value
      */
     public function expirationTime(?string $value): self
     {
@@ -127,6 +146,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -136,6 +157,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -145,6 +168,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -154,6 +179,8 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets supplementary data field.
+     *
+     * @param PaymentSupplementaryData|null $value
      */
     public function supplementaryData(?PaymentSupplementaryData $value): self
     {
@@ -163,15 +190,17 @@ class PaymentAuthorizationBuilder
 
     /**
      * Sets payee field.
+     *
+     * @param PayeeBase|null $value
      */
-    public function payee(?Payee $value): self
+    public function payee(?PayeeBase $value): self
     {
         $this->instance->setPayee($value);
         return $this;
     }
 
     /**
-     * Initializes a new payment authorization object.
+     * Initializes a new Payment Authorization object.
      */
     public function build(): PaymentAuthorization
     {

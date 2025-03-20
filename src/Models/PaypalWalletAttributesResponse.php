@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -71,6 +72,19 @@ class PaypalWalletAttributesResponse implements \JsonSerializable
     public function setCobrandedCards(?array $cobrandedCards): void
     {
         $this->cobrandedCards = $cobrandedCards;
+    }
+
+    /**
+     * Converts the PaypalWalletAttributesResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaypalWalletAttributesResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaypalWalletAttributesResponse',
+            ['vault' => $this->vault, 'cobrandedCards' => $this->cobrandedCards]
+        );
     }
 
     /**

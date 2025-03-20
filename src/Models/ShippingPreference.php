@@ -10,38 +10,24 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The location from which the shipping address is derived.
  */
 class ShippingPreference
 {
+    /**
+     * Get the customer-provided shipping address on the PayPal site.
+     */
     public const GET_FROM_FILE = 'GET_FROM_FILE';
 
+    /**
+     * Redacts the shipping address from the PayPal site. Recommended for digital goods.
+     */
     public const NO_SHIPPING = 'NO_SHIPPING';
 
-    public const SET_PROVIDED_ADDRESS = 'SET_PROVIDED_ADDRESS';
-
-    private const _ALL_VALUES = [self::GET_FROM_FILE, self::NO_SHIPPING, self::SET_PROVIDED_ADDRESS];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Get the merchant-provided address. The customer cannot change this address on the PayPal site. If
+     * merchant does not pass an address, customer can choose the address on PayPal pages.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for ShippingPreference.");
-    }
+    public const SET_PROVIDED_ADDRESS = 'SET_PROVIDED_ADDRESS';
 }

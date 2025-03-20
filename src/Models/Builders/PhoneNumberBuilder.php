@@ -31,7 +31,9 @@ class PhoneNumberBuilder
     }
 
     /**
-     * Initializes a new phone number Builder object.
+     * Initializes a new Phone Number Builder object.
+     *
+     * @param string $nationalNumber
      */
     public static function init(string $nationalNumber): self
     {
@@ -39,7 +41,7 @@ class PhoneNumberBuilder
     }
 
     /**
-     * Initializes a new phone number object.
+     * Initializes a new Phone Number object.
      */
     public function build(): PhoneNumber
     {

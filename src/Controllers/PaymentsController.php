@@ -30,12 +30,13 @@ class PaymentsController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function authorizationsGet(array $options): ApiResponse
+    public function getAuthorizedPayment(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/payments/authorizations/{authorization_id}')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('authorization_id', $options)->extract('authorizationId'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
             );
 
@@ -67,7 +68,7 @@ class PaymentsController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function authorizationsCapture(array $options): ApiResponse
+    public function captureAuthorizedPayment(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::POST,
@@ -77,6 +78,7 @@ class PaymentsController extends BaseController
             ->parameters(
                 TemplateParam::init('authorization_id', $options)->extract('authorizationId'),
                 HeaderParam::init('Content-Type', 'application/json'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
@@ -136,21 +138,19 @@ class PaymentsController extends BaseController
     /**
      * Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds are still available,
      * reauthorize a payment after its initial three-day honor period expires. Within the 29-day
-     * authorization period, you can issue multiple re-authorizations after the honor period expires.
-     * <br/><br/>If 30 days have transpired since the date of the original authorization, you must create
-     * an authorized payment instead of reauthorizing the original authorized payment.<br/><br/>A
-     * reauthorized payment itself has a new honor period of three days.<br/><br/>You can reauthorize an
-     * authorized payment from 4 to 29 days after the 3-day honor period. The allowed amount depends on
-     * context and geography, for example in US it is up to 115% of the original authorized amount, not to
-     * exceed an increase of $75 USD.<br/><br/>Supports only the `amount` request parameter.
-     * <blockquote><strong>Note:</strong> This request is currently not supported for Partner use cases.
-     * </blockquote>
+     * authorization period, you can issue multiple re-authorizations after the honor period expires. If 30
+     * days have transpired since the date of the original authorization, you must create an authorized
+     * payment instead of reauthorizing the original authorized payment. A reauthorized payment itself has
+     * a new honor period of three days. You can reauthorize an authorized payment from 4 to 29 days after
+     * the 3-day honor period. The allowed amount depends on context and geography, for example in US it is
+     * up to 115% of the original authorized amount, not to exceed an increase of $75 USD. Supports only
+     * the `amount` request parameter. Note: This request is currently not supported for Partner use cases.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function authorizationsReauthorize(array $options): ApiResponse
+    public function reauthorizePayment(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::POST,
@@ -211,7 +211,7 @@ class PaymentsController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function authorizationsVoid(array $options): ApiResponse
+    public function voidPayment(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(
             RequestMethod::POST,
@@ -220,6 +220,7 @@ class PaymentsController extends BaseController
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('authorization_id', $options)->extract('authorizationId'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
                 HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal')
@@ -272,16 +273,18 @@ class PaymentsController extends BaseController
     /**
      * Shows details for a captured payment, by ID.
      *
-     * @param string $captureId The PayPal-generated ID for the captured payment for which to show
-     *        details.
+     * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function capturesGet(string $captureId): ApiResponse
+    public function getCapturedPayment(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/payments/captures/{capture_id}')
             ->auth('Oauth2')
-            ->parameters(TemplateParam::init('capture_id', $captureId));
+            ->parameters(
+                TemplateParam::init('capture_id', $options)->extract('captureId'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse')
+            );
 
         $_resHandler = $this->responseHandler()
             ->throwErrorOn(
@@ -313,19 +316,20 @@ class PaymentsController extends BaseController
 
     /**
      * Refunds a captured payment, by ID. For a full refund, include an empty payload in the JSON request
-     * body. For a partial refund, include an <code>amount</code> object in the JSON request body.
+     * body. For a partial refund, include an amount object in the JSON request body.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function capturesRefund(array $options): ApiResponse
+    public function refundCapturedPayment(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/payments/captures/{capture_id}/refund')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('capture_id', $options)->extract('captureId'),
                 HeaderParam::init('Content-Type', 'application/json'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
@@ -390,12 +394,13 @@ class PaymentsController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function refundsGet(array $options): ApiResponse
+    public function getRefund(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/payments/refunds/{refund_id}')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('refund_id', $options)->extract('refundId'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
             );
 

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -144,10 +145,9 @@ class OrderRequest implements \JsonSerializable
 
     /**
      * Returns Application Context.
-     * Customizes the payer experience during the approval process for the payment with PayPal.
-     * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code>
-     * and <code>shipping_preference</code> during partner account setup, which overrides the request
-     * values.</blockquote>
+     * Customizes the payer experience during the approval process for the payment with PayPal. Note:
+     * Partners and Marketplaces might configure brand_name and shipping_preference during partner account
+     * setup, which overrides the request values.
      */
     public function getApplicationContext(): ?OrderApplicationContext
     {
@@ -156,16 +156,34 @@ class OrderRequest implements \JsonSerializable
 
     /**
      * Sets Application Context.
-     * Customizes the payer experience during the approval process for the payment with PayPal.
-     * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code>
-     * and <code>shipping_preference</code> during partner account setup, which overrides the request
-     * values.</blockquote>
+     * Customizes the payer experience during the approval process for the payment with PayPal. Note:
+     * Partners and Marketplaces might configure brand_name and shipping_preference during partner account
+     * setup, which overrides the request values.
      *
      * @maps application_context
      */
     public function setApplicationContext(?OrderApplicationContext $applicationContext): void
     {
         $this->applicationContext = $applicationContext;
+    }
+
+    /**
+     * Converts the OrderRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OrderRequest',
+            [
+                'intent' => $this->intent,
+                'payer' => $this->payer,
+                'purchaseUnits' => $this->purchaseUnits,
+                'paymentSource' => $this->paymentSource,
+                'applicationContext' => $this->applicationContext
+            ]
+        );
     }
 
     /**
@@ -180,7 +198,7 @@ class OrderRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['intent']                  = CheckoutPaymentIntent::checkValue($this->intent);
+        $json['intent']                  = $this->intent;
         if (isset($this->payer)) {
             $json['payer']               = $this->payer;
         }

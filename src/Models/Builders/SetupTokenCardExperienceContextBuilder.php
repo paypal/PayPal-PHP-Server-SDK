@@ -31,7 +31,7 @@ class SetupTokenCardExperienceContextBuilder
     }
 
     /**
-     * Initializes a new setup token card experience context Builder object.
+     * Initializes a new Setup Token Card Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class SetupTokenCardExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +51,8 @@ class SetupTokenCardExperienceContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -58,6 +62,8 @@ class SetupTokenCardExperienceContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -67,6 +73,8 @@ class SetupTokenCardExperienceContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -76,6 +84,8 @@ class SetupTokenCardExperienceContextBuilder
 
     /**
      * Sets vault instruction field.
+     *
+     * @param string|null $value
      */
     public function vaultInstruction(?string $value): self
     {
@@ -84,7 +94,7 @@ class SetupTokenCardExperienceContextBuilder
     }
 
     /**
-     * Initializes a new setup token card experience context object.
+     * Initializes a new Setup Token Card Experience Context object.
      */
     public function build(): SetupTokenCardExperienceContext
     {

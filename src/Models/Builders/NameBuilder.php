@@ -31,7 +31,7 @@ class NameBuilder
     }
 
     /**
-     * Initializes a new name Builder object.
+     * Initializes a new Name Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class NameBuilder
 
     /**
      * Sets given name field.
+     *
+     * @param string|null $value
      */
     public function givenName(?string $value): self
     {
@@ -49,6 +51,8 @@ class NameBuilder
 
     /**
      * Sets surname field.
+     *
+     * @param string|null $value
      */
     public function surname(?string $value): self
     {
@@ -57,7 +61,7 @@ class NameBuilder
     }
 
     /**
-     * Initializes a new name object.
+     * Initializes a new Name object.
      */
     public function build(): Name
     {

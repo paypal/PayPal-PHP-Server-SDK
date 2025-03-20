@@ -31,7 +31,10 @@ class VaultTokenRequestBuilder
     }
 
     /**
-     * Initializes a new vault token request Builder object.
+     * Initializes a new Vault Token Request Builder object.
+     *
+     * @param string $id
+     * @param string $type
      */
     public static function init(string $id, string $type): self
     {
@@ -39,7 +42,7 @@ class VaultTokenRequestBuilder
     }
 
     /**
-     * Initializes a new vault token request object.
+     * Initializes a new Vault Token Request object.
      */
     public function build(): VaultTokenRequest
     {

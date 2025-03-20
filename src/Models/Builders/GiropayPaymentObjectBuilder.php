@@ -31,7 +31,7 @@ class GiropayPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new giropay payment object Builder object.
+     * Initializes a new Giropay Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class GiropayPaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -49,6 +51,8 @@ class GiropayPaymentObjectBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -58,6 +62,8 @@ class GiropayPaymentObjectBuilder
 
     /**
      * Sets bic field.
+     *
+     * @param string|null $value
      */
     public function bic(?string $value): self
     {
@@ -66,7 +72,7 @@ class GiropayPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new giropay payment object object.
+     * Initializes a new Giropay Payment Object object.
      */
     public function build(): GiropayPaymentObject
     {

@@ -10,38 +10,25 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Indicates the type of the stored payment_source payment.
  */
 class StoredPaymentSourcePaymentType
 {
+    /**
+     * One Time payment such as online purchase or donation. (e.g. Checkout with one-click).
+     */
     public const ONE_TIME = 'ONE_TIME';
 
+    /**
+     * Payment which is part of a series of payments with fixed or variable amounts, following a fixed time
+     * interval. (e.g. Subscription payments).
+     */
     public const RECURRING = 'RECURRING';
 
-    public const UNSCHEDULED = 'UNSCHEDULED';
-
-    private const _ALL_VALUES = [self::ONE_TIME, self::RECURRING, self::UNSCHEDULED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Payment which is part of a series of payments that occur on a non-fixed schedule and/or have
+     * variable amounts. (e.g. Account Topup payments).
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for StoredPaymentSourcePaymentType.");
-    }
+    public const UNSCHEDULED = 'UNSCHEDULED';
 }

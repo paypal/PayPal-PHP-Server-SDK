@@ -24,7 +24,7 @@ Documentation for accessing and setting credentials for Oauth2.
 
 ### Client Initialization
 
-You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* autentication, are called.
+You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* authentication, are called.
 
 ```php
 $client = PaypalServerSdkClientBuilder::init()

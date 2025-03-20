@@ -32,7 +32,7 @@ class CardAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new card attributes response Builder object.
+     * Initializes a new Card Attributes Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class CardAttributesResponseBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param CardVaultResponse|null $value
      */
     public function vault(?CardVaultResponse $value): self
     {
@@ -49,7 +51,7 @@ class CardAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new card attributes response object.
+     * Initializes a new Card Attributes Response object.
      */
     public function build(): CardAttributesResponse
     {

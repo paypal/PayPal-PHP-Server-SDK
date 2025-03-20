@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\CallbackConfiguration;
 use PaypalServerSdkLib\Models\VenmoWalletExperienceContext;
 
 /**
@@ -31,7 +32,7 @@ class VenmoWalletExperienceContextBuilder
     }
 
     /**
-     * Initializes a new venmo wallet experience context Builder object.
+     * Initializes a new Venmo Wallet Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +41,8 @@ class VenmoWalletExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +52,8 @@ class VenmoWalletExperienceContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -57,7 +62,18 @@ class VenmoWalletExperienceContextBuilder
     }
 
     /**
-     * Initializes a new venmo wallet experience context object.
+     * Sets order update callback config field.
+     *
+     * @param CallbackConfiguration|null $value
+     */
+    public function orderUpdateCallbackConfig(?CallbackConfiguration $value): self
+    {
+        $this->instance->setOrderUpdateCallbackConfig($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Venmo Wallet Experience Context object.
      */
     public function build(): VenmoWalletExperienceContext
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -28,7 +29,7 @@ class PurchaseUnitRequest implements \JsonSerializable
     private $amount;
 
     /**
-     * @var Payee|null
+     * @var PayeeBase|null
      */
     private $payee;
 
@@ -107,11 +108,10 @@ class PurchaseUnitRequest implements \JsonSerializable
     /**
      * Returns Amount.
      * The total order amount with an optional breakdown that provides details, such as the total item
-     * amount, total tax amount, shipping, handling, insurance, and discounts, if any.<br/>If you specify
+     * amount, total tax amount, shipping, handling, insurance, and discounts, if any. If you specify
      * `amount.breakdown`, the amount equals `item_total` plus `tax_total` plus `shipping` plus `handling`
-     * plus `insurance` minus `shipping_discount` minus discount.<br/>The amount must be a positive number.
-     * For listed of supported currencies and decimal precision, see the PayPal REST APIs <a
-     * href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+     * plus `insurance` minus `shipping_discount` minus discount. The amount must be a positive number. For
+     * listed of supported currencies and decimal precision, see the PayPal REST APIs Currency Codes.
      */
     public function getAmount(): AmountWithBreakdown
     {
@@ -121,11 +121,10 @@ class PurchaseUnitRequest implements \JsonSerializable
     /**
      * Sets Amount.
      * The total order amount with an optional breakdown that provides details, such as the total item
-     * amount, total tax amount, shipping, handling, insurance, and discounts, if any.<br/>If you specify
+     * amount, total tax amount, shipping, handling, insurance, and discounts, if any. If you specify
      * `amount.breakdown`, the amount equals `item_total` plus `tax_total` plus `shipping` plus `handling`
-     * plus `insurance` minus `shipping_discount` minus discount.<br/>The amount must be a positive number.
-     * For listed of supported currencies and decimal precision, see the PayPal REST APIs <a
-     * href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+     * plus `insurance` minus `shipping_discount` minus discount. The amount must be a positive number. For
+     * listed of supported currencies and decimal precision, see the PayPal REST APIs Currency Codes.
      *
      * @required
      * @maps amount
@@ -139,7 +138,7 @@ class PurchaseUnitRequest implements \JsonSerializable
      * Returns Payee.
      * The merchant who receives the funds and fulfills the order. The merchant is also known as the payee.
      */
-    public function getPayee(): ?Payee
+    public function getPayee(): ?PayeeBase
     {
         return $this->payee;
     }
@@ -150,7 +149,7 @@ class PurchaseUnitRequest implements \JsonSerializable
      *
      * @maps payee
      */
-    public function setPayee(?Payee $payee): void
+    public function setPayee(?PayeeBase $payee): void
     {
         $this->payee = $payee;
     }
@@ -250,17 +249,14 @@ class PurchaseUnitRequest implements \JsonSerializable
     /**
      * Returns Soft Descriptor.
      * The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a
-     * payer's card statement.<br><br>If an Order is paid using the "PayPal Wallet", the statement
-     * descriptor will appear in following format on the payer's card statement:
-     * <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(space)+
-     * <var>soft_descriptor</var></code><blockquote><strong>Note:</strong> The merchant descriptor is the
-     * descriptor of the merchant’s payment receiving preferences which can be seen by logging into the
-     * merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockquote>The
-     * <code>PAYPAL</code> prefix uses 8 characters. Only the first 22 characters will be displayed in the
-     * statement. <br>For example, if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.
-     * </li><li>The merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The soft
-     * descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement descriptor on the card is
-     * <code>PAYPAL * Janes Gift 80</code>.
+     * payer's card statement. If an Order is paid using the "PayPal Wallet", the statement descriptor will
+     * appear in following format on the payer's card statement:
+     * PAYPAL_prefix+(space)+merchant_descriptor+(space)+ soft_descriptor Note: The merchant descriptor is
+     * the descriptor of the merchant’s payment receiving preferences which can be seen by logging into the
+     * merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit The PAYPAL prefix
+     * uses 8 characters. Only the first 22 characters will be displayed in the statement. For example, if:
+     * The PayPal prefix toggle is PAYPAL *. The merchant descriptor in the profile is Janes Gift. The soft
+     * descriptor is 800-123-1234. Then, the statement descriptor on the card is PAYPAL * Janes Gift 80.
      */
     public function getSoftDescriptor(): ?string
     {
@@ -270,17 +266,14 @@ class PurchaseUnitRequest implements \JsonSerializable
     /**
      * Sets Soft Descriptor.
      * The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a
-     * payer's card statement.<br><br>If an Order is paid using the "PayPal Wallet", the statement
-     * descriptor will appear in following format on the payer's card statement:
-     * <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(space)+
-     * <var>soft_descriptor</var></code><blockquote><strong>Note:</strong> The merchant descriptor is the
-     * descriptor of the merchant’s payment receiving preferences which can be seen by logging into the
-     * merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockquote>The
-     * <code>PAYPAL</code> prefix uses 8 characters. Only the first 22 characters will be displayed in the
-     * statement. <br>For example, if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.
-     * </li><li>The merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The soft
-     * descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement descriptor on the card is
-     * <code>PAYPAL * Janes Gift 80</code>.
+     * payer's card statement. If an Order is paid using the "PayPal Wallet", the statement descriptor will
+     * appear in following format on the payer's card statement:
+     * PAYPAL_prefix+(space)+merchant_descriptor+(space)+ soft_descriptor Note: The merchant descriptor is
+     * the descriptor of the merchant’s payment receiving preferences which can be seen by logging into the
+     * merchant account https://www.sandbox.paypal.com/businessprofile/settings/info/edit The PAYPAL prefix
+     * uses 8 characters. Only the first 22 characters will be displayed in the statement. For example, if:
+     * The PayPal prefix toggle is PAYPAL *. The merchant descriptor in the profile is Janes Gift. The soft
+     * descriptor is 800-123-1234. Then, the statement descriptor on the card is PAYPAL * Janes Gift 80.
      *
      * @maps soft_descriptor
      */
@@ -353,6 +346,31 @@ class PurchaseUnitRequest implements \JsonSerializable
     public function setSupplementaryData(?SupplementaryData $supplementaryData): void
     {
         $this->supplementaryData = $supplementaryData;
+    }
+
+    /**
+     * Converts the PurchaseUnitRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the PurchaseUnitRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PurchaseUnitRequest',
+            [
+                'referenceId' => $this->referenceId,
+                'amount' => $this->amount,
+                'payee' => $this->payee,
+                'paymentInstruction' => $this->paymentInstruction,
+                'description' => $this->description,
+                'customId' => $this->customId,
+                'invoiceId' => $this->invoiceId,
+                'softDescriptor' => $this->softDescriptor,
+                'items' => $this->items,
+                'shipping' => $this->shipping,
+                'supplementaryData' => $this->supplementaryData
+            ]
+        );
     }
 
     /**

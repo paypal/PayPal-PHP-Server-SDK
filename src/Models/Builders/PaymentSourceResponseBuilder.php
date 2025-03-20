@@ -45,7 +45,7 @@ class PaymentSourceResponseBuilder
     }
 
     /**
-     * Initializes a new payment source response Builder object.
+     * Initializes a new Payment Source Response Builder object.
      */
     public static function init(): self
     {
@@ -54,6 +54,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets card field.
+     *
+     * @param CardResponse|null $value
      */
     public function card(?CardResponse $value): self
     {
@@ -63,6 +65,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets paypal field.
+     *
+     * @param PaypalWalletResponse|null $value
      */
     public function paypal(?PaypalWalletResponse $value): self
     {
@@ -72,6 +76,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets bancontact field.
+     *
+     * @param BancontactPaymentObject|null $value
      */
     public function bancontact(?BancontactPaymentObject $value): self
     {
@@ -81,6 +87,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets blik field.
+     *
+     * @param BlikPaymentObject|null $value
      */
     public function blik(?BlikPaymentObject $value): self
     {
@@ -90,6 +98,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets eps field.
+     *
+     * @param EpsPaymentObject|null $value
      */
     public function eps(?EpsPaymentObject $value): self
     {
@@ -99,6 +109,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets giropay field.
+     *
+     * @param GiropayPaymentObject|null $value
      */
     public function giropay(?GiropayPaymentObject $value): self
     {
@@ -108,6 +120,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets ideal field.
+     *
+     * @param IdealPaymentObject|null $value
      */
     public function ideal(?IdealPaymentObject $value): self
     {
@@ -117,6 +131,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets mybank field.
+     *
+     * @param MybankPaymentObject|null $value
      */
     public function mybank(?MybankPaymentObject $value): self
     {
@@ -126,6 +142,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets p 24 field.
+     *
+     * @param P24PaymentObject|null $value
      */
     public function p24(?P24PaymentObject $value): self
     {
@@ -135,6 +153,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets sofort field.
+     *
+     * @param SofortPaymentObject|null $value
      */
     public function sofort(?SofortPaymentObject $value): self
     {
@@ -144,6 +164,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets trustly field.
+     *
+     * @param TrustlyPaymentObject|null $value
      */
     public function trustly(?TrustlyPaymentObject $value): self
     {
@@ -153,6 +175,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets apple pay field.
+     *
+     * @param ApplePayPaymentObject|null $value
      */
     public function applePay(?ApplePayPaymentObject $value): self
     {
@@ -162,6 +186,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets google pay field.
+     *
+     * @param GooglePayWalletResponse|null $value
      */
     public function googlePay(?GooglePayWalletResponse $value): self
     {
@@ -171,6 +197,8 @@ class PaymentSourceResponseBuilder
 
     /**
      * Sets venmo field.
+     *
+     * @param VenmoWalletResponse|null $value
      */
     public function venmo(?VenmoWalletResponse $value): self
     {
@@ -179,7 +207,7 @@ class PaymentSourceResponseBuilder
     }
 
     /**
-     * Initializes a new payment source response object.
+     * Initializes a new Payment Source Response object.
      */
     public function build(): PaymentSourceResponse
     {

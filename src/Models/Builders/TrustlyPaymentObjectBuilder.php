@@ -31,7 +31,7 @@ class TrustlyPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new trustly payment object Builder object.
+     * Initializes a new Trustly Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class TrustlyPaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -49,6 +51,8 @@ class TrustlyPaymentObjectBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -57,7 +61,20 @@ class TrustlyPaymentObjectBuilder
     }
 
     /**
+     * Sets email field.
+     *
+     * @param string|null $value
+     */
+    public function email(?string $value): self
+    {
+        $this->instance->setEmail($value);
+        return $this;
+    }
+
+    /**
      * Sets bic field.
+     *
+     * @param string|null $value
      */
     public function bic(?string $value): self
     {
@@ -67,6 +84,8 @@ class TrustlyPaymentObjectBuilder
 
     /**
      * Sets iban last chars field.
+     *
+     * @param string|null $value
      */
     public function ibanLastChars(?string $value): self
     {
@@ -75,7 +94,7 @@ class TrustlyPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new trustly payment object object.
+     * Initializes a new Trustly Payment Object object.
      */
     public function build(): TrustlyPaymentObject
     {

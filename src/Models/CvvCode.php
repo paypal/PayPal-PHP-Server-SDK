@@ -10,75 +10,79 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The card verification value code for for Visa, Discover, Mastercard, or American Express.
  */
 class CvvCode
 {
-    public const E = 'E';
-
-    public const I = 'I';
-
-    public const M = 'M';
-
-    public const N = 'N';
-
-    public const P = 'P';
-
-    public const S = 'S';
-
-    public const U = 'U';
-
-    public const X = 'X';
-
-    public const ENUM_ALL_OTHERS = 'All others';
-
-    public const ENUM_0 = '0';
-
-    public const ENUM_1 = '1';
-
-    public const ENUM_2 = '2';
-
-    public const ENUM_3 = '3';
-
-    public const ENUM_4 = '4';
-
-    private const _ALL_VALUES = [
-        self::E,
-        self::I,
-        self::M,
-        self::N,
-        self::P,
-        self::S,
-        self::U,
-        self::X,
-        self::ENUM_ALL_OTHERS,
-        self::ENUM_0,
-        self::ENUM_1,
-        self::ENUM_2,
-        self::ENUM_3,
-        self::ENUM_4
-    ];
+    /**
+     * For Visa, Mastercard, Discover, or American Express, error - unrecognized or unknown response.
+     */
+    public const CVV_E = 'E';
 
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * For Visa, Mastercard, Discover, or American Express, invalid or null.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for CvvCode.");
-    }
+    public const CVV_I = 'I';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, the CVV2/CSC matches.
+     */
+    public const CVV_M = 'M';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, the CVV2/CSC does not match.
+     */
+    public const CVV_N = 'N';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, it was not processed.
+     */
+    public const CVV_P = 'P';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, the service is not supported.
+     */
+    public const CVV_S = 'S';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, unknown - the issuer is not certified.
+     */
+    public const CVV_U = 'U';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, no response. For Maestro, the service is not
+     * available.
+     */
+    public const CVV_X = 'X';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, error.
+     */
+    public const ENUM_ALL_OTHERS = 'All others';
+
+    /**
+     * For Maestro, the CVV2 matched.
+     */
+    public const CVV_0 = '0';
+
+    /**
+     * For Maestro, the CVV2 did not match.
+     */
+    public const CVV_1 = '1';
+
+    /**
+     * For Maestro, the merchant has not implemented CVV2 code handling.
+     */
+    public const CVV_2 = '2';
+
+    /**
+     * For Maestro, the merchant has indicated that CVV2 is not present on card.
+     */
+    public const CVV_3 = '3';
+
+    /**
+     * For Maestro, the service is not available.
+     */
+    public const CVV_4 = '4';
 }

@@ -33,7 +33,10 @@ class LineItemBuilder
     }
 
     /**
-     * Initializes a new line item Builder object.
+     * Initializes a new Line Item Builder object.
+     *
+     * @param string $name
+     * @param string $quantity
      */
     public static function init(string $name, string $quantity): self
     {
@@ -42,6 +45,8 @@ class LineItemBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -51,6 +56,8 @@ class LineItemBuilder
 
     /**
      * Sets sku field.
+     *
+     * @param string|null $value
      */
     public function sku(?string $value): self
     {
@@ -60,6 +67,8 @@ class LineItemBuilder
 
     /**
      * Sets url field.
+     *
+     * @param string|null $value
      */
     public function url(?string $value): self
     {
@@ -69,6 +78,8 @@ class LineItemBuilder
 
     /**
      * Sets image url field.
+     *
+     * @param string|null $value
      */
     public function imageUrl(?string $value): self
     {
@@ -78,6 +89,8 @@ class LineItemBuilder
 
     /**
      * Sets upc field.
+     *
+     * @param UniversalProductCode|null $value
      */
     public function upc(?UniversalProductCode $value): self
     {
@@ -87,6 +100,8 @@ class LineItemBuilder
 
     /**
      * Sets unit amount field.
+     *
+     * @param Money|null $value
      */
     public function unitAmount(?Money $value): self
     {
@@ -96,6 +111,8 @@ class LineItemBuilder
 
     /**
      * Sets tax field.
+     *
+     * @param Money|null $value
      */
     public function tax(?Money $value): self
     {
@@ -105,6 +122,8 @@ class LineItemBuilder
 
     /**
      * Sets commodity code field.
+     *
+     * @param string|null $value
      */
     public function commodityCode(?string $value): self
     {
@@ -114,6 +133,8 @@ class LineItemBuilder
 
     /**
      * Sets discount amount field.
+     *
+     * @param Money|null $value
      */
     public function discountAmount(?Money $value): self
     {
@@ -123,6 +144,8 @@ class LineItemBuilder
 
     /**
      * Sets total amount field.
+     *
+     * @param Money|null $value
      */
     public function totalAmount(?Money $value): self
     {
@@ -132,6 +155,8 @@ class LineItemBuilder
 
     /**
      * Sets unit of measure field.
+     *
+     * @param string|null $value
      */
     public function unitOfMeasure(?string $value): self
     {
@@ -140,7 +165,7 @@ class LineItemBuilder
     }
 
     /**
-     * Initializes a new line item object.
+     * Initializes a new Line Item object.
      */
     public function build(): LineItem
     {

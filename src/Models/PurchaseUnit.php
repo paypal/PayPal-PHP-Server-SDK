@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -28,7 +29,7 @@ class PurchaseUnit implements \JsonSerializable
     private $amount;
 
     /**
-     * @var Payee|null
+     * @var PayeeBase|null
      */
     private $payee;
 
@@ -91,8 +92,8 @@ class PurchaseUnit implements \JsonSerializable
      * Returns Reference Id.
      * The API caller-provided external ID for the purchase unit. Required for multiple purchase units when
      * you must update the order through `PATCH`. If you omit this value and the order contains only one
-     * purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are
-     * multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote>
+     * purchase unit, PayPal sets this value to `default`. Note: If there are multiple purchase units,
+     * reference_id is required for each purchase unit.
      */
     public function getReferenceId(): ?string
     {
@@ -103,8 +104,8 @@ class PurchaseUnit implements \JsonSerializable
      * Sets Reference Id.
      * The API caller-provided external ID for the purchase unit. Required for multiple purchase units when
      * you must update the order through `PATCH`. If you omit this value and the order contains only one
-     * purchase unit, PayPal sets this value to `default`. <blockquote><strong>Note:</strong> If there are
-     * multiple purchase units, <code>reference_id</code> is required for each purchase unit.</blockquote>
+     * purchase unit, PayPal sets this value to `default`. Note: If there are multiple purchase units,
+     * reference_id is required for each purchase unit.
      *
      * @maps reference_id
      */
@@ -116,11 +117,10 @@ class PurchaseUnit implements \JsonSerializable
     /**
      * Returns Amount.
      * The total order amount with an optional breakdown that provides details, such as the total item
-     * amount, total tax amount, shipping, handling, insurance, and discounts, if any.<br/>If you specify
+     * amount, total tax amount, shipping, handling, insurance, and discounts, if any. If you specify
      * `amount.breakdown`, the amount equals `item_total` plus `tax_total` plus `shipping` plus `handling`
-     * plus `insurance` minus `shipping_discount` minus discount.<br/>The amount must be a positive number.
-     * For listed of supported currencies and decimal precision, see the PayPal REST APIs <a
-     * href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+     * plus `insurance` minus `shipping_discount` minus discount. The amount must be a positive number. For
+     * listed of supported currencies and decimal precision, see the PayPal REST APIs Currency Codes.
      */
     public function getAmount(): ?AmountWithBreakdown
     {
@@ -130,11 +130,10 @@ class PurchaseUnit implements \JsonSerializable
     /**
      * Sets Amount.
      * The total order amount with an optional breakdown that provides details, such as the total item
-     * amount, total tax amount, shipping, handling, insurance, and discounts, if any.<br/>If you specify
+     * amount, total tax amount, shipping, handling, insurance, and discounts, if any. If you specify
      * `amount.breakdown`, the amount equals `item_total` plus `tax_total` plus `shipping` plus `handling`
-     * plus `insurance` minus `shipping_discount` minus discount.<br/>The amount must be a positive number.
-     * For listed of supported currencies and decimal precision, see the PayPal REST APIs <a
-     * href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+     * plus `insurance` minus `shipping_discount` minus discount. The amount must be a positive number. For
+     * listed of supported currencies and decimal precision, see the PayPal REST APIs Currency Codes.
      *
      * @maps amount
      */
@@ -147,7 +146,7 @@ class PurchaseUnit implements \JsonSerializable
      * Returns Payee.
      * The merchant who receives the funds and fulfills the order. The merchant is also known as the payee.
      */
-    public function getPayee(): ?Payee
+    public function getPayee(): ?PayeeBase
     {
         return $this->payee;
     }
@@ -158,7 +157,7 @@ class PurchaseUnit implements \JsonSerializable
      *
      * @maps payee
      */
-    public function setPayee(?Payee $payee): void
+    public function setPayee(?PayeeBase $payee): void
     {
         $this->payee = $payee;
     }
@@ -252,7 +251,7 @@ class PurchaseUnit implements \JsonSerializable
      * The PayPal-generated ID for the purchase unit. This ID appears in both the payer's transaction
      * history and the emails that the payer receives. In addition, this ID is available in transaction and
      * settlement reports that merchants and API callers can use to reconcile transactions. This ID is only
-     * available when an order is saved by calling <code>v2/checkout/orders/id/save</code>.
+     * available when an order is saved by calling v2/checkout/orders/id/save.
      */
     public function getId(): ?string
     {
@@ -264,7 +263,7 @@ class PurchaseUnit implements \JsonSerializable
      * The PayPal-generated ID for the purchase unit. This ID appears in both the payer's transaction
      * history and the emails that the payer receives. In addition, this ID is available in transaction and
      * settlement reports that merchants and API callers can use to reconcile transactions. This ID is only
-     * available when an order is saved by calling <code>v2/checkout/orders/id/save</code>.
+     * available when an order is saved by calling v2/checkout/orders/id/save.
      *
      * @maps id
      */
@@ -277,15 +276,14 @@ class PurchaseUnit implements \JsonSerializable
      * Returns Soft Descriptor.
      * The payment descriptor on account transactions on the customer's credit card statement, that PayPal
      * sends to processors. The maximum length of the soft descriptor information that you can pass in the
-     * API field is 22 characters, in the following format:<code>22 - len(PAYPAL * (8)) -
-     * len(<var>Descriptor in Payment Receiving Preferences of Merchant account</var> + 1)</code>The PAYPAL
-     * prefix uses 8 characters.<br/><br/>The soft descriptor supports the following ASCII characters:
-     * <ul><li>Alphanumeric characters</li><li>Dashes</li><li>Asterisks</li><li>Periods (.
-     * )</li><li>Spaces</li></ul>For Wallet payments marketplace integrations:<ul><li>The merchant
-     * descriptor in the Payment Receiving Preferences must be the marketplace name.</li><li>You can't use
-     * the remaining space to show the customer service number.</li><li>The remaining spaces can be a
-     * combination of seller name and country.</li></ul><br/>For unbranded payments (Direct Card)
-     * marketplace integrations, use a combination of the seller name and phone number.
+     * API field is 22 characters, in the following format:22 - len(PAYPAL * (8)) - len(Descriptor in
+     * Payment Receiving Preferences of Merchant account + 1)The PAYPAL prefix uses 8 characters. The soft
+     * descriptor supports the following ASCII characters: Alphanumeric characters Dashes Asterisks Periods
+     * (.) Spaces For Wallet payments marketplace integrations: The merchant descriptor in the Payment
+     * Receiving Preferences must be the marketplace name. You can't use the remaining space to show the
+     * customer service number. The remaining spaces can be a combination of seller name and country. For
+     * unbranded payments (Direct Card) marketplace integrations, use a combination of the seller name and
+     * phone number.
      */
     public function getSoftDescriptor(): ?string
     {
@@ -296,15 +294,14 @@ class PurchaseUnit implements \JsonSerializable
      * Sets Soft Descriptor.
      * The payment descriptor on account transactions on the customer's credit card statement, that PayPal
      * sends to processors. The maximum length of the soft descriptor information that you can pass in the
-     * API field is 22 characters, in the following format:<code>22 - len(PAYPAL * (8)) -
-     * len(<var>Descriptor in Payment Receiving Preferences of Merchant account</var> + 1)</code>The PAYPAL
-     * prefix uses 8 characters.<br/><br/>The soft descriptor supports the following ASCII characters:
-     * <ul><li>Alphanumeric characters</li><li>Dashes</li><li>Asterisks</li><li>Periods (.
-     * )</li><li>Spaces</li></ul>For Wallet payments marketplace integrations:<ul><li>The merchant
-     * descriptor in the Payment Receiving Preferences must be the marketplace name.</li><li>You can't use
-     * the remaining space to show the customer service number.</li><li>The remaining spaces can be a
-     * combination of seller name and country.</li></ul><br/>For unbranded payments (Direct Card)
-     * marketplace integrations, use a combination of the seller name and phone number.
+     * API field is 22 characters, in the following format:22 - len(PAYPAL * (8)) - len(Descriptor in
+     * Payment Receiving Preferences of Merchant account + 1)The PAYPAL prefix uses 8 characters. The soft
+     * descriptor supports the following ASCII characters: Alphanumeric characters Dashes Asterisks Periods
+     * (.) Spaces For Wallet payments marketplace integrations: The merchant descriptor in the Payment
+     * Receiving Preferences must be the marketplace name. You can't use the remaining space to show the
+     * customer service number. The remaining spaces can be a combination of seller name and country. For
+     * unbranded payments (Direct Card) marketplace integrations, use a combination of the seller name and
+     * phone number.
      *
      * @maps soft_descriptor
      */
@@ -419,6 +416,34 @@ class PurchaseUnit implements \JsonSerializable
     public function setMostRecentErrors(array $mostRecentErrors): void
     {
         $this->mostRecentErrors = $mostRecentErrors;
+    }
+
+    /**
+     * Converts the PurchaseUnit object to a human-readable string representation.
+     *
+     * @return string The string representation of the PurchaseUnit object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PurchaseUnit',
+            [
+                'referenceId' => $this->referenceId,
+                'amount' => $this->amount,
+                'payee' => $this->payee,
+                'paymentInstruction' => $this->paymentInstruction,
+                'description' => $this->description,
+                'customId' => $this->customId,
+                'invoiceId' => $this->invoiceId,
+                'id' => $this->id,
+                'softDescriptor' => $this->softDescriptor,
+                'items' => $this->items,
+                'shipping' => $this->shipping,
+                'supplementaryData' => $this->supplementaryData,
+                'payments' => $this->payments,
+                'mostRecentErrors' => $this->mostRecentErrors
+            ]
+        );
     }
 
     /**

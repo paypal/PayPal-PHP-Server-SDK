@@ -31,7 +31,9 @@ class NetworkTransactionReferenceEntityBuilder
     }
 
     /**
-     * Initializes a new network transaction reference entity Builder object.
+     * Initializes a new Network Transaction Reference Entity Builder object.
+     *
+     * @param string $id
      */
     public static function init(string $id): self
     {
@@ -40,6 +42,8 @@ class NetworkTransactionReferenceEntityBuilder
 
     /**
      * Sets date field.
+     *
+     * @param string|null $value
      */
     public function date(?string $value): self
     {
@@ -49,6 +53,8 @@ class NetworkTransactionReferenceEntityBuilder
 
     /**
      * Sets network field.
+     *
+     * @param string|null $value
      */
     public function network(?string $value): self
     {
@@ -58,6 +64,8 @@ class NetworkTransactionReferenceEntityBuilder
 
     /**
      * Sets time field.
+     *
+     * @param string|null $value
      */
     public function time(?string $value): self
     {
@@ -66,7 +74,7 @@ class NetworkTransactionReferenceEntityBuilder
     }
 
     /**
-     * Initializes a new network transaction reference entity object.
+     * Initializes a new Network Transaction Reference Entity object.
      */
     public function build(): NetworkTransactionReferenceEntity
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -206,6 +207,27 @@ class SellerReceivableBreakdown implements \JsonSerializable
     public function setPlatformFees(?array $platformFees): void
     {
         $this->platformFees = $platformFees;
+    }
+
+    /**
+     * Converts the SellerReceivableBreakdown object to a human-readable string representation.
+     *
+     * @return string The string representation of the SellerReceivableBreakdown object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SellerReceivableBreakdown',
+            [
+                'grossAmount' => $this->grossAmount,
+                'paypalFee' => $this->paypalFee,
+                'paypalFeeInReceivableCurrency' => $this->paypalFeeInReceivableCurrency,
+                'netAmount' => $this->netAmount,
+                'receivableAmount' => $this->receivableAmount,
+                'exchangeRate' => $this->exchangeRate,
+                'platformFees' => $this->platformFees
+            ]
+        );
     }
 
     /**

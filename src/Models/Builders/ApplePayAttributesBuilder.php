@@ -33,7 +33,7 @@ class ApplePayAttributesBuilder
     }
 
     /**
-     * Initializes a new apple pay attributes Builder object.
+     * Initializes a new Apple Pay Attributes Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class ApplePayAttributesBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param CustomerInformation|null $value
      */
     public function customer(?CustomerInformation $value): self
     {
@@ -51,6 +53,8 @@ class ApplePayAttributesBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param VaultInstruction|null $value
      */
     public function vault(?VaultInstruction $value): self
     {
@@ -59,7 +63,7 @@ class ApplePayAttributesBuilder
     }
 
     /**
-     * Initializes a new apple pay attributes object.
+     * Initializes a new Apple Pay Attributes object.
      */
     public function build(): ApplePayAttributes
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -90,6 +91,23 @@ class RelatedIdentifiers implements \JsonSerializable
     public function setCaptureId(?string $captureId): void
     {
         $this->captureId = $captureId;
+    }
+
+    /**
+     * Converts the RelatedIdentifiers object to a human-readable string representation.
+     *
+     * @return string The string representation of the RelatedIdentifiers object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'RelatedIdentifiers',
+            [
+                'orderId' => $this->orderId,
+                'authorizationId' => $this->authorizationId,
+                'captureId' => $this->captureId
+            ]
+        );
     }
 
     /**

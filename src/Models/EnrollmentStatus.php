@@ -10,40 +10,28 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Status of Authentication eligibility.
  */
 class EnrollmentStatus
 {
-    public const Y = 'Y';
-
-    public const N = 'N';
-
-    public const U = 'U';
-
-    public const B = 'B';
-
-    private const _ALL_VALUES = [self::Y, self::N, self::U, self::B];
+    /**
+     * Yes. The bank is participating in 3-D Secure protocol and will return the ACSUrl.
+     */
+    public const ENROLLED = 'Y';
 
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * No. The bank is not participating in 3-D Secure protocol.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for EnrollmentStatus.");
-    }
+    public const NOTENROLLED = 'N';
+
+    /**
+     * Unavailable. The DS or ACS is not available for authentication at the time of the request.
+     */
+    public const UNAVAILABLE = 'U';
+
+    /**
+     * Bypass. The merchant authentication rule is triggered to bypass authentication.
+     */
+    public const BYPASS = 'B';
 }

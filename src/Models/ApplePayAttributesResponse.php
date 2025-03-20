@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -40,6 +41,16 @@ class ApplePayAttributesResponse implements \JsonSerializable
     public function setVault(?VaultResponse $vault): void
     {
         $this->vault = $vault;
+    }
+
+    /**
+     * Converts the ApplePayAttributesResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayAttributesResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('ApplePayAttributesResponse', ['vault' => $this->vault]);
     }
 
     /**

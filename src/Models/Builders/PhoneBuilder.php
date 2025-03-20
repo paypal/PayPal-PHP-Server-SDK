@@ -31,7 +31,10 @@ class PhoneBuilder
     }
 
     /**
-     * Initializes a new phone Builder object.
+     * Initializes a new Phone Builder object.
+     *
+     * @param string $countryCode
+     * @param string $nationalNumber
      */
     public static function init(string $countryCode, string $nationalNumber): self
     {
@@ -40,6 +43,8 @@ class PhoneBuilder
 
     /**
      * Sets extension number field.
+     *
+     * @param string|null $value
      */
     public function extensionNumber(?string $value): self
     {
@@ -48,7 +53,7 @@ class PhoneBuilder
     }
 
     /**
-     * Initializes a new phone object.
+     * Initializes a new Phone object.
      */
     public function build(): Phone
     {

@@ -32,7 +32,7 @@ class Level2CardProcessingDataBuilder
     }
 
     /**
-     * Initializes a new level 2 card processing data Builder object.
+     * Initializes a new Level 2 Card Processing Data Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class Level2CardProcessingDataBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -50,6 +52,8 @@ class Level2CardProcessingDataBuilder
 
     /**
      * Sets tax total field.
+     *
+     * @param Money|null $value
      */
     public function taxTotal(?Money $value): self
     {
@@ -58,7 +62,7 @@ class Level2CardProcessingDataBuilder
     }
 
     /**
-     * Initializes a new level 2 card processing data object.
+     * Initializes a new Level 2 Card Processing Data object.
      */
     public function build(): Level2CardProcessingData
     {

@@ -32,7 +32,7 @@ class ReauthorizeRequestBuilder
     }
 
     /**
-     * Initializes a new reauthorize request Builder object.
+     * Initializes a new Reauthorize Request Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class ReauthorizeRequestBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -49,7 +51,7 @@ class ReauthorizeRequestBuilder
     }
 
     /**
-     * Initializes a new reauthorize request object.
+     * Initializes a new Reauthorize Request object.
      */
     public function build(): ReauthorizeRequest
     {

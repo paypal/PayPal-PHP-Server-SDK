@@ -32,7 +32,7 @@ class VaultedDigitalWalletBuilder
     }
 
     /**
-     * Initializes a new vaulted digital wallet Builder object.
+     * Initializes a new Vaulted Digital Wallet Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class VaultedDigitalWalletBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -49,7 +51,20 @@ class VaultedDigitalWalletBuilder
     }
 
     /**
+     * Sets usage pattern field.
+     *
+     * @param string|null $value
+     */
+    public function usagePattern(?string $value): self
+    {
+        $this->instance->setUsagePattern($value);
+        return $this;
+    }
+
+    /**
      * Sets shipping field.
+     *
+     * @param VaultedDigitalWalletShippingDetails|null $value
      */
     public function shipping(?VaultedDigitalWalletShippingDetails $value): self
     {
@@ -59,6 +74,8 @@ class VaultedDigitalWalletBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -68,6 +85,8 @@ class VaultedDigitalWalletBuilder
 
     /**
      * Sets usage type field.
+     *
+     * @param string|null $value
      */
     public function usageType(?string $value): self
     {
@@ -77,6 +96,8 @@ class VaultedDigitalWalletBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -85,7 +106,7 @@ class VaultedDigitalWalletBuilder
     }
 
     /**
-     * Initializes a new vaulted digital wallet object.
+     * Initializes a new Vaulted Digital Wallet object.
      */
     public function build(): VaultedDigitalWallet
     {

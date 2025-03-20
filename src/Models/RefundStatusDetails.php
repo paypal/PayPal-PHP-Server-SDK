@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -43,6 +44,16 @@ class RefundStatusDetails implements \JsonSerializable
     }
 
     /**
+     * Converts the RefundStatusDetails object to a human-readable string representation.
+     *
+     * @return string The string representation of the RefundStatusDetails object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('RefundStatusDetails', ['reason' => $this->reason]);
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -55,7 +66,7 @@ class RefundStatusDetails implements \JsonSerializable
     {
         $json = [];
         if (isset($this->reason)) {
-            $json['reason'] = RefundIncompleteReason::checkValue($this->reason);
+            $json['reason'] = $this->reason;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -36,7 +36,7 @@ class PaypalPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new paypal payment token Builder object.
+     * Initializes a new Paypal Payment Token Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +45,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -53,7 +55,20 @@ class PaypalPaymentTokenBuilder
     }
 
     /**
+     * Sets usage pattern field.
+     *
+     * @param string|null $value
+     */
+    public function usagePattern(?string $value): self
+    {
+        $this->instance->setUsagePattern($value);
+        return $this;
+    }
+
+    /**
      * Sets shipping field.
+     *
+     * @param VaultedDigitalWalletShippingDetails|null $value
      */
     public function shipping(?VaultedDigitalWalletShippingDetails $value): self
     {
@@ -63,6 +78,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets permit multiple payment tokens field.
+     *
+     * @param bool|null $value
      */
     public function permitMultiplePaymentTokens(?bool $value): self
     {
@@ -72,6 +89,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets usage type field.
+     *
+     * @param string|null $value
      */
     public function usageType(?string $value): self
     {
@@ -81,6 +100,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets customer type field.
+     *
+     * @param string|null $value
      */
     public function customerType(?string $value): self
     {
@@ -90,6 +111,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -99,6 +122,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets payer id field.
+     *
+     * @param string|null $value
      */
     public function payerId(?string $value): self
     {
@@ -108,6 +133,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets name field.
+     *
+     * @param Name|null $value
      */
     public function name(?Name $value): self
     {
@@ -117,6 +144,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
      */
     public function phone(?PhoneWithType $value): self
     {
@@ -126,6 +155,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -135,6 +166,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets account id field.
+     *
+     * @param string|null $value
      */
     public function accountId(?string $value): self
     {
@@ -144,6 +177,8 @@ class PaypalPaymentTokenBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param Phone|null $value
      */
     public function phoneNumber(?Phone $value): self
     {
@@ -152,7 +187,7 @@ class PaypalPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new paypal payment token object.
+     * Initializes a new Paypal Payment Token object.
      */
     public function build(): PaypalPaymentToken
     {

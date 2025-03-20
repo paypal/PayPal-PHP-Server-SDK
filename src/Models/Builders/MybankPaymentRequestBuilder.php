@@ -32,7 +32,10 @@ class MybankPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new mybank payment request Builder object.
+     * Initializes a new Mybank Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $countryCode
      */
     public static function init(string $name, string $countryCode): self
     {
@@ -41,6 +44,8 @@ class MybankPaymentRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param ExperienceContext|null $value
      */
     public function experienceContext(?ExperienceContext $value): self
     {
@@ -49,7 +54,7 @@ class MybankPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new mybank payment request object.
+     * Initializes a new Mybank Payment Request object.
      */
     public function build(): MybankPaymentRequest
     {

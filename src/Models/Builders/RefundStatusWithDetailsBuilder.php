@@ -32,7 +32,7 @@ class RefundStatusWithDetailsBuilder
     }
 
     /**
-     * Initializes a new refund status with details Builder object.
+     * Initializes a new Refund Status With Details Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class RefundStatusWithDetailsBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -50,6 +52,8 @@ class RefundStatusWithDetailsBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param RefundStatusDetails|null $value
      */
     public function statusDetails(?RefundStatusDetails $value): self
     {
@@ -58,7 +62,7 @@ class RefundStatusWithDetailsBuilder
     }
 
     /**
-     * Initializes a new refund status with details object.
+     * Initializes a new Refund Status With Details object.
      */
     public function build(): RefundStatusWithDetails
     {

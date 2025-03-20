@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -192,6 +193,26 @@ class VenmoWalletVaultAttributes implements \JsonSerializable
     }
 
     /**
+     * Converts the VenmoWalletVaultAttributes object to a human-readable string representation.
+     *
+     * @return string The string representation of the VenmoWalletVaultAttributes object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VenmoWalletVaultAttributes',
+            [
+                'storeInVault' => $this->storeInVault,
+                'description' => $this->description,
+                'usagePattern' => $this->usagePattern,
+                'usageType' => $this->usageType,
+                'customerType' => $this->customerType,
+                'permitMultiplePaymentTokens' => $this->permitMultiplePaymentTokens
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -203,16 +224,16 @@ class VenmoWalletVaultAttributes implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['store_in_vault']                     = StoreInVaultInstruction::checkValue($this->storeInVault);
+        $json['store_in_vault']                     = $this->storeInVault;
         if (isset($this->description)) {
             $json['description']                    = $this->description;
         }
         if (isset($this->usagePattern)) {
-            $json['usage_pattern']                  = VenmoPaymentTokenUsagePattern::checkValue($this->usagePattern);
+            $json['usage_pattern']                  = $this->usagePattern;
         }
-        $json['usage_type']                         = VenmoPaymentTokenUsageType::checkValue($this->usageType);
+        $json['usage_type']                         = $this->usageType;
         if (isset($this->customerType)) {
-            $json['customer_type']                  = VenmoPaymentTokenCustomerType::checkValue($this->customerType);
+            $json['customer_type']                  = $this->customerType;
         }
         if (isset($this->permitMultiplePaymentTokens)) {
             $json['permit_multiple_payment_tokens'] = $this->permitMultiplePaymentTokens;

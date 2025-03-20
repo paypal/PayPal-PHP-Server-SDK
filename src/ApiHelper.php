@@ -58,6 +58,21 @@ class ApiHelper
     }
 
     /**
+     * Converts the properties to a human-readable string representation.
+     *
+     * Sample output:
+     *
+     * $prefix [$properties:key: $properties:value, $processedProperties]
+     */
+    public static function stringify(
+        string $prefix,
+        array $properties,
+        string $processedProperties = ''
+    ): string {
+        return CoreHelper::stringify($prefix, $properties, $processedProperties);
+    }
+
+    /**
      * Decodes a valid json string into an array to send in Api calls.
      *
      * @param  mixed  $json         Must be null or array or a valid string json to be translated into a php array.

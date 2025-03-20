@@ -11,7 +11,7 @@ Results of Authentication such as 3D Secure.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `threeDSecure` | [`?ThreeDSecureAuthenticationResponse`](../../doc/models/three-d-secure-authentication-response.md) | Optional | Results of 3D Secure Authentication. | getThreeDSecure(): ?ThreeDSecureAuthenticationResponse | setThreeDSecure(?ThreeDSecureAuthenticationResponse threeDSecure): void |
+| `threeDSecure` | [`?ThreeDSecureCardAuthenticationResponse`](../../doc/models/three-d-secure-card-authentication-response.md) | Optional | Results of 3D Secure Authentication. | getThreeDSecure(): ?ThreeDSecureCardAuthenticationResponse | setThreeDSecure(?ThreeDSecureCardAuthenticationResponse threeDSecure): void |
 
 ## Example (as JSON)
 
@@ -19,7 +19,8 @@ Results of Authentication such as 3D Secure.
 {
   "three_d_secure": {
     "authentication_status": "C",
-    "enrollment_status": "Y"
+    "enrollment_status": "Y",
+    "authentication_id": "authentication_id6"
   }
 }
 ```

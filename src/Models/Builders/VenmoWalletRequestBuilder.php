@@ -33,7 +33,7 @@ class VenmoWalletRequestBuilder
     }
 
     /**
-     * Initializes a new venmo wallet request Builder object.
+     * Initializes a new Venmo Wallet Request Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class VenmoWalletRequestBuilder
 
     /**
      * Sets vault id field.
+     *
+     * @param string|null $value
      */
     public function vaultId(?string $value): self
     {
@@ -51,6 +53,8 @@ class VenmoWalletRequestBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -60,6 +64,8 @@ class VenmoWalletRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param VenmoWalletExperienceContext|null $value
      */
     public function experienceContext(?VenmoWalletExperienceContext $value): self
     {
@@ -69,6 +75,8 @@ class VenmoWalletRequestBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param VenmoWalletAdditionalAttributes|null $value
      */
     public function attributes(?VenmoWalletAdditionalAttributes $value): self
     {
@@ -77,7 +85,7 @@ class VenmoWalletRequestBuilder
     }
 
     /**
-     * Initializes a new venmo wallet request object.
+     * Initializes a new Venmo Wallet Request object.
      */
     public function build(): VenmoWalletRequest
     {

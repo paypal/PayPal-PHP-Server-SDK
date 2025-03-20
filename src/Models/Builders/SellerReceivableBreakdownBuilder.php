@@ -13,6 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\ExchangeRate;
 use PaypalServerSdkLib\Models\Money;
+use PaypalServerSdkLib\Models\PlatformFee;
 use PaypalServerSdkLib\Models\SellerReceivableBreakdown;
 
 /**
@@ -33,7 +34,9 @@ class SellerReceivableBreakdownBuilder
     }
 
     /**
-     * Initializes a new seller receivable breakdown Builder object.
+     * Initializes a new Seller Receivable Breakdown Builder object.
+     *
+     * @param Money $grossAmount
      */
     public static function init(Money $grossAmount): self
     {
@@ -42,6 +45,8 @@ class SellerReceivableBreakdownBuilder
 
     /**
      * Sets paypal fee field.
+     *
+     * @param Money|null $value
      */
     public function paypalFee(?Money $value): self
     {
@@ -51,6 +56,8 @@ class SellerReceivableBreakdownBuilder
 
     /**
      * Sets paypal fee in receivable currency field.
+     *
+     * @param Money|null $value
      */
     public function paypalFeeInReceivableCurrency(?Money $value): self
     {
@@ -60,6 +67,8 @@ class SellerReceivableBreakdownBuilder
 
     /**
      * Sets net amount field.
+     *
+     * @param Money|null $value
      */
     public function netAmount(?Money $value): self
     {
@@ -69,6 +78,8 @@ class SellerReceivableBreakdownBuilder
 
     /**
      * Sets receivable amount field.
+     *
+     * @param Money|null $value
      */
     public function receivableAmount(?Money $value): self
     {
@@ -78,6 +89,8 @@ class SellerReceivableBreakdownBuilder
 
     /**
      * Sets exchange rate field.
+     *
+     * @param ExchangeRate|null $value
      */
     public function exchangeRate(?ExchangeRate $value): self
     {
@@ -87,6 +100,8 @@ class SellerReceivableBreakdownBuilder
 
     /**
      * Sets platform fees field.
+     *
+     * @param PlatformFee[]|null $value
      */
     public function platformFees(?array $value): self
     {
@@ -95,7 +110,7 @@ class SellerReceivableBreakdownBuilder
     }
 
     /**
-     * Initializes a new seller receivable breakdown object.
+     * Initializes a new Seller Receivable Breakdown object.
      */
     public function build(): SellerReceivableBreakdown
     {

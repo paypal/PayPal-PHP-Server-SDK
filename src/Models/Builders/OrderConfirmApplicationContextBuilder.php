@@ -32,7 +32,7 @@ class OrderConfirmApplicationContextBuilder
     }
 
     /**
-     * Initializes a new order confirm application context Builder object.
+     * Initializes a new Order Confirm Application Context Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class OrderConfirmApplicationContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -50,6 +52,8 @@ class OrderConfirmApplicationContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -59,6 +63,8 @@ class OrderConfirmApplicationContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -68,6 +74,8 @@ class OrderConfirmApplicationContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -77,6 +85,8 @@ class OrderConfirmApplicationContextBuilder
 
     /**
      * Sets stored payment source field.
+     *
+     * @param StoredPaymentSource|null $value
      */
     public function storedPaymentSource(?StoredPaymentSource $value): self
     {
@@ -85,7 +95,7 @@ class OrderConfirmApplicationContextBuilder
     }
 
     /**
-     * Initializes a new order confirm application context object.
+     * Initializes a new Order Confirm Application Context object.
      */
     public function build(): OrderConfirmApplicationContext
     {

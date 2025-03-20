@@ -10,42 +10,32 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either
  * `type` or `options` may be present, but not both.
  */
 class FulfillmentType
 {
+    /**
+     * The payer intends to receive the items at a specified address.
+     */
     public const SHIPPING = 'SHIPPING';
 
+    /**
+     * DEPRECATED. Please use "PICKUP_FROM_PERSON" instead.
+     */
     public const PICKUP_IN_PERSON = 'PICKUP_IN_PERSON';
 
+    /**
+     * The payer intends to pick up the item(s) from the payee's physical store. Also termed as BOPIS, "Buy
+     * Online, Pick-up in Store". Seller protection is provided with this option.
+     */
     public const PICKUP_IN_STORE = 'PICKUP_IN_STORE';
 
-    public const PICKUP_FROM_PERSON = 'PICKUP_FROM_PERSON';
-
-    private const _ALL_VALUES =
-        [self::SHIPPING, self::PICKUP_IN_PERSON, self::PICKUP_IN_STORE, self::PICKUP_FROM_PERSON];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The payer intends to pick up the item(s) from the payee in person. Also termed as BOPIP, "Buy Online,
+     * Pick-up in Person". Seller protection is not available, since the payer is receiving the item from
+     * the payee in person, and can validate the item prior to payment.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for FulfillmentType.");
-    }
+    public const PICKUP_FROM_PERSON = 'PICKUP_FROM_PERSON';
 }

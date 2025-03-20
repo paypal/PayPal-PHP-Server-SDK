@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -179,6 +180,26 @@ class Level3CardProcessingData implements \JsonSerializable
     public function setLineItems(?array $lineItems): void
     {
         $this->lineItems = $lineItems;
+    }
+
+    /**
+     * Converts the Level3CardProcessingData object to a human-readable string representation.
+     *
+     * @return string The string representation of the Level3CardProcessingData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Level3CardProcessingData',
+            [
+                'shippingAmount' => $this->shippingAmount,
+                'dutyAmount' => $this->dutyAmount,
+                'discountAmount' => $this->discountAmount,
+                'shippingAddress' => $this->shippingAddress,
+                'shipsFromPostalCode' => $this->shipsFromPostalCode,
+                'lineItems' => $this->lineItems
+            ]
+        );
     }
 
     /**

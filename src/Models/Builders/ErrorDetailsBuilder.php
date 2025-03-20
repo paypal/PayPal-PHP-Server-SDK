@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\ErrorDetails;
+use PaypalServerSdkLib\Models\LinkDescription;
 
 /**
  * Builder for model ErrorDetails
@@ -31,7 +32,9 @@ class ErrorDetailsBuilder
     }
 
     /**
-     * Initializes a new error details Builder object.
+     * Initializes a new Error Details Builder object.
+     *
+     * @param string $issue
      */
     public static function init(string $issue): self
     {
@@ -40,6 +43,8 @@ class ErrorDetailsBuilder
 
     /**
      * Sets field field.
+     *
+     * @param string|null $value
      */
     public function field(?string $value): self
     {
@@ -49,6 +54,8 @@ class ErrorDetailsBuilder
 
     /**
      * Sets value field.
+     *
+     * @param string|null $value
      */
     public function value(?string $value): self
     {
@@ -58,6 +65,8 @@ class ErrorDetailsBuilder
 
     /**
      * Sets location field.
+     *
+     * @param string|null $value
      */
     public function location(?string $value): self
     {
@@ -67,6 +76,8 @@ class ErrorDetailsBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -76,6 +87,8 @@ class ErrorDetailsBuilder
 
     /**
      * Sets description field.
+     *
+     * @param string|null $value
      */
     public function description(?string $value): self
     {
@@ -84,7 +97,7 @@ class ErrorDetailsBuilder
     }
 
     /**
-     * Initializes a new error details object.
+     * Initializes a new Error Details object.
      */
     public function build(): ErrorDetails
     {

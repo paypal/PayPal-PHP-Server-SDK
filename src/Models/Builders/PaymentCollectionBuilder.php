@@ -11,7 +11,10 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\AuthorizationWithAdditionalData;
+use PaypalServerSdkLib\Models\OrdersCapture;
 use PaypalServerSdkLib\Models\PaymentCollection;
+use PaypalServerSdkLib\Models\Refund;
 
 /**
  * Builder for model PaymentCollection
@@ -31,7 +34,7 @@ class PaymentCollectionBuilder
     }
 
     /**
-     * Initializes a new payment collection Builder object.
+     * Initializes a new Payment Collection Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +43,8 @@ class PaymentCollectionBuilder
 
     /**
      * Sets authorizations field.
+     *
+     * @param AuthorizationWithAdditionalData[]|null $value
      */
     public function authorizations(?array $value): self
     {
@@ -49,6 +54,8 @@ class PaymentCollectionBuilder
 
     /**
      * Sets captures field.
+     *
+     * @param OrdersCapture[]|null $value
      */
     public function captures(?array $value): self
     {
@@ -58,6 +65,8 @@ class PaymentCollectionBuilder
 
     /**
      * Sets refunds field.
+     *
+     * @param Refund[]|null $value
      */
     public function refunds(?array $value): self
     {
@@ -66,7 +75,7 @@ class PaymentCollectionBuilder
     }
 
     /**
-     * Initializes a new payment collection object.
+     * Initializes a new Payment Collection object.
      */
     public function build(): PaymentCollection
     {

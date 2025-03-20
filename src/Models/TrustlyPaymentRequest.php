@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -28,6 +29,11 @@ class TrustlyPaymentRequest implements \JsonSerializable
     private $countryCode;
 
     /**
+     * @var string
+     */
+    private $email;
+
+    /**
      * @var ExperienceContext|null
      */
     private $experienceContext;
@@ -35,11 +41,13 @@ class TrustlyPaymentRequest implements \JsonSerializable
     /**
      * @param string $name
      * @param string $countryCode
+     * @param string $email
      */
-    public function __construct(string $name, string $countryCode)
+    public function __construct(string $name, string $countryCode, string $email)
     {
         $this->name = $name;
         $this->countryCode = $countryCode;
+        $this->email = $email;
     }
 
     /**
@@ -66,10 +74,9 @@ class TrustlyPaymentRequest implements \JsonSerializable
     /**
      * Returns Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      */
     public function getCountryCode(): string
     {
@@ -79,10 +86,9 @@ class TrustlyPaymentRequest implements \JsonSerializable
     /**
      * Sets Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      *
      * @required
      * @maps country_code
@@ -90,6 +96,31 @@ class TrustlyPaymentRequest implements \JsonSerializable
     public function setCountryCode(string $countryCode): void
     {
         $this->countryCode = $countryCode;
+    }
+
+    /**
+     * Returns Email.
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * Sets Email.
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     *
+     * @required
+     * @maps email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     /**
@@ -113,6 +144,24 @@ class TrustlyPaymentRequest implements \JsonSerializable
     }
 
     /**
+     * Converts the TrustlyPaymentRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the TrustlyPaymentRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'TrustlyPaymentRequest',
+            [
+                'name' => $this->name,
+                'countryCode' => $this->countryCode,
+                'email' => $this->email,
+                'experienceContext' => $this->experienceContext
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -126,6 +175,7 @@ class TrustlyPaymentRequest implements \JsonSerializable
         $json = [];
         $json['name']                   = $this->name;
         $json['country_code']           = $this->countryCode;
+        $json['email']                  = $this->email;
         if (isset($this->experienceContext)) {
             $json['experience_context'] = $this->experienceContext;
         }

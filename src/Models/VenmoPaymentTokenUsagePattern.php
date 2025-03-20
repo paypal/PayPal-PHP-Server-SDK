@@ -10,51 +10,40 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Expected business/pricing model for the billing agreement.
  */
 class VenmoPaymentTokenUsagePattern
 {
+    /**
+     * On-demand instant payments – non-recurring, pre-paid, variable amount, variable frequency.
+     */
     public const IMMEDIATE = 'IMMEDIATE';
 
+    /**
+     * Pay after use, non-recurring post-paid, variable amount, irregular frequency.
+     */
     public const DEFERRED = 'DEFERRED';
 
+    /**
+     * Pay upfront fixed or variable amount on a fixed date before the goods/service is delivered.
+     */
     public const RECURRING_PREPAID = 'RECURRING_PREPAID';
 
+    /**
+     * Pay on a fixed date based on usage or consumption after the goods/service is delivered.
+     */
     public const RECURRING_POSTPAID = 'RECURRING_POSTPAID';
 
+    /**
+     * Charge payer when the set amount is reached or monthly billing cycle, whichever comes first, before
+     * the goods/service is delivered.
+     */
     public const THRESHOLD_PREPAID = 'THRESHOLD_PREPAID';
 
-    public const THRESHOLD_POSTPAID = 'THRESHOLD_POSTPAID';
-
-    private const _ALL_VALUES = [
-        self::IMMEDIATE,
-        self::DEFERRED,
-        self::RECURRING_PREPAID,
-        self::RECURRING_POSTPAID,
-        self::THRESHOLD_PREPAID,
-        self::THRESHOLD_POSTPAID
-    ];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Charge payer when the set amount is reached or monthly billing cycle, whichever comes first, after
+     * the goods/service is delivered.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for VenmoPaymentTokenUsagePattern.");
-    }
+    public const THRESHOLD_POSTPAID = 'THRESHOLD_POSTPAID';
 }

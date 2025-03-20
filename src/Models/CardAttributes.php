@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -94,6 +95,19 @@ class CardAttributes implements \JsonSerializable
     public function setVerification(?CardVerification $verification): void
     {
         $this->verification = $verification;
+    }
+
+    /**
+     * Converts the CardAttributes object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardAttributes object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardAttributes',
+            ['customer' => $this->customer, 'vault' => $this->vault, 'verification' => $this->verification]
+        );
     }
 
     /**

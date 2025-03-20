@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -75,6 +76,19 @@ class SellerProtection implements \JsonSerializable
     }
 
     /**
+     * Converts the SellerProtection object to a human-readable string representation.
+     *
+     * @return string The string representation of the SellerProtection object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SellerProtection',
+            ['status' => $this->status, 'disputeCategories' => $this->disputeCategories]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -87,10 +101,10 @@ class SellerProtection implements \JsonSerializable
     {
         $json = [];
         if (isset($this->status)) {
-            $json['status']             = SellerProtectionStatus::checkValue($this->status);
+            $json['status']             = $this->status;
         }
         if (isset($this->disputeCategories)) {
-            $json['dispute_categories'] = DisputeCategory::checkValue($this->disputeCategories);
+            $json['dispute_categories'] = $this->disputeCategories;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -135,6 +136,24 @@ class PaymentInstruction implements \JsonSerializable
     }
 
     /**
+     * Converts the PaymentInstruction object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaymentInstruction object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaymentInstruction',
+            [
+                'platformFees' => $this->platformFees,
+                'disbursementMode' => $this->disbursementMode,
+                'payeePricingTierId' => $this->payeePricingTierId,
+                'payeeReceivableFxRateId' => $this->payeeReceivableFxRateId
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -150,7 +169,7 @@ class PaymentInstruction implements \JsonSerializable
             $json['platform_fees']               = $this->platformFees;
         }
         if (isset($this->disbursementMode)) {
-            $json['disbursement_mode']           = DisbursementMode::checkValue($this->disbursementMode);
+            $json['disbursement_mode']           = $this->disbursementMode;
         }
         if (isset($this->payeePricingTierId)) {
             $json['payee_pricing_tier_id']       = $this->payeePricingTierId;

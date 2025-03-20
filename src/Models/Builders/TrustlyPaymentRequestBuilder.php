@@ -32,15 +32,21 @@ class TrustlyPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new trustly payment request Builder object.
+     * Initializes a new Trustly Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $countryCode
+     * @param string $email
      */
-    public static function init(string $name, string $countryCode): self
+    public static function init(string $name, string $countryCode, string $email): self
     {
-        return new self(new TrustlyPaymentRequest($name, $countryCode));
+        return new self(new TrustlyPaymentRequest($name, $countryCode, $email));
     }
 
     /**
      * Sets experience context field.
+     *
+     * @param ExperienceContext|null $value
      */
     public function experienceContext(?ExperienceContext $value): self
     {
@@ -49,7 +55,7 @@ class TrustlyPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new trustly payment request object.
+     * Initializes a new Trustly Payment Request object.
      */
     public function build(): TrustlyPaymentRequest
     {

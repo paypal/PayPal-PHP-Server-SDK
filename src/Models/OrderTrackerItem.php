@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -167,6 +168,26 @@ class OrderTrackerItem implements \JsonSerializable
     public function setUpc(?UniversalProductCode $upc): void
     {
         $this->upc = $upc;
+    }
+
+    /**
+     * Converts the OrderTrackerItem object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderTrackerItem object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OrderTrackerItem',
+            [
+                'name' => $this->name,
+                'quantity' => $this->quantity,
+                'sku' => $this->sku,
+                'url' => $this->url,
+                'imageUrl' => $this->imageUrl,
+                'upc' => $this->upc
+            ]
+        );
     }
 
     /**

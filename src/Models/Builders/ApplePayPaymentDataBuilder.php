@@ -31,7 +31,7 @@ class ApplePayPaymentDataBuilder
     }
 
     /**
-     * Initializes a new apple pay payment data Builder object.
+     * Initializes a new Apple Pay Payment Data Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ApplePayPaymentDataBuilder
 
     /**
      * Sets cryptogram field.
+     *
+     * @param string|null $value
      */
     public function cryptogram(?string $value): self
     {
@@ -49,6 +51,8 @@ class ApplePayPaymentDataBuilder
 
     /**
      * Sets eci indicator field.
+     *
+     * @param string|null $value
      */
     public function eciIndicator(?string $value): self
     {
@@ -58,6 +62,8 @@ class ApplePayPaymentDataBuilder
 
     /**
      * Sets emv data field.
+     *
+     * @param string|null $value
      */
     public function emvData(?string $value): self
     {
@@ -67,6 +73,8 @@ class ApplePayPaymentDataBuilder
 
     /**
      * Sets pin field.
+     *
+     * @param string|null $value
      */
     public function pin(?string $value): self
     {
@@ -75,7 +83,7 @@ class ApplePayPaymentDataBuilder
     }
 
     /**
-     * Initializes a new apple pay payment data object.
+     * Initializes a new Apple Pay Payment Data object.
      */
     public function build(): ApplePayPaymentData
     {

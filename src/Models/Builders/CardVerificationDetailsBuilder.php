@@ -33,7 +33,7 @@ class CardVerificationDetailsBuilder
     }
 
     /**
-     * Initializes a new card verification details Builder object.
+     * Initializes a new Card Verification Details Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets network transaction id field.
+     *
+     * @param string|null $value
      */
     public function networkTransactionId(?string $value): self
     {
@@ -51,6 +53,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets date field.
+     *
+     * @param string|null $value
      */
     public function date(?string $value): self
     {
@@ -60,6 +64,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets network field.
+     *
+     * @param string|null $value
      */
     public function network(?string $value): self
     {
@@ -69,6 +75,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets time field.
+     *
+     * @param string|null $value
      */
     public function time(?string $value): self
     {
@@ -78,6 +86,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -87,6 +97,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets processor response field.
+     *
+     * @param CardVerificationProcessorResponse|null $value
      */
     public function processorResponse(?CardVerificationProcessorResponse $value): self
     {
@@ -96,6 +108,8 @@ class CardVerificationDetailsBuilder
 
     /**
      * Sets three d secure field.
+     *
+     * @param mixed $value
      */
     public function threeDSecure($value): self
     {
@@ -104,7 +118,7 @@ class CardVerificationDetailsBuilder
     }
 
     /**
-     * Initializes a new card verification details object.
+     * Initializes a new Card Verification Details object.
      */
     public function build(): CardVerificationDetails
     {

@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Exceptions;
 
+use PaypalServerSdkLib\ApiHelper;
+
 /**
  * The error details.
  */
@@ -171,5 +173,25 @@ class ErrorException extends ApiException
     public function setLinks(?array $links): void
     {
         $this->links = $links;
+    }
+
+    /**
+     * Converts the ErrorException object to a human-readable string representation.
+     *
+     * @return string The string representation of the ErrorException object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ErrorException',
+            [
+                'name' => $this->name,
+                'messageProperty' => $this->messageProperty,
+                'debugId' => $this->debugId,
+                'details' => $this->details,
+                'links' => $this->links
+            ],
+            parent::__toString()
+        );
     }
 }

@@ -10,495 +10,778 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Processor response code for the non-PayPal payment processor errors.
  */
 class ProcessorResponseCode
 {
-    public const ENUM_0000 = '0000';
-
-    public const ENUM_00N7 = '00N7';
-
-    public const ENUM_0100 = '0100';
-
-    public const ENUM_0390 = '0390';
-
-    public const ENUM_0500 = '0500';
-
-    public const ENUM_0580 = '0580';
-
-    public const ENUM_0800 = '0800';
-
-    public const ENUM_0880 = '0880';
-
-    public const ENUM_0890 = '0890';
-
-    public const ENUM_0960 = '0960';
-
-    public const ENUM_0R00 = '0R00';
-
-    public const ENUM_1000 = '1000';
-
-    public const ENUM_10BR = '10BR';
-
-    public const ENUM_1300 = '1300';
-
-    public const ENUM_1310 = '1310';
-
-    public const ENUM_1312 = '1312';
-
-    public const ENUM_1317 = '1317';
-
-    public const ENUM_1320 = '1320';
-
-    public const ENUM_1330 = '1330';
-
-    public const ENUM_1335 = '1335';
-
-    public const ENUM_1340 = '1340';
-
-    public const ENUM_1350 = '1350';
-
-    public const ENUM_1352 = '1352';
-
-    public const ENUM_1360 = '1360';
-
-    public const ENUM_1370 = '1370';
-
-    public const ENUM_1380 = '1380';
-
-    public const ENUM_1382 = '1382';
-
-    public const ENUM_1384 = '1384';
-
-    public const ENUM_1390 = '1390';
-
-    public const ENUM_1393 = '1393';
-
-    public const ENUM_5100 = '5100';
-
-    public const ENUM_5110 = '5110';
-
-    public const ENUM_5120 = '5120';
-
-    public const ENUM_5130 = '5130';
-
-    public const ENUM_5135 = '5135';
-
-    public const ENUM_5140 = '5140';
-
-    public const ENUM_5150 = '5150';
-
-    public const ENUM_5160 = '5160';
-
-    public const ENUM_5170 = '5170';
-
-    public const ENUM_5180 = '5180';
-
-    public const ENUM_5190 = '5190';
-
-    public const ENUM_5200 = '5200';
-
-    public const ENUM_5210 = '5210';
-
-    public const ENUM_5400 = '5400';
-
-    public const ENUM_5500 = '5500';
-
-    public const ENUM_5650 = '5650';
-
-    public const ENUM_5700 = '5700';
-
-    public const ENUM_5710 = '5710';
-
-    public const ENUM_5800 = '5800';
-
-    public const ENUM_5900 = '5900';
-
-    public const ENUM_5910 = '5910';
-
-    public const ENUM_5920 = '5920';
-
-    public const ENUM_5930 = '5930';
-
-    public const ENUM_5950 = '5950';
-
-    public const ENUM_6300 = '6300';
-
-    public const ENUM_7600 = '7600';
-
-    public const ENUM_7700 = '7700';
-
-    public const ENUM_7710 = '7710';
-
-    public const ENUM_7800 = '7800';
-
-    public const ENUM_7900 = '7900';
-
-    public const ENUM_8000 = '8000';
-
-    public const ENUM_8010 = '8010';
-
-    public const ENUM_8020 = '8020';
-
-    public const ENUM_8030 = '8030';
-
-    public const ENUM_8100 = '8100';
-
-    public const ENUM_8110 = '8110';
-
-    public const ENUM_8220 = '8220';
-
-    public const ENUM_9100 = '9100';
-
-    public const ENUM_9500 = '9500';
-
-    public const ENUM_9510 = '9510';
-
-    public const ENUM_9520 = '9520';
-
-    public const ENUM_9530 = '9530';
-
-    public const ENUM_9540 = '9540';
-
-    public const ENUM_9600 = '9600';
-
-    public const PCNR = 'PCNR';
-
-    public const PCVV = 'PCVV';
-
-    public const PP06 = 'PP06';
-
-    public const PPRN = 'PPRN';
-
-    public const PPAD = 'PPAD';
-
-    public const PPAB = 'PPAB';
-
-    public const PPAE = 'PPAE';
-
-    public const PPAG = 'PPAG';
-
-    public const PPAI = 'PPAI';
-
-    public const PPAR = 'PPAR';
-
-    public const PPAU = 'PPAU';
-
-    public const PPAV = 'PPAV';
-
-    public const PPAX = 'PPAX';
-
-    public const PPBG = 'PPBG';
-
-    public const PPC2 = 'PPC2';
-
-    public const PPCE = 'PPCE';
-
-    public const PPCO = 'PPCO';
-
-    public const PPCR = 'PPCR';
-
-    public const PPCT = 'PPCT';
-
-    public const PPCU = 'PPCU';
-
-    public const PPD3 = 'PPD3';
-
-    public const PPDC = 'PPDC';
-
-    public const PPDI = 'PPDI';
-
-    public const PPDV = 'PPDV';
-
-    public const PPDT = 'PPDT';
-
-    public const PPEF = 'PPEF';
-
-    public const PPEL = 'PPEL';
-
-    public const PPER = 'PPER';
-
-    public const PPEX = 'PPEX';
-
-    public const PPFE = 'PPFE';
-
-    public const PPFI = 'PPFI';
-
-    public const PPFR = 'PPFR';
-
-    public const PPFV = 'PPFV';
-
-    public const PPGR = 'PPGR';
-
-    public const PPH1 = 'PPH1';
-
-    public const PPIF = 'PPIF';
-
-    public const PPII = 'PPII';
-
-    public const PPIM = 'PPIM';
-
-    public const PPIT = 'PPIT';
-
-    public const PPLR = 'PPLR';
-
-    public const PPLS = 'PPLS';
-
-    public const PPMB = 'PPMB';
-
-    public const PPMC = 'PPMC';
-
-    public const PPMD = 'PPMD';
-
-    public const PPNC = 'PPNC';
-
-    public const PPNL = 'PPNL';
-
-    public const PPNM = 'PPNM';
-
-    public const PPNT = 'PPNT';
-
-    public const PPPH = 'PPPH';
-
-    public const PPPI = 'PPPI';
-
-    public const PPPM = 'PPPM';
-
-    public const PPQC = 'PPQC';
-
-    public const PPRE = 'PPRE';
-
-    public const PPRF = 'PPRF';
-
-    public const PPRR = 'PPRR';
-
-    public const PPS0 = 'PPS0';
-
-    public const PPS1 = 'PPS1';
-
-    public const PPS2 = 'PPS2';
-
-    public const PPS3 = 'PPS3';
-
-    public const PPS4 = 'PPS4';
-
-    public const PPS5 = 'PPS5';
-
-    public const PPS6 = 'PPS6';
-
-    public const PPSC = 'PPSC';
-
-    public const PPSD = 'PPSD';
-
-    public const PPSE = 'PPSE';
-
-    public const PPTE = 'PPTE';
-
-    public const PPTF = 'PPTF';
-
-    public const PPTI = 'PPTI';
-
-    public const PPTR = 'PPTR';
-
-    public const PPTT = 'PPTT';
-
-    public const PPTV = 'PPTV';
-
-    public const PPUA = 'PPUA';
-
-    public const PPUC = 'PPUC';
-
-    public const PPUE = 'PPUE';
-
-    public const PPUI = 'PPUI';
-
-    public const PPUP = 'PPUP';
-
-    public const PPUR = 'PPUR';
-
-    public const PPVC = 'PPVC';
-
-    public const PPVE = 'PPVE';
-
-    public const PPVT = 'PPVT';
-
-    private const _ALL_VALUES = [
-        self::ENUM_0000,
-        self::ENUM_00N7,
-        self::ENUM_0100,
-        self::ENUM_0390,
-        self::ENUM_0500,
-        self::ENUM_0580,
-        self::ENUM_0800,
-        self::ENUM_0880,
-        self::ENUM_0890,
-        self::ENUM_0960,
-        self::ENUM_0R00,
-        self::ENUM_1000,
-        self::ENUM_10BR,
-        self::ENUM_1300,
-        self::ENUM_1310,
-        self::ENUM_1312,
-        self::ENUM_1317,
-        self::ENUM_1320,
-        self::ENUM_1330,
-        self::ENUM_1335,
-        self::ENUM_1340,
-        self::ENUM_1350,
-        self::ENUM_1352,
-        self::ENUM_1360,
-        self::ENUM_1370,
-        self::ENUM_1380,
-        self::ENUM_1382,
-        self::ENUM_1384,
-        self::ENUM_1390,
-        self::ENUM_1393,
-        self::ENUM_5100,
-        self::ENUM_5110,
-        self::ENUM_5120,
-        self::ENUM_5130,
-        self::ENUM_5135,
-        self::ENUM_5140,
-        self::ENUM_5150,
-        self::ENUM_5160,
-        self::ENUM_5170,
-        self::ENUM_5180,
-        self::ENUM_5190,
-        self::ENUM_5200,
-        self::ENUM_5210,
-        self::ENUM_5400,
-        self::ENUM_5500,
-        self::ENUM_5650,
-        self::ENUM_5700,
-        self::ENUM_5710,
-        self::ENUM_5800,
-        self::ENUM_5900,
-        self::ENUM_5910,
-        self::ENUM_5920,
-        self::ENUM_5930,
-        self::ENUM_5950,
-        self::ENUM_6300,
-        self::ENUM_7600,
-        self::ENUM_7700,
-        self::ENUM_7710,
-        self::ENUM_7800,
-        self::ENUM_7900,
-        self::ENUM_8000,
-        self::ENUM_8010,
-        self::ENUM_8020,
-        self::ENUM_8030,
-        self::ENUM_8100,
-        self::ENUM_8110,
-        self::ENUM_8220,
-        self::ENUM_9100,
-        self::ENUM_9500,
-        self::ENUM_9510,
-        self::ENUM_9520,
-        self::ENUM_9530,
-        self::ENUM_9540,
-        self::ENUM_9600,
-        self::PCNR,
-        self::PCVV,
-        self::PP06,
-        self::PPRN,
-        self::PPAD,
-        self::PPAB,
-        self::PPAE,
-        self::PPAG,
-        self::PPAI,
-        self::PPAR,
-        self::PPAU,
-        self::PPAV,
-        self::PPAX,
-        self::PPBG,
-        self::PPC2,
-        self::PPCE,
-        self::PPCO,
-        self::PPCR,
-        self::PPCT,
-        self::PPCU,
-        self::PPD3,
-        self::PPDC,
-        self::PPDI,
-        self::PPDV,
-        self::PPDT,
-        self::PPEF,
-        self::PPEL,
-        self::PPER,
-        self::PPEX,
-        self::PPFE,
-        self::PPFI,
-        self::PPFR,
-        self::PPFV,
-        self::PPGR,
-        self::PPH1,
-        self::PPIF,
-        self::PPII,
-        self::PPIM,
-        self::PPIT,
-        self::PPLR,
-        self::PPLS,
-        self::PPMB,
-        self::PPMC,
-        self::PPMD,
-        self::PPNC,
-        self::PPNL,
-        self::PPNM,
-        self::PPNT,
-        self::PPPH,
-        self::PPPI,
-        self::PPPM,
-        self::PPQC,
-        self::PPRE,
-        self::PPRF,
-        self::PPRR,
-        self::PPS0,
-        self::PPS1,
-        self::PPS2,
-        self::PPS3,
-        self::PPS4,
-        self::PPS5,
-        self::PPS6,
-        self::PPSC,
-        self::PPSD,
-        self::PPSE,
-        self::PPTE,
-        self::PPTF,
-        self::PPTI,
-        self::PPTR,
-        self::PPTT,
-        self::PPTV,
-        self::PPUA,
-        self::PPUC,
-        self::PPUE,
-        self::PPUI,
-        self::PPUP,
-        self::PPUR,
-        self::PPVC,
-        self::PPVE,
-        self::PPVT
-    ];
+    /**
+     * APPROVED.
+     */
+    public const RESPONSE_0000 = '0000';
 
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * CVV2_FAILURE_POSSIBLE_RETRY_WITH_CVV.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for ProcessorResponseCode.");
-    }
+    public const RESPONSE_00N7 = '00N7';
+
+    /**
+     * REFERRAL.
+     */
+    public const RESPONSE_0100 = '0100';
+
+    /**
+     * ACCOUNT_NOT_FOUND.
+     */
+    public const RESPONSE_0390 = '0390';
+
+    /**
+     * DO_NOT_HONOR.
+     */
+    public const RESPONSE_0500 = '0500';
+
+    /**
+     * UNAUTHORIZED_TRANSACTION.
+     */
+    public const RESPONSE_0580 = '0580';
+
+    /**
+     * BAD_RESPONSE_REVERSAL_REQUIRED.
+     */
+    public const RESPONSE_0800 = '0800';
+
+    /**
+     * CRYPTOGRAPHIC_FAILURE.
+     */
+    public const RESPONSE_0880 = '0880';
+
+    /**
+     * UNACCEPTABLE_PIN.
+     */
+    public const RESPONSE_0890 = '0890';
+
+    /**
+     * SYSTEM_MALFUNCTION.
+     */
+    public const RESPONSE_0960 = '0960';
+
+    /**
+     * CANCELLED_PAYMENT.
+     */
+    public const RESPONSE_0R00 = '0R00';
+
+    /**
+     * PARTIAL_AUTHORIZATION.
+     */
+    public const RESPONSE_1000 = '1000';
+
+    /**
+     * ISSUER_REJECTED.
+     */
+    public const RESPONSE_10BR = '10BR';
+
+    /**
+     * INVALID_DATA_FORMAT.
+     */
+    public const RESPONSE_1300 = '1300';
+
+    /**
+     * INVALID_AMOUNT.
+     */
+    public const RESPONSE_1310 = '1310';
+
+    /**
+     * INVALID_TRANSACTION_CARD_ISSUER_ACQUIRER.
+     */
+    public const RESPONSE_1312 = '1312';
+
+    /**
+     * INVALID_CAPTURE_DATE.
+     */
+    public const RESPONSE_1317 = '1317';
+
+    /**
+     * INVALID_CURRENCY_CODE.
+     */
+    public const RESPONSE_1320 = '1320';
+
+    /**
+     * INVALID_ACCOUNT.
+     */
+    public const RESPONSE_1330 = '1330';
+
+    /**
+     * INVALID_ACCOUNT_RECURRING.
+     */
+    public const RESPONSE_1335 = '1335';
+
+    /**
+     * INVALID_TERMINAL.
+     */
+    public const RESPONSE_1340 = '1340';
+
+    /**
+     * INVALID_MERCHANT.
+     */
+    public const RESPONSE_1350 = '1350';
+
+    /**
+     * RESTRICTED_OR_INACTIVE_ACCOUNT.
+     */
+    public const RESPONSE_1352 = '1352';
+
+    /**
+     * BAD_PROCESSING_CODE.
+     */
+    public const RESPONSE_1360 = '1360';
+
+    /**
+     * INVALID_MCC.
+     */
+    public const RESPONSE_1370 = '1370';
+
+    /**
+     * INVALID_EXPIRATION.
+     */
+    public const RESPONSE_1380 = '1380';
+
+    /**
+     * INVALID_CARD_VERIFICATION_VALUE.
+     */
+    public const RESPONSE_1382 = '1382';
+
+    /**
+     * INVALID_LIFE_CYCLE_OF_TRANSACTION.
+     */
+    public const RESPONSE_1384 = '1384';
+
+    /**
+     * INVALID_ORDER.
+     */
+    public const RESPONSE_1390 = '1390';
+
+    /**
+     * TRANSACTION_CANNOT_BE_COMPLETED.
+     */
+    public const RESPONSE_1393 = '1393';
+
+    /**
+     * GENERIC_DECLINE.
+     */
+    public const RESPONSE_5100 = '5100';
+
+    /**
+     * CVV2_FAILURE.
+     */
+    public const RESPONSE_5110 = '5110';
+
+    /**
+     * INSUFFICIENT_FUNDS.
+     */
+    public const RESPONSE_5120 = '5120';
+
+    /**
+     * INVALID_PIN.
+     */
+    public const RESPONSE_5130 = '5130';
+
+    /**
+     * DECLINED_PIN_TRY_EXCEEDED.
+     */
+    public const RESPONSE_5135 = '5135';
+
+    /**
+     * CARD_CLOSED.
+     */
+    public const RESPONSE_5140 = '5140';
+
+    /**
+     * PICKUP_CARD_SPECIAL_CONDITIONS. Try using another card. Do not retry the same card.
+     */
+    public const RESPONSE_5150 = '5150';
+
+    /**
+     * UNAUTHORIZED_USER.
+     */
+    public const RESPONSE_5160 = '5160';
+
+    /**
+     * AVS_FAILURE.
+     */
+    public const RESPONSE_5170 = '5170';
+
+    /**
+     * INVALID_OR_RESTRICTED_CARD. Try using another card. Do not retry the same card.
+     */
+    public const RESPONSE_5180 = '5180';
+
+    /**
+     * SOFT_AVS.
+     */
+    public const RESPONSE_5190 = '5190';
+
+    /**
+     * DUPLICATE_TRANSACTION.
+     */
+    public const RESPONSE_5200 = '5200';
+
+    /**
+     * INVALID_TRANSACTION.
+     */
+    public const RESPONSE_5210 = '5210';
+
+    /**
+     * EXPIRED_CARD.
+     */
+    public const RESPONSE_5400 = '5400';
+
+    /**
+     * INCORRECT_PIN_REENTER.
+     */
+    public const RESPONSE_5500 = '5500';
+
+    /**
+     * DECLINED_SCA_REQUIRED.
+     */
+    public const RESPONSE_5650 = '5650';
+
+    /**
+     * TRANSACTION_NOT_PERMITTED. Outside of scope of accepted business.
+     */
+    public const RESPONSE_5700 = '5700';
+
+    /**
+     * TX_ATTEMPTS_EXCEED_LIMIT.
+     */
+    public const RESPONSE_5710 = '5710';
+
+    /**
+     * REVERSAL_REJECTED.
+     */
+    public const RESPONSE_5800 = '5800';
+
+    /**
+     * INVALID_ISSUE.
+     */
+    public const RESPONSE_5900 = '5900';
+
+    /**
+     * ISSUER_NOT_AVAILABLE_NOT_RETRIABLE.
+     */
+    public const RESPONSE_5910 = '5910';
+
+    /**
+     * ISSUER_NOT_AVAILABLE_RETRIABLE.
+     */
+    public const RESPONSE_5920 = '5920';
+
+    /**
+     * CARD_NOT_ACTIVATED.
+     */
+    public const RESPONSE_5930 = '5930';
+
+    /**
+     * DECLINED_DUE_TO_UPDATED_ACCOUNT. External decline as an updated card has been issued.
+     */
+    public const RESPONSE_5950 = '5950';
+
+    /**
+     * ACCOUNT_NOT_ON_FILE.
+     */
+    public const RESPONSE_6300 = '6300';
+
+    /**
+     * APPROVED_NON_CAPTURE.
+     */
+    public const RESPONSE_7600 = '7600';
+
+    /**
+     * ERROR_3DS.
+     */
+    public const RESPONSE_7700 = '7700';
+
+    /**
+     * AUTHENTICATION_FAILED.
+     */
+    public const RESPONSE_7710 = '7710';
+
+    /**
+     * BIN_ERROR.
+     */
+    public const RESPONSE_7800 = '7800';
+
+    /**
+     * PIN_ERROR.
+     */
+    public const RESPONSE_7900 = '7900';
+
+    /**
+     * PROCESSOR_SYSTEM_ERROR.
+     */
+    public const RESPONSE_8000 = '8000';
+
+    /**
+     * HOST_KEY_ERROR.
+     */
+    public const RESPONSE_8010 = '8010';
+
+    /**
+     * CONFIGURATION_ERROR.
+     */
+    public const RESPONSE_8020 = '8020';
+
+    /**
+     * UNSUPPORTED_OPERATION.
+     */
+    public const RESPONSE_8030 = '8030';
+
+    /**
+     * FATAL_COMMUNICATION_ERROR.
+     */
+    public const RESPONSE_8100 = '8100';
+
+    /**
+     * RETRIABLE_COMMUNICATION_ERROR.
+     */
+    public const RESPONSE_8110 = '8110';
+
+    /**
+     * SYSTEM_UNAVAILABLE.
+     */
+    public const RESPONSE_8220 = '8220';
+
+    /**
+     * DECLINED_PLEASE_RETRY. Retry.
+     */
+    public const RESPONSE_9100 = '9100';
+
+    /**
+     * SUSPECTED_FRAUD. Try using another card. Do not retry the same card.
+     */
+    public const RESPONSE_9500 = '9500';
+
+    /**
+     * SECURITY_VIOLATION.
+     */
+    public const RESPONSE_9510 = '9510';
+
+    /**
+     * LOST_OR_STOLEN. Try using another card. Do not retry the same card.
+     */
+    public const RESPONSE_9520 = '9520';
+
+    /**
+     * HOLD_CALL_CENTER. The merchant must call the number on the back of the card. POS scenario.
+     */
+    public const RESPONSE_9530 = '9530';
+
+    /**
+     * REFUSED_CARD.
+     */
+    public const RESPONSE_9540 = '9540';
+
+    /**
+     * UNRECOGNIZED_RESPONSE_CODE.
+     */
+    public const RESPONSE_9600 = '9600';
+
+    /**
+     * CONTINGENCIES_NOT_RESOLVED.
+     */
+    public const RESPONSE_PCNR = 'PCNR';
+
+    /**
+     * CVV_FAILURE.
+     */
+    public const RESPONSE_PCVV = 'PCVV';
+
+    /**
+     * ACCOUNT_CLOSED. A previously open account is now closed
+     */
+    public const RESPONSE_PP06 = 'PP06';
+
+    /**
+     * REATTEMPT_NOT_PERMITTED.
+     */
+    public const RESPONSE_PPRN = 'PPRN';
+
+    /**
+     * BILLING_ADDRESS.
+     */
+    public const RESPONSE_PPAD = 'PPAD';
+
+    /**
+     * ACCOUNT_BLOCKED_BY_ISSUER.
+     */
+    public const RESPONSE_PPAB = 'PPAB';
+
+    /**
+     * AMEX_DISABLED.
+     */
+    public const RESPONSE_PPAE = 'PPAE';
+
+    /**
+     * ADULT_GAMING_UNSUPPORTED.
+     */
+    public const RESPONSE_PPAG = 'PPAG';
+
+    /**
+     * AMOUNT_INCOMPATIBLE.
+     */
+    public const RESPONSE_PPAI = 'PPAI';
+
+    /**
+     * AUTH_RESULT.
+     */
+    public const RESPONSE_PPAR = 'PPAR';
+
+    /**
+     * MCC_CODE.
+     */
+    public const RESPONSE_PPAU = 'PPAU';
+
+    /**
+     * ARC_AVS.
+     */
+    public const RESPONSE_PPAV = 'PPAV';
+
+    /**
+     * AMOUNT_EXCEEDED.
+     */
+    public const RESPONSE_PPAX = 'PPAX';
+
+    /**
+     * BAD_GAMING.
+     */
+    public const RESPONSE_PPBG = 'PPBG';
+
+    /**
+     * ARC_CVV.
+     */
+    public const RESPONSE_PPC2 = 'PPC2';
+
+    /**
+     * CE_REGISTRATION_INCOMPLETE.
+     */
+    public const RESPONSE_PPCE = 'PPCE';
+
+    /**
+     * COUNTRY.
+     */
+    public const RESPONSE_PPCO = 'PPCO';
+
+    /**
+     * CREDIT_ERROR.
+     */
+    public const RESPONSE_PPCR = 'PPCR';
+
+    /**
+     * CARD_TYPE_UNSUPPORTED.
+     */
+    public const RESPONSE_PPCT = 'PPCT';
+
+    /**
+     * CURRENCY_USED_INVALID.
+     */
+    public const RESPONSE_PPCU = 'PPCU';
+
+    /**
+     * SECURE_ERROR_3DS.
+     */
+    public const RESPONSE_PPD3 = 'PPD3';
+
+    /**
+     * DCC_UNSUPPORTED.
+     */
+    public const RESPONSE_PPDC = 'PPDC';
+
+    /**
+     * DINERS_REJECT.
+     */
+    public const RESPONSE_PPDI = 'PPDI';
+
+    /**
+     * AUTH_MESSAGE.
+     */
+    public const RESPONSE_PPDV = 'PPDV';
+
+    /**
+     * DECLINE_THRESHOLD_BREACH.
+     */
+    public const RESPONSE_PPDT = 'PPDT';
+
+    /**
+     * EXPIRED_FUNDING_INSTRUMENT.
+     */
+    public const RESPONSE_PPEF = 'PPEF';
+
+    /**
+     * EXCEEDS_FREQUENCY_LIMIT.
+     */
+    public const RESPONSE_PPEL = 'PPEL';
+
+    /**
+     * INTERNAL_SYSTEM_ERROR.
+     */
+    public const RESPONSE_PPER = 'PPER';
+
+    /**
+     * EXPIRY_DATE.
+     */
+    public const RESPONSE_PPEX = 'PPEX';
+
+    /**
+     * FUNDING_SOURCE_ALREADY_EXISTS.
+     */
+    public const RESPONSE_PPFE = 'PPFE';
+
+    /**
+     * INVALID_FUNDING_INSTRUMENT.
+     */
+    public const RESPONSE_PPFI = 'PPFI';
+
+    /**
+     * RESTRICTED_FUNDING_INSTRUMENT.
+     */
+    public const RESPONSE_PPFR = 'PPFR';
+
+    /**
+     * FIELD_VALIDATION_FAILED.
+     */
+    public const RESPONSE_PPFV = 'PPFV';
+
+    /**
+     * GAMING_REFUND_ERROR.
+     */
+    public const RESPONSE_PPGR = 'PPGR';
+
+    /**
+     * H1_ERROR.
+     */
+    public const RESPONSE_PPH1 = 'PPH1';
+
+    /**
+     * IDEMPOTENCY_FAILURE.
+     */
+    public const RESPONSE_PPIF = 'PPIF';
+
+    /**
+     * INVALID_INPUT_FAILURE.
+     */
+    public const RESPONSE_PPII = 'PPII';
+
+    /**
+     * ID_MISMATCH.
+     */
+    public const RESPONSE_PPIM = 'PPIM';
+
+    /**
+     * INVALID_TRACE_ID.
+     */
+    public const RESPONSE_PPIT = 'PPIT';
+
+    /**
+     * LATE_REVERSAL.
+     */
+    public const RESPONSE_PPLR = 'PPLR';
+
+    /**
+     * LARGE_STATUS_CODE.
+     */
+    public const RESPONSE_PPLS = 'PPLS';
+
+    /**
+     * MISSING_BUSINESS_RULE_OR_DATA.
+     */
+    public const RESPONSE_PPMB = 'PPMB';
+
+    /**
+     * BLOCKED_Mastercard.
+     */
+    public const RESPONSE_PPMC = 'PPMC';
+
+    /**
+     * DEPRECATED The PPMD value has been deprecated.
+     */
+    public const RESPONSE_PPMD = 'PPMD';
+
+    /**
+     * NOT_SUPPORTED_NRC.
+     */
+    public const RESPONSE_PPNC = 'PPNC';
+
+    /**
+     * EXCEEDS_NETWORK_FREQUENCY_LIMIT.
+     */
+    public const RESPONSE_PPNL = 'PPNL';
+
+    /**
+     * NO_MID_FOUND.
+     */
+    public const RESPONSE_PPNM = 'PPNM';
+
+    /**
+     * NETWORK_ERROR.
+     */
+    public const RESPONSE_PPNT = 'PPNT';
+
+    /**
+     * NO_PHONE_FOR_DCC_TRANSACTION.
+     */
+    public const RESPONSE_PPPH = 'PPPH';
+
+    /**
+     * INVALID_PRODUCT.
+     */
+    public const RESPONSE_PPPI = 'PPPI';
+
+    /**
+     * INVALID_PAYMENT_METHOD.
+     */
+    public const RESPONSE_PPPM = 'PPPM';
+
+    /**
+     * QUASI_CASH_UNSUPPORTED.
+     */
+    public const RESPONSE_PPQC = 'PPQC';
+
+    /**
+     * UNSUPPORT_REFUND_ON_PENDING_BC.
+     */
+    public const RESPONSE_PPRE = 'PPRE';
+
+    /**
+     * INVALID_PARENT_TRANSACTION_STATUS.
+     */
+    public const RESPONSE_PPRF = 'PPRF';
+
+    /**
+     * MERCHANT_NOT_REGISTERED.
+     */
+    public const RESPONSE_PPRR = 'PPRR';
+
+    /**
+     * BANKAUTH_ROW_MISMATCH.
+     */
+    public const RESPONSE_PPS0 = 'PPS0';
+
+    /**
+     * BANKAUTH_ROW_SETTLED.
+     */
+    public const RESPONSE_PPS1 = 'PPS1';
+
+    /**
+     * BANKAUTH_ROW_VOIDED.
+     */
+    public const RESPONSE_PPS2 = 'PPS2';
+
+    /**
+     * BANKAUTH_EXPIRED.
+     */
+    public const RESPONSE_PPS3 = 'PPS3';
+
+    /**
+     * CURRENCY_MISMATCH.
+     */
+    public const RESPONSE_PPS4 = 'PPS4';
+
+    /**
+     * CREDITCARD_MISMATCH.
+     */
+    public const RESPONSE_PPS5 = 'PPS5';
+
+    /**
+     * AMOUNT_MISMATCH.
+     */
+    public const RESPONSE_PPS6 = 'PPS6';
+
+    /**
+     * ARC_SCORE.
+     */
+    public const RESPONSE_PPSC = 'PPSC';
+
+    /**
+     * STATUS_DESCRIPTION.
+     */
+    public const RESPONSE_PPSD = 'PPSD';
+
+    /**
+     * AMEX_DENIED.
+     */
+    public const RESPONSE_PPSE = 'PPSE';
+
+    /**
+     * VERIFICATION_TOKEN_EXPIRED.
+     */
+    public const RESPONSE_PPTE = 'PPTE';
+
+    /**
+     * INVALID_TRACE_REFERENCE.
+     */
+    public const RESPONSE_PPTF = 'PPTF';
+
+    /**
+     * INVALID_TRANSACTION_ID.
+     */
+    public const RESPONSE_PPTI = 'PPTI';
+
+    /**
+     * VERIFICATION_TOKEN_REVOKED.
+     */
+    public const RESPONSE_PPTR = 'PPTR';
+
+    /**
+     * TRANSACTION_TYPE_UNSUPPORTED.
+     */
+    public const RESPONSE_PPTT = 'PPTT';
+
+    /**
+     * INVALID_VERIFICATION_TOKEN.
+     */
+    public const RESPONSE_PPTV = 'PPTV';
+
+    /**
+     * USER_NOT_AUTHORIZED.
+     */
+    public const RESPONSE_PPUA = 'PPUA';
+
+    /**
+     * CURRENCY_CODE_UNSUPPORTED.
+     */
+    public const RESPONSE_PPUC = 'PPUC';
+
+    /**
+     * UNSUPPORT_ENTITY.
+     */
+    public const RESPONSE_PPUE = 'PPUE';
+
+    /**
+     * UNSUPPORT_INSTALLMENT.
+     */
+    public const RESPONSE_PPUI = 'PPUI';
+
+    /**
+     * UNSUPPORT_POS_FLAG.
+     */
+    public const RESPONSE_PPUP = 'PPUP';
+
+    /**
+     * UNSUPPORTED_REVERSAL.
+     */
+    public const RESPONSE_PPUR = 'PPUR';
+
+    /**
+     * VALIDATE_CURRENCY.
+     */
+    public const RESPONSE_PPVC = 'PPVC';
+
+    /**
+     * VALIDATION_ERROR.
+     */
+    public const RESPONSE_PPVE = 'PPVE';
+
+    /**
+     * VIRTUAL_TERMINAL_UNSUPPORTED.
+     */
+    public const RESPONSE_PPVT = 'PPVT';
 }

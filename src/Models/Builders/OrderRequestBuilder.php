@@ -15,6 +15,7 @@ use PaypalServerSdkLib\Models\OrderApplicationContext;
 use PaypalServerSdkLib\Models\OrderRequest;
 use PaypalServerSdkLib\Models\Payer;
 use PaypalServerSdkLib\Models\PaymentSource;
+use PaypalServerSdkLib\Models\PurchaseUnitRequest;
 
 /**
  * Builder for model OrderRequest
@@ -34,7 +35,10 @@ class OrderRequestBuilder
     }
 
     /**
-     * Initializes a new order request Builder object.
+     * Initializes a new Order Request Builder object.
+     *
+     * @param string $intent
+     * @param PurchaseUnitRequest[] $purchaseUnits
      */
     public static function init(string $intent, array $purchaseUnits): self
     {
@@ -43,6 +47,8 @@ class OrderRequestBuilder
 
     /**
      * Sets payer field.
+     *
+     * @param Payer|null $value
      */
     public function payer(?Payer $value): self
     {
@@ -52,6 +58,8 @@ class OrderRequestBuilder
 
     /**
      * Sets payment source field.
+     *
+     * @param PaymentSource|null $value
      */
     public function paymentSource(?PaymentSource $value): self
     {
@@ -61,6 +69,8 @@ class OrderRequestBuilder
 
     /**
      * Sets application context field.
+     *
+     * @param OrderApplicationContext|null $value
      */
     public function applicationContext(?OrderApplicationContext $value): self
     {
@@ -69,7 +79,7 @@ class OrderRequestBuilder
     }
 
     /**
-     * Initializes a new order request object.
+     * Initializes a new Order Request object.
      */
     public function build(): OrderRequest
     {

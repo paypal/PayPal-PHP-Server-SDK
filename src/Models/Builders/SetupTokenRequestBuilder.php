@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\CustomerRequest;
+use PaypalServerSdkLib\Models\Customer;
 use PaypalServerSdkLib\Models\SetupTokenRequest;
 use PaypalServerSdkLib\Models\SetupTokenRequestPaymentSource;
 
@@ -33,7 +33,9 @@ class SetupTokenRequestBuilder
     }
 
     /**
-     * Initializes a new setup token request Builder object.
+     * Initializes a new Setup Token Request Builder object.
+     *
+     * @param SetupTokenRequestPaymentSource $paymentSource
      */
     public static function init(SetupTokenRequestPaymentSource $paymentSource): self
     {
@@ -42,15 +44,17 @@ class SetupTokenRequestBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param Customer|null $value
      */
-    public function customer(?CustomerRequest $value): self
+    public function customer(?Customer $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
     }
 
     /**
-     * Initializes a new setup token request object.
+     * Initializes a new Setup Token Request object.
      */
     public function build(): SetupTokenRequest
     {

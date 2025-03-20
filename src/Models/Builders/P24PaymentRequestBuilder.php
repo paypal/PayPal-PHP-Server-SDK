@@ -32,7 +32,11 @@ class P24PaymentRequestBuilder
     }
 
     /**
-     * Initializes a new p24 payment request Builder object.
+     * Initializes a new P24 Payment Request Builder object.
+     *
+     * @param string $name
+     * @param string $email
+     * @param string $countryCode
      */
     public static function init(string $name, string $email, string $countryCode): self
     {
@@ -41,6 +45,8 @@ class P24PaymentRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param ExperienceContext|null $value
      */
     public function experienceContext(?ExperienceContext $value): self
     {
@@ -49,7 +55,7 @@ class P24PaymentRequestBuilder
     }
 
     /**
-     * Initializes a new p24 payment request object.
+     * Initializes a new P24 Payment Request object.
      */
     public function build(): P24PaymentRequest
     {

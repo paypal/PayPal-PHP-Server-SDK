@@ -13,6 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CardCustomerInformation;
 use PaypalServerSdkLib\Models\CardVaultResponse;
+use PaypalServerSdkLib\Models\LinkDescription;
 
 /**
  * Builder for model CardVaultResponse
@@ -32,7 +33,7 @@ class CardVaultResponseBuilder
     }
 
     /**
-     * Initializes a new card vault response Builder object.
+     * Initializes a new Card Vault Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +42,8 @@ class CardVaultResponseBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -50,6 +53,8 @@ class CardVaultResponseBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -59,6 +64,8 @@ class CardVaultResponseBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -68,6 +75,8 @@ class CardVaultResponseBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param CardCustomerInformation|null $value
      */
     public function customer(?CardCustomerInformation $value): self
     {
@@ -76,7 +85,7 @@ class CardVaultResponseBuilder
     }
 
     /**
-     * Initializes a new card vault response object.
+     * Initializes a new Card Vault Response object.
      */
     public function build(): CardVaultResponse
     {

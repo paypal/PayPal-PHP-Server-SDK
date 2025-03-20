@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -113,6 +114,19 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
     public function setToken(?VaultTokenRequest $token): void
     {
         $this->token = $token;
+    }
+
+    /**
+     * Converts the SetupTokenRequestPaymentSource object to a human-readable string representation.
+     *
+     * @return string The string representation of the SetupTokenRequestPaymentSource object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SetupTokenRequestPaymentSource',
+            ['card' => $this->card, 'paypal' => $this->paypal, 'venmo' => $this->venmo, 'token' => $this->token]
+        );
     }
 
     /**

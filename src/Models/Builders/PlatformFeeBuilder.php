@@ -33,7 +33,9 @@ class PlatformFeeBuilder
     }
 
     /**
-     * Initializes a new platform fee Builder object.
+     * Initializes a new Platform Fee Builder object.
+     *
+     * @param Money $amount
      */
     public static function init(Money $amount): self
     {
@@ -42,6 +44,8 @@ class PlatformFeeBuilder
 
     /**
      * Sets payee field.
+     *
+     * @param PayeeBase|null $value
      */
     public function payee(?PayeeBase $value): self
     {
@@ -50,7 +54,7 @@ class PlatformFeeBuilder
     }
 
     /**
-     * Initializes a new platform fee object.
+     * Initializes a new Platform Fee object.
      */
     public function build(): PlatformFee
     {

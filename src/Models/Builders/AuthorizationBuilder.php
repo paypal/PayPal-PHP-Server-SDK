@@ -13,6 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Authorization;
 use PaypalServerSdkLib\Models\AuthorizationStatusDetails;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
 use PaypalServerSdkLib\Models\NetworkTransactionReference;
 use PaypalServerSdkLib\Models\SellerProtection;
@@ -35,7 +36,7 @@ class AuthorizationBuilder
     }
 
     /**
-     * Initializes a new authorization Builder object.
+     * Initializes a new Authorization Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +45,8 @@ class AuthorizationBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -53,6 +56,8 @@ class AuthorizationBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param AuthorizationStatusDetails|null $value
      */
     public function statusDetails(?AuthorizationStatusDetails $value): self
     {
@@ -62,6 +67,8 @@ class AuthorizationBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -71,6 +78,8 @@ class AuthorizationBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -80,6 +89,8 @@ class AuthorizationBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -89,6 +100,8 @@ class AuthorizationBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -98,6 +111,8 @@ class AuthorizationBuilder
 
     /**
      * Sets network transaction reference field.
+     *
+     * @param NetworkTransactionReference|null $value
      */
     public function networkTransactionReference(?NetworkTransactionReference $value): self
     {
@@ -107,6 +122,8 @@ class AuthorizationBuilder
 
     /**
      * Sets seller protection field.
+     *
+     * @param SellerProtection|null $value
      */
     public function sellerProtection(?SellerProtection $value): self
     {
@@ -116,6 +133,8 @@ class AuthorizationBuilder
 
     /**
      * Sets expiration time field.
+     *
+     * @param string|null $value
      */
     public function expirationTime(?string $value): self
     {
@@ -125,6 +144,8 @@ class AuthorizationBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -134,6 +155,8 @@ class AuthorizationBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -143,6 +166,8 @@ class AuthorizationBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -151,7 +176,7 @@ class AuthorizationBuilder
     }
 
     /**
-     * Initializes a new authorization object.
+     * Initializes a new Authorization object.
      */
     public function build(): Authorization
     {

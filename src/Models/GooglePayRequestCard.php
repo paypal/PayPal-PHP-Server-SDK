@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -124,6 +125,24 @@ class GooglePayRequestCard implements \JsonSerializable
     }
 
     /**
+     * Converts the GooglePayRequestCard object to a human-readable string representation.
+     *
+     * @return string The string representation of the GooglePayRequestCard object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'GooglePayRequestCard',
+            [
+                'name' => $this->name,
+                'type' => $this->type,
+                'brand' => $this->brand,
+                'billingAddress' => $this->billingAddress
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -139,10 +158,10 @@ class GooglePayRequestCard implements \JsonSerializable
             $json['name']            = $this->name;
         }
         if (isset($this->type)) {
-            $json['type']            = CardType::checkValue($this->type);
+            $json['type']            = $this->type;
         }
         if (isset($this->brand)) {
-            $json['brand']           = CardBrand::checkValue($this->brand);
+            $json['brand']           = $this->brand;
         }
         if (isset($this->billingAddress)) {
             $json['billing_address'] = $this->billingAddress;

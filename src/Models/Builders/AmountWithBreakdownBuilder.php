@@ -32,7 +32,10 @@ class AmountWithBreakdownBuilder
     }
 
     /**
-     * Initializes a new amount with breakdown Builder object.
+     * Initializes a new Amount With Breakdown Builder object.
+     *
+     * @param string $currencyCode
+     * @param string $value
      */
     public static function init(string $currencyCode, string $value): self
     {
@@ -41,6 +44,8 @@ class AmountWithBreakdownBuilder
 
     /**
      * Sets breakdown field.
+     *
+     * @param AmountBreakdown|null $value
      */
     public function breakdown(?AmountBreakdown $value): self
     {
@@ -49,7 +54,7 @@ class AmountWithBreakdownBuilder
     }
 
     /**
-     * Initializes a new amount with breakdown object.
+     * Initializes a new Amount With Breakdown object.
      */
     public function build(): AmountWithBreakdown
     {

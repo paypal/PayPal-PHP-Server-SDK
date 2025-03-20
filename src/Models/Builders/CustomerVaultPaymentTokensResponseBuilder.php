@@ -11,8 +11,10 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\CustomerRequest;
 use PaypalServerSdkLib\Models\CustomerVaultPaymentTokensResponse;
+use PaypalServerSdkLib\Models\LinkDescription;
+use PaypalServerSdkLib\Models\PaymentTokenResponse;
+use PaypalServerSdkLib\Models\VaultResponseCustomer;
 
 /**
  * Builder for model CustomerVaultPaymentTokensResponse
@@ -32,7 +34,7 @@ class CustomerVaultPaymentTokensResponseBuilder
     }
 
     /**
-     * Initializes a new customer vault payment tokens response Builder object.
+     * Initializes a new Customer Vault Payment Tokens Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +43,8 @@ class CustomerVaultPaymentTokensResponseBuilder
 
     /**
      * Sets total items field.
+     *
+     * @param int|null $value
      */
     public function totalItems(?int $value): self
     {
@@ -50,6 +54,8 @@ class CustomerVaultPaymentTokensResponseBuilder
 
     /**
      * Sets total pages field.
+     *
+     * @param int|null $value
      */
     public function totalPages(?int $value): self
     {
@@ -59,8 +65,10 @@ class CustomerVaultPaymentTokensResponseBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param VaultResponseCustomer|null $value
      */
-    public function customer(?CustomerRequest $value): self
+    public function customer(?VaultResponseCustomer $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
@@ -68,6 +76,8 @@ class CustomerVaultPaymentTokensResponseBuilder
 
     /**
      * Sets payment tokens field.
+     *
+     * @param PaymentTokenResponse[]|null $value
      */
     public function paymentTokens(?array $value): self
     {
@@ -77,6 +87,8 @@ class CustomerVaultPaymentTokensResponseBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -85,7 +97,7 @@ class CustomerVaultPaymentTokensResponseBuilder
     }
 
     /**
-     * Initializes a new customer vault payment tokens response object.
+     * Initializes a new Customer Vault Payment Tokens Response object.
      */
     public function build(): CustomerVaultPaymentTokensResponse
     {

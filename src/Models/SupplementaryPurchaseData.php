@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -70,6 +71,19 @@ class SupplementaryPurchaseData implements \JsonSerializable
     public function setNoteToPayer(?string $noteToPayer): void
     {
         $this->noteToPayer = $noteToPayer;
+    }
+
+    /**
+     * Converts the SupplementaryPurchaseData object to a human-readable string representation.
+     *
+     * @return string The string representation of the SupplementaryPurchaseData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SupplementaryPurchaseData',
+            ['invoiceId' => $this->invoiceId, 'noteToPayer' => $this->noteToPayer]
+        );
     }
 
     /**

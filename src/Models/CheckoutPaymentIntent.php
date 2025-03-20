@@ -10,37 +10,24 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The intent to either capture payment immediately or authorize a payment for an order after order
  * creation.
  */
 class CheckoutPaymentIntent
 {
+    /**
+     * The merchant intends to capture payment immediately after the customer makes a payment.
+     */
     public const CAPTURE = 'CAPTURE';
 
-    public const AUTHORIZE = 'AUTHORIZE';
-
-    private const _ALL_VALUES = [self::CAPTURE, self::AUTHORIZE];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The merchant intends to authorize a payment and place funds on hold after the customer makes a
+     * payment. Authorized payments are best captured within three days of authorization but are available
+     * to capture for up to 29 days. After the three-day honor period, the original authorized payment
+     * expires and you must re-authorize the payment. You must make a separate request to capture payments
+     * on demand. This intent is not supported when you have more than one `purchase_unit` within your
+     * order.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for CheckoutPaymentIntent.");
-    }
+    public const AUTHORIZE = 'AUTHORIZE';
 }

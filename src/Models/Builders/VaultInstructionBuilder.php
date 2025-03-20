@@ -31,7 +31,9 @@ class VaultInstructionBuilder
     }
 
     /**
-     * Initializes a new vault instruction Builder object.
+     * Initializes a new Vault Instruction Builder object.
+     *
+     * @param string $storeInVault
      */
     public static function init(string $storeInVault): self
     {
@@ -39,7 +41,7 @@ class VaultInstructionBuilder
     }
 
     /**
-     * Initializes a new vault instruction object.
+     * Initializes a new Vault Instruction object.
      */
     public function build(): VaultInstruction
     {

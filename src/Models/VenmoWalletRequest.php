@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -61,10 +62,9 @@ class VenmoWalletRequest implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -73,10 +73,9 @@ class VenmoWalletRequest implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -87,10 +86,9 @@ class VenmoWalletRequest implements \JsonSerializable
 
     /**
      * Returns Experience Context.
-     * Customizes the buyer experience during the approval process for payment with Venmo.
-     * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure
-     * <code>shipping_preference</code> during partner account setup, which overrides the request values.
-     * </blockquote>
+     * Customizes the buyer experience during the approval process for payment with Venmo. Note: Partners
+     * and Marketplaces might configure shipping_preference during partner account setup, which overrides
+     * the request values.
      */
     public function getExperienceContext(): ?VenmoWalletExperienceContext
     {
@@ -99,10 +97,9 @@ class VenmoWalletRequest implements \JsonSerializable
 
     /**
      * Sets Experience Context.
-     * Customizes the buyer experience during the approval process for payment with Venmo.
-     * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure
-     * <code>shipping_preference</code> during partner account setup, which overrides the request values.
-     * </blockquote>
+     * Customizes the buyer experience during the approval process for payment with Venmo. Note: Partners
+     * and Marketplaces might configure shipping_preference during partner account setup, which overrides
+     * the request values.
      *
      * @maps experience_context
      */
@@ -129,6 +126,24 @@ class VenmoWalletRequest implements \JsonSerializable
     public function setAttributes(?VenmoWalletAdditionalAttributes $attributes): void
     {
         $this->attributes = $attributes;
+    }
+
+    /**
+     * Converts the VenmoWalletRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the VenmoWalletRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VenmoWalletRequest',
+            [
+                'vaultId' => $this->vaultId,
+                'emailAddress' => $this->emailAddress,
+                'experienceContext' => $this->experienceContext,
+                'attributes' => $this->attributes
+            ]
+        );
     }
 
     /**

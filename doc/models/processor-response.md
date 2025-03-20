@@ -23,7 +23,7 @@ The processor response information for payment requests, such as direct credit c
   "avs_code": "M",
   "cvv_code": "U",
   "response_code": "PPII",
-  "payment_advice_code": "01"
+  "payment_advice_code": "03"
 }
 ```
 

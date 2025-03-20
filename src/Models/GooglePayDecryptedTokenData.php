@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -215,6 +216,27 @@ class GooglePayDecryptedTokenData implements \JsonSerializable
     }
 
     /**
+     * Converts the GooglePayDecryptedTokenData object to a human-readable string representation.
+     *
+     * @return string The string representation of the GooglePayDecryptedTokenData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'GooglePayDecryptedTokenData',
+            [
+                'messageId' => $this->messageId,
+                'messageExpiration' => $this->messageExpiration,
+                'paymentMethod' => $this->paymentMethod,
+                'card' => $this->card,
+                'authenticationMethod' => $this->authenticationMethod,
+                'cryptogram' => $this->cryptogram,
+                'eciIndicator' => $this->eciIndicator
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -232,9 +254,9 @@ class GooglePayDecryptedTokenData implements \JsonSerializable
         if (isset($this->messageExpiration)) {
             $json['message_expiration'] = $this->messageExpiration;
         }
-        $json['payment_method']         = GooglePayPaymentMethod::checkValue($this->paymentMethod);
+        $json['payment_method']         = $this->paymentMethod;
         $json['card']                   = $this->card;
-        $json['authentication_method']  = GooglePayAuthenticationMethod::checkValue($this->authenticationMethod);
+        $json['authentication_method']  = $this->authenticationMethod;
         if (isset($this->cryptogram)) {
             $json['cryptogram']         = $this->cryptogram;
         }

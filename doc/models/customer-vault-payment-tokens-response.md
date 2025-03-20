@@ -13,7 +13,7 @@ Collection of payment tokens saved for a given customer.
 |  --- | --- | --- | --- | --- | --- |
 | `totalItems` | `?int` | Optional | Total number of items.<br>**Constraints**: `>= 1`, `<= 50` | getTotalItems(): ?int | setTotalItems(?int totalItems): void |
 | `totalPages` | `?int` | Optional | Total number of pages.<br>**Constraints**: `>= 1`, `<= 10` | getTotalPages(): ?int | setTotalPages(?int totalPages): void |
-| `customer` | [`?CustomerRequest`](../../doc/models/customer-request.md) | Optional | Customer in merchant's or partner's system of records. | getCustomer(): ?CustomerRequest | setCustomer(?CustomerRequest customer): void |
+| `customer` | [`?VaultResponseCustomer`](../../doc/models/vault-response-customer.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. | getCustomer(): ?VaultResponseCustomer | setCustomer(?VaultResponseCustomer customer): void |
 | `paymentTokens` | [`?(PaymentTokenResponse[])`](../../doc/models/payment-token-response.md) | Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `64` | getPaymentTokens(): ?array | setPaymentTokens(?array paymentTokens): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
 
@@ -25,7 +25,17 @@ Collection of payment tokens saved for a given customer.
   "total_pages": 168,
   "customer": {
     "id": "id0",
-    "merchant_customer_id": "merchant_customer_id2"
+    "merchant_customer_id": "merchant_customer_id2",
+    "links": [
+      {
+        "key1": "val1",
+        "key2": "val2"
+      },
+      {
+        "key1": "val1",
+        "key2": "val2"
+      }
+    ]
   },
   "payment_tokens": [
     {
@@ -51,9 +61,14 @@ Collection of payment tokens saved for a given customer.
         },
         "paypal": {
           "description": "description2",
+          "usage_pattern": "THRESHOLD_PREPAID",
           "shipping": {
             "name": {
               "full_name": "full_name6"
+            },
+            "phone_number": {
+              "country_code": "country_code2",
+              "national_number": "national_number6"
             },
             "type": "SHIPPING",
             "address": {
@@ -66,14 +81,18 @@ Collection of payment tokens saved for a given customer.
             }
           },
           "permit_multiple_payment_tokens": false,
-          "usage_type": "usage_type2",
-          "customer_type": "customer_type6"
+          "usage_type": "MERCHANT"
         },
         "venmo": {
           "description": "description6",
+          "usage_pattern": "UNSCHEDULED_PREPAID",
           "shipping": {
             "name": {
               "full_name": "full_name6"
+            },
+            "phone_number": {
+              "country_code": "country_code2",
+              "national_number": "national_number6"
             },
             "type": "SHIPPING",
             "address": {
@@ -86,8 +105,7 @@ Collection of payment tokens saved for a given customer.
             }
           },
           "permit_multiple_payment_tokens": false,
-          "usage_type": "usage_type6",
-          "customer_type": "customer_type0"
+          "usage_type": "MERCHANT"
         },
         "apple_pay": {
           "card": {
@@ -104,10 +122,6 @@ Collection of payment tokens saved for a given customer.
               "country_code": "country_code8"
             }
           }
-        },
-        "bank": {
-          "key1": "val1",
-          "key2": "val2"
         }
       },
       "links": [
@@ -146,9 +160,14 @@ Collection of payment tokens saved for a given customer.
         },
         "paypal": {
           "description": "description2",
+          "usage_pattern": "THRESHOLD_PREPAID",
           "shipping": {
             "name": {
               "full_name": "full_name6"
+            },
+            "phone_number": {
+              "country_code": "country_code2",
+              "national_number": "national_number6"
             },
             "type": "SHIPPING",
             "address": {
@@ -161,14 +180,18 @@ Collection of payment tokens saved for a given customer.
             }
           },
           "permit_multiple_payment_tokens": false,
-          "usage_type": "usage_type2",
-          "customer_type": "customer_type6"
+          "usage_type": "MERCHANT"
         },
         "venmo": {
           "description": "description6",
+          "usage_pattern": "UNSCHEDULED_PREPAID",
           "shipping": {
             "name": {
               "full_name": "full_name6"
+            },
+            "phone_number": {
+              "country_code": "country_code2",
+              "national_number": "national_number6"
             },
             "type": "SHIPPING",
             "address": {
@@ -181,8 +204,7 @@ Collection of payment tokens saved for a given customer.
             }
           },
           "permit_multiple_payment_tokens": false,
-          "usage_type": "usage_type6",
-          "customer_type": "customer_type0"
+          "usage_type": "MERCHANT"
         },
         "apple_pay": {
           "card": {
@@ -199,10 +221,6 @@ Collection of payment tokens saved for a given customer.
               "country_code": "country_code8"
             }
           }
-        },
-        "bank": {
-          "key1": "val1",
-          "key2": "val2"
         }
       },
       "links": [

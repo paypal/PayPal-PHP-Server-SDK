@@ -33,7 +33,7 @@ class CobrandedCardBuilder
     }
 
     /**
-     * Initializes a new cobranded card Builder object.
+     * Initializes a new Cobranded Card Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class CobrandedCardBuilder
 
     /**
      * Sets labels field.
+     *
+     * @param string[]|null $value
      */
     public function labels(?array $value): self
     {
@@ -51,6 +53,8 @@ class CobrandedCardBuilder
 
     /**
      * Sets payee field.
+     *
+     * @param PayeeBase|null $value
      */
     public function payee(?PayeeBase $value): self
     {
@@ -60,6 +64,8 @@ class CobrandedCardBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -68,7 +74,7 @@ class CobrandedCardBuilder
     }
 
     /**
-     * Initializes a new cobranded card object.
+     * Initializes a new Cobranded Card object.
      */
     public function build(): CobrandedCard
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -71,6 +72,19 @@ class Level2CardProcessingData implements \JsonSerializable
     public function setTaxTotal(?Money $taxTotal): void
     {
         $this->taxTotal = $taxTotal;
+    }
+
+    /**
+     * Converts the Level2CardProcessingData object to a human-readable string representation.
+     *
+     * @return string The string representation of the Level2CardProcessingData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Level2CardProcessingData',
+            ['invoiceId' => $this->invoiceId, 'taxTotal' => $this->taxTotal]
+        );
     }
 
     /**

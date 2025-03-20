@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -65,6 +66,19 @@ class VenmoWalletAdditionalAttributes implements \JsonSerializable
     public function setVault(?VenmoWalletVaultAttributes $vault): void
     {
         $this->vault = $vault;
+    }
+
+    /**
+     * Converts the VenmoWalletAdditionalAttributes object to a human-readable string representation.
+     *
+     * @return string The string representation of the VenmoWalletAdditionalAttributes object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VenmoWalletAdditionalAttributes',
+            ['customer' => $this->customer, 'vault' => $this->vault]
+        );
     }
 
     /**

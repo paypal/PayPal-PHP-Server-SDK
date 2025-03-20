@@ -33,7 +33,9 @@ class ConfirmOrderRequestBuilder
     }
 
     /**
-     * Initializes a new confirm order request Builder object.
+     * Initializes a new Confirm Order Request Builder object.
+     *
+     * @param PaymentSource $paymentSource
      */
     public static function init(PaymentSource $paymentSource): self
     {
@@ -41,16 +43,9 @@ class ConfirmOrderRequestBuilder
     }
 
     /**
-     * Sets processing instruction field.
-     */
-    public function processingInstruction($value): self
-    {
-        $this->instance->setProcessingInstruction($value);
-        return $this;
-    }
-
-    /**
      * Sets application context field.
+     *
+     * @param OrderConfirmApplicationContext|null $value
      */
     public function applicationContext(?OrderConfirmApplicationContext $value): self
     {
@@ -59,7 +54,7 @@ class ConfirmOrderRequestBuilder
     }
 
     /**
-     * Initializes a new confirm order request object.
+     * Initializes a new Confirm Order Request object.
      */
     public function build(): ConfirmOrderRequest
     {

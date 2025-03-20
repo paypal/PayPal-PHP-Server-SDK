@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -53,6 +54,16 @@ class VaultInstruction implements \JsonSerializable
     }
 
     /**
+     * Converts the VaultInstruction object to a human-readable string representation.
+     *
+     * @return string The string representation of the VaultInstruction object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('VaultInstruction', ['storeInVault' => $this->storeInVault]);
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -64,7 +75,7 @@ class VaultInstruction implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['store_in_vault'] = StoreInVaultInstruction::checkValue($this->storeInVault);
+        $json['store_in_vault'] = $this->storeInVault;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

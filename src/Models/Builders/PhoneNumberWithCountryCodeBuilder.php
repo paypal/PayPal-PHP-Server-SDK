@@ -31,7 +31,10 @@ class PhoneNumberWithCountryCodeBuilder
     }
 
     /**
-     * Initializes a new phone number with country code Builder object.
+     * Initializes a new Phone Number With Country Code Builder object.
+     *
+     * @param string $countryCode
+     * @param string $nationalNumber
      */
     public static function init(string $countryCode, string $nationalNumber): self
     {
@@ -39,7 +42,7 @@ class PhoneNumberWithCountryCodeBuilder
     }
 
     /**
-     * Initializes a new phone number with country code object.
+     * Initializes a new Phone Number With Country Code object.
      */
     public function build(): PhoneNumberWithCountryCode
     {

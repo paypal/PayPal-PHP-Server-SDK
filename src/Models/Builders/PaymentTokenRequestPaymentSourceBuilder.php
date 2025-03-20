@@ -33,7 +33,7 @@ class PaymentTokenRequestPaymentSourceBuilder
     }
 
     /**
-     * Initializes a new payment token request payment source Builder object.
+     * Initializes a new Payment Token Request Payment Source Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class PaymentTokenRequestPaymentSourceBuilder
 
     /**
      * Sets card field.
+     *
+     * @param PaymentTokenRequestCard|null $value
      */
     public function card(?PaymentTokenRequestCard $value): self
     {
@@ -51,6 +53,8 @@ class PaymentTokenRequestPaymentSourceBuilder
 
     /**
      * Sets token field.
+     *
+     * @param VaultTokenRequest|null $value
      */
     public function token(?VaultTokenRequest $value): self
     {
@@ -59,7 +63,7 @@ class PaymentTokenRequestPaymentSourceBuilder
     }
 
     /**
-     * Initializes a new payment token request payment source object.
+     * Initializes a new Payment Token Request Payment Source object.
      */
     public function build(): PaymentTokenRequestPaymentSource
     {

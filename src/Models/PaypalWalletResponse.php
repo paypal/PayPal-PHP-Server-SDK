@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -73,11 +74,15 @@ class PaypalWalletResponse implements \JsonSerializable
     private $attributes;
 
     /**
+     * @var PaypalWalletStoredCredential|null
+     */
+    private $storedCredential;
+
+    /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -86,10 +91,9 @@ class PaypalWalletResponse implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -323,6 +327,54 @@ class PaypalWalletResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Stored Credential.
+     * Provides additional details to process a payment using the PayPal wallet billing agreement or a
+     * vaulted payment method that has been stored or is intended to be stored.
+     */
+    public function getStoredCredential(): ?PaypalWalletStoredCredential
+    {
+        return $this->storedCredential;
+    }
+
+    /**
+     * Sets Stored Credential.
+     * Provides additional details to process a payment using the PayPal wallet billing agreement or a
+     * vaulted payment method that has been stored or is intended to be stored.
+     *
+     * @maps stored_credential
+     */
+    public function setStoredCredential(?PaypalWalletStoredCredential $storedCredential): void
+    {
+        $this->storedCredential = $storedCredential;
+    }
+
+    /**
+     * Converts the PaypalWalletResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaypalWalletResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaypalWalletResponse',
+            [
+                'emailAddress' => $this->emailAddress,
+                'accountId' => $this->accountId,
+                'accountStatus' => $this->accountStatus,
+                'name' => $this->name,
+                'phoneType' => $this->phoneType,
+                'phoneNumber' => $this->phoneNumber,
+                'birthDate' => $this->birthDate,
+                'businessName' => $this->businessName,
+                'taxInfo' => $this->taxInfo,
+                'address' => $this->address,
+                'attributes' => $this->attributes,
+                'storedCredential' => $this->storedCredential
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -335,37 +387,40 @@ class PaypalWalletResponse implements \JsonSerializable
     {
         $json = [];
         if (isset($this->emailAddress)) {
-            $json['email_address']  = $this->emailAddress;
+            $json['email_address']     = $this->emailAddress;
         }
         if (isset($this->accountId)) {
-            $json['account_id']     = $this->accountId;
+            $json['account_id']        = $this->accountId;
         }
         if (isset($this->accountStatus)) {
-            $json['account_status'] = PaypalWalletAccountVerificationStatus::checkValue($this->accountStatus);
+            $json['account_status']    = $this->accountStatus;
         }
         if (isset($this->name)) {
-            $json['name']           = $this->name;
+            $json['name']              = $this->name;
         }
         if (isset($this->phoneType)) {
-            $json['phone_type']     = PhoneType::checkValue($this->phoneType);
+            $json['phone_type']        = $this->phoneType;
         }
         if (isset($this->phoneNumber)) {
-            $json['phone_number']   = $this->phoneNumber;
+            $json['phone_number']      = $this->phoneNumber;
         }
         if (isset($this->birthDate)) {
-            $json['birth_date']     = $this->birthDate;
+            $json['birth_date']        = $this->birthDate;
         }
         if (isset($this->businessName)) {
-            $json['business_name']  = $this->businessName;
+            $json['business_name']     = $this->businessName;
         }
         if (isset($this->taxInfo)) {
-            $json['tax_info']       = $this->taxInfo;
+            $json['tax_info']          = $this->taxInfo;
         }
         if (isset($this->address)) {
-            $json['address']        = $this->address;
+            $json['address']           = $this->address;
         }
         if (isset($this->attributes)) {
-            $json['attributes']     = $this->attributes;
+            $json['attributes']        = $this->attributes;
+        }
+        if (isset($this->storedCredential)) {
+            $json['stored_credential'] = $this->storedCredential;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -32,7 +32,7 @@ class AuthorizationStatusWithDetailsBuilder
     }
 
     /**
-     * Initializes a new authorization status with details Builder object.
+     * Initializes a new Authorization Status With Details Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class AuthorizationStatusWithDetailsBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -50,6 +52,8 @@ class AuthorizationStatusWithDetailsBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param AuthorizationStatusDetails|null $value
      */
     public function statusDetails(?AuthorizationStatusDetails $value): self
     {
@@ -58,7 +62,7 @@ class AuthorizationStatusWithDetailsBuilder
     }
 
     /**
-     * Initializes a new authorization status with details object.
+     * Initializes a new Authorization Status With Details object.
      */
     public function build(): AuthorizationStatusWithDetails
     {

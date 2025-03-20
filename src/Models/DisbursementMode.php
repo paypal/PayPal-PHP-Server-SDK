@@ -10,36 +10,20 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The funds that are held on behalf of the merchant.
  */
 class DisbursementMode
 {
+    /**
+     * The funds are released to the merchant immediately.
+     */
     public const INSTANT = 'INSTANT';
 
-    public const DELAYED = 'DELAYED';
-
-    private const _ALL_VALUES = [self::INSTANT, self::DELAYED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The funds are held for a finite number of days. The actual duration depends on the region and type
+     * of integration. You can release the funds through a referenced payout. Otherwise, the funds
+     * disbursed automatically after the specified duration.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for DisbursementMode.");
-    }
+    public const DELAYED = 'DELAYED';
 }

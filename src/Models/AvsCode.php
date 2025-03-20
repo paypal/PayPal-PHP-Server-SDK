@@ -10,105 +10,141 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The address verification code for Visa, Discover, Mastercard, or American Express transactions.
  */
 class AvsCode
 {
-    public const A = 'A';
-
-    public const B = 'B';
-
-    public const C = 'C';
-
-    public const D = 'D';
-
-    public const E = 'E';
-
-    public const F = 'F';
-
-    public const G = 'G';
-
-    public const I = 'I';
-
-    public const M = 'M';
-
-    public const N = 'N';
-
-    public const P = 'P';
-
-    public const R = 'R';
-
-    public const S = 'S';
-
-    public const U = 'U';
-
-    public const W = 'W';
-
-    public const X = 'X';
-
-    public const Y = 'Y';
-
-    public const Z = 'Z';
-
-    public const NULL = 'Null';
-
-    public const ENUM_0 = '0';
-
-    public const ENUM_1 = '1';
-
-    public const ENUM_2 = '2';
-
-    public const ENUM_3 = '3';
-
-    public const ENUM_4 = '4';
-
-    private const _ALL_VALUES = [
-        self::A,
-        self::B,
-        self::C,
-        self::D,
-        self::E,
-        self::F,
-        self::G,
-        self::I,
-        self::M,
-        self::N,
-        self::P,
-        self::R,
-        self::S,
-        self::U,
-        self::W,
-        self::X,
-        self::Y,
-        self::Z,
-        self::NULL,
-        self::ENUM_0,
-        self::ENUM_1,
-        self::ENUM_2,
-        self::ENUM_3,
-        self::ENUM_4
-    ];
+    /**
+     * For Visa, Mastercard, or Discover transactions, the address matches but the zip code does not match.
+     * For American Express transactions, the card holder address is correct.
+     */
+    public const AVS_A = 'A';
 
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * For Visa, Mastercard, or Discover transactions, the address matches. International A.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for AvsCode.");
-    }
+    public const AVS_B = 'B';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, no values match. International N.
+     */
+    public const AVS_C = 'C';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, the address and postal code match. International X.
+     */
+    public const AVS_D = 'D';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, not allowed for Internet or phone transactions. For
+     * American Express card holder, the name is incorrect but the address and postal code match.
+     */
+    public const AVS_E = 'E';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, the address and postal code match. UK-specific X.
+     * For American Express card holder, the name is incorrect but the address matches.
+     */
+    public const AVS_F = 'F';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, global is unavailable. Nothing matches.
+     */
+    public const AVS_G = 'G';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, international is unavailable. Not applicable.
+     */
+    public const AVS_I = 'I';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, the address and postal code match. For American
+     * Express card holder, the name, address, and postal code match.
+     */
+    public const AVS_M = 'M';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, nothing matches. For American Express card holder,
+     * the address and postal code are both incorrect.
+     */
+    public const AVS_N = 'N';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, postal international Z. Postal code only.
+     */
+    public const AVS_P = 'P';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, re-try the request. For American Express, the system
+     * is unavailable.
+     */
+    public const AVS_R = 'R';
+
+    /**
+     * For Visa, Mastercard, Discover, or American Express, the service is not supported.
+     */
+    public const AVS_S = 'S';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, the service is unavailable. For American Express,
+     * information is not available. For Maestro, the address is not checked or the acquirer had no
+     * response. The service is not available.
+     */
+    public const AVS_U = 'U';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, whole ZIP code. For American Express, the card
+     * holder name, address, and postal code are all incorrect.
+     */
+    public const AVS_W = 'W';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, exact match of the address and the nine-digit ZIP
+     * code. For American Express, the card holder name, address, and postal code are all incorrect.
+     */
+    public const AVS_X = 'X';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, the address and five-digit ZIP code match. For
+     * American Express, the card holder address and postal code are both correct.
+     */
+    public const AVS_Y = 'Y';
+
+    /**
+     * For Visa, Mastercard, or Discover transactions, the five-digit ZIP code matches but no address. For
+     * American Express, only the card holder postal code is correct.
+     */
+    public const AVS_Z = 'Z';
+
+    /**
+     * For Maestro, no AVS response was obtained.
+     */
+    public const AVS_NULL = 'Null';
+
+    /**
+     * For Maestro, all address information matches.
+     */
+    public const AVS_0 = '0';
+
+    /**
+     * For Maestro, none of the address information matches.
+     */
+    public const AVS_1 = '1';
+
+    /**
+     * For Maestro, part of the address information matches.
+     */
+    public const AVS_2 = '2';
+
+    /**
+     * For Maestro, the merchant did not provide AVS information. It was not processed.
+     */
+    public const AVS_3 = '3';
+
+    /**
+     * For Maestro, the address was not checked or the acquirer had no response. The service is not
+     * available.
+     */
+    public const AVS_4 = '4';
 }

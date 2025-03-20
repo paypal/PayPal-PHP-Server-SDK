@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -115,6 +116,23 @@ class Phone implements \JsonSerializable
     public function setExtensionNumber(?string $extensionNumber): void
     {
         $this->extensionNumber = $extensionNumber;
+    }
+
+    /**
+     * Converts the Phone object to a human-readable string representation.
+     *
+     * @return string The string representation of the Phone object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Phone',
+            [
+                'countryCode' => $this->countryCode,
+                'nationalNumber' => $this->nationalNumber,
+                'extensionNumber' => $this->extensionNumber
+            ]
+        );
     }
 
     /**
