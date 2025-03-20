@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -24,11 +25,14 @@ class SupplementaryData implements \JsonSerializable
     private $card;
 
     /**
+     * @var RiskSupplementaryData|null
+     */
+    private $risk;
+
+    /**
      * Returns Card.
      * Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing
-     * costs. For more information about processing payments, see <a href="https://developer.paypal.
-     * com/docs/checkout/advanced/processing/">checkout</a> or <a href="https://developer.paypal.
-     * com/docs/multiparty/checkout/advanced/processing/">multiparty checkout</a>.
+     * costs. For more information about processing payments, see checkout or multiparty checkout.
      */
     public function getCard(): ?CardSupplementaryData
     {
@@ -38,15 +42,43 @@ class SupplementaryData implements \JsonSerializable
     /**
      * Sets Card.
      * Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing
-     * costs. For more information about processing payments, see <a href="https://developer.paypal.
-     * com/docs/checkout/advanced/processing/">checkout</a> or <a href="https://developer.paypal.
-     * com/docs/multiparty/checkout/advanced/processing/">multiparty checkout</a>.
+     * costs. For more information about processing payments, see checkout or multiparty checkout.
      *
      * @maps card
      */
     public function setCard(?CardSupplementaryData $card): void
     {
         $this->card = $card;
+    }
+
+    /**
+     * Returns Risk.
+     * Additional information necessary to evaluate the risk profile of a transaction.
+     */
+    public function getRisk(): ?RiskSupplementaryData
+    {
+        return $this->risk;
+    }
+
+    /**
+     * Sets Risk.
+     * Additional information necessary to evaluate the risk profile of a transaction.
+     *
+     * @maps risk
+     */
+    public function setRisk(?RiskSupplementaryData $risk): void
+    {
+        $this->risk = $risk;
+    }
+
+    /**
+     * Converts the SupplementaryData object to a human-readable string representation.
+     *
+     * @return string The string representation of the SupplementaryData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('SupplementaryData', ['card' => $this->card, 'risk' => $this->risk]);
     }
 
     /**
@@ -63,6 +95,9 @@ class SupplementaryData implements \JsonSerializable
         $json = [];
         if (isset($this->card)) {
             $json['card'] = $this->card;
+        }
+        if (isset($this->risk)) {
+            $json['risk'] = $this->risk;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

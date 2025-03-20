@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 class PaypalPaymentToken implements \JsonSerializable
@@ -18,6 +19,11 @@ class PaypalPaymentToken implements \JsonSerializable
      * @var string|null
      */
     private $description;
+
+    /**
+     * @var string|null
+     */
+    private $usagePattern;
 
     /**
      * @var VaultedDigitalWalletShippingDetails|null
@@ -94,6 +100,26 @@ class PaypalPaymentToken implements \JsonSerializable
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * Returns Usage Pattern.
+     * Expected business/charge model for the billing agreement.
+     */
+    public function getUsagePattern(): ?string
+    {
+        return $this->usagePattern;
+    }
+
+    /**
+     * Sets Usage Pattern.
+     * Expected business/charge model for the billing agreement.
+     *
+     * @maps usage_pattern
+     */
+    public function setUsagePattern(?string $usagePattern): void
+    {
+        $this->usagePattern = $usagePattern;
     }
 
     /**
@@ -190,10 +216,9 @@ class PaypalPaymentToken implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -202,10 +227,9 @@ class PaypalPaymentToken implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -343,6 +367,33 @@ class PaypalPaymentToken implements \JsonSerializable
     }
 
     /**
+     * Converts the PaypalPaymentToken object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaypalPaymentToken object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaypalPaymentToken',
+            [
+                'description' => $this->description,
+                'usagePattern' => $this->usagePattern,
+                'shipping' => $this->shipping,
+                'permitMultiplePaymentTokens' => $this->permitMultiplePaymentTokens,
+                'usageType' => $this->usageType,
+                'customerType' => $this->customerType,
+                'emailAddress' => $this->emailAddress,
+                'payerId' => $this->payerId,
+                'name' => $this->name,
+                'phone' => $this->phone,
+                'address' => $this->address,
+                'accountId' => $this->accountId,
+                'phoneNumber' => $this->phoneNumber
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -356,6 +407,9 @@ class PaypalPaymentToken implements \JsonSerializable
         $json = [];
         if (isset($this->description)) {
             $json['description']                    = $this->description;
+        }
+        if (isset($this->usagePattern)) {
+            $json['usage_pattern']                  = $this->usagePattern;
         }
         if (isset($this->shipping)) {
             $json['shipping']                       = $this->shipping;

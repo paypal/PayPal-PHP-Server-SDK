@@ -19,7 +19,7 @@ use stdClass;
 class PaymentTokenResponsePaymentSource implements \JsonSerializable
 {
     /**
-     * @var CardPaymentToken|null
+     * @var CardPaymentTokenEntity|null
      */
     private $card;
 
@@ -39,15 +39,10 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
     private $applePay;
 
     /**
-     * @var mixed
-     */
-    private $bank;
-
-    /**
      * Returns Card.
      * Full representation of a Card Payment Token including network token.
      */
-    public function getCard(): ?CardPaymentToken
+    public function getCard(): ?CardPaymentTokenEntity
     {
         return $this->card;
     }
@@ -58,7 +53,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
      *
      * @maps card
      */
-    public function setCard(?CardPaymentToken $card): void
+    public function setCard(?CardPaymentTokenEntity $card): void
     {
         $this->card = $card;
     }
@@ -120,27 +115,21 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
     }
 
     /**
-     * Returns Bank.
-     * Full representation of a Bank Payment Token.
+     * Converts the PaymentTokenResponsePaymentSource object to a human-readable string representation.
      *
-     * @return mixed
+     * @return string The string representation of the PaymentTokenResponsePaymentSource object.
      */
-    public function getBank()
+    public function __toString(): string
     {
-        return $this->bank;
-    }
-
-    /**
-     * Sets Bank.
-     * Full representation of a Bank Payment Token.
-     *
-     * @maps bank
-     *
-     * @param mixed $bank
-     */
-    public function setBank($bank): void
-    {
-        $this->bank = $bank;
+        return ApiHelper::stringify(
+            'PaymentTokenResponsePaymentSource',
+            [
+                'card' => $this->card,
+                'paypal' => $this->paypal,
+                'venmo' => $this->venmo,
+                'applePay' => $this->applePay
+            ]
+        );
     }
 
     /**
@@ -166,9 +155,6 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
         }
         if (isset($this->applePay)) {
             $json['apple_pay'] = $this->applePay;
-        }
-        if (isset($this->bank)) {
-            $json['bank']      = ApiHelper::decodeJson($this->bank, 'bank');
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

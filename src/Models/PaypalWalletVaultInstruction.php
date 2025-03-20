@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 class PaypalWalletVaultInstruction implements \JsonSerializable
@@ -188,6 +189,26 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
     }
 
     /**
+     * Converts the PaypalWalletVaultInstruction object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaypalWalletVaultInstruction object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaypalWalletVaultInstruction',
+            [
+                'storeInVault' => $this->storeInVault,
+                'description' => $this->description,
+                'usagePattern' => $this->usagePattern,
+                'usageType' => $this->usageType,
+                'customerType' => $this->customerType,
+                'permitMultiplePaymentTokens' => $this->permitMultiplePaymentTokens
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -200,17 +221,17 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
     {
         $json = [];
         if (isset($this->storeInVault)) {
-            $json['store_in_vault']                 = StoreInVaultInstruction::checkValue($this->storeInVault);
+            $json['store_in_vault']                 = $this->storeInVault;
         }
         if (isset($this->description)) {
             $json['description']                    = $this->description;
         }
         if (isset($this->usagePattern)) {
-            $json['usage_pattern']                  = PaypalPaymentTokenUsagePattern::checkValue($this->usagePattern);
+            $json['usage_pattern']                  = $this->usagePattern;
         }
-        $json['usage_type']                         = PaypalPaymentTokenUsageType::checkValue($this->usageType);
+        $json['usage_type']                         = $this->usageType;
         if (isset($this->customerType)) {
-            $json['customer_type']                  = PaypalPaymentTokenCustomerType::checkValue($this->customerType);
+            $json['customer_type']                  = $this->customerType;
         }
         if (isset($this->permitMultiplePaymentTokens)) {
             $json['permit_multiple_payment_tokens'] = $this->permitMultiplePaymentTokens;

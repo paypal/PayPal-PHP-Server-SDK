@@ -36,7 +36,7 @@ class CardRequestBuilder
     }
 
     /**
-     * Initializes a new card request Builder object.
+     * Initializes a new Card Request Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +45,8 @@ class CardRequestBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -54,6 +56,8 @@ class CardRequestBuilder
 
     /**
      * Sets number field.
+     *
+     * @param string|null $value
      */
     public function number(?string $value): self
     {
@@ -63,6 +67,8 @@ class CardRequestBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -72,6 +78,8 @@ class CardRequestBuilder
 
     /**
      * Sets security code field.
+     *
+     * @param string|null $value
      */
     public function securityCode(?string $value): self
     {
@@ -81,6 +89,8 @@ class CardRequestBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -90,6 +100,8 @@ class CardRequestBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param CardAttributes|null $value
      */
     public function attributes(?CardAttributes $value): self
     {
@@ -99,6 +111,8 @@ class CardRequestBuilder
 
     /**
      * Sets vault id field.
+     *
+     * @param string|null $value
      */
     public function vaultId(?string $value): self
     {
@@ -108,6 +122,8 @@ class CardRequestBuilder
 
     /**
      * Sets single use token field.
+     *
+     * @param string|null $value
      */
     public function singleUseToken(?string $value): self
     {
@@ -117,6 +133,8 @@ class CardRequestBuilder
 
     /**
      * Sets stored credential field.
+     *
+     * @param CardStoredCredential|null $value
      */
     public function storedCredential(?CardStoredCredential $value): self
     {
@@ -126,6 +144,8 @@ class CardRequestBuilder
 
     /**
      * Sets network token field.
+     *
+     * @param NetworkToken|null $value
      */
     public function networkToken(?NetworkToken $value): self
     {
@@ -135,6 +155,8 @@ class CardRequestBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param CardExperienceContext|null $value
      */
     public function experienceContext(?CardExperienceContext $value): self
     {
@@ -143,7 +165,7 @@ class CardRequestBuilder
     }
 
     /**
-     * Initializes a new card request object.
+     * Initializes a new Card Request object.
      */
     public function build(): CardRequest
     {

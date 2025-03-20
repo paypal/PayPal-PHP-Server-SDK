@@ -10,11 +10,12 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
  * Refunds a captured payment, by ID. For a full refund, include an empty request body. For a partial
- * refund, include an <code>amount</code> object in the request body.
+ * refund, include an amount object in the request body.
  */
 class RefundRequest implements \JsonSerializable
 {
@@ -153,6 +154,25 @@ class RefundRequest implements \JsonSerializable
     public function setPaymentInstruction(?RefundPaymentInstruction $paymentInstruction): void
     {
         $this->paymentInstruction = $paymentInstruction;
+    }
+
+    /**
+     * Converts the RefundRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the RefundRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'RefundRequest',
+            [
+                'amount' => $this->amount,
+                'customId' => $this->customId,
+                'invoiceId' => $this->invoiceId,
+                'noteToPayer' => $this->noteToPayer,
+                'paymentInstruction' => $this->paymentInstruction
+            ]
+        );
     }
 
     /**

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -40,12 +41,12 @@ class VaultExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $shippingPreference = 'GET_FROM_FILE';
+    private $shippingPreference = OrderApplicationContextShippingPreference::GET_FROM_FILE;
 
     /**
      * @var string|null
      */
-    private $vaultInstruction = 'ON_CREATE_PAYMENT_TOKENS';
+    private $vaultInstruction = VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS;
 
     /**
      * Returns Brand Name.
@@ -181,6 +182,26 @@ class VaultExperienceContext implements \JsonSerializable
     public function setVaultInstruction(?string $vaultInstruction): void
     {
         $this->vaultInstruction = $vaultInstruction;
+    }
+
+    /**
+     * Converts the VaultExperienceContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the VaultExperienceContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VaultExperienceContext',
+            [
+                'brandName' => $this->brandName,
+                'locale' => $this->locale,
+                'returnUrl' => $this->returnUrl,
+                'cancelUrl' => $this->cancelUrl,
+                'shippingPreference' => $this->shippingPreference,
+                'vaultInstruction' => $this->vaultInstruction
+            ]
+        );
     }
 
     /**

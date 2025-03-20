@@ -10,13 +10,13 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * Customizes the payer experience during the approval process for the payment with PayPal.
- * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code>
- * and <code>shipping_preference</code> during partner account setup, which overrides the request
- * values.</blockquote>
+ * Customizes the payer experience during the approval process for the payment with PayPal. Note:
+ * Partners and Marketplaces might configure brand_name and shipping_preference during partner account
+ * setup, which overrides the request values.
  */
 class OrderApplicationContext implements \JsonSerializable
 {
@@ -153,13 +153,12 @@ class OrderApplicationContext implements \JsonSerializable
 
     /**
      * Returns Shipping Preference.
-     * DEPRECATED. DEPRECATED. The shipping preference:<ul><li>Displays the shipping address to the
-     * customer.</li><li>Enables the customer to choose an address on the PayPal site.</li><li>Restricts
-     * the customer from changing the address during the payment-approval process.</li></ul>.  The fields
-     * in `application_context` are now available in the `experience_context` object under the
-     * `payment_source` which supports them (eg. `payment_source.paypal.experience_context.
-     * shipping_preference`). Please specify this field in the `experience_context` object instead of the
-     * `application_context` object.
+     * DEPRECATED. DEPRECATED. The shipping preference: Displays the shipping address to the customer.
+     * Enables the customer to choose an address on the PayPal site. Restricts the customer from changing
+     * the address during the payment-approval process. .  The fields in `application_context` are now
+     * available in the `experience_context` object under the `payment_source` which supports them (eg.
+     * `payment_source.paypal.experience_context.shipping_preference`). Please specify this field in the
+     * `experience_context` object instead of the `application_context` object.
      */
     public function getShippingPreference(): ?string
     {
@@ -168,13 +167,12 @@ class OrderApplicationContext implements \JsonSerializable
 
     /**
      * Sets Shipping Preference.
-     * DEPRECATED. DEPRECATED. The shipping preference:<ul><li>Displays the shipping address to the
-     * customer.</li><li>Enables the customer to choose an address on the PayPal site.</li><li>Restricts
-     * the customer from changing the address during the payment-approval process.</li></ul>.  The fields
-     * in `application_context` are now available in the `experience_context` object under the
-     * `payment_source` which supports them (eg. `payment_source.paypal.experience_context.
-     * shipping_preference`). Please specify this field in the `experience_context` object instead of the
-     * `application_context` object.
+     * DEPRECATED. DEPRECATED. The shipping preference: Displays the shipping address to the customer.
+     * Enables the customer to choose an address on the PayPal site. Restricts the customer from changing
+     * the address during the payment-approval process. .  The fields in `application_context` are now
+     * available in the `experience_context` object under the `payment_source` which supports them (eg.
+     * `payment_source.paypal.experience_context.shipping_preference`). Please specify this field in the
+     * `experience_context` object instead of the `application_context` object.
      *
      * @maps shipping_preference
      */
@@ -185,11 +183,10 @@ class OrderApplicationContext implements \JsonSerializable
 
     /**
      * Returns User Action.
-     * DEPRECATED. Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.  The
-     * fields in `application_context` are now available in the `experience_context` object under the
-     * `payment_source` which supports them (eg. `payment_source.paypal.experience_context.user_action`).
-     * Please specify this field in the `experience_context` object instead of the `application_context`
-     * object.
+     * DEPRECATED. Configures a Continue or Pay Now checkout flow.  The fields in `application_context` are
+     * now available in the `experience_context` object under the `payment_source` which supports them (eg.
+     * `payment_source.paypal.experience_context.user_action`). Please specify this field in the
+     * `experience_context` object instead of the `application_context` object.
      */
     public function getUserAction(): ?string
     {
@@ -198,11 +195,10 @@ class OrderApplicationContext implements \JsonSerializable
 
     /**
      * Sets User Action.
-     * DEPRECATED. Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.  The
-     * fields in `application_context` are now available in the `experience_context` object under the
-     * `payment_source` which supports them (eg. `payment_source.paypal.experience_context.user_action`).
-     * Please specify this field in the `experience_context` object instead of the `application_context`
-     * object.
+     * DEPRECATED. Configures a Continue or Pay Now checkout flow.  The fields in `application_context` are
+     * now available in the `experience_context` object under the `payment_source` which supports them (eg.
+     * `payment_source.paypal.experience_context.user_action`). Please specify this field in the
+     * `experience_context` object instead of the `application_context` object.
      *
      * @maps user_action
      */
@@ -290,13 +286,12 @@ class OrderApplicationContext implements \JsonSerializable
     /**
      * Returns Stored Payment Source.
      * Provides additional details to process a payment using a `payment_source` that has been stored or is
-     * intended to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter
-     * compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-     * `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only with
-     * `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
-     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`.
-     * </li><li>Only one of the parameters - `previous_transaction_reference` and
-     * `previous_network_transaction_reference` - can be present in the request.</li></ul>
+     * intended to be stored (also referred to as stored_credential or card-on-file). Parameter
+     * compatibility: `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
+     * `usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference`
+     * or `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`.
+     * Only one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
      */
     public function getStoredPaymentSource(): ?StoredPaymentSource
     {
@@ -306,19 +301,41 @@ class OrderApplicationContext implements \JsonSerializable
     /**
      * Sets Stored Payment Source.
      * Provides additional details to process a payment using a `payment_source` that has been stored or is
-     * intended to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter
-     * compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-     * `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only with
-     * `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
-     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`.
-     * </li><li>Only one of the parameters - `previous_transaction_reference` and
-     * `previous_network_transaction_reference` - can be present in the request.</li></ul>
+     * intended to be stored (also referred to as stored_credential or card-on-file). Parameter
+     * compatibility: `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
+     * `usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference`
+     * or `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`.
+     * Only one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
      *
      * @maps stored_payment_source
      */
     public function setStoredPaymentSource(?StoredPaymentSource $storedPaymentSource): void
     {
         $this->storedPaymentSource = $storedPaymentSource;
+    }
+
+    /**
+     * Converts the OrderApplicationContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderApplicationContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OrderApplicationContext',
+            [
+                'brandName' => $this->brandName,
+                'locale' => $this->locale,
+                'landingPage' => $this->landingPage,
+                'shippingPreference' => $this->shippingPreference,
+                'userAction' => $this->userAction,
+                'paymentMethod' => $this->paymentMethod,
+                'returnUrl' => $this->returnUrl,
+                'cancelUrl' => $this->cancelUrl,
+                'storedPaymentSource' => $this->storedPaymentSource
+            ]
+        );
     }
 
     /**
@@ -340,16 +357,13 @@ class OrderApplicationContext implements \JsonSerializable
             $json['locale']                = $this->locale;
         }
         if (isset($this->landingPage)) {
-            $json['landing_page']          = OrderApplicationContextLandingPage::checkValue($this->landingPage);
+            $json['landing_page']          = $this->landingPage;
         }
         if (isset($this->shippingPreference)) {
-            $json['shipping_preference']   =
-                OrderApplicationContextShippingPreference::checkValue(
-                    $this->shippingPreference
-                );
+            $json['shipping_preference']   = $this->shippingPreference;
         }
         if (isset($this->userAction)) {
-            $json['user_action']           = OrderApplicationContextUserAction::checkValue($this->userAction);
+            $json['user_action']           = $this->userAction;
         }
         if (isset($this->paymentMethod)) {
             $json['payment_method']        = $this->paymentMethod;

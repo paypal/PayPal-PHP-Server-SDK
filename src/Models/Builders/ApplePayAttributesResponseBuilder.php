@@ -32,7 +32,7 @@ class ApplePayAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new apple pay attributes response Builder object.
+     * Initializes a new Apple Pay Attributes Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class ApplePayAttributesResponseBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param VaultResponse|null $value
      */
     public function vault(?VaultResponse $value): self
     {
@@ -49,7 +51,7 @@ class ApplePayAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new apple pay attributes response object.
+     * Initializes a new Apple Pay Attributes Response object.
      */
     public function build(): ApplePayAttributesResponse
     {

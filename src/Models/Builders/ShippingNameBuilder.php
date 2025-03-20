@@ -31,7 +31,7 @@ class ShippingNameBuilder
     }
 
     /**
-     * Initializes a new shipping name Builder object.
+     * Initializes a new Shipping Name Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class ShippingNameBuilder
 
     /**
      * Sets full name field.
+     *
+     * @param string|null $value
      */
     public function fullName(?string $value): self
     {
@@ -48,7 +50,7 @@ class ShippingNameBuilder
     }
 
     /**
-     * Initializes a new shipping name object.
+     * Initializes a new Shipping Name object.
      */
     public function build(): ShippingName
     {

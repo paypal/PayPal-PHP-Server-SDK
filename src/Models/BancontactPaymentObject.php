@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -65,10 +66,9 @@ class BancontactPaymentObject implements \JsonSerializable
     /**
      * Returns Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      */
     public function getCountryCode(): ?string
     {
@@ -78,10 +78,9 @@ class BancontactPaymentObject implements \JsonSerializable
     /**
      * Sets Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      *
      * @maps country_code
      */
@@ -150,6 +149,25 @@ class BancontactPaymentObject implements \JsonSerializable
     public function setCardLastDigits(?string $cardLastDigits): void
     {
         $this->cardLastDigits = $cardLastDigits;
+    }
+
+    /**
+     * Converts the BancontactPaymentObject object to a human-readable string representation.
+     *
+     * @return string The string representation of the BancontactPaymentObject object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'BancontactPaymentObject',
+            [
+                'name' => $this->name,
+                'countryCode' => $this->countryCode,
+                'bic' => $this->bic,
+                'ibanLastChars' => $this->ibanLastChars,
+                'cardLastDigits' => $this->cardLastDigits
+            ]
+        );
     }
 
     /**

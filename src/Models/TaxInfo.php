@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -81,6 +82,16 @@ class TaxInfo implements \JsonSerializable
     }
 
     /**
+     * Converts the TaxInfo object to a human-readable string representation.
+     *
+     * @return string The string representation of the TaxInfo object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('TaxInfo', ['taxId' => $this->taxId, 'taxIdType' => $this->taxIdType]);
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -93,7 +104,7 @@ class TaxInfo implements \JsonSerializable
     {
         $json = [];
         $json['tax_id']      = $this->taxId;
-        $json['tax_id_type'] = TaxIdType::checkValue($this->taxIdType);
+        $json['tax_id_type'] = $this->taxIdType;
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
     }

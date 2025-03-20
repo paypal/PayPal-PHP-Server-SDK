@@ -17,6 +17,7 @@ use PaypalServerSdkLib\Models\AuthenticationResponse;
 use PaypalServerSdkLib\Models\BinDetails;
 use PaypalServerSdkLib\Models\CardAttributesResponse;
 use PaypalServerSdkLib\Models\CardFromRequest;
+use PaypalServerSdkLib\Models\CardStoredCredential;
 
 /**
  * Builder for model ApplePayCardResponse
@@ -36,7 +37,7 @@ class ApplePayCardResponseBuilder
     }
 
     /**
-     * Initializes a new apple pay card response Builder object.
+     * Initializes a new Apple Pay Card Response Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +46,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -54,6 +57,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -63,6 +68,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -72,6 +79,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets available networks field.
+     *
+     * @param string[]|null $value
      */
     public function availableNetworks(?array $value): self
     {
@@ -81,6 +90,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -90,6 +101,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets authentication result field.
+     *
+     * @param AuthenticationResponse|null $value
      */
     public function authenticationResult(?AuthenticationResponse $value): self
     {
@@ -99,6 +112,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param CardAttributesResponse|null $value
      */
     public function attributes(?CardAttributesResponse $value): self
     {
@@ -108,6 +123,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets from request field.
+     *
+     * @param CardFromRequest|null $value
      */
     public function fromRequest(?CardFromRequest $value): self
     {
@@ -117,6 +134,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -126,6 +145,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets bin details field.
+     *
+     * @param BinDetails|null $value
      */
     public function binDetails(?BinDetails $value): self
     {
@@ -134,7 +155,20 @@ class ApplePayCardResponseBuilder
     }
 
     /**
+     * Sets stored credential field.
+     *
+     * @param CardStoredCredential|null $value
+     */
+    public function storedCredential(?CardStoredCredential $value): self
+    {
+        $this->instance->setStoredCredential($value);
+        return $this;
+    }
+
+    /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -144,6 +178,8 @@ class ApplePayCardResponseBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -152,7 +188,7 @@ class ApplePayCardResponseBuilder
     }
 
     /**
-     * Initializes a new apple pay card response object.
+     * Initializes a new Apple Pay Card Response object.
      */
     public function build(): ApplePayCardResponse
     {

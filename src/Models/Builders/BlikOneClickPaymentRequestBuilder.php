@@ -31,7 +31,9 @@ class BlikOneClickPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new blik one click payment request Builder object.
+     * Initializes a new Blik One Click Payment Request Builder object.
+     *
+     * @param string $consumerReference
      */
     public static function init(string $consumerReference): self
     {
@@ -40,6 +42,8 @@ class BlikOneClickPaymentRequestBuilder
 
     /**
      * Sets auth code field.
+     *
+     * @param string|null $value
      */
     public function authCode(?string $value): self
     {
@@ -49,6 +53,8 @@ class BlikOneClickPaymentRequestBuilder
 
     /**
      * Sets alias label field.
+     *
+     * @param string|null $value
      */
     public function aliasLabel(?string $value): self
     {
@@ -58,6 +64,8 @@ class BlikOneClickPaymentRequestBuilder
 
     /**
      * Sets alias key field.
+     *
+     * @param string|null $value
      */
     public function aliasKey(?string $value): self
     {
@@ -66,7 +74,7 @@ class BlikOneClickPaymentRequestBuilder
     }
 
     /**
-     * Initializes a new blik one click payment request object.
+     * Initializes a new Blik One Click Payment Request object.
      */
     public function build(): BlikOneClickPaymentRequest
     {

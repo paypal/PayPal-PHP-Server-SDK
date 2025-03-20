@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -54,8 +55,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Returns Network Transaction Id.
-     * Transaction Identifier as given by the network to indicate a previously executed CIT authorization.
-     * Only present when authorization is successful for a verification.
+     * DEPRECATED. This field is DEPRECATED. Please find the network transaction id data in the 'id' field
+     * under the 'network_transaction_reference' object instead of the 'verification' object.
      */
     public function getNetworkTransactionId(): ?string
     {
@@ -64,8 +65,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Sets Network Transaction Id.
-     * Transaction Identifier as given by the network to indicate a previously executed CIT authorization.
-     * Only present when authorization is successful for a verification.
+     * DEPRECATED. This field is DEPRECATED. Please find the network transaction id data in the 'id' field
+     * under the 'network_transaction_reference' object instead of the 'verification' object.
      *
      * @maps network_transaction_id
      */
@@ -76,8 +77,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Returns Date.
-     * The date that the transaction was authorized by the scheme. This field may not be returned for all
-     * networks. MasterCard refers to this field as "BankNet reference date".
+     * DEPRECATED. This field is DEPRECATED. Please find the date data in the 'date' field under the
+     * 'network_transaction_reference' object instead of the 'verification' object.
      */
     public function getDate(): ?string
     {
@@ -86,8 +87,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Sets Date.
-     * The date that the transaction was authorized by the scheme. This field may not be returned for all
-     * networks. MasterCard refers to this field as "BankNet reference date".
+     * DEPRECATED. This field is DEPRECATED. Please find the date data in the 'date' field under the
+     * 'network_transaction_reference' object instead of the 'verification' object.
      *
      * @maps date
      */
@@ -119,8 +120,8 @@ class CardVerificationDetails implements \JsonSerializable
     /**
      * Returns Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getTime(): ?string
     {
@@ -130,8 +131,8 @@ class CardVerificationDetails implements \JsonSerializable
     /**
      * Sets Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps time
      */
@@ -182,8 +183,9 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Returns Three D Secure.
-     * DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in
-     * 'three_d_secure' object under 'authentication_result' object instead of the 'verification' field.
+     * DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in the
+     * 'three_d_secure' object under the 'authentication_result' object instead of the 'verification'
+     * object.
      *
      * @return mixed
      */
@@ -194,8 +196,9 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Sets Three D Secure.
-     * DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in
-     * 'three_d_secure' object under 'authentication_result' object instead of the 'verification' field.
+     * DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in the
+     * 'three_d_secure' object under the 'authentication_result' object instead of the 'verification'
+     * object.
      *
      * @maps three_d_secure
      *
@@ -204,6 +207,27 @@ class CardVerificationDetails implements \JsonSerializable
     public function setThreeDSecure($threeDSecure): void
     {
         $this->threeDSecure = $threeDSecure;
+    }
+
+    /**
+     * Converts the CardVerificationDetails object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardVerificationDetails object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardVerificationDetails',
+            [
+                'networkTransactionId' => $this->networkTransactionId,
+                'date' => $this->date,
+                'network' => $this->network,
+                'time' => $this->time,
+                'amount' => $this->amount,
+                'processorResponse' => $this->processorResponse,
+                'threeDSecure' => $this->threeDSecure
+            ]
+        );
     }
 
     /**
@@ -225,7 +249,7 @@ class CardVerificationDetails implements \JsonSerializable
             $json['date']                   = $this->date;
         }
         if (isset($this->network)) {
-            $json['network']                = CardBrand::checkValue($this->network);
+            $json['network']                = $this->network;
         }
         if (isset($this->time)) {
             $json['time']                   = $this->time;

@@ -1,7 +1,7 @@
 
 # Refund Request
 
-Refunds a captured payment, by ID. For a full refund, include an empty request body. For a partial refund, include an <code>amount</code> object in the request body.
+Refunds a captured payment, by ID. For a full refund, include an empty request body. For a partial refund, include an amount object in the request body.
 
 ## Structure
 

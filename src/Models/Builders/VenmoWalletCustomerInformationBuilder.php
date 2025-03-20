@@ -31,7 +31,7 @@ class VenmoWalletCustomerInformationBuilder
     }
 
     /**
-     * Initializes a new venmo wallet customer information Builder object.
+     * Initializes a new Venmo Wallet Customer Information Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class VenmoWalletCustomerInformationBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -49,6 +51,8 @@ class VenmoWalletCustomerInformationBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -57,7 +61,7 @@ class VenmoWalletCustomerInformationBuilder
     }
 
     /**
-     * Initializes a new venmo wallet customer information object.
+     * Initializes a new Venmo Wallet Customer Information object.
      */
     public function build(): VenmoWalletCustomerInformation
     {

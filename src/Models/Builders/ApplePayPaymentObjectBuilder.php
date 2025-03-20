@@ -14,6 +14,7 @@ use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\ApplePayAttributesResponse;
 use PaypalServerSdkLib\Models\ApplePayCardResponse;
 use PaypalServerSdkLib\Models\ApplePayPaymentObject;
+use PaypalServerSdkLib\Models\CardStoredCredential;
 use PaypalServerSdkLib\Models\PhoneNumber;
 
 /**
@@ -34,7 +35,7 @@ class ApplePayPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new apple pay payment object Builder object.
+     * Initializes a new Apple Pay Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -43,6 +44,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -52,6 +55,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets token field.
+     *
+     * @param string|null $value
      */
     public function token(?string $value): self
     {
@@ -61,6 +66,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -70,6 +77,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -79,6 +88,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param PhoneNumber|null $value
      */
     public function phoneNumber(?PhoneNumber $value): self
     {
@@ -88,6 +99,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets card field.
+     *
+     * @param ApplePayCardResponse|null $value
      */
     public function card(?ApplePayCardResponse $value): self
     {
@@ -97,6 +110,8 @@ class ApplePayPaymentObjectBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param ApplePayAttributesResponse|null $value
      */
     public function attributes(?ApplePayAttributesResponse $value): self
     {
@@ -105,7 +120,18 @@ class ApplePayPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new apple pay payment object object.
+     * Sets stored credential field.
+     *
+     * @param CardStoredCredential|null $value
+     */
+    public function storedCredential(?CardStoredCredential $value): self
+    {
+        $this->instance->setStoredCredential($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Apple Pay Payment Object object.
      */
     public function build(): ApplePayPaymentObject
     {

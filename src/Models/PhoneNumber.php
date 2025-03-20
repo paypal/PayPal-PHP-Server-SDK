@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -56,6 +57,16 @@ class PhoneNumber implements \JsonSerializable
     public function setNationalNumber(string $nationalNumber): void
     {
         $this->nationalNumber = $nationalNumber;
+    }
+
+    /**
+     * Converts the PhoneNumber object to a human-readable string representation.
+     *
+     * @return string The string representation of the PhoneNumber object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('PhoneNumber', ['nationalNumber' => $this->nationalNumber]);
     }
 
     /**

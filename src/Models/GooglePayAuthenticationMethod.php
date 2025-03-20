@@ -10,36 +10,22 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Authentication Method which is used for the card transaction.
  */
 class GooglePayAuthenticationMethod
 {
+    /**
+     * This authentication method is associated with payment cards stored on file with the user's Google
+     * Account. Returned payment data includes primary account number (PAN) with the expiration month and
+     * the expiration year.
+     */
     public const PAN_ONLY = 'PAN_ONLY';
 
-    public const CRYPTOGRAM_3DS = 'CRYPTOGRAM_3DS';
-
-    private const _ALL_VALUES = [self::PAN_ONLY, self::CRYPTOGRAM_3DS];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Returned payment data includes a 3-D Secure (3DS) cryptogram generated on the device. -> If
+     * authentication_method=CRYPTOGRAM, it is required that 'cryptogram' parameter in the request has a
+     * valid 3-D Secure (3DS) cryptogram generated on the device.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for GooglePayAuthenticationMethod.");
-    }
+    public const CRYPTOGRAM_3DS = 'CRYPTOGRAM_3DS';
 }

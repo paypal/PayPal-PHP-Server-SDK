@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -21,11 +22,6 @@ class ConfirmOrderRequest implements \JsonSerializable
      * @var PaymentSource
      */
     private $paymentSource;
-
-    /**
-     * @var mixed
-     */
-    private $processingInstruction;
 
     /**
      * @var OrderConfirmApplicationContext|null
@@ -62,28 +58,6 @@ class ConfirmOrderRequest implements \JsonSerializable
     }
 
     /**
-     * Returns Processing Instruction.
-     *
-     * @return mixed
-     */
-    public function getProcessingInstruction()
-    {
-        return $this->processingInstruction;
-    }
-
-    /**
-     * Sets Processing Instruction.
-     *
-     * @maps processing_instruction
-     *
-     * @param mixed $processingInstruction
-     */
-    public function setProcessingInstruction($processingInstruction): void
-    {
-        $this->processingInstruction = $processingInstruction;
-    }
-
-    /**
      * Returns Application Context.
      * Customizes the payer confirmation experience.
      */
@@ -104,6 +78,19 @@ class ConfirmOrderRequest implements \JsonSerializable
     }
 
     /**
+     * Converts the ConfirmOrderRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the ConfirmOrderRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ConfirmOrderRequest',
+            ['paymentSource' => $this->paymentSource, 'applicationContext' => $this->applicationContext]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -115,12 +102,9 @@ class ConfirmOrderRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['payment_source']             = $this->paymentSource;
-        if (isset($this->processingInstruction)) {
-            $json['processing_instruction'] = $this->processingInstruction;
-        }
+        $json['payment_source']          = $this->paymentSource;
         if (isset($this->applicationContext)) {
-            $json['application_context']    = $this->applicationContext;
+            $json['application_context'] = $this->applicationContext;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

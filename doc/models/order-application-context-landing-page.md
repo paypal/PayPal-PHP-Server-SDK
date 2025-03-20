@@ -9,9 +9,9 @@ DEPRECATED. DEPRECATED. The type of landing page to show on the PayPal site for 
 
 ## Fields
 
-| Name |
-|  --- |
-| `LOGIN` |
-| `BILLING` |
-| `NO_PREFERENCE` |
+| Name | Description |
+|  --- | --- |
+| `LOGIN` | When the customer clicks PayPal Checkout, the customer is redirected to a page to log in to PayPal and approve the payment. |
+| `BILLING` | When the customer clicks PayPal Checkout, the customer is redirected to a page to enter credit or debit card and other relevant billing information required to complete the purchase. |
+| `NO_PREFERENCE` | When the customer clicks PayPal Checkout, the customer is redirected to either a page to log in to PayPal and approve the payment or to a page to enter credit or debit card and other relevant billing information required to complete the purchase, depending on their previous interaction with PayPal. |
 

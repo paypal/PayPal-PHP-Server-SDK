@@ -10,37 +10,21 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for
  * China it is EMV.
  */
 class ApplePayPaymentDataType
 {
+    /**
+     * The card was authenticated using 3D Secure (3DS) authentication scheme. While using this value make
+     * sure to populate cryptogram and eci_indicator as part of payment data..
+     */
     public const ENUM_3DSECURE = '3DSECURE';
 
-    public const EMV = 'EMV';
-
-    private const _ALL_VALUES = [self::ENUM_3DSECURE, self::EMV];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * The card was authenticated using EMV method, which is applicable for China. While using this value
+     * make sure to pass emv_data and pin as part of payment data.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for ApplePayPaymentDataType.");
-    }
+    public const EMV = 'EMV';
 }

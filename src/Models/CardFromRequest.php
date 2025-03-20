@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -67,6 +68,19 @@ class CardFromRequest implements \JsonSerializable
     public function setLastDigits(?string $lastDigits): void
     {
         $this->lastDigits = $lastDigits;
+    }
+
+    /**
+     * Converts the CardFromRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardFromRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardFromRequest',
+            ['expiry' => $this->expiry, 'lastDigits' => $this->lastDigits]
+        );
     }
 
     /**

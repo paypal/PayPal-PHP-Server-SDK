@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -23,19 +24,14 @@ class SetupTokenResponse implements \JsonSerializable
     private $id;
 
     /**
-     * @var int|null
-     */
-    private $ordinal;
-
-    /**
-     * @var CustomerRequest|null
+     * @var Customer|null
      */
     private $customer;
 
     /**
      * @var string|null
      */
-    private $status = 'CREATED';
+    private $status = PaymentTokenStatus::CREATED;
 
     /**
      * @var SetupTokenResponsePaymentSource|null
@@ -68,41 +64,23 @@ class SetupTokenResponse implements \JsonSerializable
     }
 
     /**
-     * Returns Ordinal.
-     * Ordinal number for sorting.
-     */
-    public function getOrdinal(): ?int
-    {
-        return $this->ordinal;
-    }
-
-    /**
-     * Sets Ordinal.
-     * Ordinal number for sorting.
-     *
-     * @maps ordinal
-     */
-    public function setOrdinal(?int $ordinal): void
-    {
-        $this->ordinal = $ordinal;
-    }
-
-    /**
      * Returns Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      */
-    public function getCustomer(): ?CustomerRequest
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
     /**
      * Sets Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      *
      * @maps customer
      */
-    public function setCustomer(?CustomerRequest $customer): void
+    public function setCustomer(?Customer $customer): void
     {
         $this->customer = $customer;
     }
@@ -172,6 +150,25 @@ class SetupTokenResponse implements \JsonSerializable
     }
 
     /**
+     * Converts the SetupTokenResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the SetupTokenResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SetupTokenResponse',
+            [
+                'id' => $this->id,
+                'customer' => $this->customer,
+                'status' => $this->status,
+                'paymentSource' => $this->paymentSource,
+                'links' => $this->links
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -185,9 +182,6 @@ class SetupTokenResponse implements \JsonSerializable
         $json = [];
         if (isset($this->id)) {
             $json['id']             = $this->id;
-        }
-        if (isset($this->ordinal)) {
-            $json['ordinal']        = $this->ordinal;
         }
         if (isset($this->customer)) {
             $json['customer']       = $this->customer;

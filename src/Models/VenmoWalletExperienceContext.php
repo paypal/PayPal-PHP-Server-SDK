@@ -10,13 +10,13 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * Customizes the buyer experience during the approval process for payment with Venmo.
- * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure
- * <code>shipping_preference</code> during partner account setup, which overrides the request values.
- * </blockquote>
+ * Customizes the buyer experience during the approval process for payment with Venmo. Note: Partners
+ * and Marketplaces might configure shipping_preference during partner account setup, which overrides
+ * the request values.
  */
 class VenmoWalletExperienceContext implements \JsonSerializable
 {
@@ -29,6 +29,11 @@ class VenmoWalletExperienceContext implements \JsonSerializable
      * @var string|null
      */
     private $shippingPreference = ShippingPreference::GET_FROM_FILE;
+
+    /**
+     * @var CallbackConfiguration|null
+     */
+    private $orderUpdateCallbackConfig;
 
     /**
      * Returns Brand Name.
@@ -71,6 +76,43 @@ class VenmoWalletExperienceContext implements \JsonSerializable
     }
 
     /**
+     * Returns Order Update Callback Config.
+     * CallBack Configuration that the merchant can provide to PayPal/Venmo.
+     */
+    public function getOrderUpdateCallbackConfig(): ?CallbackConfiguration
+    {
+        return $this->orderUpdateCallbackConfig;
+    }
+
+    /**
+     * Sets Order Update Callback Config.
+     * CallBack Configuration that the merchant can provide to PayPal/Venmo.
+     *
+     * @maps order_update_callback_config
+     */
+    public function setOrderUpdateCallbackConfig(?CallbackConfiguration $orderUpdateCallbackConfig): void
+    {
+        $this->orderUpdateCallbackConfig = $orderUpdateCallbackConfig;
+    }
+
+    /**
+     * Converts the VenmoWalletExperienceContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the VenmoWalletExperienceContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VenmoWalletExperienceContext',
+            [
+                'brandName' => $this->brandName,
+                'shippingPreference' => $this->shippingPreference,
+                'orderUpdateCallbackConfig' => $this->orderUpdateCallbackConfig
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -83,10 +125,13 @@ class VenmoWalletExperienceContext implements \JsonSerializable
     {
         $json = [];
         if (isset($this->brandName)) {
-            $json['brand_name']          = $this->brandName;
+            $json['brand_name']                   = $this->brandName;
         }
         if (isset($this->shippingPreference)) {
-            $json['shipping_preference'] = ShippingPreference::checkValue($this->shippingPreference);
+            $json['shipping_preference']          = $this->shippingPreference;
+        }
+        if (isset($this->orderUpdateCallbackConfig)) {
+            $json['order_update_callback_config'] = $this->orderUpdateCallbackConfig;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

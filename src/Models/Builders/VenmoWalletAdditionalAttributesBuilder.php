@@ -33,7 +33,7 @@ class VenmoWalletAdditionalAttributesBuilder
     }
 
     /**
-     * Initializes a new venmo wallet additional attributes Builder object.
+     * Initializes a new Venmo Wallet Additional Attributes Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class VenmoWalletAdditionalAttributesBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param VenmoWalletCustomerInformation|null $value
      */
     public function customer(?VenmoWalletCustomerInformation $value): self
     {
@@ -51,6 +53,8 @@ class VenmoWalletAdditionalAttributesBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param VenmoWalletVaultAttributes|null $value
      */
     public function vault(?VenmoWalletVaultAttributes $value): self
     {
@@ -59,7 +63,7 @@ class VenmoWalletAdditionalAttributesBuilder
     }
 
     /**
-     * Initializes a new venmo wallet additional attributes object.
+     * Initializes a new Venmo Wallet Additional Attributes object.
      */
     public function build(): VenmoWalletAdditionalAttributes
     {

@@ -10,10 +10,6 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * DEPRECATED. DEPRECATED. The type of landing page to show on the PayPal site for customer checkout.
  * The fields in `application_context` are now available in the `experience_context` object under the
@@ -23,29 +19,22 @@ use stdClass;
  */
 class OrderApplicationContextLandingPage
 {
+    /**
+     * When the customer clicks PayPal Checkout, the customer is redirected to a page to log in to PayPal
+     * and approve the payment.
+     */
     public const LOGIN = 'LOGIN';
 
+    /**
+     * When the customer clicks PayPal Checkout, the customer is redirected to a page to enter credit or
+     * debit card and other relevant billing information required to complete the purchase.
+     */
     public const BILLING = 'BILLING';
 
-    public const NO_PREFERENCE = 'NO_PREFERENCE';
-
-    private const _ALL_VALUES = [self::LOGIN, self::BILLING, self::NO_PREFERENCE];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * When the customer clicks PayPal Checkout, the customer is redirected to either a page to log in to
+     * PayPal and approve the payment or to a page to enter credit or debit card and other relevant billing
+     * information required to complete the purchase, depending on their previous interaction with PayPal.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for OrderApplicationContextLandingPage.");
-    }
+    public const NO_PREFERENCE = 'NO_PREFERENCE';
 }

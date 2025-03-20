@@ -33,7 +33,7 @@ class NetAmountBreakdownItemBuilder
     }
 
     /**
-     * Initializes a new net amount breakdown item Builder object.
+     * Initializes a new Net Amount Breakdown Item Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class NetAmountBreakdownItemBuilder
 
     /**
      * Sets payable amount field.
+     *
+     * @param Money|null $value
      */
     public function payableAmount(?Money $value): self
     {
@@ -51,6 +53,8 @@ class NetAmountBreakdownItemBuilder
 
     /**
      * Sets converted amount field.
+     *
+     * @param Money|null $value
      */
     public function convertedAmount(?Money $value): self
     {
@@ -60,6 +64,8 @@ class NetAmountBreakdownItemBuilder
 
     /**
      * Sets exchange rate field.
+     *
+     * @param ExchangeRate|null $value
      */
     public function exchangeRate(?ExchangeRate $value): self
     {
@@ -68,7 +74,7 @@ class NetAmountBreakdownItemBuilder
     }
 
     /**
-     * Initializes a new net amount breakdown item object.
+     * Initializes a new Net Amount Breakdown Item object.
      */
     public function build(): NetAmountBreakdownItem
     {

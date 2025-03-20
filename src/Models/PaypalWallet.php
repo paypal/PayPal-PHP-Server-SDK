@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -68,6 +69,11 @@ class PaypalWallet implements \JsonSerializable
     private $billingAgreementId;
 
     /**
+     * @var PaypalWalletStoredCredential|null
+     */
+    private $storedCredential;
+
+    /**
      * Returns Vault Id.
      * The PayPal-generated ID for the vaulted payment source. This ID should be stored on the merchant's
      * server so the saved payment source can be used for future transactions.
@@ -91,10 +97,9 @@ class PaypalWallet implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -103,10 +108,9 @@ class PaypalWallet implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -253,10 +257,9 @@ class PaypalWallet implements \JsonSerializable
 
     /**
      * Returns Experience Context.
-     * Customizes the payer experience during the approval process for payment with PayPal.
-     * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code>
-     * and <code>shipping_preference</code> during partner account setup, which overrides the request
-     * values.</blockquote>
+     * Customizes the payer experience during the approval process for payment with PayPal. Note: Partners
+     * and Marketplaces might configure brand_name and shipping_preference during partner account setup,
+     * which overrides the request values.
      */
     public function getExperienceContext(): ?PaypalWalletExperienceContext
     {
@@ -265,10 +268,9 @@ class PaypalWallet implements \JsonSerializable
 
     /**
      * Sets Experience Context.
-     * Customizes the payer experience during the approval process for payment with PayPal.
-     * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code>
-     * and <code>shipping_preference</code> during partner account setup, which overrides the request
-     * values.</blockquote>
+     * Customizes the payer experience during the approval process for payment with PayPal. Note: Partners
+     * and Marketplaces might configure brand_name and shipping_preference during partner account setup,
+     * which overrides the request values.
      *
      * @maps experience_context
      */
@@ -295,6 +297,53 @@ class PaypalWallet implements \JsonSerializable
     public function setBillingAgreementId(?string $billingAgreementId): void
     {
         $this->billingAgreementId = $billingAgreementId;
+    }
+
+    /**
+     * Returns Stored Credential.
+     * Provides additional details to process a payment using the PayPal wallet billing agreement or a
+     * vaulted payment method that has been stored or is intended to be stored.
+     */
+    public function getStoredCredential(): ?PaypalWalletStoredCredential
+    {
+        return $this->storedCredential;
+    }
+
+    /**
+     * Sets Stored Credential.
+     * Provides additional details to process a payment using the PayPal wallet billing agreement or a
+     * vaulted payment method that has been stored or is intended to be stored.
+     *
+     * @maps stored_credential
+     */
+    public function setStoredCredential(?PaypalWalletStoredCredential $storedCredential): void
+    {
+        $this->storedCredential = $storedCredential;
+    }
+
+    /**
+     * Converts the PaypalWallet object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaypalWallet object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaypalWallet',
+            [
+                'vaultId' => $this->vaultId,
+                'emailAddress' => $this->emailAddress,
+                'name' => $this->name,
+                'phone' => $this->phone,
+                'birthDate' => $this->birthDate,
+                'taxInfo' => $this->taxInfo,
+                'address' => $this->address,
+                'attributes' => $this->attributes,
+                'experienceContext' => $this->experienceContext,
+                'billingAgreementId' => $this->billingAgreementId,
+                'storedCredential' => $this->storedCredential
+            ]
+        );
     }
 
     /**
@@ -338,6 +387,9 @@ class PaypalWallet implements \JsonSerializable
         }
         if (isset($this->billingAgreementId)) {
             $json['billing_agreement_id'] = $this->billingAgreementId;
+        }
+        if (isset($this->storedCredential)) {
+            $json['stored_credential']    = $this->storedCredential;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

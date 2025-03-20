@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -65,6 +66,19 @@ class CardExperienceContext implements \JsonSerializable
     public function setCancelUrl(?string $cancelUrl): void
     {
         $this->cancelUrl = $cancelUrl;
+    }
+
+    /**
+     * Converts the CardExperienceContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardExperienceContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardExperienceContext',
+            ['returnUrl' => $this->returnUrl, 'cancelUrl' => $this->cancelUrl]
+        );
     }
 
     /**

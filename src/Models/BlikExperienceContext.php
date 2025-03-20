@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -209,6 +210,27 @@ class BlikExperienceContext implements \JsonSerializable
     }
 
     /**
+     * Converts the BlikExperienceContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the BlikExperienceContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'BlikExperienceContext',
+            [
+                'brandName' => $this->brandName,
+                'locale' => $this->locale,
+                'shippingPreference' => $this->shippingPreference,
+                'returnUrl' => $this->returnUrl,
+                'cancelUrl' => $this->cancelUrl,
+                'consumerIp' => $this->consumerIp,
+                'consumerUserAgent' => $this->consumerUserAgent
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -227,7 +249,7 @@ class BlikExperienceContext implements \JsonSerializable
             $json['locale']              = $this->locale;
         }
         if (isset($this->shippingPreference)) {
-            $json['shipping_preference'] = ShippingPreference::checkValue($this->shippingPreference);
+            $json['shipping_preference'] = $this->shippingPreference;
         }
         if (isset($this->returnUrl)) {
             $json['return_url']          = $this->returnUrl;

@@ -12,10 +12,12 @@ A resource representing a request to vault PayPal Wallet.
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `description` | `?string` | Optional | The description displayed to the consumer on the approval flow for a digital wallet, as well as on the merchant view of the payment token management experience. exp: PayPal.com.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` | getDescription(): ?string | setDescription(?string description): void |
+| `usagePattern` | [`?string(UsagePattern)`](../../doc/models/usage-pattern.md) | Optional | Expected business/charge model for the billing agreement.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `30`, *Pattern*: `^[0-9A-Z_]+$` | getUsagePattern(): ?string | setUsagePattern(?string usagePattern): void |
 | `shipping` | [`?VaultedDigitalWalletShippingDetails`](../../doc/models/vaulted-digital-wallet-shipping-details.md) | Optional | The shipping details. | getShipping(): ?VaultedDigitalWalletShippingDetails | setShipping(?VaultedDigitalWalletShippingDetails shipping): void |
 | `permitMultiplePaymentTokens` | `?bool` | Optional | Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same PayPal account. This only applies to PayPal payment source.<br>**Default**: `false` | getPermitMultiplePaymentTokens(): ?bool | setPermitMultiplePaymentTokens(?bool permitMultiplePaymentTokens): void |
-| `usageType` | `?string` | Optional | The usage type associated with a digital wallet payment token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getUsageType(): ?string | setUsageType(?string usageType): void |
-| `customerType` | `?string` | Optional | The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getCustomerType(): ?string | setCustomerType(?string customerType): void |
+| `usageType` | [`?string(PaypalPaymentTokenUsageType)`](../../doc/models/paypal-payment-token-usage-type.md) | Optional | The usage type associated with a digital wallet payment token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getUsageType(): ?string | setUsageType(?string usageType): void |
+| `customerType` | [`?string(PaypalPaymentTokenCustomerType)`](../../doc/models/paypal-payment-token-customer-type.md) | Optional | The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getCustomerType(): ?string | setCustomerType(?string customerType): void |
+| `billingPlan` | [`?Plan`](../../doc/models/plan.md) | Optional | The merchant level Recurring Billing plan metadata for the Billing Agreement. | getBillingPlan(): ?Plan | setBillingPlan(?Plan billingPlan): void |
 | `experienceContext` | [`?VaultExperienceContext`](../../doc/models/vault-experience-context.md) | Optional | Customizes the Vault creation flow experience for your customers. | getExperienceContext(): ?VaultExperienceContext | setExperienceContext(?VaultExperienceContext experienceContext): void |
 
 ## Example (as JSON)
@@ -24,9 +26,14 @@ A resource representing a request to vault PayPal Wallet.
 {
   "permit_multiple_payment_tokens": false,
   "description": "description0",
+  "usage_pattern": "INSTALLMENT_PREPAID",
   "shipping": {
     "name": {
       "full_name": "full_name6"
+    },
+    "phone_number": {
+      "country_code": "country_code2",
+      "national_number": "national_number6"
     },
     "type": "SHIPPING",
     "address": {
@@ -38,8 +45,7 @@ A resource representing a request to vault PayPal Wallet.
       "country_code": "country_code6"
     }
   },
-  "usage_type": "usage_type0",
-  "customer_type": "customer_type6"
+  "usage_type": "MERCHANT"
 }
 ```
 

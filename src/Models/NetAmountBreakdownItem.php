@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -91,6 +92,23 @@ class NetAmountBreakdownItem implements \JsonSerializable
     public function setExchangeRate(?ExchangeRate $exchangeRate): void
     {
         $this->exchangeRate = $exchangeRate;
+    }
+
+    /**
+     * Converts the NetAmountBreakdownItem object to a human-readable string representation.
+     *
+     * @return string The string representation of the NetAmountBreakdownItem object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'NetAmountBreakdownItem',
+            [
+                'payableAmount' => $this->payableAmount,
+                'convertedAmount' => $this->convertedAmount,
+                'exchangeRate' => $this->exchangeRate
+            ]
+        );
     }
 
     /**

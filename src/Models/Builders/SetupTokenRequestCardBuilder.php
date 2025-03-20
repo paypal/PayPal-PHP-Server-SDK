@@ -33,7 +33,7 @@ class SetupTokenRequestCardBuilder
     }
 
     /**
-     * Initializes a new setup token request card Builder object.
+     * Initializes a new Setup Token Request Card Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -51,6 +53,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets number field.
+     *
+     * @param string|null $value
      */
     public function number(?string $value): self
     {
@@ -60,6 +64,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -69,6 +75,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets security code field.
+     *
+     * @param string|null $value
      */
     public function securityCode(?string $value): self
     {
@@ -78,6 +86,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -87,6 +97,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -96,6 +108,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets verification method field.
+     *
+     * @param string|null $value
      */
     public function verificationMethod(?string $value): self
     {
@@ -105,6 +119,8 @@ class SetupTokenRequestCardBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param SetupTokenCardExperienceContext|null $value
      */
     public function experienceContext(?SetupTokenCardExperienceContext $value): self
     {
@@ -113,16 +129,7 @@ class SetupTokenRequestCardBuilder
     }
 
     /**
-     * Sets network transaction reference field.
-     */
-    public function networkTransactionReference($value): self
-    {
-        $this->instance->setNetworkTransactionReference($value);
-        return $this;
-    }
-
-    /**
-     * Initializes a new setup token request card object.
+     * Initializes a new Setup Token Request Card object.
      */
     public function build(): SetupTokenRequestCard
     {

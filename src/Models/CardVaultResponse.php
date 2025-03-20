@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -122,6 +123,19 @@ class CardVaultResponse implements \JsonSerializable
     }
 
     /**
+     * Converts the CardVaultResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardVaultResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardVaultResponse',
+            ['id' => $this->id, 'status' => $this->status, 'links' => $this->links, 'customer' => $this->customer]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -137,7 +151,7 @@ class CardVaultResponse implements \JsonSerializable
             $json['id']       = $this->id;
         }
         if (isset($this->status)) {
-            $json['status']   = VaultStatus::checkValue($this->status);
+            $json['status']   = $this->status;
         }
         if (isset($this->links)) {
             $json['links']    = $this->links;

@@ -12,7 +12,6 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\AssuranceDetails;
-use PaypalServerSdkLib\Models\GooglePayCardAttributes;
 use PaypalServerSdkLib\Models\GooglePayDecryptedTokenData;
 use PaypalServerSdkLib\Models\GooglePayRequest;
 use PaypalServerSdkLib\Models\GooglePayRequestCard;
@@ -36,7 +35,7 @@ class GooglePayRequestBuilder
     }
 
     /**
-     * Initializes a new google pay request Builder object.
+     * Initializes a new Google Pay Request Builder object.
      */
     public static function init(): self
     {
@@ -45,6 +44,8 @@ class GooglePayRequestBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -54,6 +55,8 @@ class GooglePayRequestBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -63,6 +66,8 @@ class GooglePayRequestBuilder
 
     /**
      * Sets phone number field.
+     *
+     * @param PhoneNumberWithCountryCode|null $value
      */
     public function phoneNumber(?PhoneNumberWithCountryCode $value): self
     {
@@ -72,6 +77,8 @@ class GooglePayRequestBuilder
 
     /**
      * Sets card field.
+     *
+     * @param GooglePayRequestCard|null $value
      */
     public function card(?GooglePayRequestCard $value): self
     {
@@ -81,6 +88,8 @@ class GooglePayRequestBuilder
 
     /**
      * Sets decrypted token field.
+     *
+     * @param GooglePayDecryptedTokenData|null $value
      */
     public function decryptedToken(?GooglePayDecryptedTokenData $value): self
     {
@@ -90,6 +99,8 @@ class GooglePayRequestBuilder
 
     /**
      * Sets assurance details field.
+     *
+     * @param AssuranceDetails|null $value
      */
     public function assuranceDetails(?AssuranceDetails $value): self
     {
@@ -98,16 +109,7 @@ class GooglePayRequestBuilder
     }
 
     /**
-     * Sets attributes field.
-     */
-    public function attributes(?GooglePayCardAttributes $value): self
-    {
-        $this->instance->setAttributes($value);
-        return $this;
-    }
-
-    /**
-     * Initializes a new google pay request object.
+     * Initializes a new Google Pay Request object.
      */
     public function build(): GooglePayRequest
     {

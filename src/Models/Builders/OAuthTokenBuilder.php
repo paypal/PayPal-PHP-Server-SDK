@@ -31,7 +31,10 @@ class OAuthTokenBuilder
     }
 
     /**
-     * Initializes a new oauth token Builder object.
+     * Initializes a new O Auth Token Builder object.
+     *
+     * @param string $accessToken
+     * @param string $tokenType
      */
     public static function init(string $accessToken, string $tokenType): self
     {
@@ -40,6 +43,8 @@ class OAuthTokenBuilder
 
     /**
      * Sets expires in field.
+     *
+     * @param int|null $value
      */
     public function expiresIn(?int $value): self
     {
@@ -49,6 +54,8 @@ class OAuthTokenBuilder
 
     /**
      * Sets scope field.
+     *
+     * @param string|null $value
      */
     public function scope(?string $value): self
     {
@@ -58,6 +65,8 @@ class OAuthTokenBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param int|null $value
      */
     public function expiry(?int $value): self
     {
@@ -67,6 +76,8 @@ class OAuthTokenBuilder
 
     /**
      * Sets refresh token field.
+     *
+     * @param string|null $value
      */
     public function refreshToken(?string $value): self
     {
@@ -76,6 +87,8 @@ class OAuthTokenBuilder
 
     /**
      * Sets id token field.
+     *
+     * @param string|null $value
      */
     public function idToken(?string $value): self
     {
@@ -84,7 +97,7 @@ class OAuthTokenBuilder
     }
 
     /**
-     * Initializes a new oauth token object.
+     * Initializes a new O Auth Token object.
      */
     public function build(): OAuthToken
     {

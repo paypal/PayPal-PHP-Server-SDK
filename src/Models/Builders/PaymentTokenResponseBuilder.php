@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\CustomerRequest;
+use PaypalServerSdkLib\Models\CustomerResponse;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\PaymentTokenResponse;
 use PaypalServerSdkLib\Models\PaymentTokenResponsePaymentSource;
 
@@ -33,7 +34,7 @@ class PaymentTokenResponseBuilder
     }
 
     /**
-     * Initializes a new payment token response Builder object.
+     * Initializes a new Payment Token Response Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +43,8 @@ class PaymentTokenResponseBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -51,8 +54,10 @@ class PaymentTokenResponseBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param CustomerResponse|null $value
      */
-    public function customer(?CustomerRequest $value): self
+    public function customer(?CustomerResponse $value): self
     {
         $this->instance->setCustomer($value);
         return $this;
@@ -60,6 +65,8 @@ class PaymentTokenResponseBuilder
 
     /**
      * Sets payment source field.
+     *
+     * @param PaymentTokenResponsePaymentSource|null $value
      */
     public function paymentSource(?PaymentTokenResponsePaymentSource $value): self
     {
@@ -69,6 +76,8 @@ class PaymentTokenResponseBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -77,7 +86,7 @@ class PaymentTokenResponseBuilder
     }
 
     /**
-     * Initializes a new payment token response object.
+     * Initializes a new Payment Token Response object.
      */
     public function build(): PaymentTokenResponse
     {

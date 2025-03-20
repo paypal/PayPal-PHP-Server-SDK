@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -59,10 +60,9 @@ class GooglePayWalletResponse implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -71,10 +71,9 @@ class GooglePayWalletResponse implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -123,6 +122,24 @@ class GooglePayWalletResponse implements \JsonSerializable
     public function setCard(?GooglePayCardResponse $card): void
     {
         $this->card = $card;
+    }
+
+    /**
+     * Converts the GooglePayWalletResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the GooglePayWalletResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'GooglePayWalletResponse',
+            [
+                'name' => $this->name,
+                'emailAddress' => $this->emailAddress,
+                'phoneNumber' => $this->phoneNumber,
+                'card' => $this->card
+            ]
+        );
     }
 
     /**

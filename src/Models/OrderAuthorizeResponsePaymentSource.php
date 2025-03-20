@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -140,6 +141,25 @@ class OrderAuthorizeResponsePaymentSource implements \JsonSerializable
     public function setVenmo(?VenmoWalletResponse $venmo): void
     {
         $this->venmo = $venmo;
+    }
+
+    /**
+     * Converts the OrderAuthorizeResponsePaymentSource object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderAuthorizeResponsePaymentSource object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OrderAuthorizeResponsePaymentSource',
+            [
+                'card' => $this->card,
+                'paypal' => $this->paypal,
+                'applePay' => $this->applePay,
+                'googlePay' => $this->googlePay,
+                'venmo' => $this->venmo
+            ]
+        );
     }
 
     /**

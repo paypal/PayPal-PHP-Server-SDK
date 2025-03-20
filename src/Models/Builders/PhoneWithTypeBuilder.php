@@ -32,7 +32,9 @@ class PhoneWithTypeBuilder
     }
 
     /**
-     * Initializes a new phone with type Builder object.
+     * Initializes a new Phone With Type Builder object.
+     *
+     * @param PhoneNumber $phoneNumber
      */
     public static function init(PhoneNumber $phoneNumber): self
     {
@@ -41,6 +43,8 @@ class PhoneWithTypeBuilder
 
     /**
      * Sets phone type field.
+     *
+     * @param string|null $value
      */
     public function phoneType(?string $value): self
     {
@@ -49,7 +53,7 @@ class PhoneWithTypeBuilder
     }
 
     /**
-     * Initializes a new phone with type object.
+     * Initializes a new Phone With Type object.
      */
     public function build(): PhoneWithType
     {

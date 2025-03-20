@@ -31,7 +31,10 @@ class NetworkTokenBuilder
     }
 
     /**
-     * Initializes a new network token Builder object.
+     * Initializes a new Network Token Builder object.
+     *
+     * @param string $number
+     * @param string $expiry
      */
     public static function init(string $number, string $expiry): self
     {
@@ -40,6 +43,8 @@ class NetworkTokenBuilder
 
     /**
      * Sets cryptogram field.
+     *
+     * @param string|null $value
      */
     public function cryptogram(?string $value): self
     {
@@ -49,6 +54,8 @@ class NetworkTokenBuilder
 
     /**
      * Sets eci flag field.
+     *
+     * @param string|null $value
      */
     public function eciFlag(?string $value): self
     {
@@ -58,6 +65,8 @@ class NetworkTokenBuilder
 
     /**
      * Sets token requestor id field.
+     *
+     * @param string|null $value
      */
     public function tokenRequestorId(?string $value): self
     {
@@ -66,7 +75,7 @@ class NetworkTokenBuilder
     }
 
     /**
-     * Initializes a new network token object.
+     * Initializes a new Network Token object.
      */
     public function build(): NetworkToken
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -68,6 +69,19 @@ class CaptureStatusWithDetails implements \JsonSerializable
     }
 
     /**
+     * Converts the CaptureStatusWithDetails object to a human-readable string representation.
+     *
+     * @return string The string representation of the CaptureStatusWithDetails object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CaptureStatusWithDetails',
+            ['status' => $this->status, 'statusDetails' => $this->statusDetails]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -80,7 +94,7 @@ class CaptureStatusWithDetails implements \JsonSerializable
     {
         $json = [];
         if (isset($this->status)) {
-            $json['status']         = CaptureStatus::checkValue($this->status);
+            $json['status']         = $this->status;
         }
         if (isset($this->statusDetails)) {
             $json['status_details'] = $this->statusDetails;

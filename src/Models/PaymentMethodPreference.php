@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -78,6 +79,19 @@ class PaymentMethodPreference implements \JsonSerializable
     }
 
     /**
+     * Converts the PaymentMethodPreference object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaymentMethodPreference object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaymentMethodPreference',
+            ['payeePreferred' => $this->payeePreferred, 'standardEntryClassCode' => $this->standardEntryClassCode]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -90,10 +104,10 @@ class PaymentMethodPreference implements \JsonSerializable
     {
         $json = [];
         if (isset($this->payeePreferred)) {
-            $json['payee_preferred']           = PayeePaymentMethodPreference::checkValue($this->payeePreferred);
+            $json['payee_preferred']           = $this->payeePreferred;
         }
         if (isset($this->standardEntryClassCode)) {
-            $json['standard_entry_class_code'] = StandardEntryClassCode::checkValue($this->standardEntryClassCode);
+            $json['standard_entry_class_code'] = $this->standardEntryClassCode;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

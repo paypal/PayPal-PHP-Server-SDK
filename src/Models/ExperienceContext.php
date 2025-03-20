@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -155,6 +156,25 @@ class ExperienceContext implements \JsonSerializable
     }
 
     /**
+     * Converts the ExperienceContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the ExperienceContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ExperienceContext',
+            [
+                'brandName' => $this->brandName,
+                'locale' => $this->locale,
+                'shippingPreference' => $this->shippingPreference,
+                'returnUrl' => $this->returnUrl,
+                'cancelUrl' => $this->cancelUrl
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -173,7 +193,7 @@ class ExperienceContext implements \JsonSerializable
             $json['locale']              = $this->locale;
         }
         if (isset($this->shippingPreference)) {
-            $json['shipping_preference'] = ShippingPreference::checkValue($this->shippingPreference);
+            $json['shipping_preference'] = $this->shippingPreference;
         }
         if (isset($this->returnUrl)) {
             $json['return_url']          = $this->returnUrl;

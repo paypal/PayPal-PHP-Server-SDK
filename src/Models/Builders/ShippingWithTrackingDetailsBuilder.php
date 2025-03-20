@@ -12,8 +12,10 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Address;
+use PaypalServerSdkLib\Models\OrderTrackerResponse;
 use PaypalServerSdkLib\Models\PhoneNumberWithCountryCode;
 use PaypalServerSdkLib\Models\ShippingName;
+use PaypalServerSdkLib\Models\ShippingOption;
 use PaypalServerSdkLib\Models\ShippingWithTrackingDetails;
 
 /**
@@ -34,7 +36,7 @@ class ShippingWithTrackingDetailsBuilder
     }
 
     /**
-     * Initializes a new shipping with tracking details Builder object.
+     * Initializes a new Shipping With Tracking Details Builder object.
      */
     public static function init(): self
     {
@@ -43,6 +45,8 @@ class ShippingWithTrackingDetailsBuilder
 
     /**
      * Sets name field.
+     *
+     * @param ShippingName|null $value
      */
     public function name(?ShippingName $value): self
     {
@@ -51,7 +55,20 @@ class ShippingWithTrackingDetailsBuilder
     }
 
     /**
+     * Sets email address field.
+     *
+     * @param string|null $value
+     */
+    public function emailAddress(?string $value): self
+    {
+        $this->instance->setEmailAddress($value);
+        return $this;
+    }
+
+    /**
      * Sets phone number field.
+     *
+     * @param PhoneNumberWithCountryCode|null $value
      */
     public function phoneNumber(?PhoneNumberWithCountryCode $value): self
     {
@@ -61,6 +78,8 @@ class ShippingWithTrackingDetailsBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -70,6 +89,8 @@ class ShippingWithTrackingDetailsBuilder
 
     /**
      * Sets options field.
+     *
+     * @param ShippingOption[]|null $value
      */
     public function options(?array $value): self
     {
@@ -79,6 +100,8 @@ class ShippingWithTrackingDetailsBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -88,6 +111,8 @@ class ShippingWithTrackingDetailsBuilder
 
     /**
      * Sets trackers field.
+     *
+     * @param OrderTrackerResponse[]|null $value
      */
     public function trackers(?array $value): self
     {
@@ -96,7 +121,7 @@ class ShippingWithTrackingDetailsBuilder
     }
 
     /**
-     * Initializes a new shipping with tracking details object.
+     * Initializes a new Shipping With Tracking Details object.
      */
     public function build(): ShippingWithTrackingDetails
     {

@@ -31,7 +31,10 @@ class UniversalProductCodeBuilder
     }
 
     /**
-     * Initializes a new universal product code Builder object.
+     * Initializes a new Universal Product Code Builder object.
+     *
+     * @param string $type
+     * @param string $code
      */
     public static function init(string $type, string $code): self
     {
@@ -39,7 +42,7 @@ class UniversalProductCodeBuilder
     }
 
     /**
-     * Initializes a new universal product code object.
+     * Initializes a new Universal Product Code object.
      */
     public function build(): UniversalProductCode
     {

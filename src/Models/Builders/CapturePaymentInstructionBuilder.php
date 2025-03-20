@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CapturePaymentInstruction;
+use PaypalServerSdkLib\Models\PlatformFee;
 
 /**
  * Builder for model CapturePaymentInstruction
@@ -31,7 +32,7 @@ class CapturePaymentInstructionBuilder
     }
 
     /**
-     * Initializes a new capture payment instruction Builder object.
+     * Initializes a new Capture Payment Instruction Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +41,8 @@ class CapturePaymentInstructionBuilder
 
     /**
      * Sets platform fees field.
+     *
+     * @param PlatformFee[]|null $value
      */
     public function platformFees(?array $value): self
     {
@@ -49,6 +52,8 @@ class CapturePaymentInstructionBuilder
 
     /**
      * Sets disbursement mode field.
+     *
+     * @param string|null $value
      */
     public function disbursementMode(?string $value): self
     {
@@ -58,6 +63,8 @@ class CapturePaymentInstructionBuilder
 
     /**
      * Sets payee receivable fx rate id field.
+     *
+     * @param string|null $value
      */
     public function payeeReceivableFxRateId(?string $value): self
     {
@@ -66,7 +73,7 @@ class CapturePaymentInstructionBuilder
     }
 
     /**
-     * Initializes a new capture payment instruction object.
+     * Initializes a new Capture Payment Instruction object.
      */
     public function build(): CapturePaymentInstruction
     {

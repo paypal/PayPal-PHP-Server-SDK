@@ -31,7 +31,7 @@ class P24PaymentObjectBuilder
     }
 
     /**
-     * Initializes a new p24 payment object Builder object.
+     * Initializes a new P24 Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class P24PaymentObjectBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -49,6 +51,8 @@ class P24PaymentObjectBuilder
 
     /**
      * Sets email field.
+     *
+     * @param string|null $value
      */
     public function email(?string $value): self
     {
@@ -58,6 +62,8 @@ class P24PaymentObjectBuilder
 
     /**
      * Sets country code field.
+     *
+     * @param string|null $value
      */
     public function countryCode(?string $value): self
     {
@@ -67,6 +73,8 @@ class P24PaymentObjectBuilder
 
     /**
      * Sets payment descriptor field.
+     *
+     * @param string|null $value
      */
     public function paymentDescriptor(?string $value): self
     {
@@ -76,6 +84,8 @@ class P24PaymentObjectBuilder
 
     /**
      * Sets method id field.
+     *
+     * @param string|null $value
      */
     public function methodId(?string $value): self
     {
@@ -85,6 +95,8 @@ class P24PaymentObjectBuilder
 
     /**
      * Sets method description field.
+     *
+     * @param string|null $value
      */
     public function methodDescription(?string $value): self
     {
@@ -93,7 +105,7 @@ class P24PaymentObjectBuilder
     }
 
     /**
-     * Initializes a new p24 payment object object.
+     * Initializes a new P24 Payment Object object.
      */
     public function build(): P24PaymentObject
     {

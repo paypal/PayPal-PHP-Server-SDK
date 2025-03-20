@@ -16,6 +16,7 @@ use PaypalServerSdkLib\Models\Name;
 use PaypalServerSdkLib\Models\PaypalWallet;
 use PaypalServerSdkLib\Models\PaypalWalletAttributes;
 use PaypalServerSdkLib\Models\PaypalWalletExperienceContext;
+use PaypalServerSdkLib\Models\PaypalWalletStoredCredential;
 use PaypalServerSdkLib\Models\PhoneWithType;
 use PaypalServerSdkLib\Models\TaxInfo;
 
@@ -37,7 +38,7 @@ class PaypalWalletBuilder
     }
 
     /**
-     * Initializes a new paypal wallet Builder object.
+     * Initializes a new Paypal Wallet Builder object.
      */
     public static function init(): self
     {
@@ -46,6 +47,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets vault id field.
+     *
+     * @param string|null $value
      */
     public function vaultId(?string $value): self
     {
@@ -55,6 +58,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -64,6 +69,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets name field.
+     *
+     * @param Name|null $value
      */
     public function name(?Name $value): self
     {
@@ -73,6 +80,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
      */
     public function phone(?PhoneWithType $value): self
     {
@@ -82,6 +91,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets birth date field.
+     *
+     * @param string|null $value
      */
     public function birthDate(?string $value): self
     {
@@ -91,6 +102,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets tax info field.
+     *
+     * @param TaxInfo|null $value
      */
     public function taxInfo(?TaxInfo $value): self
     {
@@ -100,6 +113,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -109,6 +124,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets attributes field.
+     *
+     * @param PaypalWalletAttributes|null $value
      */
     public function attributes(?PaypalWalletAttributes $value): self
     {
@@ -118,6 +135,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets experience context field.
+     *
+     * @param PaypalWalletExperienceContext|null $value
      */
     public function experienceContext(?PaypalWalletExperienceContext $value): self
     {
@@ -127,6 +146,8 @@ class PaypalWalletBuilder
 
     /**
      * Sets billing agreement id field.
+     *
+     * @param string|null $value
      */
     public function billingAgreementId(?string $value): self
     {
@@ -135,7 +156,18 @@ class PaypalWalletBuilder
     }
 
     /**
-     * Initializes a new paypal wallet object.
+     * Sets stored credential field.
+     *
+     * @param PaypalWalletStoredCredential|null $value
+     */
+    public function storedCredential(?PaypalWalletStoredCredential $value): self
+    {
+        $this->instance->setStoredCredential($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Paypal Wallet object.
      */
     public function build(): PaypalWallet
     {

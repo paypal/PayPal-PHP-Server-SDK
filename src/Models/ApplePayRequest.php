@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -101,10 +102,9 @@ class ApplePayRequest implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -113,10 +113,9 @@ class ApplePayRequest implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -170,13 +169,12 @@ class ApplePayRequest implements \JsonSerializable
     /**
      * Returns Stored Credential.
      * Provides additional details to process a payment using a `card` that has been stored or is intended
-     * to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:
-     * <br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible
-     * only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
-     * `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in
-     * the request.</li></ul>
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
      */
     public function getStoredCredential(): ?CardStoredCredential
     {
@@ -186,13 +184,12 @@ class ApplePayRequest implements \JsonSerializable
     /**
      * Sets Stored Credential.
      * Provides additional details to process a payment using a `card` that has been stored or is intended
-     * to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:
-     * <br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible
-     * only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
-     * `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in
-     * the request.</li></ul>
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
      *
      * @maps stored_credential
      */
@@ -241,6 +238,28 @@ class ApplePayRequest implements \JsonSerializable
     public function setAttributes(?ApplePayAttributes $attributes): void
     {
         $this->attributes = $attributes;
+    }
+
+    /**
+     * Converts the ApplePayRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the ApplePayRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ApplePayRequest',
+            [
+                'id' => $this->id,
+                'name' => $this->name,
+                'emailAddress' => $this->emailAddress,
+                'phoneNumber' => $this->phoneNumber,
+                'decryptedToken' => $this->decryptedToken,
+                'storedCredential' => $this->storedCredential,
+                'vaultId' => $this->vaultId,
+                'attributes' => $this->attributes
+            ]
+        );
     }
 
     /**

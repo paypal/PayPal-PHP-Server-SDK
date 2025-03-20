@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -48,11 +49,6 @@ class GooglePayRequest implements \JsonSerializable
     private $assuranceDetails;
 
     /**
-     * @var GooglePayCardAttributes|null
-     */
-    private $attributes;
-
-    /**
      * Returns Name.
      * The full name representation like Mr J Smith.
      */
@@ -74,10 +70,9 @@ class GooglePayRequest implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -86,10 +81,9 @@ class GooglePayRequest implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -185,23 +179,23 @@ class GooglePayRequest implements \JsonSerializable
     }
 
     /**
-     * Returns Attributes.
-     * Additional attributes associated with the use of this card.
-     */
-    public function getAttributes(): ?GooglePayCardAttributes
-    {
-        return $this->attributes;
-    }
-
-    /**
-     * Sets Attributes.
-     * Additional attributes associated with the use of this card.
+     * Converts the GooglePayRequest object to a human-readable string representation.
      *
-     * @maps attributes
+     * @return string The string representation of the GooglePayRequest object.
      */
-    public function setAttributes(?GooglePayCardAttributes $attributes): void
+    public function __toString(): string
     {
-        $this->attributes = $attributes;
+        return ApiHelper::stringify(
+            'GooglePayRequest',
+            [
+                'name' => $this->name,
+                'emailAddress' => $this->emailAddress,
+                'phoneNumber' => $this->phoneNumber,
+                'card' => $this->card,
+                'decryptedToken' => $this->decryptedToken,
+                'assuranceDetails' => $this->assuranceDetails
+            ]
+        );
     }
 
     /**
@@ -233,9 +227,6 @@ class GooglePayRequest implements \JsonSerializable
         }
         if (isset($this->assuranceDetails)) {
             $json['assurance_details'] = $this->assuranceDetails;
-        }
-        if (isset($this->attributes)) {
-            $json['attributes']        = $this->attributes;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

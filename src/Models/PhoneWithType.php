@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -79,6 +80,19 @@ class PhoneWithType implements \JsonSerializable
     }
 
     /**
+     * Converts the PhoneWithType object to a human-readable string representation.
+     *
+     * @return string The string representation of the PhoneWithType object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PhoneWithType',
+            ['phoneType' => $this->phoneType, 'phoneNumber' => $this->phoneNumber]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -91,7 +105,7 @@ class PhoneWithType implements \JsonSerializable
     {
         $json = [];
         if (isset($this->phoneType)) {
-            $json['phone_type'] = PhoneType::checkValue($this->phoneType);
+            $json['phone_type'] = $this->phoneType;
         }
         $json['phone_number']   = $this->phoneNumber;
 

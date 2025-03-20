@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -40,6 +41,16 @@ class ShippingName implements \JsonSerializable
     public function setFullName(?string $fullName): void
     {
         $this->fullName = $fullName;
+    }
+
+    /**
+     * Converts the ShippingName object to a human-readable string representation.
+     *
+     * @return string The string representation of the ShippingName object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('ShippingName', ['fullName' => $this->fullName]);
     }
 
     /**

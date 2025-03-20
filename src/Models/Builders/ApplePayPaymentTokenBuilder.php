@@ -32,7 +32,7 @@ class ApplePayPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new apple pay payment token Builder object.
+     * Initializes a new Apple Pay Payment Token Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class ApplePayPaymentTokenBuilder
 
     /**
      * Sets card field.
+     *
+     * @param ApplePayCard|null $value
      */
     public function card(?ApplePayCard $value): self
     {
@@ -49,7 +51,7 @@ class ApplePayPaymentTokenBuilder
     }
 
     /**
-     * Initializes a new apple pay payment token object.
+     * Initializes a new Apple Pay Payment Token object.
      */
     public function build(): ApplePayPaymentToken
     {

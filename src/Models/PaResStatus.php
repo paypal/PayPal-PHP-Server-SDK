@@ -10,48 +10,48 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * Transactions status result identifier. The outcome of the issuer's authentication.
  */
 class PaResStatus
 {
-    public const Y = 'Y';
-
-    public const N = 'N';
-
-    public const U = 'U';
-
-    public const A = 'A';
-
-    public const C = 'C';
-
-    public const R = 'R';
-
-    public const D = 'D';
-
-    public const I = 'I';
-
-    private const _ALL_VALUES = [self::Y, self::N, self::U, self::A, self::C, self::R, self::D, self::I];
+    /**
+     * Successful authentication.
+     */
+    public const SUCCESSFULAUTHENTICATION = 'Y';
 
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Failed authentication / account not verified / transaction denied.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for PaResStatus.");
-    }
+    public const FAILEDAUTHENTICATION = 'N';
+
+    /**
+     * Unable to complete authentication.
+     */
+    public const UNABLETOCOMPLETEAUTHENTICATION = 'U';
+
+    /**
+     * Successful attempts transaction.
+     */
+    public const SUCCESSFULATTEMPTSTRANSACTION = 'A';
+
+    /**
+     * Challenge required for authentication.
+     */
+    public const CHALLENGEREQUIRED = 'C';
+
+    /**
+     * Authentication rejected (merchant must not submit for authorization).
+     */
+    public const AUTHENTICATIONREJECTED = 'R';
+
+    /**
+     * Challenge required; decoupled authentication confirmed.
+     */
+    public const DECOUPLEDAUTHENTICATION = 'D';
+
+    /**
+     * Informational only; 3DS requestor challenge preference acknowledged.
+     */
+    public const INFORMATIONALONLY = 'I';
 }

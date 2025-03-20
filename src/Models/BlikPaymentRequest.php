@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -81,10 +82,9 @@ class BlikPaymentRequest implements \JsonSerializable
     /**
      * Returns Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      */
     public function getCountryCode(): string
     {
@@ -94,10 +94,9 @@ class BlikPaymentRequest implements \JsonSerializable
     /**
      * Sets Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      *
      * @required
      * @maps country_code
@@ -109,10 +108,9 @@ class BlikPaymentRequest implements \JsonSerializable
 
     /**
      * Returns Email.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmail(): ?string
     {
@@ -121,10 +119,9 @@ class BlikPaymentRequest implements \JsonSerializable
 
     /**
      * Sets Email.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email
      */
@@ -191,6 +188,26 @@ class BlikPaymentRequest implements \JsonSerializable
     public function setOneClick(?BlikOneClickPaymentRequest $oneClick): void
     {
         $this->oneClick = $oneClick;
+    }
+
+    /**
+     * Converts the BlikPaymentRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the BlikPaymentRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'BlikPaymentRequest',
+            [
+                'name' => $this->name,
+                'countryCode' => $this->countryCode,
+                'email' => $this->email,
+                'experienceContext' => $this->experienceContext,
+                'level0' => $this->level0,
+                'oneClick' => $this->oneClick
+            ]
+        );
     }
 
     /**

@@ -10,13 +10,13 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * Customizes the payer experience during the approval process for payment with PayPal.
- * <blockquote><strong>Note:</strong> Partners and Marketplaces might configure <code>brand_name</code>
- * and <code>shipping_preference</code> during partner account setup, which overrides the request
- * values.</blockquote>
+ * Customizes the payer experience during the approval process for payment with PayPal. Note: Partners
+ * and Marketplaces might configure brand_name and shipping_preference during partner account setup,
+ * which overrides the request values.
  */
 class PaypalWalletExperienceContext implements \JsonSerializable
 {
@@ -33,7 +33,7 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $shippingPreference = ShippingPreference::GET_FROM_FILE;
+    private $shippingPreference = PaypalWalletContextShippingPreference::GET_FROM_FILE;
 
     /**
      * @var string|null
@@ -59,6 +59,11 @@ class PaypalWalletExperienceContext implements \JsonSerializable
      * @var string|null
      */
     private $paymentMethodPreference = PayeePaymentMethodPreference::UNRESTRICTED;
+
+    /**
+     * @var CallbackConfiguration|null
+     */
+    private $orderUpdateCallbackConfig;
 
     /**
      * Returns Brand Name.
@@ -194,7 +199,7 @@ class PaypalWalletExperienceContext implements \JsonSerializable
 
     /**
      * Returns User Action.
-     * Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.
+     * Configures a Continue or Pay Now checkout flow.
      */
     public function getUserAction(): ?string
     {
@@ -203,7 +208,7 @@ class PaypalWalletExperienceContext implements \JsonSerializable
 
     /**
      * Sets User Action.
-     * Configures a <strong>Continue</strong> or <strong>Pay Now</strong> checkout flow.
+     * Configures a Continue or Pay Now checkout flow.
      *
      * @maps user_action
      */
@@ -233,6 +238,49 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     }
 
     /**
+     * Returns Order Update Callback Config.
+     * CallBack Configuration that the merchant can provide to PayPal/Venmo.
+     */
+    public function getOrderUpdateCallbackConfig(): ?CallbackConfiguration
+    {
+        return $this->orderUpdateCallbackConfig;
+    }
+
+    /**
+     * Sets Order Update Callback Config.
+     * CallBack Configuration that the merchant can provide to PayPal/Venmo.
+     *
+     * @maps order_update_callback_config
+     */
+    public function setOrderUpdateCallbackConfig(?CallbackConfiguration $orderUpdateCallbackConfig): void
+    {
+        $this->orderUpdateCallbackConfig = $orderUpdateCallbackConfig;
+    }
+
+    /**
+     * Converts the PaypalWalletExperienceContext object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaypalWalletExperienceContext object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'PaypalWalletExperienceContext',
+            [
+                'brandName' => $this->brandName,
+                'locale' => $this->locale,
+                'shippingPreference' => $this->shippingPreference,
+                'returnUrl' => $this->returnUrl,
+                'cancelUrl' => $this->cancelUrl,
+                'landingPage' => $this->landingPage,
+                'userAction' => $this->userAction,
+                'paymentMethodPreference' => $this->paymentMethodPreference,
+                'orderUpdateCallbackConfig' => $this->orderUpdateCallbackConfig
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -245,31 +293,31 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     {
         $json = [];
         if (isset($this->brandName)) {
-            $json['brand_name']                = $this->brandName;
+            $json['brand_name']                   = $this->brandName;
         }
         if (isset($this->locale)) {
-            $json['locale']                    = $this->locale;
+            $json['locale']                       = $this->locale;
         }
         if (isset($this->shippingPreference)) {
-            $json['shipping_preference']       = ShippingPreference::checkValue($this->shippingPreference);
+            $json['shipping_preference']          = $this->shippingPreference;
         }
         if (isset($this->returnUrl)) {
-            $json['return_url']                = $this->returnUrl;
+            $json['return_url']                   = $this->returnUrl;
         }
         if (isset($this->cancelUrl)) {
-            $json['cancel_url']                = $this->cancelUrl;
+            $json['cancel_url']                   = $this->cancelUrl;
         }
         if (isset($this->landingPage)) {
-            $json['landing_page']              = PaypalExperienceLandingPage::checkValue($this->landingPage);
+            $json['landing_page']                 = $this->landingPage;
         }
         if (isset($this->userAction)) {
-            $json['user_action']               = PaypalExperienceUserAction::checkValue($this->userAction);
+            $json['user_action']                  = $this->userAction;
         }
         if (isset($this->paymentMethodPreference)) {
-            $json['payment_method_preference'] =
-                PayeePaymentMethodPreference::checkValue(
-                    $this->paymentMethodPreference
-                );
+            $json['payment_method_preference']    = $this->paymentMethodPreference;
+        }
+        if (isset($this->orderUpdateCallbackConfig)) {
+            $json['order_update_callback_config'] = $this->orderUpdateCallbackConfig;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

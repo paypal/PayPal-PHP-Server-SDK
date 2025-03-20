@@ -32,7 +32,7 @@ class ApplePayTokenizedCardBuilder
     }
 
     /**
-     * Initializes a new apple pay tokenized card Builder object.
+     * Initializes a new Apple Pay Tokenized Card Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +41,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -50,6 +52,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets number field.
+     *
+     * @param string|null $value
      */
     public function number(?string $value): self
     {
@@ -59,6 +63,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets expiry field.
+     *
+     * @param string|null $value
      */
     public function expiry(?string $value): self
     {
@@ -68,6 +74,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets card type field.
+     *
+     * @param string|null $value
      */
     public function cardType(?string $value): self
     {
@@ -77,6 +85,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -86,6 +96,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -95,6 +107,8 @@ class ApplePayTokenizedCardBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -103,7 +117,7 @@ class ApplePayTokenizedCardBuilder
     }
 
     /**
-     * Initializes a new apple pay tokenized card object.
+     * Initializes a new Apple Pay Tokenized Card object.
      */
     public function build(): ApplePayTokenizedCard
     {

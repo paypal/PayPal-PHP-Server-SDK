@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -120,6 +121,24 @@ class ProcessorResponse implements \JsonSerializable
     }
 
     /**
+     * Converts the ProcessorResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the ProcessorResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ProcessorResponse',
+            [
+                'avsCode' => $this->avsCode,
+                'cvvCode' => $this->cvvCode,
+                'responseCode' => $this->responseCode,
+                'paymentAdviceCode' => $this->paymentAdviceCode
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -132,16 +151,16 @@ class ProcessorResponse implements \JsonSerializable
     {
         $json = [];
         if (isset($this->avsCode)) {
-            $json['avs_code']            = AvsCode::checkValue($this->avsCode);
+            $json['avs_code']            = $this->avsCode;
         }
         if (isset($this->cvvCode)) {
-            $json['cvv_code']            = CvvCode::checkValue($this->cvvCode);
+            $json['cvv_code']            = $this->cvvCode;
         }
         if (isset($this->responseCode)) {
-            $json['response_code']       = ProcessorResponseCode::checkValue($this->responseCode);
+            $json['response_code']       = $this->responseCode;
         }
         if (isset($this->paymentAdviceCode)) {
-            $json['payment_advice_code'] = PaymentAdviceCode::checkValue($this->paymentAdviceCode);
+            $json['payment_advice_code'] = $this->paymentAdviceCode;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

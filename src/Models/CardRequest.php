@@ -10,15 +10,14 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * The payment card to use to fund a payment. Can be a credit or debit card.<blockquote><strong>Note:
- * </strong> Passing card number, cvv and expiry directly via the API requires <a href="https://www.
- * pcisecuritystandards.org/pci_security/completing_self_assessment"> PCI SAQ D compliance</a>.
- * <br>*PayPal offers a mechanism by which you do not have to take on the <strong>PCI SAQ D</strong>
- * burden by using hosted fields - refer to <a href="https://developer.paypal.
- * com/docs/checkout/advanced/integrate/">this Integration Guide</a>*.</blockquote>
+ * The payment card to use to fund a payment. Can be a credit or debit card. Note: Passing card number,
+ * cvv and expiry directly via the API requires PCI SAQ D compliance. *PayPal offers a mechanism by
+ * which you do not have to take on the PCI SAQ D burden by using hosted fields - refer to this
+ * Integration Guide*.
  */
 class CardRequest implements \JsonSerializable
 {
@@ -254,13 +253,12 @@ class CardRequest implements \JsonSerializable
     /**
      * Returns Stored Credential.
      * Provides additional details to process a payment using a `card` that has been stored or is intended
-     * to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:
-     * <br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible
-     * only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
-     * `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in
-     * the request.</li></ul>
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
      */
     public function getStoredCredential(): ?CardStoredCredential
     {
@@ -270,13 +268,12 @@ class CardRequest implements \JsonSerializable
     /**
      * Sets Stored Credential.
      * Provides additional details to process a payment using a `card` that has been stored or is intended
-     * to be stored (also referred to as stored_credential or card-on-file).<br/>Parameter compatibility:
-     * <br/><ul><li>`payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`.
-     * </li><li>`previous_transaction_reference` or `previous_network_transaction_reference` is compatible
-     * only with `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
-     * `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in
-     * the request.</li></ul>
+     * to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility:
+     * `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is
+     * compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+     * `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only
+     * one of the parameters - `previous_transaction_reference` and
+     * `previous_network_transaction_reference` - can be present in the request.
      *
      * @maps stored_credential
      */
@@ -323,6 +320,31 @@ class CardRequest implements \JsonSerializable
     public function setExperienceContext(?CardExperienceContext $experienceContext): void
     {
         $this->experienceContext = $experienceContext;
+    }
+
+    /**
+     * Converts the CardRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardRequest',
+            [
+                'name' => $this->name,
+                'number' => $this->number,
+                'expiry' => $this->expiry,
+                'securityCode' => $this->securityCode,
+                'billingAddress' => $this->billingAddress,
+                'attributes' => $this->attributes,
+                'vaultId' => $this->vaultId,
+                'singleUseToken' => $this->singleUseToken,
+                'storedCredential' => $this->storedCredential,
+                'networkToken' => $this->networkToken,
+                'experienceContext' => $this->experienceContext
+            ]
+        );
     }
 
     /**

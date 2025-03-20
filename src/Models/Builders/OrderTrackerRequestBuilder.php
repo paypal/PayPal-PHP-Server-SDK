@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\OrderTrackerItem;
 use PaypalServerSdkLib\Models\OrderTrackerRequest;
 
 /**
@@ -31,7 +32,9 @@ class OrderTrackerRequestBuilder
     }
 
     /**
-     * Initializes a new order tracker request Builder object.
+     * Initializes a new Order Tracker Request Builder object.
+     *
+     * @param string $captureId
      */
     public static function init(string $captureId): self
     {
@@ -40,6 +43,8 @@ class OrderTrackerRequestBuilder
 
     /**
      * Sets tracking number field.
+     *
+     * @param string|null $value
      */
     public function trackingNumber(?string $value): self
     {
@@ -49,6 +54,8 @@ class OrderTrackerRequestBuilder
 
     /**
      * Sets carrier field.
+     *
+     * @param string|null $value
      */
     public function carrier(?string $value): self
     {
@@ -58,6 +65,8 @@ class OrderTrackerRequestBuilder
 
     /**
      * Sets carrier name other field.
+     *
+     * @param string|null $value
      */
     public function carrierNameOther(?string $value): self
     {
@@ -67,6 +76,8 @@ class OrderTrackerRequestBuilder
 
     /**
      * Sets notify payer field.
+     *
+     * @param bool|null $value
      */
     public function notifyPayer(?bool $value): self
     {
@@ -76,6 +87,8 @@ class OrderTrackerRequestBuilder
 
     /**
      * Sets items field.
+     *
+     * @param OrderTrackerItem[]|null $value
      */
     public function items(?array $value): self
     {
@@ -84,7 +97,7 @@ class OrderTrackerRequestBuilder
     }
 
     /**
-     * Initializes a new order tracker request object.
+     * Initializes a new Order Tracker Request object.
      */
     public function build(): OrderTrackerRequest
     {

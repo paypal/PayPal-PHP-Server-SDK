@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -40,6 +41,16 @@ class PaymentSupplementaryData implements \JsonSerializable
     public function setRelatedIds(?RelatedIdentifiers $relatedIds): void
     {
         $this->relatedIds = $relatedIds;
+    }
+
+    /**
+     * Converts the PaymentSupplementaryData object to a human-readable string representation.
+     *
+     * @return string The string representation of the PaymentSupplementaryData object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('PaymentSupplementaryData', ['relatedIds' => $this->relatedIds]);
     }
 
     /**

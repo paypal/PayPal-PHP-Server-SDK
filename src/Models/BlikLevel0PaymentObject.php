@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -49,6 +50,16 @@ class BlikLevel0PaymentObject implements \JsonSerializable
     public function setAuthCode(string $authCode): void
     {
         $this->authCode = $authCode;
+    }
+
+    /**
+     * Converts the BlikLevel0PaymentObject object to a human-readable string representation.
+     *
+     * @return string The string representation of the BlikLevel0PaymentObject object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('BlikLevel0PaymentObject', ['authCode' => $this->authCode]);
     }
 
     /**

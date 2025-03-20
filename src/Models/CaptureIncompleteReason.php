@@ -10,69 +10,73 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The reason why the captured payment status is `PENDING` or `DENIED`.
  */
 class CaptureIncompleteReason
 {
+    /**
+     * The payer initiated a dispute for this captured payment with PayPal.
+     */
     public const BUYER_COMPLAINT = 'BUYER_COMPLAINT';
 
+    /**
+     * The captured funds were reversed in response to the payer disputing this captured payment with the
+     * issuer of the financial instrument used to pay for this captured payment.
+     */
     public const CHARGEBACK = 'CHARGEBACK';
 
+    /**
+     * The payer paid by an eCheck that has not yet cleared.
+     */
     public const ECHECK = 'ECHECK';
 
+    /**
+     * Visit your online account. In your **Account Overview**, accept and deny this payment.
+     */
     public const INTERNATIONAL_WITHDRAWAL = 'INTERNATIONAL_WITHDRAWAL';
 
+    /**
+     * No additional specific reason can be provided. For more information about this captured payment,
+     * visit your account online or contact PayPal.
+     */
     public const OTHER = 'OTHER';
 
+    /**
+     * The captured payment is pending manual review.
+     */
     public const PENDING_REVIEW = 'PENDING_REVIEW';
 
+    /**
+     * The payee has not yet set up appropriate receiving preferences for their account. For more
+     * information about how to accept or deny this payment, visit your account online. This reason is
+     * typically offered in scenarios such as when the currency of the captured payment is different from
+     * the primary holding currency of the payee.
+     */
     public const RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION = 'RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION';
 
+    /**
+     * The captured funds were refunded.
+     */
     public const REFUNDED = 'REFUNDED';
 
+    /**
+     * The payer must send the funds for this captured payment. This code generally appears for manual EFTs.
+     */
     public const TRANSACTION_APPROVED_AWAITING_FUNDING = 'TRANSACTION_APPROVED_AWAITING_FUNDING';
 
+    /**
+     * The payee does not have a PayPal account.
+     */
     public const UNILATERAL = 'UNILATERAL';
 
+    /**
+     * The payee's PayPal account is not verified.
+     */
     public const VERIFICATION_REQUIRED = 'VERIFICATION_REQUIRED';
 
-    public const DECLINED_BY_RISK_FRAUD_FILTERS = 'DECLINED_BY_RISK_FRAUD_FILTERS';
-
-    private const _ALL_VALUES = [
-        self::BUYER_COMPLAINT,
-        self::CHARGEBACK,
-        self::ECHECK,
-        self::INTERNATIONAL_WITHDRAWAL,
-        self::OTHER,
-        self::PENDING_REVIEW,
-        self::RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION,
-        self::REFUNDED,
-        self::TRANSACTION_APPROVED_AWAITING_FUNDING,
-        self::UNILATERAL,
-        self::VERIFICATION_REQUIRED,
-        self::DECLINED_BY_RISK_FRAUD_FILTERS
-    ];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Risk Filter set by the payee failed for the transaction.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for CaptureIncompleteReason.");
-    }
+    public const DECLINED_BY_RISK_FRAUD_FILTERS = 'DECLINED_BY_RISK_FRAUD_FILTERS';
 }

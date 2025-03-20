@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
 use PaypalServerSdkLib\Models\PayeeBase;
 use PaypalServerSdkLib\Models\Refund;
@@ -35,7 +36,7 @@ class RefundBuilder
     }
 
     /**
-     * Initializes a new refund Builder object.
+     * Initializes a new Refund Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +45,8 @@ class RefundBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -53,6 +56,8 @@ class RefundBuilder
 
     /**
      * Sets status details field.
+     *
+     * @param RefundStatusDetails|null $value
      */
     public function statusDetails(?RefundStatusDetails $value): self
     {
@@ -62,6 +67,8 @@ class RefundBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -71,6 +78,8 @@ class RefundBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -80,6 +89,8 @@ class RefundBuilder
 
     /**
      * Sets invoice id field.
+     *
+     * @param string|null $value
      */
     public function invoiceId(?string $value): self
     {
@@ -89,6 +100,8 @@ class RefundBuilder
 
     /**
      * Sets custom id field.
+     *
+     * @param string|null $value
      */
     public function customId(?string $value): self
     {
@@ -98,6 +111,8 @@ class RefundBuilder
 
     /**
      * Sets acquirer reference number field.
+     *
+     * @param string|null $value
      */
     public function acquirerReferenceNumber(?string $value): self
     {
@@ -107,6 +122,8 @@ class RefundBuilder
 
     /**
      * Sets note to payer field.
+     *
+     * @param string|null $value
      */
     public function noteToPayer(?string $value): self
     {
@@ -116,6 +133,8 @@ class RefundBuilder
 
     /**
      * Sets seller payable breakdown field.
+     *
+     * @param SellerPayableBreakdown|null $value
      */
     public function sellerPayableBreakdown(?SellerPayableBreakdown $value): self
     {
@@ -125,6 +144,8 @@ class RefundBuilder
 
     /**
      * Sets payer field.
+     *
+     * @param PayeeBase|null $value
      */
     public function payer(?PayeeBase $value): self
     {
@@ -134,6 +155,8 @@ class RefundBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -143,6 +166,8 @@ class RefundBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -152,6 +177,8 @@ class RefundBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -160,7 +187,7 @@ class RefundBuilder
     }
 
     /**
-     * Initializes a new refund object.
+     * Initializes a new Refund object.
      */
     public function build(): Refund
     {

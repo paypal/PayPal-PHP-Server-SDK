@@ -11,7 +11,7 @@ Setup Token Request where the `source` defines the type of instrument to be stor
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `customer` | [`?CustomerRequest`](../../doc/models/customer-request.md) | Optional | Customer in merchant's or partner's system of records. | getCustomer(): ?CustomerRequest | setCustomer(?CustomerRequest customer): void |
+| `customer` | [`?Customer`](../../doc/models/customer.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. | getCustomer(): ?Customer | setCustomer(?Customer customer): void |
 | `paymentSource` | [`SetupTokenRequestPaymentSource`](../../doc/models/setup-token-request-payment-source.md) | Required | The payment method to vault with the instrument details. | getPaymentSource(): SetupTokenRequestPaymentSource | setPaymentSource(SetupTokenRequestPaymentSource paymentSource): void |
 
 ## Example (as JSON)
@@ -32,9 +32,14 @@ Setup Token Request where the `source` defines the type of instrument to be stor
     },
     "paypal": {
       "description": "description2",
+      "usage_pattern": "THRESHOLD_PREPAID",
       "shipping": {
         "name": {
           "full_name": "full_name6"
+        },
+        "phone_number": {
+          "country_code": "country_code2",
+          "national_number": "national_number6"
         },
         "type": "SHIPPING",
         "address": {
@@ -47,14 +52,18 @@ Setup Token Request where the `source` defines the type of instrument to be stor
         }
       },
       "permit_multiple_payment_tokens": false,
-      "usage_type": "usage_type2",
-      "customer_type": "customer_type6"
+      "usage_type": "MERCHANT"
     },
     "venmo": {
       "description": "description6",
+      "usage_pattern": "UNSCHEDULED_PREPAID",
       "shipping": {
         "name": {
           "full_name": "full_name6"
+        },
+        "phone_number": {
+          "country_code": "country_code2",
+          "national_number": "national_number6"
         },
         "type": "SHIPPING",
         "address": {
@@ -67,8 +76,7 @@ Setup Token Request where the `source` defines the type of instrument to be stor
         }
       },
       "permit_multiple_payment_tokens": false,
-      "usage_type": "usage_type6",
-      "customer_type": "customer_type0"
+      "usage_type": "MERCHANT"
     },
     "token": {
       "id": "id6",

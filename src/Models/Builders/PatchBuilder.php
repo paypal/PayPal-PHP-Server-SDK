@@ -31,7 +31,9 @@ class PatchBuilder
     }
 
     /**
-     * Initializes a new patch Builder object.
+     * Initializes a new Patch Builder object.
+     *
+     * @param string $op
      */
     public static function init(string $op): self
     {
@@ -40,6 +42,8 @@ class PatchBuilder
 
     /**
      * Sets path field.
+     *
+     * @param string|null $value
      */
     public function path(?string $value): self
     {
@@ -49,6 +53,8 @@ class PatchBuilder
 
     /**
      * Sets value field.
+     *
+     * @param mixed $value
      */
     public function value($value): self
     {
@@ -58,6 +64,8 @@ class PatchBuilder
 
     /**
      * Sets from field.
+     *
+     * @param string|null $value
      */
     public function from(?string $value): self
     {
@@ -66,7 +74,7 @@ class PatchBuilder
     }
 
     /**
-     * Initializes a new patch object.
+     * Initializes a new Patch object.
      */
     public function build(): Patch
     {

@@ -30,7 +30,7 @@ class OAuthAuthorizationController extends BaseController
      *
      * @return ApiResponse Response from the API call
      */
-    public function requestToken(array $options, array $fieldParameters = null): ApiResponse
+    public function requestToken(array $options, ?array $fieldParameters = null): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v1/oauth2/token')
             ->parameters(

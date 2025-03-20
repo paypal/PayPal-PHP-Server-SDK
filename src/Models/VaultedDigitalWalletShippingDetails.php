@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -21,6 +22,11 @@ class VaultedDigitalWalletShippingDetails implements \JsonSerializable
      * @var ShippingName|null
      */
     private $name;
+
+    /**
+     * @var PhoneNumberWithCountryCode|null
+     */
+    private $phoneNumber;
 
     /**
      * @var string|null
@@ -50,6 +56,28 @@ class VaultedDigitalWalletShippingDetails implements \JsonSerializable
     public function setName(?ShippingName $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * Returns Phone Number.
+     * The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.
+     * int/rec/T-REC-E.164/en).
+     */
+    public function getPhoneNumber(): ?PhoneNumberWithCountryCode
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Sets Phone Number.
+     * The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.
+     * int/rec/T-REC-E.164/en).
+     *
+     * @maps phone_number
+     */
+    public function setPhoneNumber(?PhoneNumberWithCountryCode $phoneNumber): void
+    {
+        $this->phoneNumber = $phoneNumber;
     }
 
     /**
@@ -101,6 +129,24 @@ class VaultedDigitalWalletShippingDetails implements \JsonSerializable
     }
 
     /**
+     * Converts the VaultedDigitalWalletShippingDetails object to a human-readable string representation.
+     *
+     * @return string The string representation of the VaultedDigitalWalletShippingDetails object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VaultedDigitalWalletShippingDetails',
+            [
+                'name' => $this->name,
+                'phoneNumber' => $this->phoneNumber,
+                'type' => $this->type,
+                'address' => $this->address
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -113,13 +159,16 @@ class VaultedDigitalWalletShippingDetails implements \JsonSerializable
     {
         $json = [];
         if (isset($this->name)) {
-            $json['name']    = $this->name;
+            $json['name']         = $this->name;
+        }
+        if (isset($this->phoneNumber)) {
+            $json['phone_number'] = $this->phoneNumber;
         }
         if (isset($this->type)) {
-            $json['type']    = FulfillmentType::checkValue($this->type);
+            $json['type']         = $this->type;
         }
         if (isset($this->address)) {
-            $json['address'] = $this->address;
+            $json['address']      = $this->address;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

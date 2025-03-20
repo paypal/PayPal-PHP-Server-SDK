@@ -32,7 +32,10 @@ class StoredPaymentSourceBuilder
     }
 
     /**
-     * Initializes a new stored payment source Builder object.
+     * Initializes a new Stored Payment Source Builder object.
+     *
+     * @param string $paymentInitiator
+     * @param string $paymentType
      */
     public static function init(string $paymentInitiator, string $paymentType): self
     {
@@ -41,6 +44,8 @@ class StoredPaymentSourceBuilder
 
     /**
      * Sets usage field.
+     *
+     * @param string|null $value
      */
     public function usage(?string $value): self
     {
@@ -50,6 +55,8 @@ class StoredPaymentSourceBuilder
 
     /**
      * Sets previous network transaction reference field.
+     *
+     * @param NetworkTransactionReference|null $value
      */
     public function previousNetworkTransactionReference(?NetworkTransactionReference $value): self
     {
@@ -58,7 +65,7 @@ class StoredPaymentSourceBuilder
     }
 
     /**
-     * Initializes a new stored payment source object.
+     * Initializes a new Stored Payment Source object.
      */
     public function build(): StoredPaymentSource
     {

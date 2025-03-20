@@ -34,7 +34,7 @@ class SetupTokenResponsePaymentSourceBuilder
     }
 
     /**
-     * Initializes a new setup token response payment source Builder object.
+     * Initializes a new Setup Token Response Payment Source Builder object.
      */
     public static function init(): self
     {
@@ -43,6 +43,8 @@ class SetupTokenResponsePaymentSourceBuilder
 
     /**
      * Sets card field.
+     *
+     * @param SetupTokenResponseCard|null $value
      */
     public function card(?SetupTokenResponseCard $value): self
     {
@@ -52,6 +54,8 @@ class SetupTokenResponsePaymentSourceBuilder
 
     /**
      * Sets paypal field.
+     *
+     * @param PaypalPaymentToken|null $value
      */
     public function paypal(?PaypalPaymentToken $value): self
     {
@@ -61,6 +65,8 @@ class SetupTokenResponsePaymentSourceBuilder
 
     /**
      * Sets venmo field.
+     *
+     * @param VenmoPaymentToken|null $value
      */
     public function venmo(?VenmoPaymentToken $value): self
     {
@@ -69,7 +75,7 @@ class SetupTokenResponsePaymentSourceBuilder
     }
 
     /**
-     * Initializes a new setup token response payment source object.
+     * Initializes a new Setup Token Response Payment Source object.
      */
     public function build(): SetupTokenResponsePaymentSource
     {

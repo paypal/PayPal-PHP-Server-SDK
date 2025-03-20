@@ -32,7 +32,11 @@ class ShippingOptionBuilder
     }
 
     /**
-     * Initializes a new shipping option Builder object.
+     * Initializes a new Shipping Option Builder object.
+     *
+     * @param string $id
+     * @param string $label
+     * @param bool $selected
      */
     public static function init(string $id, string $label, bool $selected): self
     {
@@ -41,6 +45,8 @@ class ShippingOptionBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -50,6 +56,8 @@ class ShippingOptionBuilder
 
     /**
      * Sets amount field.
+     *
+     * @param Money|null $value
      */
     public function amount(?Money $value): self
     {
@@ -58,7 +66,7 @@ class ShippingOptionBuilder
     }
 
     /**
-     * Initializes a new shipping option object.
+     * Initializes a new Shipping Option object.
      */
     public function build(): ShippingOption
     {

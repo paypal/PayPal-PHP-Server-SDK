@@ -33,7 +33,7 @@ class GooglePayCardResponseBuilder
     }
 
     /**
-     * Initializes a new google pay card response Builder object.
+     * Initializes a new Google Pay Card Response Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class GooglePayCardResponseBuilder
 
     /**
      * Sets name field.
+     *
+     * @param string|null $value
      */
     public function name(?string $value): self
     {
@@ -51,6 +53,8 @@ class GooglePayCardResponseBuilder
 
     /**
      * Sets last digits field.
+     *
+     * @param string|null $value
      */
     public function lastDigits(?string $value): self
     {
@@ -60,6 +64,8 @@ class GooglePayCardResponseBuilder
 
     /**
      * Sets type field.
+     *
+     * @param string|null $value
      */
     public function type(?string $value): self
     {
@@ -69,6 +75,8 @@ class GooglePayCardResponseBuilder
 
     /**
      * Sets brand field.
+     *
+     * @param string|null $value
      */
     public function brand(?string $value): self
     {
@@ -78,6 +86,8 @@ class GooglePayCardResponseBuilder
 
     /**
      * Sets billing address field.
+     *
+     * @param Address|null $value
      */
     public function billingAddress(?Address $value): self
     {
@@ -87,6 +97,8 @@ class GooglePayCardResponseBuilder
 
     /**
      * Sets authentication result field.
+     *
+     * @param AuthenticationResponse|null $value
      */
     public function authenticationResult(?AuthenticationResponse $value): self
     {
@@ -95,7 +107,7 @@ class GooglePayCardResponseBuilder
     }
 
     /**
-     * Initializes a new google pay card response object.
+     * Initializes a new Google Pay Card Response object.
      */
     public function build(): GooglePayCardResponse
     {

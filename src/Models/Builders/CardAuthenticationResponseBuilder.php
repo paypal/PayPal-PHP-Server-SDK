@@ -12,7 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CardAuthenticationResponse;
-use PaypalServerSdkLib\Models\ThreeDSecureAuthenticationResponse;
+use PaypalServerSdkLib\Models\ThreeDSecureCardAuthenticationResponse;
 
 /**
  * Builder for model CardAuthenticationResponse
@@ -32,7 +32,7 @@ class CardAuthenticationResponseBuilder
     }
 
     /**
-     * Initializes a new card authentication response Builder object.
+     * Initializes a new Card Authentication Response Builder object.
      */
     public static function init(): self
     {
@@ -41,15 +41,17 @@ class CardAuthenticationResponseBuilder
 
     /**
      * Sets three d secure field.
+     *
+     * @param ThreeDSecureCardAuthenticationResponse|null $value
      */
-    public function threeDSecure(?ThreeDSecureAuthenticationResponse $value): self
+    public function threeDSecure(?ThreeDSecureCardAuthenticationResponse $value): self
     {
         $this->instance->setThreeDSecure($value);
         return $this;
     }
 
     /**
-     * Initializes a new card authentication response object.
+     * Initializes a new Card Authentication Response object.
      */
     public function build(): CardAuthenticationResponse
     {

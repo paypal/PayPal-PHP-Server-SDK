@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -49,12 +50,10 @@ class OrderCaptureRequestPaymentSource implements \JsonSerializable
 
     /**
      * Returns Card.
-     * The payment card to use to fund a payment. Can be a credit or debit card.<blockquote><strong>Note:
-     * </strong> Passing card number, cvv and expiry directly via the API requires <a href="https://www.
-     * pcisecuritystandards.org/pci_security/completing_self_assessment"> PCI SAQ D compliance</a>.
-     * <br>*PayPal offers a mechanism by which you do not have to take on the <strong>PCI SAQ D</strong>
-     * burden by using hosted fields - refer to <a href="https://developer.paypal.
-     * com/docs/checkout/advanced/integrate/">this Integration Guide</a>*.</blockquote>
+     * The payment card to use to fund a payment. Can be a credit or debit card. Note: Passing card number,
+     * cvv and expiry directly via the API requires PCI SAQ D compliance. *PayPal offers a mechanism by
+     * which you do not have to take on the PCI SAQ D burden by using hosted fields - refer to this
+     * Integration Guide*.
      */
     public function getCard(): ?CardRequest
     {
@@ -63,12 +62,10 @@ class OrderCaptureRequestPaymentSource implements \JsonSerializable
 
     /**
      * Sets Card.
-     * The payment card to use to fund a payment. Can be a credit or debit card.<blockquote><strong>Note:
-     * </strong> Passing card number, cvv and expiry directly via the API requires <a href="https://www.
-     * pcisecuritystandards.org/pci_security/completing_self_assessment"> PCI SAQ D compliance</a>.
-     * <br>*PayPal offers a mechanism by which you do not have to take on the <strong>PCI SAQ D</strong>
-     * burden by using hosted fields - refer to <a href="https://developer.paypal.
-     * com/docs/checkout/advanced/integrate/">this Integration Guide</a>*.</blockquote>
+     * The payment card to use to fund a payment. Can be a credit or debit card. Note: Passing card number,
+     * cvv and expiry directly via the API requires PCI SAQ D compliance. *PayPal offers a mechanism by
+     * which you do not have to take on the PCI SAQ D burden by using hosted fields - refer to this
+     * Integration Guide*.
      *
      * @maps card
      */
@@ -175,6 +172,26 @@ class OrderCaptureRequestPaymentSource implements \JsonSerializable
     public function setVenmo(?VenmoWalletRequest $venmo): void
     {
         $this->venmo = $venmo;
+    }
+
+    /**
+     * Converts the OrderCaptureRequestPaymentSource object to a human-readable string representation.
+     *
+     * @return string The string representation of the OrderCaptureRequestPaymentSource object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'OrderCaptureRequestPaymentSource',
+            [
+                'card' => $this->card,
+                'token' => $this->token,
+                'paypal' => $this->paypal,
+                'applePay' => $this->applePay,
+                'googlePay' => $this->googlePay,
+                'venmo' => $this->venmo
+            ]
+        );
     }
 
     /**

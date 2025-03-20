@@ -10,10 +10,6 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * NACHA (the regulatory body governing the ACH network) requires that API callers (merchants,
  * partners) obtain the consumer’s explicit authorization before initiating a transaction. To stay
@@ -24,31 +20,28 @@ use stdClass;
  */
 class StandardEntryClassCode
 {
+    /**
+     * The API caller (merchant/partner) accepts authorization and payment information from a consumer over
+     * the telephone.
+     */
     public const TEL = 'TEL';
 
+    /**
+     * The API caller (merchant/partner) accepts Debit transactions from a consumer on their website.
+     */
     public const WEB = 'WEB';
 
+    /**
+     * Cash concentration and disbursement for corporate debit transaction. Used to disburse or consolidate
+     * funds. Entries are usually Optional high-dollar, low-volume, and time-critical. (e.g. intra-company
+     * transfers or invoice payments to suppliers).
+     */
     public const CCD = 'CCD';
 
-    public const PPD = 'PPD';
-
-    private const _ALL_VALUES = [self::TEL, self::WEB, self::CCD, self::PPD];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Prearranged payment and deposit entries. Used for debit payments authorized by a consumer account
+     * holder, and usually initiated by a company. These are usually recurring debits (such as insurance
+     * premiums).
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for StandardEntryClassCode.");
-    }
+    public const PPD = 'PPD';
 }

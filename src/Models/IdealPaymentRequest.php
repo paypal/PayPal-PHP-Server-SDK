@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -71,10 +72,9 @@ class IdealPaymentRequest implements \JsonSerializable
     /**
      * Returns Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      */
     public function getCountryCode(): string
     {
@@ -84,10 +84,9 @@ class IdealPaymentRequest implements \JsonSerializable
     /**
      * Sets Country Code.
      * The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country
-     * or region.<blockquote><strong>Note:</strong> The country code for Great Britain is <code>GB</code>
-     * and not <code>UK</code> as used in the top-level domain names for that country. Use the `C2` country
-     * code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border
-     * transactions.</blockquote>
+     * or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
+     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
+     * price (CUP) method, bank card, and cross-border transactions.
      *
      * @required
      * @maps country_code
@@ -137,6 +136,24 @@ class IdealPaymentRequest implements \JsonSerializable
     public function setExperienceContext(?ExperienceContext $experienceContext): void
     {
         $this->experienceContext = $experienceContext;
+    }
+
+    /**
+     * Converts the IdealPaymentRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the IdealPaymentRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'IdealPaymentRequest',
+            [
+                'name' => $this->name,
+                'countryCode' => $this->countryCode,
+                'bic' => $this->bic,
+                'experienceContext' => $this->experienceContext
+            ]
+        );
     }
 
     /**

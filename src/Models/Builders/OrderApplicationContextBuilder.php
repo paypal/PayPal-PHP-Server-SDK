@@ -33,7 +33,7 @@ class OrderApplicationContextBuilder
     }
 
     /**
-     * Initializes a new order application context Builder object.
+     * Initializes a new Order Application Context Builder object.
      */
     public static function init(): self
     {
@@ -42,6 +42,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -51,6 +53,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -60,6 +64,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets landing page field.
+     *
+     * @param string|null $value
      */
     public function landingPage(?string $value): self
     {
@@ -69,6 +75,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -78,6 +86,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets user action field.
+     *
+     * @param string|null $value
      */
     public function userAction(?string $value): self
     {
@@ -87,6 +97,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets payment method field.
+     *
+     * @param PaymentMethodPreference|null $value
      */
     public function paymentMethod(?PaymentMethodPreference $value): self
     {
@@ -96,6 +108,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -105,6 +119,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -114,6 +130,8 @@ class OrderApplicationContextBuilder
 
     /**
      * Sets stored payment source field.
+     *
+     * @param StoredPaymentSource|null $value
      */
     public function storedPaymentSource(?StoredPaymentSource $value): self
     {
@@ -122,7 +140,7 @@ class OrderApplicationContextBuilder
     }
 
     /**
-     * Initializes a new order application context object.
+     * Initializes a new Order Application Context object.
      */
     public function build(): OrderApplicationContext
     {

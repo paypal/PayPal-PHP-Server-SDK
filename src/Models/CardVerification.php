@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -21,7 +22,7 @@ class CardVerification implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $method = CardVerificationMethod::SCA_WHEN_REQUIRED;
+    private $method = OrdersCardVerificationMethod::SCA_WHEN_REQUIRED;
 
     /**
      * Returns Method.
@@ -44,6 +45,16 @@ class CardVerification implements \JsonSerializable
     }
 
     /**
+     * Converts the CardVerification object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardVerification object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('CardVerification', ['method' => $this->method]);
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -56,7 +67,7 @@ class CardVerification implements \JsonSerializable
     {
         $json = [];
         if (isset($this->method)) {
-            $json['method'] = CardVerificationMethod::checkValue($this->method);
+            $json['method'] = $this->method;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

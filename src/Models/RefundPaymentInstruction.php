@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -54,6 +55,16 @@ class RefundPaymentInstruction implements \JsonSerializable
     public function setPlatformFees(?array $platformFees): void
     {
         $this->platformFees = $platformFees;
+    }
+
+    /**
+     * Converts the RefundPaymentInstruction object to a human-readable string representation.
+     *
+     * @return string The string representation of the RefundPaymentInstruction object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('RefundPaymentInstruction', ['platformFees' => $this->platformFees]);
     }
 
     /**

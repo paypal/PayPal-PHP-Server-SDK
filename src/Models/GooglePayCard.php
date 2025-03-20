@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -48,7 +49,7 @@ class GooglePayCard implements \JsonSerializable
     private $brand;
 
     /**
-     * @var PortablePostalAddressMediumGrained|null
+     * @var Address|null
      */
     private $billingAddress;
 
@@ -181,7 +182,7 @@ class GooglePayCard implements \JsonSerializable
      * controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-
      * controls-the-autocomplete-attribute).
      */
-    public function getBillingAddress(): ?PortablePostalAddressMediumGrained
+    public function getBillingAddress(): ?Address
     {
         return $this->billingAddress;
     }
@@ -195,9 +196,30 @@ class GooglePayCard implements \JsonSerializable
      *
      * @maps billing_address
      */
-    public function setBillingAddress(?PortablePostalAddressMediumGrained $billingAddress): void
+    public function setBillingAddress(?Address $billingAddress): void
     {
         $this->billingAddress = $billingAddress;
+    }
+
+    /**
+     * Converts the GooglePayCard object to a human-readable string representation.
+     *
+     * @return string The string representation of the GooglePayCard object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'GooglePayCard',
+            [
+                'name' => $this->name,
+                'number' => $this->number,
+                'expiry' => $this->expiry,
+                'lastDigits' => $this->lastDigits,
+                'type' => $this->type,
+                'brand' => $this->brand,
+                'billingAddress' => $this->billingAddress
+            ]
+        );
     }
 
     /**
@@ -225,10 +247,10 @@ class GooglePayCard implements \JsonSerializable
             $json['last_digits']     = $this->lastDigits;
         }
         if (isset($this->type)) {
-            $json['type']            = CardType::checkValue($this->type);
+            $json['type']            = $this->type;
         }
         if (isset($this->brand)) {
-            $json['brand']           = CardBrand::checkValue($this->brand);
+            $json['brand']           = $this->brand;
         }
         if (isset($this->billingAddress)) {
             $json['billing_address'] = $this->billingAddress;

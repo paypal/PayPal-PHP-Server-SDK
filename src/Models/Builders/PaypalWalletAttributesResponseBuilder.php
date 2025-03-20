@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\CobrandedCard;
 use PaypalServerSdkLib\Models\PaypalWalletAttributesResponse;
 use PaypalServerSdkLib\Models\PaypalWalletVaultResponse;
 
@@ -32,7 +33,7 @@ class PaypalWalletAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new paypal wallet attributes response Builder object.
+     * Initializes a new Paypal Wallet Attributes Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +42,8 @@ class PaypalWalletAttributesResponseBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param PaypalWalletVaultResponse|null $value
      */
     public function vault(?PaypalWalletVaultResponse $value): self
     {
@@ -50,6 +53,8 @@ class PaypalWalletAttributesResponseBuilder
 
     /**
      * Sets cobranded cards field.
+     *
+     * @param CobrandedCard[]|null $value
      */
     public function cobrandedCards(?array $value): self
     {
@@ -58,7 +63,7 @@ class PaypalWalletAttributesResponseBuilder
     }
 
     /**
-     * Initializes a new paypal wallet attributes response object.
+     * Initializes a new Paypal Wallet Attributes Response object.
      */
     public function build(): PaypalWalletAttributesResponse
     {

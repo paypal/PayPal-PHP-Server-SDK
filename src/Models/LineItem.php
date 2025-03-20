@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -367,6 +368,33 @@ class LineItem implements \JsonSerializable
     public function setUnitOfMeasure(?string $unitOfMeasure): void
     {
         $this->unitOfMeasure = $unitOfMeasure;
+    }
+
+    /**
+     * Converts the LineItem object to a human-readable string representation.
+     *
+     * @return string The string representation of the LineItem object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'LineItem',
+            [
+                'name' => $this->name,
+                'quantity' => $this->quantity,
+                'description' => $this->description,
+                'sku' => $this->sku,
+                'url' => $this->url,
+                'imageUrl' => $this->imageUrl,
+                'upc' => $this->upc,
+                'unitAmount' => $this->unitAmount,
+                'tax' => $this->tax,
+                'commodityCode' => $this->commodityCode,
+                'discountAmount' => $this->discountAmount,
+                'totalAmount' => $this->totalAmount,
+                'unitOfMeasure' => $this->unitOfMeasure
+            ]
+        );
     }
 
     /**

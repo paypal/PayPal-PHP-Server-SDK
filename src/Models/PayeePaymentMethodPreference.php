@@ -10,36 +10,19 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
-use Core\Utils\CoreHelper;
-use Exception;
-use stdClass;
-
 /**
  * The merchant-preferred payment methods.
  */
 class PayeePaymentMethodPreference
 {
+    /**
+     * Accepts any type of payment from the customer.
+     */
     public const UNRESTRICTED = 'UNRESTRICTED';
 
-    public const IMMEDIATE_PAYMENT_REQUIRED = 'IMMEDIATE_PAYMENT_REQUIRED';
-
-    private const _ALL_VALUES = [self::UNRESTRICTED, self::IMMEDIATE_PAYMENT_REQUIRED];
-
     /**
-     * Ensures that all the given values are present in this Enum.
-     *
-     * @param array|stdClass|null|string $value Value or a list/map of values to be checked
-     *
-     * @return array|null|string Input value(s), if all are a part of this Enum
-     *
-     * @throws Exception Throws exception if any given value is not in this Enum
+     * Accepts only immediate payment from the customer. For example, credit card, PayPal balance, or
+     * instant ACH. Ensures that at the time of capture, the payment does not have the `pending` status.
      */
-    public static function checkValue($value)
-    {
-        $value = json_decode(json_encode($value), true); // converts stdClass into array
-        if (CoreHelper::checkValueOrValuesInList($value, self::_ALL_VALUES)) {
-            return $value;
-        }
-        throw new Exception("$value is invalid for PayeePaymentMethodPreference.");
-    }
+    public const IMMEDIATE_PAYMENT_REQUIRED = 'IMMEDIATE_PAYMENT_REQUIRED';
 }

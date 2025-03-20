@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -18,7 +19,7 @@ use stdClass;
 class SetupTokenRequest implements \JsonSerializable
 {
     /**
-     * @var CustomerRequest|null
+     * @var Customer|null
      */
     private $customer;
 
@@ -37,20 +38,22 @@ class SetupTokenRequest implements \JsonSerializable
 
     /**
      * Returns Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      */
-    public function getCustomer(): ?CustomerRequest
+    public function getCustomer(): ?Customer
     {
         return $this->customer;
     }
 
     /**
      * Sets Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      *
      * @maps customer
      */
-    public function setCustomer(?CustomerRequest $customer): void
+    public function setCustomer(?Customer $customer): void
     {
         $this->customer = $customer;
     }
@@ -74,6 +77,19 @@ class SetupTokenRequest implements \JsonSerializable
     public function setPaymentSource(SetupTokenRequestPaymentSource $paymentSource): void
     {
         $this->paymentSource = $paymentSource;
+    }
+
+    /**
+     * Converts the SetupTokenRequest object to a human-readable string representation.
+     *
+     * @return string The string representation of the SetupTokenRequest object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'SetupTokenRequest',
+            ['customer' => $this->customer, 'paymentSource' => $this->paymentSource]
+        );
     }
 
     /**

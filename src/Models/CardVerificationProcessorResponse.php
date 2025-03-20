@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -68,6 +69,19 @@ class CardVerificationProcessorResponse implements \JsonSerializable
     }
 
     /**
+     * Converts the CardVerificationProcessorResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardVerificationProcessorResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CardVerificationProcessorResponse',
+            ['avsCode' => $this->avsCode, 'cvvCode' => $this->cvvCode]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -80,10 +94,10 @@ class CardVerificationProcessorResponse implements \JsonSerializable
     {
         $json = [];
         if (isset($this->avsCode)) {
-            $json['avs_code'] = AvsCode::checkValue($this->avsCode);
+            $json['avs_code'] = $this->avsCode;
         }
         if (isset($this->cvvCode)) {
-            $json['cvv_code'] = CvvCode::checkValue($this->cvvCode);
+            $json['cvv_code'] = $this->cvvCode;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

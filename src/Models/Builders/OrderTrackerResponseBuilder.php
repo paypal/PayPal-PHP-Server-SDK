@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\LinkDescription;
+use PaypalServerSdkLib\Models\OrderTrackerItem;
 use PaypalServerSdkLib\Models\OrderTrackerResponse;
 
 /**
@@ -31,7 +33,7 @@ class OrderTrackerResponseBuilder
     }
 
     /**
-     * Initializes a new order tracker response Builder object.
+     * Initializes a new Order Tracker Response Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +42,8 @@ class OrderTrackerResponseBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -49,6 +53,8 @@ class OrderTrackerResponseBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -58,6 +64,8 @@ class OrderTrackerResponseBuilder
 
     /**
      * Sets items field.
+     *
+     * @param OrderTrackerItem[]|null $value
      */
     public function items(?array $value): self
     {
@@ -67,6 +75,8 @@ class OrderTrackerResponseBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -76,6 +86,8 @@ class OrderTrackerResponseBuilder
 
     /**
      * Sets create time field.
+     *
+     * @param string|null $value
      */
     public function createTime(?string $value): self
     {
@@ -85,6 +97,8 @@ class OrderTrackerResponseBuilder
 
     /**
      * Sets update time field.
+     *
+     * @param string|null $value
      */
     public function updateTime(?string $value): self
     {
@@ -93,7 +107,7 @@ class OrderTrackerResponseBuilder
     }
 
     /**
-     * Initializes a new order tracker response object.
+     * Initializes a new Order Tracker Response object.
      */
     public function build(): OrderTrackerResponse
     {

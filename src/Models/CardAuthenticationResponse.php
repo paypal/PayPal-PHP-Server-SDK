@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -18,7 +19,7 @@ use stdClass;
 class CardAuthenticationResponse implements \JsonSerializable
 {
     /**
-     * @var ThreeDSecureAuthenticationResponse|null
+     * @var ThreeDSecureCardAuthenticationResponse|null
      */
     private $threeDSecure;
 
@@ -26,7 +27,7 @@ class CardAuthenticationResponse implements \JsonSerializable
      * Returns Three D Secure.
      * Results of 3D Secure Authentication.
      */
-    public function getThreeDSecure(): ?ThreeDSecureAuthenticationResponse
+    public function getThreeDSecure(): ?ThreeDSecureCardAuthenticationResponse
     {
         return $this->threeDSecure;
     }
@@ -37,9 +38,19 @@ class CardAuthenticationResponse implements \JsonSerializable
      *
      * @maps three_d_secure
      */
-    public function setThreeDSecure(?ThreeDSecureAuthenticationResponse $threeDSecure): void
+    public function setThreeDSecure(?ThreeDSecureCardAuthenticationResponse $threeDSecure): void
     {
         $this->threeDSecure = $threeDSecure;
+    }
+
+    /**
+     * Converts the CardAuthenticationResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the CardAuthenticationResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('CardAuthenticationResponse', ['threeDSecure' => $this->threeDSecure]);
     }
 
     /**

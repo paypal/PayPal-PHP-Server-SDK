@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -69,6 +70,16 @@ class Name implements \JsonSerializable
     public function setSurname(?string $surname): void
     {
         $this->surname = $surname;
+    }
+
+    /**
+     * Converts the Name object to a human-readable string representation.
+     *
+     * @return string The string representation of the Name object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('Name', ['givenName' => $this->givenName, 'surname' => $this->surname]);
     }
 
     /**

@@ -31,7 +31,7 @@ class BlikOneClickPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new blik one click payment object Builder object.
+     * Initializes a new Blik One Click Payment Object Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +40,8 @@ class BlikOneClickPaymentObjectBuilder
 
     /**
      * Sets consumer reference field.
+     *
+     * @param string|null $value
      */
     public function consumerReference(?string $value): self
     {
@@ -48,7 +50,7 @@ class BlikOneClickPaymentObjectBuilder
     }
 
     /**
-     * Initializes a new blik one click payment object object.
+     * Initializes a new Blik One Click Payment Object object.
      */
     public function build(): BlikOneClickPaymentObject
     {

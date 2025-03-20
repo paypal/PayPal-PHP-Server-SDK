@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CardSupplementaryData;
+use PaypalServerSdkLib\Models\RiskSupplementaryData;
 use PaypalServerSdkLib\Models\SupplementaryData;
 
 /**
@@ -32,7 +33,7 @@ class SupplementaryDataBuilder
     }
 
     /**
-     * Initializes a new supplementary data Builder object.
+     * Initializes a new Supplementary Data Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +42,8 @@ class SupplementaryDataBuilder
 
     /**
      * Sets card field.
+     *
+     * @param CardSupplementaryData|null $value
      */
     public function card(?CardSupplementaryData $value): self
     {
@@ -49,7 +52,18 @@ class SupplementaryDataBuilder
     }
 
     /**
-     * Initializes a new supplementary data object.
+     * Sets risk field.
+     *
+     * @param RiskSupplementaryData|null $value
+     */
+    public function risk(?RiskSupplementaryData $value): self
+    {
+        $this->instance->setRisk($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Supplementary Data object.
      */
     public function build(): SupplementaryData
     {

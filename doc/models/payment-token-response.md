@@ -12,7 +12,7 @@ Full representation of a saved payment token.
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `id` | `?string` | Optional | The PayPal-generated ID for the vault token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getId(): ?string | setId(?string id): void |
-| `customer` | [`?CustomerRequest`](../../doc/models/customer-request.md) | Optional | Customer in merchant's or partner's system of records. | getCustomer(): ?CustomerRequest | setCustomer(?CustomerRequest customer): void |
+| `customer` | [`?CustomerResponse`](../../doc/models/customer-response.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. | getCustomer(): ?CustomerResponse | setCustomer(?CustomerResponse customer): void |
 | `paymentSource` | [`?PaymentTokenResponsePaymentSource`](../../doc/models/payment-token-response-payment-source.md) | Optional | The vaulted payment method details. | getPaymentSource(): ?PaymentTokenResponsePaymentSource | setPaymentSource(?PaymentTokenResponsePaymentSource paymentSource): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
 
@@ -42,9 +42,14 @@ Full representation of a saved payment token.
     },
     "paypal": {
       "description": "description2",
+      "usage_pattern": "THRESHOLD_PREPAID",
       "shipping": {
         "name": {
           "full_name": "full_name6"
+        },
+        "phone_number": {
+          "country_code": "country_code2",
+          "national_number": "national_number6"
         },
         "type": "SHIPPING",
         "address": {
@@ -57,14 +62,18 @@ Full representation of a saved payment token.
         }
       },
       "permit_multiple_payment_tokens": false,
-      "usage_type": "usage_type2",
-      "customer_type": "customer_type6"
+      "usage_type": "MERCHANT"
     },
     "venmo": {
       "description": "description6",
+      "usage_pattern": "UNSCHEDULED_PREPAID",
       "shipping": {
         "name": {
           "full_name": "full_name6"
+        },
+        "phone_number": {
+          "country_code": "country_code2",
+          "national_number": "national_number6"
         },
         "type": "SHIPPING",
         "address": {
@@ -77,8 +86,7 @@ Full representation of a saved payment token.
         }
       },
       "permit_multiple_payment_tokens": false,
-      "usage_type": "usage_type6",
-      "customer_type": "customer_type0"
+      "usage_type": "MERCHANT"
     },
     "apple_pay": {
       "card": {
@@ -95,10 +103,6 @@ Full representation of a saved payment token.
           "country_code": "country_code8"
         }
       }
-    },
-    "bank": {
-      "key1": "val1",
-      "key2": "val2"
     }
   },
   "links": [

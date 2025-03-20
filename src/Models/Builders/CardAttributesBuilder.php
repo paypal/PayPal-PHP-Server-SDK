@@ -34,7 +34,7 @@ class CardAttributesBuilder
     }
 
     /**
-     * Initializes a new card attributes Builder object.
+     * Initializes a new Card Attributes Builder object.
      */
     public static function init(): self
     {
@@ -43,6 +43,8 @@ class CardAttributesBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param CardCustomerInformation|null $value
      */
     public function customer(?CardCustomerInformation $value): self
     {
@@ -52,6 +54,8 @@ class CardAttributesBuilder
 
     /**
      * Sets vault field.
+     *
+     * @param VaultInstructionBase|null $value
      */
     public function vault(?VaultInstructionBase $value): self
     {
@@ -61,6 +65,8 @@ class CardAttributesBuilder
 
     /**
      * Sets verification field.
+     *
+     * @param CardVerification|null $value
      */
     public function verification(?CardVerification $value): self
     {
@@ -69,7 +75,7 @@ class CardAttributesBuilder
     }
 
     /**
-     * Initializes a new card attributes object.
+     * Initializes a new Card Attributes object.
      */
     public function build(): CardAttributes
     {

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -62,10 +63,10 @@ class Money implements \JsonSerializable
 
     /**
      * Returns Value.
-     * The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically
-     * fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into
-     * thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency
-     * Codes](/api/rest/reference/currency-codes/).
+     * The value, which might be: An integer for currencies like `JPY` that are not typically fractional. A
+     * decimal fraction for currencies like `TND` that are subdivided into thousandths. For the required
+     * number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-
+     * codes/).
      */
     public function getValue(): string
     {
@@ -74,10 +75,10 @@ class Money implements \JsonSerializable
 
     /**
      * Sets Value.
-     * The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically
-     * fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into
-     * thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency
-     * Codes](/api/rest/reference/currency-codes/).
+     * The value, which might be: An integer for currencies like `JPY` that are not typically fractional. A
+     * decimal fraction for currencies like `TND` that are subdivided into thousandths. For the required
+     * number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-
+     * codes/).
      *
      * @required
      * @maps value
@@ -85,6 +86,16 @@ class Money implements \JsonSerializable
     public function setValue(string $value): void
     {
         $this->value = $value;
+    }
+
+    /**
+     * Converts the Money object to a human-readable string representation.
+     *
+     * @return string The string representation of the Money object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify('Money', ['currencyCode' => $this->currencyCode, 'value' => $this->value]);
     }
 
     /**

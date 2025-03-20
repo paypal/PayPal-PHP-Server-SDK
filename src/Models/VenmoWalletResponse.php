@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -54,10 +55,9 @@ class VenmoWalletResponse implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      */
     public function getEmailAddress(): ?string
     {
@@ -66,10 +66,9 @@ class VenmoWalletResponse implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
-     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
-     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
-     * unquoted <code>@</code> sign exists.</blockquote>
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
      *
      * @maps email_address
      */
@@ -208,6 +207,27 @@ class VenmoWalletResponse implements \JsonSerializable
     public function setAttributes(?VenmoWalletAttributesResponse $attributes): void
     {
         $this->attributes = $attributes;
+    }
+
+    /**
+     * Converts the VenmoWalletResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the VenmoWalletResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'VenmoWalletResponse',
+            [
+                'emailAddress' => $this->emailAddress,
+                'accountId' => $this->accountId,
+                'userName' => $this->userName,
+                'name' => $this->name,
+                'phoneNumber' => $this->phoneNumber,
+                'address' => $this->address,
+                'attributes' => $this->attributes
+            ]
+        );
     }
 
     /**

@@ -35,7 +35,7 @@ class SetupTokenRequestPaymentSourceBuilder
     }
 
     /**
-     * Initializes a new setup token request payment source Builder object.
+     * Initializes a new Setup Token Request Payment Source Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +44,8 @@ class SetupTokenRequestPaymentSourceBuilder
 
     /**
      * Sets card field.
+     *
+     * @param SetupTokenRequestCard|null $value
      */
     public function card(?SetupTokenRequestCard $value): self
     {
@@ -53,6 +55,8 @@ class SetupTokenRequestPaymentSourceBuilder
 
     /**
      * Sets paypal field.
+     *
+     * @param VaultPaypalWalletRequest|null $value
      */
     public function paypal(?VaultPaypalWalletRequest $value): self
     {
@@ -62,6 +66,8 @@ class SetupTokenRequestPaymentSourceBuilder
 
     /**
      * Sets venmo field.
+     *
+     * @param VaultVenmoRequest|null $value
      */
     public function venmo(?VaultVenmoRequest $value): self
     {
@@ -71,6 +77,8 @@ class SetupTokenRequestPaymentSourceBuilder
 
     /**
      * Sets token field.
+     *
+     * @param VaultTokenRequest|null $value
      */
     public function token(?VaultTokenRequest $value): self
     {
@@ -79,7 +87,7 @@ class SetupTokenRequestPaymentSourceBuilder
     }
 
     /**
-     * Initializes a new setup token request payment source object.
+     * Initializes a new Setup Token Request Payment Source object.
      */
     public function build(): SetupTokenRequestPaymentSource
     {

@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\VaultCustomer;
 use PaypalServerSdkLib\Models\VaultResponse;
 
@@ -32,7 +33,7 @@ class VaultResponseBuilder
     }
 
     /**
-     * Initializes a new vault response Builder object.
+     * Initializes a new Vault Response Builder object.
      */
     public static function init(): self
     {
@@ -41,6 +42,8 @@ class VaultResponseBuilder
 
     /**
      * Sets id field.
+     *
+     * @param string|null $value
      */
     public function id(?string $value): self
     {
@@ -50,6 +53,8 @@ class VaultResponseBuilder
 
     /**
      * Sets status field.
+     *
+     * @param string|null $value
      */
     public function status(?string $value): self
     {
@@ -59,6 +64,8 @@ class VaultResponseBuilder
 
     /**
      * Sets customer field.
+     *
+     * @param VaultCustomer|null $value
      */
     public function customer(?VaultCustomer $value): self
     {
@@ -68,6 +75,8 @@ class VaultResponseBuilder
 
     /**
      * Sets links field.
+     *
+     * @param LinkDescription[]|null $value
      */
     public function links(?array $value): self
     {
@@ -76,7 +85,7 @@ class VaultResponseBuilder
     }
 
     /**
-     * Initializes a new vault response object.
+     * Initializes a new Vault Response object.
      */
     public function build(): VaultResponse
     {

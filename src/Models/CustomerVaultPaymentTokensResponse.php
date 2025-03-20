@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -28,7 +29,7 @@ class CustomerVaultPaymentTokensResponse implements \JsonSerializable
     private $totalPages;
 
     /**
-     * @var CustomerRequest|null
+     * @var VaultResponseCustomer|null
      */
     private $customer;
 
@@ -84,20 +85,22 @@ class CustomerVaultPaymentTokensResponse implements \JsonSerializable
 
     /**
      * Returns Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      */
-    public function getCustomer(): ?CustomerRequest
+    public function getCustomer(): ?VaultResponseCustomer
     {
         return $this->customer;
     }
 
     /**
      * Sets Customer.
-     * Customer in merchant's or partner's system of records.
+     * This object defines a customer in your system. Use it to manage customer profiles, save payment
+     * methods and contact details.
      *
      * @maps customer
      */
-    public function setCustomer(?CustomerRequest $customer): void
+    public function setCustomer(?VaultResponseCustomer $customer): void
     {
         $this->customer = $customer;
     }
@@ -146,6 +149,25 @@ class CustomerVaultPaymentTokensResponse implements \JsonSerializable
     public function setLinks(?array $links): void
     {
         $this->links = $links;
+    }
+
+    /**
+     * Converts the CustomerVaultPaymentTokensResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the CustomerVaultPaymentTokensResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'CustomerVaultPaymentTokensResponse',
+            [
+                'totalItems' => $this->totalItems,
+                'totalPages' => $this->totalPages,
+                'customer' => $this->customer,
+                'paymentTokens' => $this->paymentTokens,
+                'links' => $this->links
+            ]
+        );
     }
 
     /**

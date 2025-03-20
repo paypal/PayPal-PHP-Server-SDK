@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -21,6 +22,11 @@ class ShippingWithTrackingDetails implements \JsonSerializable
      * @var ShippingName|null
      */
     private $name;
+
+    /**
+     * @var string|null
+     */
+    private $emailAddress;
 
     /**
      * @var PhoneNumberWithCountryCode|null
@@ -65,6 +71,30 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     public function setName(?ShippingName $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * Returns Email Address.
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     */
+    public function getEmailAddress(): ?string
+    {
+        return $this->emailAddress;
+    }
+
+    /**
+     * Sets Email Address.
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     *
+     * @maps email_address
+     */
+    public function setEmailAddress(?string $emailAddress): void
+    {
+        $this->emailAddress = $emailAddress;
     }
 
     /**
@@ -188,6 +218,27 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     }
 
     /**
+     * Converts the ShippingWithTrackingDetails object to a human-readable string representation.
+     *
+     * @return string The string representation of the ShippingWithTrackingDetails object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'ShippingWithTrackingDetails',
+            [
+                'name' => $this->name,
+                'emailAddress' => $this->emailAddress,
+                'phoneNumber' => $this->phoneNumber,
+                'type' => $this->type,
+                'options' => $this->options,
+                'address' => $this->address,
+                'trackers' => $this->trackers
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -200,22 +251,25 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     {
         $json = [];
         if (isset($this->name)) {
-            $json['name']         = $this->name;
+            $json['name']          = $this->name;
+        }
+        if (isset($this->emailAddress)) {
+            $json['email_address'] = $this->emailAddress;
         }
         if (isset($this->phoneNumber)) {
-            $json['phone_number'] = $this->phoneNumber;
+            $json['phone_number']  = $this->phoneNumber;
         }
         if (isset($this->type)) {
-            $json['type']         = FulfillmentType::checkValue($this->type);
+            $json['type']          = $this->type;
         }
         if (isset($this->options)) {
-            $json['options']      = $this->options;
+            $json['options']       = $this->options;
         }
         if (isset($this->address)) {
-            $json['address']      = $this->address;
+            $json['address']       = $this->address;
         }
         if (isset($this->trackers)) {
-            $json['trackers']     = $this->trackers;
+            $json['trackers']      = $this->trackers;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -43,11 +44,6 @@ class Order implements \JsonSerializable
     private $intent;
 
     /**
-     * @var mixed
-     */
-    private $processingInstruction;
-
-    /**
      * @var Payer|null
      */
     private $payer;
@@ -70,8 +66,8 @@ class Order implements \JsonSerializable
     /**
      * Returns Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getCreateTime(): ?string
     {
@@ -81,8 +77,8 @@ class Order implements \JsonSerializable
     /**
      * Sets Create Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps create_time
      */
@@ -94,8 +90,8 @@ class Order implements \JsonSerializable
     /**
      * Returns Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      */
     public function getUpdateTime(): ?string
     {
@@ -105,8 +101,8 @@ class Order implements \JsonSerializable
     /**
      * Sets Update Time.
      * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional.<blockquote><strong>Note:</strong>
-     * The regular expression provides guidance but does not reject all invalid dates.</blockquote>
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
      *
      * @maps update_time
      */
@@ -175,28 +171,6 @@ class Order implements \JsonSerializable
     public function setIntent(?string $intent): void
     {
         $this->intent = $intent;
-    }
-
-    /**
-     * Returns Processing Instruction.
-     *
-     * @return mixed
-     */
-    public function getProcessingInstruction()
-    {
-        return $this->processingInstruction;
-    }
-
-    /**
-     * Sets Processing Instruction.
-     *
-     * @maps processing_instruction
-     *
-     * @param mixed $processingInstruction
-     */
-    public function setProcessingInstruction($processingInstruction): void
-    {
-        $this->processingInstruction = $processingInstruction;
     }
 
     /**
@@ -304,6 +278,29 @@ class Order implements \JsonSerializable
     }
 
     /**
+     * Converts the Order object to a human-readable string representation.
+     *
+     * @return string The string representation of the Order object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'Order',
+            [
+                'createTime' => $this->createTime,
+                'updateTime' => $this->updateTime,
+                'id' => $this->id,
+                'paymentSource' => $this->paymentSource,
+                'intent' => $this->intent,
+                'payer' => $this->payer,
+                'purchaseUnits' => $this->purchaseUnits,
+                'status' => $this->status,
+                'links' => $this->links
+            ]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -316,34 +313,31 @@ class Order implements \JsonSerializable
     {
         $json = [];
         if (isset($this->createTime)) {
-            $json['create_time']            = $this->createTime;
+            $json['create_time']    = $this->createTime;
         }
         if (isset($this->updateTime)) {
-            $json['update_time']            = $this->updateTime;
+            $json['update_time']    = $this->updateTime;
         }
         if (isset($this->id)) {
-            $json['id']                     = $this->id;
+            $json['id']             = $this->id;
         }
         if (isset($this->paymentSource)) {
-            $json['payment_source']         = $this->paymentSource;
+            $json['payment_source'] = $this->paymentSource;
         }
         if (isset($this->intent)) {
-            $json['intent']                 = CheckoutPaymentIntent::checkValue($this->intent);
-        }
-        if (isset($this->processingInstruction)) {
-            $json['processing_instruction'] = $this->processingInstruction;
+            $json['intent']         = $this->intent;
         }
         if (isset($this->payer)) {
-            $json['payer']                  = $this->payer;
+            $json['payer']          = $this->payer;
         }
         if (isset($this->purchaseUnits)) {
-            $json['purchase_units']         = $this->purchaseUnits;
+            $json['purchase_units'] = $this->purchaseUnits;
         }
         if (isset($this->status)) {
-            $json['status']                 = OrderStatus::checkValue($this->status);
+            $json['status']         = $this->status;
         }
         if (isset($this->links)) {
-            $json['links']                  = $this->links;
+            $json['links']          = $this->links;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

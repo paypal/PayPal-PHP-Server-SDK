@@ -11,7 +11,8 @@ Supplementary data about a payment. This object passes information that can be u
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `card` | [`?CardSupplementaryData`](../../doc/models/card-supplementary-data.md) | Optional | Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs. For more information about processing payments, see <a href="https://developer.paypal.com/docs/checkout/advanced/processing/">checkout</a> or <a href="https://developer.paypal.com/docs/multiparty/checkout/advanced/processing/">multiparty checkout</a>. | getCard(): ?CardSupplementaryData | setCard(?CardSupplementaryData card): void |
+| `card` | [`?CardSupplementaryData`](../../doc/models/card-supplementary-data.md) | Optional | Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs. For more information about processing payments, see checkout or multiparty checkout. | getCard(): ?CardSupplementaryData | setCard(?CardSupplementaryData card): void |
+| `risk` | [`?RiskSupplementaryData`](../../doc/models/risk-supplementary-data.md) | Optional | Additional information necessary to evaluate the risk profile of a transaction. | getRisk(): ?RiskSupplementaryData | setRisk(?RiskSupplementaryData risk): void |
 
 ## Example (as JSON)
 
@@ -47,6 +48,11 @@ Supplementary data about a payment. This object passes information that can be u
         "country_code": "country_code0"
       },
       "ships_from_postal_code": "ships_from_postal_code4"
+    }
+  },
+  "risk": {
+    "customer": {
+      "ip_address": "ip_address0"
     }
   }
 }

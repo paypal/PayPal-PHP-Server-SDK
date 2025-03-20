@@ -35,7 +35,7 @@ class PayerBuilder
     }
 
     /**
-     * Initializes a new payer Builder object.
+     * Initializes a new Payer Builder object.
      */
     public static function init(): self
     {
@@ -44,6 +44,8 @@ class PayerBuilder
 
     /**
      * Sets email address field.
+     *
+     * @param string|null $value
      */
     public function emailAddress(?string $value): self
     {
@@ -53,6 +55,8 @@ class PayerBuilder
 
     /**
      * Sets payer id field.
+     *
+     * @param string|null $value
      */
     public function payerId(?string $value): self
     {
@@ -62,6 +66,8 @@ class PayerBuilder
 
     /**
      * Sets name field.
+     *
+     * @param Name|null $value
      */
     public function name(?Name $value): self
     {
@@ -71,6 +77,8 @@ class PayerBuilder
 
     /**
      * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
      */
     public function phone(?PhoneWithType $value): self
     {
@@ -80,6 +88,8 @@ class PayerBuilder
 
     /**
      * Sets birth date field.
+     *
+     * @param string|null $value
      */
     public function birthDate(?string $value): self
     {
@@ -89,6 +99,8 @@ class PayerBuilder
 
     /**
      * Sets tax info field.
+     *
+     * @param TaxInfo|null $value
      */
     public function taxInfo(?TaxInfo $value): self
     {
@@ -98,6 +110,8 @@ class PayerBuilder
 
     /**
      * Sets address field.
+     *
+     * @param Address|null $value
      */
     public function address(?Address $value): self
     {
@@ -106,7 +120,7 @@ class PayerBuilder
     }
 
     /**
-     * Initializes a new payer object.
+     * Initializes a new Payer object.
      */
     public function build(): Payer
     {

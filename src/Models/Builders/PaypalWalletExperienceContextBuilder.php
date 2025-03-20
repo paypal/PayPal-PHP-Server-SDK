@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\CallbackConfiguration;
 use PaypalServerSdkLib\Models\PaypalWalletExperienceContext;
 
 /**
@@ -31,7 +32,7 @@ class PaypalWalletExperienceContextBuilder
     }
 
     /**
-     * Initializes a new paypal wallet experience context Builder object.
+     * Initializes a new Paypal Wallet Experience Context Builder object.
      */
     public static function init(): self
     {
@@ -40,6 +41,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets brand name field.
+     *
+     * @param string|null $value
      */
     public function brandName(?string $value): self
     {
@@ -49,6 +52,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets locale field.
+     *
+     * @param string|null $value
      */
     public function locale(?string $value): self
     {
@@ -58,6 +63,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets shipping preference field.
+     *
+     * @param string|null $value
      */
     public function shippingPreference(?string $value): self
     {
@@ -67,6 +74,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets return url field.
+     *
+     * @param string|null $value
      */
     public function returnUrl(?string $value): self
     {
@@ -76,6 +85,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets cancel url field.
+     *
+     * @param string|null $value
      */
     public function cancelUrl(?string $value): self
     {
@@ -85,6 +96,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets landing page field.
+     *
+     * @param string|null $value
      */
     public function landingPage(?string $value): self
     {
@@ -94,6 +107,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets user action field.
+     *
+     * @param string|null $value
      */
     public function userAction(?string $value): self
     {
@@ -103,6 +118,8 @@ class PaypalWalletExperienceContextBuilder
 
     /**
      * Sets payment method preference field.
+     *
+     * @param string|null $value
      */
     public function paymentMethodPreference(?string $value): self
     {
@@ -111,7 +128,18 @@ class PaypalWalletExperienceContextBuilder
     }
 
     /**
-     * Initializes a new paypal wallet experience context object.
+     * Sets order update callback config field.
+     *
+     * @param CallbackConfiguration|null $value
+     */
+    public function orderUpdateCallbackConfig(?CallbackConfiguration $value): self
+    {
+        $this->instance->setOrderUpdateCallbackConfig($value);
+        return $this;
+    }
+
+    /**
+     * Initializes a new Paypal Wallet Experience Context object.
      */
     public function build(): PaypalWalletExperienceContext
     {

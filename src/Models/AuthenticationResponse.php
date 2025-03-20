@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace PaypalServerSdkLib\Models;
 
+use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
@@ -68,6 +69,19 @@ class AuthenticationResponse implements \JsonSerializable
     }
 
     /**
+     * Converts the AuthenticationResponse object to a human-readable string representation.
+     *
+     * @return string The string representation of the AuthenticationResponse object.
+     */
+    public function __toString(): string
+    {
+        return ApiHelper::stringify(
+            'AuthenticationResponse',
+            ['liabilityShift' => $this->liabilityShift, 'threeDSecure' => $this->threeDSecure]
+        );
+    }
+
+    /**
      * Encode this object to JSON
      *
      * @param bool $asArrayWhenEmpty Whether to serialize this model as an array whenever no fields
@@ -80,7 +94,7 @@ class AuthenticationResponse implements \JsonSerializable
     {
         $json = [];
         if (isset($this->liabilityShift)) {
-            $json['liability_shift'] = LiabilityShiftIndicator::checkValue($this->liabilityShift);
+            $json['liability_shift'] = $this->liabilityShift;
         }
         if (isset($this->threeDSecure)) {
             $json['three_d_secure']  = $this->threeDSecure;

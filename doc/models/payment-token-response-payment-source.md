@@ -11,11 +11,10 @@ The vaulted payment method details.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `card` | [`?CardPaymentToken`](../../doc/models/card-payment-token.md) | Optional | Full representation of a Card Payment Token including network token. | getCard(): ?CardPaymentToken | setCard(?CardPaymentToken card): void |
+| `card` | [`?CardPaymentTokenEntity`](../../doc/models/card-payment-token-entity.md) | Optional | Full representation of a Card Payment Token including network token. | getCard(): ?CardPaymentTokenEntity | setCard(?CardPaymentTokenEntity card): void |
 | `paypal` | [`?PaypalPaymentToken`](../../doc/models/paypal-payment-token.md) | Optional | - | getPaypal(): ?PaypalPaymentToken | setPaypal(?PaypalPaymentToken paypal): void |
 | `venmo` | [`?VenmoPaymentToken`](../../doc/models/venmo-payment-token.md) | Optional | - | getVenmo(): ?VenmoPaymentToken | setVenmo(?VenmoPaymentToken venmo): void |
 | `applePay` | [`?ApplePayPaymentToken`](../../doc/models/apple-pay-payment-token.md) | Optional | A resource representing a response for Apple Pay. | getApplePay(): ?ApplePayPaymentToken | setApplePay(?ApplePayPaymentToken applePay): void |
-| `bank` | `mixed` | Optional | Full representation of a Bank Payment Token. | getBank(): | setBank( bank): void |
 
 ## Example (as JSON)
 
@@ -37,9 +36,14 @@ The vaulted payment method details.
   },
   "paypal": {
     "description": "description2",
+    "usage_pattern": "THRESHOLD_PREPAID",
     "shipping": {
       "name": {
         "full_name": "full_name6"
+      },
+      "phone_number": {
+        "country_code": "country_code2",
+        "national_number": "national_number6"
       },
       "type": "SHIPPING",
       "address": {
@@ -52,14 +56,18 @@ The vaulted payment method details.
       }
     },
     "permit_multiple_payment_tokens": false,
-    "usage_type": "usage_type2",
-    "customer_type": "customer_type6"
+    "usage_type": "MERCHANT"
   },
   "venmo": {
     "description": "description6",
+    "usage_pattern": "UNSCHEDULED_PREPAID",
     "shipping": {
       "name": {
         "full_name": "full_name6"
+      },
+      "phone_number": {
+        "country_code": "country_code2",
+        "national_number": "national_number6"
       },
       "type": "SHIPPING",
       "address": {
@@ -72,8 +80,7 @@ The vaulted payment method details.
       }
     },
     "permit_multiple_payment_tokens": false,
-    "usage_type": "usage_type6",
-    "customer_type": "customer_type0"
+    "usage_type": "MERCHANT"
   },
   "apple_pay": {
     "card": {
@@ -90,10 +97,6 @@ The vaulted payment method details.
         "country_code": "country_code8"
       }
     }
-  },
-  "bank": {
-    "key1": "val1",
-    "key2": "val2"
   }
 }
 ```
