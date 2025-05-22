@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\AmountWithBreakdown;
+use PaypalServerSdkLib\Models\Item;
 use PaypalServerSdkLib\Models\ShippingOption;
 use PaypalServerSdkLib\Models\ShippingOptionsPurchaseUnit;
 
@@ -59,6 +60,17 @@ class ShippingOptionsPurchaseUnitBuilder
     public function amount(?AmountWithBreakdown $value): self
     {
         $this->instance->setAmount($value);
+        return $this;
+    }
+
+    /**
+     * Sets items field.
+     *
+     * @param Item[]|null $value
+     */
+    public function items(?array $value): self
+    {
+        $this->instance->setItems($value);
         return $this;
     }
 

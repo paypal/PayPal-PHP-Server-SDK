@@ -60,8 +60,7 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Returns Customer.
-     * This object defines a customer in your system. Use it to manage customer profiles, save payment
-     * methods and contact details.
+     * Customer in merchant's or partner's system of records.
      */
     public function getCustomer(): ?CustomerResponse
     {
@@ -70,8 +69,7 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Sets Customer.
-     * This object defines a customer in your system. Use it to manage customer profiles, save payment
-     * methods and contact details.
+     * Customer in merchant's or partner's system of records.
      *
      * @maps customer
      */

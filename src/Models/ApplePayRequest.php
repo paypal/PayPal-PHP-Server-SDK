@@ -59,6 +59,11 @@ class ApplePayRequest implements \JsonSerializable
     private $attributes;
 
     /**
+     * @var ApplePayExperienceContext|null
+     */
+    private $experienceContext;
+
+    /**
      * Returns Id.
      * ApplePay transaction identifier, this will be the unique identifier for this transaction provided by
      * Apple. The pattern is defined by an external party and supports Unicode.
@@ -241,6 +246,26 @@ class ApplePayRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Experience Context.
+     * Customizes the payer experience during the approval process for the payment.
+     */
+    public function getExperienceContext(): ?ApplePayExperienceContext
+    {
+        return $this->experienceContext;
+    }
+
+    /**
+     * Sets Experience Context.
+     * Customizes the payer experience during the approval process for the payment.
+     *
+     * @maps experience_context
+     */
+    public function setExperienceContext(?ApplePayExperienceContext $experienceContext): void
+    {
+        $this->experienceContext = $experienceContext;
+    }
+
+    /**
      * Converts the ApplePayRequest object to a human-readable string representation.
      *
      * @return string The string representation of the ApplePayRequest object.
@@ -257,7 +282,8 @@ class ApplePayRequest implements \JsonSerializable
                 'decryptedToken' => $this->decryptedToken,
                 'storedCredential' => $this->storedCredential,
                 'vaultId' => $this->vaultId,
-                'attributes' => $this->attributes
+                'attributes' => $this->attributes,
+                'experienceContext' => $this->experienceContext
             ]
         );
     }
@@ -275,28 +301,31 @@ class ApplePayRequest implements \JsonSerializable
     {
         $json = [];
         if (isset($this->id)) {
-            $json['id']                = $this->id;
+            $json['id']                 = $this->id;
         }
         if (isset($this->name)) {
-            $json['name']              = $this->name;
+            $json['name']               = $this->name;
         }
         if (isset($this->emailAddress)) {
-            $json['email_address']     = $this->emailAddress;
+            $json['email_address']      = $this->emailAddress;
         }
         if (isset($this->phoneNumber)) {
-            $json['phone_number']      = $this->phoneNumber;
+            $json['phone_number']       = $this->phoneNumber;
         }
         if (isset($this->decryptedToken)) {
-            $json['decrypted_token']   = $this->decryptedToken;
+            $json['decrypted_token']    = $this->decryptedToken;
         }
         if (isset($this->storedCredential)) {
-            $json['stored_credential'] = $this->storedCredential;
+            $json['stored_credential']  = $this->storedCredential;
         }
         if (isset($this->vaultId)) {
-            $json['vault_id']          = $this->vaultId;
+            $json['vault_id']           = $this->vaultId;
         }
         if (isset($this->attributes)) {
-            $json['attributes']        = $this->attributes;
+            $json['attributes']         = $this->attributes;
+        }
+        if (isset($this->experienceContext)) {
+            $json['experience_context'] = $this->experienceContext;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -43,6 +43,13 @@ class ConfigurationDefaults
 
     public const O_AUTH_TOKEN = null;
 
+    public const PROXY_CONFIGURATION = [
+        'port' => 0,
+        'tunnel' => false,
+        'address' => '',
+        'auth' => ['user' => '', 'pass' => '', 'method' => CURLAUTH_BASIC]
+    ];
+
     public const OAUTH_2_CLOCK_SKEW = 0;
 
     public const LOGGER_ALLOWED_LEVELS = [
@@ -92,6 +99,7 @@ class ConfigurationDefaults
         'Oauth2-ClockSkew' => self::OAUTH_2_CLOCK_SKEW,
         'Oauth2-TokenProvider' => null,
         'Oauth2-OnTokenUpdate' => null,
-        'loggingConfiguration' => null
+        'loggingConfiguration' => null,
+        'proxyConfiguration' => self::PROXY_CONFIGURATION
     ];
 }

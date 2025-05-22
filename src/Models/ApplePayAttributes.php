@@ -30,7 +30,8 @@ class ApplePayAttributes implements \JsonSerializable
 
     /**
      * Returns Customer.
-     * The details about a customer in PayPal's system of record.
+     * This object represents a merchant’s customer, allowing them to store contact details, and track all
+     * payments associated with the same customer.
      */
     public function getCustomer(): ?CustomerInformation
     {
@@ -39,7 +40,8 @@ class ApplePayAttributes implements \JsonSerializable
 
     /**
      * Sets Customer.
-     * The details about a customer in PayPal's system of record.
+     * This object represents a merchant’s customer, allowing them to store contact details, and track all
+     * payments associated with the same customer.
      *
      * @maps customer
      */

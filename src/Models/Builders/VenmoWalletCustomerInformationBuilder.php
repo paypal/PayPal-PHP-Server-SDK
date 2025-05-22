@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\Name;
+use PaypalServerSdkLib\Models\PhoneWithType;
 use PaypalServerSdkLib\Models\VenmoWalletCustomerInformation;
 
 /**
@@ -57,6 +59,28 @@ class VenmoWalletCustomerInformationBuilder
     public function emailAddress(?string $value): self
     {
         $this->instance->setEmailAddress($value);
+        return $this;
+    }
+
+    /**
+     * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
+     */
+    public function phone(?PhoneWithType $value): self
+    {
+        $this->instance->setPhone($value);
+        return $this;
+    }
+
+    /**
+     * Sets name field.
+     *
+     * @param Name|null $value
+     */
+    public function name(?Name $value): self
+    {
+        $this->instance->setName($value);
         return $this;
     }
 

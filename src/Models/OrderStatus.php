@@ -38,10 +38,10 @@ class OrderStatus
     public const VOIDED = 'VOIDED';
 
     /**
-     * The intent of the Order was completed and a `payments` resource was created. A completed Order may
-     * have authorized a payment, captured an authorized payment, or in some cases, the payment may have
-     * been declined. Please verify the payment status under purchase_unitsArray.payments before proceeding
-     * with Order fulfillment.
+     * The intent of the order was completed and a `payments` resource was created. Important: Check the
+     * payment status in `purchase_units[].payments.captures[].status` before fulfilling the order. A
+     * completed order can indicate a payment was authorized, an authorized payment was captured, or a
+     * payment was declined.
      */
     public const COMPLETED = 'COMPLETED';
 

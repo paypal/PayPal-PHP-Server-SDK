@@ -12,7 +12,7 @@ Additional attributes associated with the use of a PayPal Wallet.
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `vault` | [`?PaypalWalletVaultResponse`](../../doc/models/paypal-wallet-vault-response.md) | Optional | The details about a saved PayPal Wallet payment source. | getVault(): ?PaypalWalletVaultResponse | setVault(?PaypalWalletVaultResponse vault): void |
-| `cobrandedCards` | [`?(CobrandedCard[])`](../../doc/models/cobranded-card.md) | Optional | An array of merchant cobranded cards used by buyer to complete an order. This array will be present if a merchant has onboarded their cobranded card with PayPal and provided corresponding label(s).<br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `25` | getCobrandedCards(): ?array | setCobrandedCards(?array cobrandedCards): void |
+| `cobrandedCards` | [`?(CobrandedCard[])`](../../doc/models/cobranded-card.md) | Optional | An array of merchant cobranded cards used by buyer to complete an order. This array will be present if a merchant has onboarded their cobranded card with PayPal and provided corresponding label(s).<br><br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `25` | getCobrandedCards(): ?array | setCobrandedCards(?array cobrandedCards): void |
 
 ## Example (as JSON)
 
@@ -36,6 +36,10 @@ Additional attributes associated with the use of a PayPal Wallet.
         "phone_number": {
           "national_number": "national_number6"
         }
+      },
+      "name": {
+        "given_name": "given_name2",
+        "surname": "surname8"
       },
       "merchant_customer_id": "merchant_customer_id2"
     }

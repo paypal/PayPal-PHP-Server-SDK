@@ -21,6 +21,7 @@ use PaypalServerSdkLib\Controllers\VaultController;
 use PaypalServerSdkLib\Logging\LoggingConfigurationBuilder;
 use PaypalServerSdkLib\Logging\RequestLoggingConfigurationBuilder;
 use PaypalServerSdkLib\Logging\ResponseLoggingConfigurationBuilder;
+use PaypalServerSdkLib\Proxy\ProxyConfigurationBuilder;
 use PaypalServerSdkLib\Utils\CompatibilityConverter;
 use Unirest\Configuration;
 use Unirest\HttpClient;
@@ -38,6 +39,8 @@ class PaypalServerSdkClient implements ConfigurationInterface
     private $clientCredentialsAuthManager;
 
     private $loggingConfigurationBuilder;
+
+    private $proxyConfiguration;
 
     private $config;
 
@@ -58,11 +61,14 @@ class PaypalServerSdkClient implements ConfigurationInterface
             $this->loggingConfigurationBuilder = $this->config['loggingConfiguration'];
             $loggingConfiguration = $this->loggingConfigurationBuilder->build();
         }
-        $this->client = ClientBuilder::init(new HttpClient(Configuration::init($this)))
+        $this->proxyConfiguration = $this->config['proxyConfiguration'] ?? ConfigurationDefaults::PROXY_CONFIGURATION;
+        $this->client = ClientBuilder::init(
+            new HttpClient(Configuration::init($this)->proxyConfiguration($this->proxyConfiguration))
+        )
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PayPal REST API PHP SDK, Version: 1.0.0, on OS {os-info}')
+            ->userAgent('PayPal REST API PHP SDK, Version: 1.1.0, on OS {os-info}')
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
             ->authManagers(['Oauth2' => $this->clientCredentialsAuthManager])
             ->loggingConfiguration($loggingConfiguration)
@@ -88,7 +94,8 @@ class PaypalServerSdkClient implements ConfigurationInterface
             ->httpStatusCodesToRetry($this->getHttpStatusCodesToRetry())
             ->httpMethodsToRetry($this->getHttpMethodsToRetry())
             ->environment($this->getEnvironment())
-            ->httpCallback($this->config['httpCallback'] ?? null);
+            ->httpCallback($this->config['httpCallback'] ?? null)
+            ->proxyConfiguration($this->getProxyConfigurationBuilder());
 
         $clientCredentialsAuth = $this->getClientCredentialsAuthCredentialsBuilder();
         if ($clientCredentialsAuth != null) {
@@ -193,6 +200,18 @@ class PaypalServerSdkClient implements ConfigurationInterface
                 ->includeHeaders(...$config['responseConfiguration']['includeHeaders'])
                 ->excludeHeaders(...$config['responseConfiguration']['excludeHeaders'])
                 ->unmaskHeaders(...$config['responseConfiguration']['unmaskHeaders']));
+    }
+
+    /**
+     * Get the proxy configuration builder
+     */
+    public function getProxyConfigurationBuilder(): ProxyConfigurationBuilder
+    {
+        return ProxyConfigurationBuilder::init($this->proxyConfiguration['address'])
+            ->port($this->proxyConfiguration['port'])
+            ->tunnel($this->proxyConfiguration['tunnel'])
+            ->auth($this->proxyConfiguration['auth']['user'], $this->proxyConfiguration['auth']['pass'])
+            ->authMethod($this->proxyConfiguration['auth']['method']);
     }
 
     /**

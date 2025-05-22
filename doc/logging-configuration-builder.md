@@ -1,5 +1,5 @@
 
-# LoggingConfigurationBuilder Class
+# LoggingConfigurationBuilder
 
 Represents the logging configurations for API calls. Create instance using `LoggingConfigurationBuilder::init()`
 
@@ -7,11 +7,11 @@ Represents the logging configurations for API calls. Create instance using `Logg
 
 | Name | Parameter Type | Description |
 |  --- | --- | --- |
-| logger | `LoggerInterface` | Takes in your custom implementation of the Psr\Log\LoggerInterface.php. **Default Implementation : `ConsoleLogger`** |
-| level | `string(LogLevel)` | Defines the log message severity mentioned in Psr\Log\LogLevel.php (e.g., DEBUG, INFO, etc). **Default : `logLevel::INFO`** |
-| maskSensitiveHeaders | `bool` | Toggles the global setting to mask sensitive HTTP headers in both requests and responses before logging, safeguarding confidential data. **Default : `true`** |
-| requestConfiguration | [`RequestLoggingConfigurationBuilder`](request-logging-configuration-builder.md) | The logging configurations for an API request. |
-| responseConfiguration | [`RequestLoggingConfigurationBuilder`](response-logging-configuration-builder.md) | The logging configurations for an API response. |
+| `logger` | `LoggerInterface` | Takes in your custom implementation of the Psr\Log\LoggerInterface.php. **Default Implementation : `ConsoleLogger`** |
+| `level` | `string(LogLevel)` | Defines the log message severity mentioned in Psr\Log\LogLevel.php (e.g., DEBUG, INFO, etc). **Default : `logLevel::INFO`** |
+| `maskSensitiveHeaders` | `bool` | Toggles the global setting to mask sensitive HTTP headers in both requests and responses before logging, safeguarding confidential data. **Default : `true`** |
+| `requestConfiguration` | [`RequestLoggingConfigurationBuilder`](../doc/request-logging-configuration-builder.md) | The logging configurations for an API request. |
+| `responseConfiguration` | [`ResponseLoggingConfigurationBuilder`](../doc/response-logging-configuration-builder.md) | The logging configurations for an API response. |
 
 ## Usage Example
 
