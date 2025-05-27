@@ -21,7 +21,11 @@ Additional attributes associated with the use of a Venmo Wallet.
     "id": "id6",
     "status": "APPROVED",
     "customer": {
-      "id": "id0"
+      "id": "id0",
+      "name": {
+        "given_name": "given_name2",
+        "surname": "surname8"
+      }
     },
     "links": [
       {

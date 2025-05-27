@@ -13,6 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Item;
 use PaypalServerSdkLib\Models\Money;
+use PaypalServerSdkLib\Models\OrderBillingPlan;
 use PaypalServerSdkLib\Models\UniversalProductCode;
 
 /**
@@ -118,6 +119,17 @@ class ItemBuilder
     public function upc(?UniversalProductCode $value): self
     {
         $this->instance->setUpc($value);
+        return $this;
+    }
+
+    /**
+     * Sets billing plan field.
+     *
+     * @param OrderBillingPlan|null $value
+     */
+    public function billingPlan(?OrderBillingPlan $value): self
+    {
+        $this->instance->setBillingPlan($value);
         return $this;
     }
 

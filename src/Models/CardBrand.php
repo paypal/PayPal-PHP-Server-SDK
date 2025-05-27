@@ -21,7 +21,7 @@ class CardBrand
     public const VISA = 'VISA';
 
     /**
-     * Mastecard card.
+     * Mastercard card.
      */
     public const MASTERCARD = 'MASTERCARD';
 

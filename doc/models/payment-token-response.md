@@ -11,10 +11,10 @@ Full representation of a saved payment token.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `?string` | Optional | The PayPal-generated ID for the vault token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getId(): ?string | setId(?string id): void |
-| `customer` | [`?CustomerResponse`](../../doc/models/customer-response.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. | getCustomer(): ?CustomerResponse | setCustomer(?CustomerResponse customer): void |
+| `id` | `?string` | Optional | The PayPal-generated ID for the vault token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getId(): ?string | setId(?string id): void |
+| `customer` | [`?CustomerResponse`](../../doc/models/customer-response.md) | Optional | Customer in merchant's or partner's system of records. | getCustomer(): ?CustomerResponse | setCustomer(?CustomerResponse customer): void |
 | `paymentSource` | [`?PaymentTokenResponsePaymentSource`](../../doc/models/payment-token-response-payment-source.md) | Optional | The vaulted payment method details. | getPaymentSource(): ?PaymentTokenResponsePaymentSource | setPaymentSource(?PaymentTokenResponsePaymentSource paymentSource): void |
-| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
+| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
 
 ## Example (as JSON)
 

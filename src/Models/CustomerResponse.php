@@ -14,8 +14,7 @@ use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * This object defines a customer in your system. Use it to manage customer profiles, save payment
- * methods and contact details.
+ * Customer in merchant's or partner's system of records.
  */
 class CustomerResponse implements \JsonSerializable
 {

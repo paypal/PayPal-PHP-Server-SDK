@@ -29,6 +29,11 @@ class ShippingOptionsPurchaseUnit implements \JsonSerializable
     private $amount;
 
     /**
+     * @var Item[]|null
+     */
+    private $items;
+
+    /**
      * @var ShippingOption[]|null
      */
     private $shippingOptions;
@@ -88,6 +93,30 @@ class ShippingOptionsPurchaseUnit implements \JsonSerializable
     }
 
     /**
+     * Returns Items.
+     * An array of items that the customer purchases from the merchant.
+     *
+     * @return Item[]|null
+     */
+    public function getItems(): ?array
+    {
+        return $this->items;
+    }
+
+    /**
+     * Sets Items.
+     * An array of items that the customer purchases from the merchant.
+     *
+     * @maps items
+     *
+     * @param Item[]|null $items
+     */
+    public function setItems(?array $items): void
+    {
+        $this->items = $items;
+    }
+
+    /**
      * Returns Shipping Options.
      * An array of shipping options that the payee or merchant offers to the payer to ship or pick up their
      * items.
@@ -125,6 +154,7 @@ class ShippingOptionsPurchaseUnit implements \JsonSerializable
             [
                 'referenceId' => $this->referenceId,
                 'amount' => $this->amount,
+                'items' => $this->items,
                 'shippingOptions' => $this->shippingOptions
             ]
         );
@@ -147,6 +177,9 @@ class ShippingOptionsPurchaseUnit implements \JsonSerializable
         }
         if (isset($this->amount)) {
             $json['amount']           = $this->amount;
+        }
+        if (isset($this->items)) {
+            $json['items']            = $this->items;
         }
         if (isset($this->shippingOptions)) {
             $json['shipping_options'] = $this->shippingOptions;
