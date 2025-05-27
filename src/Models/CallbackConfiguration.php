@@ -40,8 +40,7 @@ class CallbackConfiguration implements \JsonSerializable
 
     /**
      * Returns Callback Events.
-     * An array of callback events merchant can subscribe to for the corresponding callback url. The
-     * SHIPPING_ADDRESS callback event is required.
+     * An array of callback events merchant can subscribe to for the corresponding callback url.
      *
      * @return string[]
      */
@@ -52,8 +51,7 @@ class CallbackConfiguration implements \JsonSerializable
 
     /**
      * Sets Callback Events.
-     * An array of callback events merchant can subscribe to for the corresponding callback url. The
-     * SHIPPING_ADDRESS callback event is required.
+     * An array of callback events merchant can subscribe to for the corresponding callback url.
      *
      * @required
      * @maps callback_events

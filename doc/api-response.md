@@ -7,7 +7,7 @@ Represents the result of an API call, including the request details, response me
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| `getRequest()` | [`HttpRequest`](http-request.md) | Returns the original request that resulted in this response. |
+| `getRequest()` | [`HttpRequest`](../doc/http-request.md) | Returns the original request that resulted in this response. |
 | `getStatusCode()` | `?int` | Returns the response status code. |
 | `getHeaders()` | `?array` | Returns the response headers. |
 | `getResult()` | `mixed` | Returns the response data. |
@@ -15,7 +15,7 @@ Represents the result of an API call, including the request details, response me
 | `isSuccess()` | `bool` | Checks if the response is successful (HTTP 2xx). |
 | `isError()` | `bool` | Checks if the response indicates an error. (not HTTP 2xx) |
 
-## Example Usage
+## Usage Example
 
 ```php
 $response = $client->exampleController()->exampleEndpoint($input);

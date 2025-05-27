@@ -38,6 +38,11 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
+    private $contactPreference = PaypalWalletContactPreference::NO_CONTACT_INFO;
+
+    /**
+     * @var string|null
+     */
     private $returnUrl;
 
     /**
@@ -135,6 +140,28 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     public function setShippingPreference(?string $shippingPreference): void
     {
         $this->shippingPreference = $shippingPreference;
+    }
+
+    /**
+     * Returns Contact Preference.
+     * The preference to display the contact information (buyer’s shipping email & phone number) on
+     * PayPal's checkout for easy merchant-buyer communication.
+     */
+    public function getContactPreference(): ?string
+    {
+        return $this->contactPreference;
+    }
+
+    /**
+     * Sets Contact Preference.
+     * The preference to display the contact information (buyer’s shipping email & phone number) on
+     * PayPal's checkout for easy merchant-buyer communication.
+     *
+     * @maps contact_preference
+     */
+    public function setContactPreference(?string $contactPreference): void
+    {
+        $this->contactPreference = $contactPreference;
     }
 
     /**
@@ -270,6 +297,7 @@ class PaypalWalletExperienceContext implements \JsonSerializable
                 'brandName' => $this->brandName,
                 'locale' => $this->locale,
                 'shippingPreference' => $this->shippingPreference,
+                'contactPreference' => $this->contactPreference,
                 'returnUrl' => $this->returnUrl,
                 'cancelUrl' => $this->cancelUrl,
                 'landingPage' => $this->landingPage,
@@ -300,6 +328,9 @@ class PaypalWalletExperienceContext implements \JsonSerializable
         }
         if (isset($this->shippingPreference)) {
             $json['shipping_preference']          = $this->shippingPreference;
+        }
+        if (isset($this->contactPreference)) {
+            $json['contact_preference']           = $this->contactPreference;
         }
         if (isset($this->returnUrl)) {
             $json['return_url']                   = $this->returnUrl;

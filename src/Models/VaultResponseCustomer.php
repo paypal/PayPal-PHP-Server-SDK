@@ -80,7 +80,7 @@ class VaultResponseCustomer implements \JsonSerializable
 
     /**
      * Returns Links.
-     * An array of request-related HATEOAS links.
+     * DEPRECATED. This field is DEPRECATED.
      */
     public function getLinks(): array
     {
@@ -89,7 +89,7 @@ class VaultResponseCustomer implements \JsonSerializable
 
     /**
      * Sets Links.
-     * An array of request-related HATEOAS links.
+     * DEPRECATED. This field is DEPRECATED.
      *
      * @maps links
      */

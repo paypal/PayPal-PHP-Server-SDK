@@ -14,6 +14,7 @@ use Core\Types\Sdk\CoreCallback;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Authentication\ClientCredentialsAuthCredentialsBuilder;
 use PaypalServerSdkLib\Logging\LoggingConfigurationBuilder;
+use PaypalServerSdkLib\Proxy\ProxyConfigurationBuilder;
 
 class PaypalServerSdkClientBuilder
 {
@@ -128,6 +129,12 @@ class PaypalServerSdkClientBuilder
     public function loggingConfiguration(LoggingConfigurationBuilder $loggingConfiguration): self
     {
         $this->config['loggingConfiguration'] = $loggingConfiguration;
+        return $this;
+    }
+
+    public function proxyConfiguration(ProxyConfigurationBuilder $proxyConfiguration): self
+    {
+        $this->config['proxyConfiguration'] = $proxyConfiguration->getConfiguration();
         return $this;
     }
 

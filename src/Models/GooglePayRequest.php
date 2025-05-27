@@ -49,6 +49,11 @@ class GooglePayRequest implements \JsonSerializable
     private $assuranceDetails;
 
     /**
+     * @var GooglePayExperienceContext|null
+     */
+    private $experienceContext;
+
+    /**
      * Returns Name.
      * The full name representation like Mr J Smith.
      */
@@ -179,6 +184,26 @@ class GooglePayRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Experience Context.
+     * Customizes the payer experience during the approval process for the payment.
+     */
+    public function getExperienceContext(): ?GooglePayExperienceContext
+    {
+        return $this->experienceContext;
+    }
+
+    /**
+     * Sets Experience Context.
+     * Customizes the payer experience during the approval process for the payment.
+     *
+     * @maps experience_context
+     */
+    public function setExperienceContext(?GooglePayExperienceContext $experienceContext): void
+    {
+        $this->experienceContext = $experienceContext;
+    }
+
+    /**
      * Converts the GooglePayRequest object to a human-readable string representation.
      *
      * @return string The string representation of the GooglePayRequest object.
@@ -193,7 +218,8 @@ class GooglePayRequest implements \JsonSerializable
                 'phoneNumber' => $this->phoneNumber,
                 'card' => $this->card,
                 'decryptedToken' => $this->decryptedToken,
-                'assuranceDetails' => $this->assuranceDetails
+                'assuranceDetails' => $this->assuranceDetails,
+                'experienceContext' => $this->experienceContext
             ]
         );
     }
@@ -211,22 +237,25 @@ class GooglePayRequest implements \JsonSerializable
     {
         $json = [];
         if (isset($this->name)) {
-            $json['name']              = $this->name;
+            $json['name']               = $this->name;
         }
         if (isset($this->emailAddress)) {
-            $json['email_address']     = $this->emailAddress;
+            $json['email_address']      = $this->emailAddress;
         }
         if (isset($this->phoneNumber)) {
-            $json['phone_number']      = $this->phoneNumber;
+            $json['phone_number']       = $this->phoneNumber;
         }
         if (isset($this->card)) {
-            $json['card']              = $this->card;
+            $json['card']               = $this->card;
         }
         if (isset($this->decryptedToken)) {
-            $json['decrypted_token']   = $this->decryptedToken;
+            $json['decrypted_token']    = $this->decryptedToken;
         }
         if (isset($this->assuranceDetails)) {
-            $json['assurance_details'] = $this->assuranceDetails;
+            $json['assurance_details']  = $this->assuranceDetails;
+        }
+        if (isset($this->experienceContext)) {
+            $json['experience_context'] = $this->experienceContext;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

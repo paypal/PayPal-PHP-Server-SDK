@@ -11,10 +11,10 @@ Shipping Options Callback request. This will be implemented by the merchants.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `?string` | Optional | The ID of the order.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9-]+$` | getId(): ?string | setId(?string id): void |
+| `id` | `?string` | Optional | The ID of the order.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9-]+$` | getId(): ?string | setId(?string id): void |
 | `shippingAddress` | [`OrderUpdateCallbackShippingAddress`](../../doc/models/order-update-callback-shipping-address.md) | Required | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). | getShippingAddress(): OrderUpdateCallbackShippingAddress | setShippingAddress(OrderUpdateCallbackShippingAddress shippingAddress): void |
 | `shippingOption` | [`?OrderUpdateCallbackShippingOption`](../../doc/models/order-update-callback-shipping-option.md) | Optional | The options that the payee or merchant offers to the payer to ship or pick up their items. | getShippingOption(): ?OrderUpdateCallbackShippingOption | setShippingOption(?OrderUpdateCallbackShippingOption shippingOption): void |
-| `purchaseUnits` | [`PurchaseUnitRequest[]`](../../doc/models/purchase-unit-request.md) | Required | An array of purchase units. At present only 1 purchase_unit is supported. Each purchase unit establishes a contract between a payer and the payee. Each purchase unit represents either a full or partial order that the payer intends to purchase from the payee.<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `1` | getPurchaseUnits(): array | setPurchaseUnits(array purchaseUnits): void |
+| `purchaseUnits` | [`PurchaseUnitRequest[]`](../../doc/models/purchase-unit-request.md) | Required | An array of purchase units. At present only 1 purchase_unit is supported. Each purchase unit establishes a contract between a payer and the payee. Each purchase unit represents either a full or partial order that the payer intends to purchase from the payee.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `1` | getPurchaseUnits(): array | setPurchaseUnits(array purchaseUnits): void |
 
 ## Example (as JSON)
 

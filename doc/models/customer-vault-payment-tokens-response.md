@@ -11,18 +11,18 @@ Collection of payment tokens saved for a given customer.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `totalItems` | `?int` | Optional | Total number of items.<br>**Constraints**: `>= 1`, `<= 50` | getTotalItems(): ?int | setTotalItems(?int totalItems): void |
-| `totalPages` | `?int` | Optional | Total number of pages.<br>**Constraints**: `>= 1`, `<= 10` | getTotalPages(): ?int | setTotalPages(?int totalPages): void |
+| `totalItems` | `?int` | Optional | Total number of items.<br><br>**Constraints**: `>= 1`, `<= 50` | getTotalItems(): ?int | setTotalItems(?int totalItems): void |
+| `totalPages` | `?int` | Optional | Total number of pages.<br><br>**Constraints**: `>= 1`, `<= 10` | getTotalPages(): ?int | setTotalPages(?int totalPages): void |
 | `customer` | [`?VaultResponseCustomer`](../../doc/models/vault-response-customer.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. | getCustomer(): ?VaultResponseCustomer | setCustomer(?VaultResponseCustomer customer): void |
 | `paymentTokens` | [`?(PaymentTokenResponse[])`](../../doc/models/payment-token-response.md) | Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `64` | getPaymentTokens(): ?array | setPaymentTokens(?array paymentTokens): void |
-| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
+| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total_items": 132,
-  "total_pages": 168,
+  "total_items": 50,
+  "total_pages": 10,
   "customer": {
     "id": "id0",
     "merchant_customer_id": "merchant_customer_id2",

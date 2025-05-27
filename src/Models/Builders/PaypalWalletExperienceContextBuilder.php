@@ -73,6 +73,17 @@ class PaypalWalletExperienceContextBuilder
     }
 
     /**
+     * Sets contact preference field.
+     *
+     * @param string|null $value
+     */
+    public function contactPreference(?string $value): self
+    {
+        $this->instance->setContactPreference($value);
+        return $this;
+    }
+
+    /**
      * Sets return url field.
      *
      * @param string|null $value

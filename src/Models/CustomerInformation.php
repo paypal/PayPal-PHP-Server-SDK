@@ -14,7 +14,8 @@ use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * The details about a customer in PayPal's system of record.
+ * This object represents a merchant’s customer, allowing them to store contact details, and track all
+ * payments associated with the same customer.
  */
 class CustomerInformation implements \JsonSerializable
 {
@@ -32,6 +33,11 @@ class CustomerInformation implements \JsonSerializable
      * @var PhoneWithType|null
      */
     private $phone;
+
+    /**
+     * @var Name|null
+     */
+    private $name;
 
     /**
      * Returns Id.
@@ -98,6 +104,26 @@ class CustomerInformation implements \JsonSerializable
     }
 
     /**
+     * Returns Name.
+     * The name of the party.
+     */
+    public function getName(): ?Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets Name.
+     * The name of the party.
+     *
+     * @maps name
+     */
+    public function setName(?Name $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
      * Converts the CustomerInformation object to a human-readable string representation.
      *
      * @return string The string representation of the CustomerInformation object.
@@ -106,7 +132,12 @@ class CustomerInformation implements \JsonSerializable
     {
         return ApiHelper::stringify(
             'CustomerInformation',
-            ['id' => $this->id, 'emailAddress' => $this->emailAddress, 'phone' => $this->phone]
+            [
+                'id' => $this->id,
+                'emailAddress' => $this->emailAddress,
+                'phone' => $this->phone,
+                'name' => $this->name
+            ]
         );
     }
 
@@ -130,6 +161,9 @@ class CustomerInformation implements \JsonSerializable
         }
         if (isset($this->phone)) {
             $json['phone']         = $this->phone;
+        }
+        if (isset($this->name)) {
+            $json['name']          = $this->name;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
