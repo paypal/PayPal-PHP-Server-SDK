@@ -12,7 +12,7 @@
 The PayPal Server SDK provides integration access to the PayPal REST APIs. The API endpoints are divided into distinct controllers:
 
 - Orders Controller: [Orders API v2](https://developer.paypal.com/docs/api/orders/v2/)
-- Payments Controller: [Payments API v2](https://developer.paypal.com/docs/api/payments/v2
+- Payments Controller: [Payments API v2](https://developer.paypal.com/docs/api/payments/v2)
 - Vault Controller: [Payment Method Tokens API v3](https://developer.paypal.com/docs/api/payment-tokens/v3/) *Available in the US only.*
 
 ## Install the Package
