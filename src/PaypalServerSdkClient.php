@@ -63,7 +63,7 @@ class PaypalServerSdkClient implements ConfigurationInterface
         }
         $this->proxyConfiguration = $this->config['proxyConfiguration'] ?? ConfigurationDefaults::PROXY_CONFIGURATION;
         $this->client = ClientBuilder::init(
-            new HttpClient(Configuration::init($this)->proxyConfiguration($this->proxyConfiguration))
+            new HttpClient(Configuration::init($this)->curlOpts($this->config['curlOpts'])->proxyConfiguration($this->proxyConfiguration))
         )
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
