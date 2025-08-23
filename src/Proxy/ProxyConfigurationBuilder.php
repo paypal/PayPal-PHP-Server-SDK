@@ -12,6 +12,8 @@ class ProxyConfigurationBuilder
 
     private $port = ConfigurationDefaults::PROXY_CONFIGURATION['port'];
 
+    private $type = ConfigurationDefaults::PROXY_CONFIGURATION['type'];
+
     private $user = ConfigurationDefaults::PROXY_CONFIGURATION['auth']['user'];
 
     private $pass = ConfigurationDefaults::PROXY_CONFIGURATION['auth']['pass'];
@@ -61,6 +63,15 @@ class ProxyConfigurationBuilder
     }
 
     /**
+     * Set the proxy port
+     */
+    public function type(int $type): self
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
      * Set proxy authentication method
      */
     public function authMethod(string $authMethod): self
@@ -83,6 +94,7 @@ class ProxyConfigurationBuilder
     {
         return [
             'port' => $this->port,
+            'type' => $this->type,
             'tunnel' => $this->tunnel,
             'address' => $this->address,
             'auth' => ['user' => '$this->user', 'pass' => '$this->pass', 'method' => $this->authMethod]
