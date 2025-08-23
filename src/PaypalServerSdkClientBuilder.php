@@ -138,6 +138,29 @@ class PaypalServerSdkClientBuilder
         return $this;
     }
 
+    /**
+     * custom curl opts
+     * like:PaypalServerSdkClientBuilder::init()
+     *   ->environment($this->environment)
+     *   ->curlOpts([CURLOPT_COOKIE, 'foo=bar'])
+     * @param array $curlOpts
+     * @return $this
+     * @author Terry
+     */
+    public function curlOpts(array $curlOpts): self
+    {
+        $this->config['curlOpts'] = $curlOpts;
+
+        return $this;
+    }
+    
+    public function curlOpts(array $curlOpts): self
+    {
+        $this->config['curlOpts'] = $curlOpts;
+
+        return $this;
+    }
+
     public function build(): PaypalServerSdkClient
     {
         return new PaypalServerSdkClient($this->config);
