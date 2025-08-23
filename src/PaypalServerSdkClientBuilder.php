@@ -153,13 +153,6 @@ class PaypalServerSdkClientBuilder
 
         return $this;
     }
-    
-    public function curlOpts(array $curlOpts): self
-    {
-        $this->config['curlOpts'] = $curlOpts;
-
-        return $this;
-    }
 
     public function build(): PaypalServerSdkClient
     {
