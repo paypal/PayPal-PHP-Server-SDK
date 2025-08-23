@@ -62,8 +62,20 @@ class PaypalServerSdkClient implements ConfigurationInterface
             $loggingConfiguration = $this->loggingConfigurationBuilder->build();
         }
         $this->proxyConfiguration = $this->config['proxyConfiguration'] ?? ConfigurationDefaults::PROXY_CONFIGURATION;
+
+        $configurations = Configuration::init($this)->proxyConfiguration($this->proxyConfiguration);
+        // There is a bug in the $configurations->curlOpts function. Array merging uses array_merge, which will cause the array key to be lost.
+        // Therefore, use $configurations->curlOpt to implement it.
+        $curlOpts = $this->config['curlOpts'] ?? '';
+        if (is_array($curlOpts) && !empty($curlOpts)) {
+            foreach ($curlOpts as $curl_name => $curl_value) {
+                $configurations->curlOpt($curl_name, $curl_value);
+            }
+        }
         $this->client = ClientBuilder::init(
-            new HttpClient(Configuration::init($this)->curlOpts($this->config['curlOpts'])->proxyConfiguration($this->proxyConfiguration))
+            // new HttpClient(Configuration::init($this)->proxyConfiguration($this->proxyConfiguration))
+
+            new HttpClient($configurations)
         )
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
