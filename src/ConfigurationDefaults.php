@@ -46,6 +46,7 @@ class ConfigurationDefaults
     public const PROXY_CONFIGURATION = [
         'port' => 0,
         'tunnel' => false,
+        'type' => CURLPROXY_HTTP,
         'address' => '',
         'auth' => ['user' => '', 'pass' => '', 'method' => CURLAUTH_BASIC]
     ];
