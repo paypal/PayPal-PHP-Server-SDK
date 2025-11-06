@@ -70,7 +70,8 @@ class PaypalWalletStoredCredential implements \JsonSerializable
 
     /**
      * Returns Charge Pattern.
-     * Expected business/pricing model for the billing agreement.
+     * DEPRECATED. Expected business/pricing model for the billing agreement, Please use usage_pattern
+     * instead.
      */
     public function getChargePattern(): ?string
     {
@@ -79,7 +80,8 @@ class PaypalWalletStoredCredential implements \JsonSerializable
 
     /**
      * Sets Charge Pattern.
-     * Expected business/pricing model for the billing agreement.
+     * DEPRECATED. Expected business/pricing model for the billing agreement, Please use usage_pattern
+     * instead.
      *
      * @maps charge_pattern
      */

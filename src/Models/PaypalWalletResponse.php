@@ -79,6 +79,11 @@ class PaypalWalletResponse implements \JsonSerializable
     private $storedCredential;
 
     /**
+     * @var string|null
+     */
+    private $experienceStatus;
+
+    /**
      * Returns Email Address.
      * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
      * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
@@ -349,6 +354,28 @@ class PaypalWalletResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Experience Status.
+     * This field indicates the status of PayPal's Checkout experience throughout the order lifecycle. The
+     * values reflect the current stage of the checkout process.
+     */
+    public function getExperienceStatus(): ?string
+    {
+        return $this->experienceStatus;
+    }
+
+    /**
+     * Sets Experience Status.
+     * This field indicates the status of PayPal's Checkout experience throughout the order lifecycle. The
+     * values reflect the current stage of the checkout process.
+     *
+     * @maps experience_status
+     */
+    public function setExperienceStatus(?string $experienceStatus): void
+    {
+        $this->experienceStatus = $experienceStatus;
+    }
+
+    /**
      * Converts the PaypalWalletResponse object to a human-readable string representation.
      *
      * @return string The string representation of the PaypalWalletResponse object.
@@ -369,7 +396,8 @@ class PaypalWalletResponse implements \JsonSerializable
                 'taxInfo' => $this->taxInfo,
                 'address' => $this->address,
                 'attributes' => $this->attributes,
-                'storedCredential' => $this->storedCredential
+                'storedCredential' => $this->storedCredential,
+                'experienceStatus' => $this->experienceStatus
             ]
         );
     }
@@ -421,6 +449,9 @@ class PaypalWalletResponse implements \JsonSerializable
         }
         if (isset($this->storedCredential)) {
             $json['stored_credential'] = $this->storedCredential;
+        }
+        if (isset($this->experienceStatus)) {
+            $json['experience_status'] = $this->experienceStatus;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

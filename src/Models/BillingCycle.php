@@ -32,11 +32,6 @@ class BillingCycle implements \JsonSerializable
     private $pricingScheme;
 
     /**
-     * @var mixed
-     */
-    private $frequency;
-
-    /**
      * @var int|null
      */
     private $totalCycles = 1;
@@ -100,30 +95,6 @@ class BillingCycle implements \JsonSerializable
     public function setPricingScheme(?PricingScheme $pricingScheme): void
     {
         $this->pricingScheme = $pricingScheme;
-    }
-
-    /**
-     * Returns Frequency.
-     * The frequency details for this billing cycle.
-     *
-     * @return mixed
-     */
-    public function getFrequency()
-    {
-        return $this->frequency;
-    }
-
-    /**
-     * Sets Frequency.
-     * The frequency details for this billing cycle.
-     *
-     * @maps frequency
-     *
-     * @param mixed $frequency
-     */
-    public function setFrequency($frequency): void
-    {
-        $this->frequency = $frequency;
     }
 
     /**
@@ -216,7 +187,6 @@ class BillingCycle implements \JsonSerializable
             [
                 'tenureType' => $this->tenureType,
                 'pricingScheme' => $this->pricingScheme,
-                'frequency' => $this->frequency,
                 'totalCycles' => $this->totalCycles,
                 'sequence' => $this->sequence,
                 'startDate' => $this->startDate
@@ -239,9 +209,6 @@ class BillingCycle implements \JsonSerializable
         $json['tenure_type']        = $this->tenureType;
         if (isset($this->pricingScheme)) {
             $json['pricing_scheme'] = $this->pricingScheme;
-        }
-        if (isset($this->frequency)) {
-            $json['frequency']      = $this->frequency;
         }
         if (isset($this->totalCycles)) {
             $json['total_cycles']   = $this->totalCycles;

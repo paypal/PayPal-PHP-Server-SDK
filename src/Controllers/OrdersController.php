@@ -24,6 +24,97 @@ use PaypalServerSdkLib\Models\OrderAuthorizeResponse;
 class OrdersController extends BaseController
 {
     /**
+     * Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and
+     * payment processing costs. For more information about processing payments, see checkout or multiparty
+     * checkout. Note: For error handling and troubleshooting, see Orders v2 errors.
+     *
+     * @param array $options Array with all options for search
+     *
+     * @return ApiResponse Response from the API call
+     */
+    public function createOrder(array $options): ApiResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders')
+            ->auth('Oauth2')
+            ->parameters(
+                HeaderParam::init('Content-Type', 'application/json'),
+                BodyParam::init($options)->extract('body'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
+                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
+                HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('paypalPartnerAttributionId'),
+                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
+                HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
+            );
+
+        $_resHandler = $this->responseHandler()
+            ->throwErrorOn(
+                '400',
+                ErrorType::init(
+                    'Request is not well-formed, syntactically incorrect, or violates schema.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn(
+                '401',
+                ErrorType::init(
+                    'Authentication failed due to missing authorization header, or invalid auth' .
+                    'entication credentials.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn(
+                '422',
+                ErrorType::init(
+                    'The requested action could not be performed, semantically incorrect, or fa' .
+                    'iled business validation.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
+            ->type(Order::class)
+            ->returnApiResponse();
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
+     * Shows details for an order, by ID. Note: For error handling and troubleshooting, see Orders v2
+     * errors.
+     *
+     * @param array $options Array with all options for search
+     *
+     * @return ApiResponse Response from the API call
+     */
+    public function getOrder(array $options): ApiResponse
+    {
+        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/checkout/orders/{id}')
+            ->auth('Oauth2')
+            ->parameters(
+                TemplateParam::init('id', $options)->extract('id'),
+                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
+                QueryParam::init('fields', $options)->extract('fields')
+            );
+
+        $_resHandler = $this->responseHandler()
+            ->throwErrorOn(
+                '401',
+                ErrorType::init(
+                    'Authentication failed due to missing authorization header, or invalid auth' .
+                    'entication credentials.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn('404', ErrorType::init('The specified resource does not exist.', ErrorException::class))
+            ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
+            ->type(Order::class)
+            ->returnApiResponse();
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * Updates an order with a `CREATED` or `APPROVED` status. You cannot update an order with the
      * `COMPLETED` status.<br/><br/>To make an update, you must provide a `reference_id`. If you omit this
      * value with an order that contains only one purchase unit, PayPal sets the value to `default` which
@@ -112,6 +203,57 @@ class OrdersController extends BaseController
     }
 
     /**
+     * Payer confirms their intent to pay for the the Order with the given payment source.
+     *
+     * @param array $options Array with all options for search
+     *
+     * @return ApiResponse Response from the API call
+     */
+    public function confirmOrder(array $options): ApiResponse
+    {
+        $_reqBuilder = $this->requestBuilder(
+            RequestMethod::POST,
+            '/v2/checkout/orders/{id}/confirm-payment-source'
+        )
+            ->auth('Oauth2')
+            ->parameters(
+                TemplateParam::init('id', $options)->extract('id'),
+                HeaderParam::init('Content-Type', 'application/json'),
+                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
+                HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
+                BodyParam::init($options)->extract('body')
+            );
+
+        $_resHandler = $this->responseHandler()
+            ->throwErrorOn(
+                '400',
+                ErrorType::init(
+                    'Request is not well-formed, syntactically incorrect, or violates schema.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn(
+                '403',
+                ErrorType::init('Authorization failed due to insufficient permissions.', ErrorException::class)
+            )
+            ->throwErrorOn(
+                '422',
+                ErrorType::init(
+                    'The requested action could not be performed, semantically incorrect, or fa' .
+                    'iled business validation.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn('500', ErrorType::init('An internal server error has occurred.', ErrorException::class))
+            ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
+            ->type(Order::class)
+            ->returnApiResponse();
+
+        return $this->execute($_reqBuilder, $_resHandler);
+    }
+
+    /**
      * Authorizes payment for an order. To successfully authorize payment for an order, the buyer must
      * first approve the order or a valid payment_source must be provided in the request. A buyer can
      * approve the order upon being redirected to the rel:approve URL that was returned in the HATEOAS
@@ -172,161 +314,6 @@ class OrdersController extends BaseController
             ->throwErrorOn('500', ErrorType::init('An internal server error has occurred.', ErrorException::class))
             ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
             ->type(OrderAuthorizeResponse::class)
-            ->returnApiResponse();
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Updates or cancels the tracking information for a PayPal order, by ID. Updatable attributes or
-     * objects: Attribute Op Notes items replace Using replace op for items will replace the entire items
-     * object with the value sent in request. notify_payer replace, add status replace Only patching status
-     * to CANCELLED is currently supported.
-     *
-     * @param array $options Array with all options for search
-     *
-     * @return ApiResponse Response from the API call
-     */
-    public function updateOrderTracking(array $options): ApiResponse
-    {
-        $_reqBuilder = $this->requestBuilder(
-            RequestMethod::PATCH,
-            '/v2/checkout/orders/{id}/trackers/{tracker_id}'
-        )
-            ->auth('Oauth2')
-            ->parameters(
-                TemplateParam::init('id', $options)->extract('id'),
-                TemplateParam::init('tracker_id', $options)->extract('trackerId'),
-                HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
-                BodyParam::init($options)->extract('body')
-            );
-
-        $_resHandler = $this->responseHandler()
-            ->throwErrorOn(
-                '400',
-                ErrorType::init(
-                    'Request is not well-formed, syntactically incorrect, or violates schema.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn(
-                '403',
-                ErrorType::init('Authorization failed due to insufficient permissions.', ErrorException::class)
-            )
-            ->throwErrorOn('404', ErrorType::init('The specified resource does not exist.', ErrorException::class))
-            ->throwErrorOn(
-                '422',
-                ErrorType::init(
-                    'The requested action could not be performed, semantically incorrect, or fa' .
-                    'iled business validation.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn('500', ErrorType::init('An internal server error has occurred.', ErrorException::class))
-            ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
-            ->returnApiResponse();
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Adds tracking information for an Order.
-     *
-     * @param array $options Array with all options for search
-     *
-     * @return ApiResponse Response from the API call
-     */
-    public function createOrderTracking(array $options): ApiResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders/{id}/track')
-            ->auth('Oauth2')
-            ->parameters(
-                TemplateParam::init('id', $options)->extract('id'),
-                HeaderParam::init('Content-Type', 'application/json'),
-                BodyParam::init($options)->extract('body'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
-            );
-
-        $_resHandler = $this->responseHandler()
-            ->throwErrorOn(
-                '400',
-                ErrorType::init(
-                    'Request is not well-formed, syntactically incorrect, or violates schema.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn(
-                '403',
-                ErrorType::init('Authorization failed due to insufficient permissions.', ErrorException::class)
-            )
-            ->throwErrorOn('404', ErrorType::init('The specified resource does not exist.', ErrorException::class))
-            ->throwErrorOn(
-                '422',
-                ErrorType::init(
-                    'The requested action could not be performed, semantically incorrect, or fa' .
-                    'iled business validation.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn('500', ErrorType::init('An internal server error has occurred.', ErrorException::class))
-            ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
-            ->type(Order::class)
-            ->returnApiResponse();
-
-        return $this->execute($_reqBuilder, $_resHandler);
-    }
-
-    /**
-     * Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and
-     * payment processing costs. For more information about processing payments, see checkout or multiparty
-     * checkout. Note: For error handling and troubleshooting, see Orders v2 errors.
-     *
-     * @param array $options Array with all options for search
-     *
-     * @return ApiResponse Response from the API call
-     */
-    public function createOrder(array $options): ApiResponse
-    {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders')
-            ->auth('Oauth2')
-            ->parameters(
-                HeaderParam::init('Content-Type', 'application/json'),
-                BodyParam::init($options)->extract('body'),
-                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
-                HeaderParam::init('PayPal-Request-Id', $options)->extract('paypalRequestId'),
-                HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('paypalPartnerAttributionId'),
-                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
-                HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
-            );
-
-        $_resHandler = $this->responseHandler()
-            ->throwErrorOn(
-                '400',
-                ErrorType::init(
-                    'Request is not well-formed, syntactically incorrect, or violates schema.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn(
-                '401',
-                ErrorType::init(
-                    'Authentication failed due to missing authorization header, or invalid auth' .
-                    'entication credentials.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn(
-                '422',
-                ErrorType::init(
-                    'The requested action could not be performed, semantically incorrect, or fa' .
-                    'iled business validation.',
-                    ErrorException::class
-                )
-            )
-            ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
-            ->type(Order::class)
             ->returnApiResponse();
 
         return $this->execute($_reqBuilder, $_resHandler);
@@ -398,34 +385,45 @@ class OrdersController extends BaseController
     }
 
     /**
-     * Shows details for an order, by ID. Note: For error handling and troubleshooting, see Orders v2
-     * errors.
+     * Adds tracking information for an Order.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function getOrder(array $options): ApiResponse
+    public function createOrderTracking(array $options): ApiResponse
     {
-        $_reqBuilder = $this->requestBuilder(RequestMethod::GET, '/v2/checkout/orders/{id}')
+        $_reqBuilder = $this->requestBuilder(RequestMethod::POST, '/v2/checkout/orders/{id}/track')
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
-                HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
-                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
-                QueryParam::init('fields', $options)->extract('fields')
+                HeaderParam::init('Content-Type', 'application/json'),
+                BodyParam::init($options)->extract('body'),
+                HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion')
             );
 
         $_resHandler = $this->responseHandler()
             ->throwErrorOn(
-                '401',
+                '400',
                 ErrorType::init(
-                    'Authentication failed due to missing authorization header, or invalid auth' .
-                    'entication credentials.',
+                    'Request is not well-formed, syntactically incorrect, or violates schema.',
                     ErrorException::class
                 )
             )
+            ->throwErrorOn(
+                '403',
+                ErrorType::init('Authorization failed due to insufficient permissions.', ErrorException::class)
+            )
             ->throwErrorOn('404', ErrorType::init('The specified resource does not exist.', ErrorException::class))
+            ->throwErrorOn(
+                '422',
+                ErrorType::init(
+                    'The requested action could not be performed, semantically incorrect, or fa' .
+                    'iled business validation.',
+                    ErrorException::class
+                )
+            )
+            ->throwErrorOn('500', ErrorType::init('An internal server error has occurred.', ErrorException::class))
             ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
             ->type(Order::class)
             ->returnApiResponse();
@@ -434,25 +432,27 @@ class OrdersController extends BaseController
     }
 
     /**
-     * Payer confirms their intent to pay for the the Order with the given payment source.
+     * Updates or cancels the tracking information for a PayPal order, by ID. Updatable attributes or
+     * objects: Attribute Op Notes items replace Using replace op for items will replace the entire items
+     * object with the value sent in request. notify_payer replace, add status replace Only patching status
+     * to CANCELLED is currently supported.
      *
      * @param array $options Array with all options for search
      *
      * @return ApiResponse Response from the API call
      */
-    public function confirmOrder(array $options): ApiResponse
+    public function updateOrderTracking(array $options): ApiResponse
     {
         $_reqBuilder = $this->requestBuilder(
-            RequestMethod::POST,
-            '/v2/checkout/orders/{id}/confirm-payment-source'
+            RequestMethod::PATCH,
+            '/v2/checkout/orders/{id}/trackers/{tracker_id}'
         )
             ->auth('Oauth2')
             ->parameters(
                 TemplateParam::init('id', $options)->extract('id'),
+                TemplateParam::init('tracker_id', $options)->extract('trackerId'),
                 HeaderParam::init('Content-Type', 'application/json'),
-                HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
-                HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 BodyParam::init($options)->extract('body')
             );
 
@@ -468,6 +468,7 @@ class OrdersController extends BaseController
                 '403',
                 ErrorType::init('Authorization failed due to insufficient permissions.', ErrorException::class)
             )
+            ->throwErrorOn('404', ErrorType::init('The specified resource does not exist.', ErrorException::class))
             ->throwErrorOn(
                 '422',
                 ErrorType::init(
@@ -478,7 +479,6 @@ class OrdersController extends BaseController
             )
             ->throwErrorOn('500', ErrorType::init('An internal server error has occurred.', ErrorException::class))
             ->throwErrorOn('0', ErrorType::init('The error response.', ErrorException::class))
-            ->type(Order::class)
             ->returnApiResponse();
 
         return $this->execute($_reqBuilder, $_resHandler);

@@ -49,7 +49,7 @@ class PaymentsCapture implements \JsonSerializable
     private $customId;
 
     /**
-     * @var NetworkTransactionReference|null
+     * @var NetworkTransaction|null
      */
     private $networkTransactionReference;
 
@@ -79,7 +79,7 @@ class PaymentsCapture implements \JsonSerializable
     private $links;
 
     /**
-     * @var PaymentsProcessorResponse|null
+     * @var ProcessorResponse|null
      */
     private $processorResponse;
 
@@ -221,7 +221,7 @@ class PaymentsCapture implements \JsonSerializable
      * Returns Network Transaction Reference.
      * Reference values used by the card network to identify a transaction.
      */
-    public function getNetworkTransactionReference(): ?NetworkTransactionReference
+    public function getNetworkTransactionReference(): ?NetworkTransaction
     {
         return $this->networkTransactionReference;
     }
@@ -232,7 +232,7 @@ class PaymentsCapture implements \JsonSerializable
      *
      * @maps network_transaction_reference
      */
-    public function setNetworkTransactionReference(?NetworkTransactionReference $networkTransactionReference): void
+    public function setNetworkTransactionReference(?NetworkTransaction $networkTransactionReference): void
     {
         $this->networkTransactionReference = $networkTransactionReference;
     }
@@ -353,7 +353,7 @@ class PaymentsCapture implements \JsonSerializable
      * Returns Processor Response.
      * The processor response information for payment requests, such as direct credit card transactions.
      */
-    public function getProcessorResponse(): ?PaymentsProcessorResponse
+    public function getProcessorResponse(): ?ProcessorResponse
     {
         return $this->processorResponse;
     }
@@ -364,7 +364,7 @@ class PaymentsCapture implements \JsonSerializable
      *
      * @maps processor_response
      */
-    public function setProcessorResponse(?PaymentsProcessorResponse $processorResponse): void
+    public function setProcessorResponse(?ProcessorResponse $processorResponse): void
     {
         $this->processorResponse = $processorResponse;
     }

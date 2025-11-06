@@ -35,10 +35,6 @@ Metadata for merchant-managed recurring billing plans. Valid only during the sav
           "value": "value6"
         }
       },
-      "frequency": {
-        "key1": "val1",
-        "key2": "val2"
-      },
       "start_date": "start_date6"
     }
   ],

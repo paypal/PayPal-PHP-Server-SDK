@@ -99,7 +99,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Returns Network.
-     * The card network or brand. Applies to credit, debit, gift, and payment cards.
+     * DEPRECATED. This field is DEPRECATED. Please find the network data in the 'network' field under the
+     * 'network_transaction_reference' object instead of the 'verification' object.
      */
     public function getNetwork(): ?string
     {
@@ -108,7 +109,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Sets Network.
-     * The card network or brand. Applies to credit, debit, gift, and payment cards.
+     * DEPRECATED. This field is DEPRECATED. Please find the network data in the 'network' field under the
+     * 'network_transaction_reference' object instead of the 'verification' object.
      *
      * @maps network
      */
@@ -119,9 +121,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Returns Time.
-     * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
-     * provides guidance but does not reject all invalid dates.
+     * DEPRECATED. This field is DEPRECATED. Please find the time data in the 'time' field under the
+     * 'network_transaction_reference' object instead of the 'verification' object.
      */
     public function getTime(): ?string
     {
@@ -130,9 +131,8 @@ class CardVerificationDetails implements \JsonSerializable
 
     /**
      * Sets Time.
-     * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
-     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
-     * provides guidance but does not reject all invalid dates.
+     * DEPRECATED. This field is DEPRECATED. Please find the time data in the 'time' field under the
+     * 'network_transaction_reference' object instead of the 'verification' object.
      *
      * @maps time
      */

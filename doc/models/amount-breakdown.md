@@ -17,7 +17,7 @@ The breakdown of the amount. Breakdown provides details such as total item amoun
 | `taxTotal` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getTaxTotal(): ?Money | setTaxTotal(?Money taxTotal): void |
 | `insurance` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getInsurance(): ?Money | setInsurance(?Money insurance): void |
 | `shippingDiscount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getShippingDiscount(): ?Money | setShippingDiscount(?Money shippingDiscount): void |
-| `discount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getDiscount(): ?Money | setDiscount(?Money discount): void |
+| `discount` | [`?Money`](../../doc/models/money.md) | Optional | The discount amount and currency code. For list of supported currencies and decimal precision, see the PayPal REST APIs Currency Codes. | getDiscount(): ?Money | setDiscount(?Money discount): void |
 
 ## Example (as JSON)
 

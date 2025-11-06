@@ -31,9 +31,9 @@ The Card from Apple Pay Wallet used to fund the payment.
 {
   "name": "name4",
   "last_digits": "last_digits8",
-  "brand": "HIPER",
+  "brand": "ACCEL",
   "available_networks": [
-    "RUPAY"
+    "STAR_ACCESS"
   ],
   "type": "DEBIT"
 }

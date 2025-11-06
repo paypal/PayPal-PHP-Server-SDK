@@ -34,9 +34,19 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
     private $venmo;
 
     /**
+     * @var VaultApplePayRequest|null
+     */
+    private $applePay;
+
+    /**
      * @var VaultTokenRequest|null
      */
     private $token;
+
+    /**
+     * @var BankRequest|null
+     */
+    private $bank;
 
     /**
      * Returns Card.
@@ -80,6 +90,7 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
 
     /**
      * Returns Venmo.
+     * A resource representing a request to vault Venmo.
      */
     public function getVenmo(): ?VaultVenmoRequest
     {
@@ -88,12 +99,33 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
 
     /**
      * Sets Venmo.
+     * A resource representing a request to vault Venmo.
      *
      * @maps venmo
      */
     public function setVenmo(?VaultVenmoRequest $venmo): void
     {
         $this->venmo = $venmo;
+    }
+
+    /**
+     * Returns Apple Pay.
+     * A resource representing a request to vault Apple Pay.
+     */
+    public function getApplePay(): ?VaultApplePayRequest
+    {
+        return $this->applePay;
+    }
+
+    /**
+     * Sets Apple Pay.
+     * A resource representing a request to vault Apple Pay.
+     *
+     * @maps apple_pay
+     */
+    public function setApplePay(?VaultApplePayRequest $applePay): void
+    {
+        $this->applePay = $applePay;
     }
 
     /**
@@ -117,6 +149,26 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
     }
 
     /**
+     * Returns Bank.
+     * A Resource representing a request to vault a Bank used for ACH Debit.
+     */
+    public function getBank(): ?BankRequest
+    {
+        return $this->bank;
+    }
+
+    /**
+     * Sets Bank.
+     * A Resource representing a request to vault a Bank used for ACH Debit.
+     *
+     * @maps bank
+     */
+    public function setBank(?BankRequest $bank): void
+    {
+        $this->bank = $bank;
+    }
+
+    /**
      * Converts the SetupTokenRequestPaymentSource object to a human-readable string representation.
      *
      * @return string The string representation of the SetupTokenRequestPaymentSource object.
@@ -125,7 +177,14 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
     {
         return ApiHelper::stringify(
             'SetupTokenRequestPaymentSource',
-            ['card' => $this->card, 'paypal' => $this->paypal, 'venmo' => $this->venmo, 'token' => $this->token]
+            [
+                'card' => $this->card,
+                'paypal' => $this->paypal,
+                'venmo' => $this->venmo,
+                'applePay' => $this->applePay,
+                'token' => $this->token,
+                'bank' => $this->bank
+            ]
         );
     }
 
@@ -142,16 +201,22 @@ class SetupTokenRequestPaymentSource implements \JsonSerializable
     {
         $json = [];
         if (isset($this->card)) {
-            $json['card']   = $this->card;
+            $json['card']      = $this->card;
         }
         if (isset($this->paypal)) {
-            $json['paypal'] = $this->paypal;
+            $json['paypal']    = $this->paypal;
         }
         if (isset($this->venmo)) {
-            $json['venmo']  = $this->venmo;
+            $json['venmo']     = $this->venmo;
+        }
+        if (isset($this->applePay)) {
+            $json['apple_pay'] = $this->applePay;
         }
         if (isset($this->token)) {
-            $json['token']  = $this->token;
+            $json['token']     = $this->token;
+        }
+        if (isset($this->bank)) {
+            $json['bank']      = $this->bank;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

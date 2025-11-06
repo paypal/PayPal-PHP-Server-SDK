@@ -14,7 +14,7 @@ use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CaptureStatusDetails;
 use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
-use PaypalServerSdkLib\Models\NetworkTransactionReference;
+use PaypalServerSdkLib\Models\NetworkTransaction;
 use PaypalServerSdkLib\Models\OrdersCapture;
 use PaypalServerSdkLib\Models\ProcessorResponse;
 use PaypalServerSdkLib\Models\SellerProtection;
@@ -114,9 +114,9 @@ class OrdersCaptureBuilder
     /**
      * Sets network transaction reference field.
      *
-     * @param NetworkTransactionReference|null $value
+     * @param NetworkTransaction|null $value
      */
-    public function networkTransactionReference(?NetworkTransactionReference $value): self
+    public function networkTransactionReference(?NetworkTransaction $value): self
     {
         $this->instance->setNetworkTransactionReference($value);
         return $this;

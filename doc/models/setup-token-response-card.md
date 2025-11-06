@@ -27,7 +27,7 @@
 {
   "name": "name8",
   "last_digits": "last_digits2",
-  "brand": "ELO",
+  "brand": "DISCOVER",
   "expiry": "expiry6",
   "billing_address": {
     "address_line_1": "address_line_12",

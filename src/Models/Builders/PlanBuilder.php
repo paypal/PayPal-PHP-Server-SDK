@@ -44,17 +44,6 @@ class PlanBuilder
     }
 
     /**
-     * Sets product field.
-     *
-     * @param mixed $value
-     */
-    public function product($value): self
-    {
-        $this->instance->setProduct($value);
-        return $this;
-    }
-
-    /**
      * Sets name field.
      *
      * @param string|null $value

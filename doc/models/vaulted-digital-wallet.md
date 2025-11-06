@@ -29,6 +29,7 @@ Resource consolidating common request and response attributes for vaulting a Dig
     "name": {
       "full_name": "full_name6"
     },
+    "email_address": "email_address2",
     "phone_number": {
       "country_code": "country_code2",
       "national_number": "national_number6"

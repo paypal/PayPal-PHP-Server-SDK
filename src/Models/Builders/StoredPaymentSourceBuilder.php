@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\NetworkTransactionReference;
+use PaypalServerSdkLib\Models\NetworkTransaction;
 use PaypalServerSdkLib\Models\StoredPaymentSource;
 
 /**
@@ -56,9 +56,9 @@ class StoredPaymentSourceBuilder
     /**
      * Sets previous network transaction reference field.
      *
-     * @param NetworkTransactionReference|null $value
+     * @param NetworkTransaction|null $value
      */
-    public function previousNetworkTransactionReference(?NetworkTransactionReference $value): self
+    public function previousNetworkTransactionReference(?NetworkTransaction $value): self
     {
         $this->instance->setPreviousNetworkTransactionReference($value);
         return $this;

@@ -48,7 +48,7 @@ Collection of payment tokens saved for a given customer.
         "card": {
           "name": "name6",
           "last_digits": "last_digits0",
-          "brand": "RUPAY",
+          "brand": "CB_NATIONALE",
           "expiry": "expiry4",
           "billing_address": {
             "address_line_1": "address_line_12",
@@ -66,6 +66,7 @@ Collection of payment tokens saved for a given customer.
             "name": {
               "full_name": "full_name6"
             },
+            "email_address": "email_address2",
             "phone_number": {
               "country_code": "country_code2",
               "national_number": "national_number6"
@@ -90,6 +91,7 @@ Collection of payment tokens saved for a given customer.
             "name": {
               "full_name": "full_name6"
             },
+            "email_address": "email_address2",
             "phone_number": {
               "country_code": "country_code2",
               "national_number": "national_number6"
@@ -112,7 +114,7 @@ Collection of payment tokens saved for a given customer.
             "name": "name6",
             "last_digits": "last_digits0",
             "type": "UNKNOWN",
-            "brand": "RUPAY",
+            "brand": "CB_NATIONALE",
             "billing_address": {
               "address_line_1": "address_line_12",
               "address_line_2": "address_line_28",
@@ -147,7 +149,7 @@ Collection of payment tokens saved for a given customer.
         "card": {
           "name": "name6",
           "last_digits": "last_digits0",
-          "brand": "RUPAY",
+          "brand": "CB_NATIONALE",
           "expiry": "expiry4",
           "billing_address": {
             "address_line_1": "address_line_12",
@@ -165,6 +167,7 @@ Collection of payment tokens saved for a given customer.
             "name": {
               "full_name": "full_name6"
             },
+            "email_address": "email_address2",
             "phone_number": {
               "country_code": "country_code2",
               "national_number": "national_number6"
@@ -189,6 +192,7 @@ Collection of payment tokens saved for a given customer.
             "name": {
               "full_name": "full_name6"
             },
+            "email_address": "email_address2",
             "phone_number": {
               "country_code": "country_code2",
               "national_number": "national_number6"
@@ -211,7 +215,7 @@ Collection of payment tokens saved for a given customer.
             "name": "name6",
             "last_digits": "last_digits0",
             "type": "UNKNOWN",
-            "brand": "RUPAY",
+            "brand": "CB_NATIONALE",
             "billing_address": {
               "address_line_1": "address_line_12",
               "address_line_2": "address_line_28",

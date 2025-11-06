@@ -41,12 +41,22 @@ class VaultExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $shippingPreference = OrderApplicationContextShippingPreference::GET_FROM_FILE;
+    private $shippingPreference = ExperienceContextShippingPreference::GET_FROM_FILE;
 
     /**
      * @var string|null
      */
-    private $vaultInstruction = VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS;
+    private $vaultInstruction;
+
+    /**
+     * @var AppSwitchContext|null
+     */
+    private $appSwitchContext;
+
+    /**
+     * @var string|null
+     */
+    private $userAction = VaultUserAction::CONTINUE_;
 
     /**
      * Returns Brand Name.
@@ -166,7 +176,7 @@ class VaultExperienceContext implements \JsonSerializable
 
     /**
      * Returns Vault Instruction.
-     * Vault Instruction on action to be performed after a successful payer approval.
+     * DEPRECATED. Vault Instruction on action to be performed after a successful payer approval.
      */
     public function getVaultInstruction(): ?string
     {
@@ -175,13 +185,55 @@ class VaultExperienceContext implements \JsonSerializable
 
     /**
      * Sets Vault Instruction.
-     * Vault Instruction on action to be performed after a successful payer approval.
+     * DEPRECATED. Vault Instruction on action to be performed after a successful payer approval.
      *
      * @maps vault_instruction
      */
     public function setVaultInstruction(?string $vaultInstruction): void
     {
         $this->vaultInstruction = $vaultInstruction;
+    }
+
+    /**
+     * Returns App Switch Context.
+     * Merchant provided details of the native app or mobile web browser to facilitate buyer's app switch
+     * to the PayPal consumer app.
+     */
+    public function getAppSwitchContext(): ?AppSwitchContext
+    {
+        return $this->appSwitchContext;
+    }
+
+    /**
+     * Sets App Switch Context.
+     * Merchant provided details of the native app or mobile web browser to facilitate buyer's app switch
+     * to the PayPal consumer app.
+     *
+     * @maps app_switch_context
+     */
+    public function setAppSwitchContext(?AppSwitchContext $appSwitchContext): void
+    {
+        $this->appSwitchContext = $appSwitchContext;
+    }
+
+    /**
+     * Returns User Action.
+     * User Action on action to be performed after a successful payer approval.
+     */
+    public function getUserAction(): ?string
+    {
+        return $this->userAction;
+    }
+
+    /**
+     * Sets User Action.
+     * User Action on action to be performed after a successful payer approval.
+     *
+     * @maps user_action
+     */
+    public function setUserAction(?string $userAction): void
+    {
+        $this->userAction = $userAction;
     }
 
     /**
@@ -199,7 +251,9 @@ class VaultExperienceContext implements \JsonSerializable
                 'returnUrl' => $this->returnUrl,
                 'cancelUrl' => $this->cancelUrl,
                 'shippingPreference' => $this->shippingPreference,
-                'vaultInstruction' => $this->vaultInstruction
+                'vaultInstruction' => $this->vaultInstruction,
+                'appSwitchContext' => $this->appSwitchContext,
+                'userAction' => $this->userAction
             ]
         );
     }
@@ -233,6 +287,12 @@ class VaultExperienceContext implements \JsonSerializable
         }
         if (isset($this->vaultInstruction)) {
             $json['vault_instruction']   = $this->vaultInstruction;
+        }
+        if (isset($this->appSwitchContext)) {
+            $json['app_switch_context']  = $this->appSwitchContext;
+        }
+        if (isset($this->userAction)) {
+            $json['user_action']         = $this->userAction;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -25,7 +25,7 @@ The payment card to use to fund a Google Pay payment response. Can be a credit o
   "name": "name4",
   "last_digits": "last_digits8",
   "type": "DEBIT",
-  "brand": "ELECTRON",
+  "brand": "ACCEL",
   "billing_address": {
     "address_line_1": "address_line_12",
     "address_line_2": "address_line_28",

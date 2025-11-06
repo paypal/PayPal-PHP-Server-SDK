@@ -97,7 +97,7 @@ Payer confirms the intent to pay for the Order using the provided payment source
       "previous_network_transaction_reference": {
         "id": "id6",
         "date": "date2",
-        "network": "DELTA",
+        "network": "CONFIDIS",
         "acquirer_reference_number": "acquirer_reference_number8"
       }
     }

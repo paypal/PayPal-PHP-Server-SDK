@@ -11,8 +11,10 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\BankRequest;
 use PaypalServerSdkLib\Models\SetupTokenRequestCard;
 use PaypalServerSdkLib\Models\SetupTokenRequestPaymentSource;
+use PaypalServerSdkLib\Models\VaultApplePayRequest;
 use PaypalServerSdkLib\Models\VaultPaypalWalletRequest;
 use PaypalServerSdkLib\Models\VaultTokenRequest;
 use PaypalServerSdkLib\Models\VaultVenmoRequest;
@@ -76,6 +78,17 @@ class SetupTokenRequestPaymentSourceBuilder
     }
 
     /**
+     * Sets apple pay field.
+     *
+     * @param VaultApplePayRequest|null $value
+     */
+    public function applePay(?VaultApplePayRequest $value): self
+    {
+        $this->instance->setApplePay($value);
+        return $this;
+    }
+
+    /**
      * Sets token field.
      *
      * @param VaultTokenRequest|null $value
@@ -83,6 +96,17 @@ class SetupTokenRequestPaymentSourceBuilder
     public function token(?VaultTokenRequest $value): self
     {
         $this->instance->setToken($value);
+        return $this;
+    }
+
+    /**
+     * Sets bank field.
+     *
+     * @param BankRequest|null $value
+     */
+    public function bank(?BankRequest $value): self
+    {
+        $this->instance->setBank($value);
         return $this;
     }
 

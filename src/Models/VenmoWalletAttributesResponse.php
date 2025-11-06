@@ -19,26 +19,26 @@ use stdClass;
 class VenmoWalletAttributesResponse implements \JsonSerializable
 {
     /**
-     * @var VaultResponse|null
+     * @var VenmoVaultResponse|null
      */
     private $vault;
 
     /**
      * Returns Vault.
-     * The details about a saved payment source.
+     * The details about a saved venmo payment source.
      */
-    public function getVault(): ?VaultResponse
+    public function getVault(): ?VenmoVaultResponse
     {
         return $this->vault;
     }
 
     /**
      * Sets Vault.
-     * The details about a saved payment source.
+     * The details about a saved venmo payment source.
      *
      * @maps vault
      */
-    public function setVault(?VaultResponse $vault): void
+    public function setVault(?VenmoVaultResponse $vault): void
     {
         $this->vault = $vault;
     }

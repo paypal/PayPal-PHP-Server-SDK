@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\VaultResponse;
+use PaypalServerSdkLib\Models\VenmoVaultResponse;
 use PaypalServerSdkLib\Models\VenmoWalletAttributesResponse;
 
 /**
@@ -42,9 +42,9 @@ class VenmoWalletAttributesResponseBuilder
     /**
      * Sets vault field.
      *
-     * @param VaultResponse|null $value
+     * @param VenmoVaultResponse|null $value
      */
-    public function vault(?VaultResponse $value): self
+    public function vault(?VenmoVaultResponse $value): self
     {
         $this->instance->setVault($value);
         return $this;

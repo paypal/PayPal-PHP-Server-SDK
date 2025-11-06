@@ -29,7 +29,7 @@ Information about the Payment data obtained by decrypting Apple Pay token.
     "name": "name4",
     "number": "number2",
     "expiry": "expiry2",
-    "card_type": "CB_NATIONALE",
+    "card_type": "VISA",
     "type": "UNKNOWN"
   },
   "device_manufacturer_id": "device_manufacturer_id2",

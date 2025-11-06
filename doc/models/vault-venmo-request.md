@@ -1,6 +1,8 @@
 
 # Vault Venmo Request
 
+A resource representing a request to vault Venmo.
+
 ## Structure
 
 `VaultVenmoRequest`
@@ -15,7 +17,7 @@
 | `permitMultiplePaymentTokens` | `?bool` | Optional | Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same PayPal account. This only applies to PayPal payment source.<br><br>**Default**: `false` | getPermitMultiplePaymentTokens(): ?bool | setPermitMultiplePaymentTokens(?bool permitMultiplePaymentTokens): void |
 | `usageType` | [`?string(PaypalPaymentTokenUsageType)`](../../doc/models/paypal-payment-token-usage-type.md) | Optional | The usage type associated with a digital wallet payment token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getUsageType(): ?string | setUsageType(?string usageType): void |
 | `customerType` | [`?string(PaypalPaymentTokenCustomerType)`](../../doc/models/paypal-payment-token-customer-type.md) | Optional | The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getCustomerType(): ?string | setCustomerType(?string customerType): void |
-| `experienceContext` | [`?VaultVenmoExperienceContext`](../../doc/models/vault-venmo-experience-context.md) | Optional | Customizes the Vault creation flow experience for your customers. | getExperienceContext(): ?VaultVenmoExperienceContext | setExperienceContext(?VaultVenmoExperienceContext experienceContext): void |
+| `experienceContext` | [`?VenmoExperienceContext`](../../doc/models/venmo-experience-context.md) | Optional | A resource representing an experience context of vault a venmo account. | getExperienceContext(): ?VenmoExperienceContext | setExperienceContext(?VenmoExperienceContext experienceContext): void |
 
 ## Example (as JSON)
 
@@ -28,6 +30,7 @@
     "name": {
       "full_name": "full_name6"
     },
+    "email_address": "email_address2",
     "phone_number": {
       "country_code": "country_code2",
       "national_number": "national_number6"

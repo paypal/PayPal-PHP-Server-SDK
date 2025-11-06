@@ -11,7 +11,7 @@ Represents the proxy server configurations for API calls. Create instance using 
 | `port(int $port)` | Sets the port used to connect to the proxy server. **Default port:** 0 |
 | `tunnel(bool $tunnel)` | Enables or disables tunneling through the proxy server. **Default tunnel:** false |
 | `auth(string $user , string $pass)` | Sets both username and password in a single method. **Default user:** '', **Default pass:** '' |
-| `authMethod(string $authMethod)` | Sets the proxy authentication method. **Default authMethod:** CURLAUTH_BASIC |
+| `authMethod(int $authMethod)` | Sets the proxy authentication method. **Default authMethod:** CURLAUTH_BASIC |
 
 ### Client Initialization with Proxy Configuration
 

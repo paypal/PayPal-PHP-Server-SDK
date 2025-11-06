@@ -60,6 +60,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
 
     /**
      * Returns Paypal.
+     * Full representation of a PayPal Payment Token.
      */
     public function getPaypal(): ?PaypalPaymentToken
     {
@@ -68,6 +69,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
 
     /**
      * Sets Paypal.
+     * Full representation of a PayPal Payment Token.
      *
      * @maps paypal
      */
@@ -78,6 +80,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
 
     /**
      * Returns Venmo.
+     * Full representation of a Venmo Payment Token.
      */
     public function getVenmo(): ?VenmoPaymentToken
     {
@@ -86,6 +89,7 @@ class PaymentTokenResponsePaymentSource implements \JsonSerializable
 
     /**
      * Sets Venmo.
+     * Full representation of a Venmo Payment Token.
      *
      * @maps venmo
      */

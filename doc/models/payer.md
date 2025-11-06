@@ -1,6 +1,8 @@
 
 # Payer
 
+The customer who approves and pays for the order. The customer is also known as the payer.
+
 ## Structure
 
 `Payer`

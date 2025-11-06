@@ -26,7 +26,7 @@ A Resource representing a request to vault a Card.
   "number": "number8",
   "expiry": "expiry2",
   "security_code": "security_code6",
-  "brand": "EFTPOS"
+  "brand": "HIPER"
 }
 ```
 

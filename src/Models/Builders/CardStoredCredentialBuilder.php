@@ -12,7 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CardStoredCredential;
-use PaypalServerSdkLib\Models\NetworkTransactionReference;
+use PaypalServerSdkLib\Models\NetworkTransaction;
 
 /**
  * Builder for model CardStoredCredential
@@ -56,9 +56,9 @@ class CardStoredCredentialBuilder
     /**
      * Sets previous network transaction reference field.
      *
-     * @param NetworkTransactionReference|null $value
+     * @param NetworkTransaction|null $value
      */
-    public function previousNetworkTransactionReference(?NetworkTransactionReference $value): self
+    public function previousNetworkTransactionReference(?NetworkTransaction $value): self
     {
         $this->instance->setPreviousNetworkTransactionReference($value);
         return $this;

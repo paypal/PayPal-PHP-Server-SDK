@@ -32,7 +32,8 @@ Information needed to pay using Venmo.
         "SHIPPING_OPTIONS"
       ],
       "callback_url": "callback_url6"
-    }
+    },
+    "user_action": "CONTINUE"
   },
   "attributes": {
     "customer": {

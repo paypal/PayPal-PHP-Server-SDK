@@ -6898,4 +6898,184 @@ class ShipmentCarrier
      * Spedisci online.
      */
     public const SPEDISCI = 'SPEDISCI';
+
+    /**
+     * Fourkites.
+     */
+    public const FOURKITES = 'FOURKITES';
+
+    /**
+     * Etonas.
+     */
+    public const ETONAS = 'ETONAS';
+
+    /**
+     * Fin Mile.
+     */
+    public const FINMILE = 'FINMILE';
+
+    /**
+     * Uniuni.
+     */
+    public const UNIUNI = 'UNIUNI';
+
+    /**
+     * Rodonaves.
+     */
+    public const RODONAVES = 'RODONAVES';
+
+    /**
+     * Inpost Italy.
+     */
+    public const INPOST_IT = 'INPOST_IT';
+
+    /**
+     * Tforce Freight.
+     */
+    public const TFORCE_FREIGHT = 'TFORCE_FREIGHT';
+
+    /**
+     * Rich Mom.
+     */
+    public const RICHMOM = 'RICHMOM';
+
+    /**
+     * Corriere Franco.
+     */
+    public const FRANCO = 'FRANCO';
+
+    /**
+     * Ecparcel.
+     */
+    public const ECPARCEL = 'ECPARCEL';
+
+    /**
+     * Fedex China.
+     */
+    public const FEDEX_CHINA = 'FEDEX_CHINA';
+
+    /**
+     * Gofo Express.
+     */
+    public const GOFO_EXPRESS = 'GOFO_EXPRESS';
+
+    /**
+     * Shipbob.
+     */
+    public const SHIPBOB = 'SHIPBOB';
+
+    /**
+     * Jersey Post Group.
+     */
+    public const JERSEYPOST_ATLAS = 'JERSEYPOST_ATLAS';
+
+    /**
+     * Coretrails.
+     */
+    public const CORETRAILS = 'CORETRAILS';
+
+    /**
+     * Rhenus Logistics Italy.
+     */
+    public const RHENUS_ITALY = 'RHENUS_ITALY';
+
+    /**
+     * Jadlog.
+     */
+    public const JADLOG = 'JADLOG';
+
+    /**
+     * Jitsu.
+     */
+    public const JITSU = 'JITSU';
+
+    /**
+     * Yanwen Express.
+     */
+    public const YANWEN_EXPRESS = 'YANWEN_EXPRESS';
+
+    /**
+     * Dashlink.
+     */
+    public const DASHLINK = 'DASHLINK';
+
+    /**
+     * Seino Super Express.
+     */
+    public const SEINO_SUPER_EXPRESS = 'SEINO_SUPER_EXPRESS';
+
+    /**
+     * Floship.
+     */
+    public const FLOSHIP = 'FLOSHIP';
+
+    /**
+     * Metro Supply Chain.
+     */
+    public const METROSCG = 'METROSCG';
+
+    /**
+     * Sendparcel.
+     */
+    public const SENDPARCEL = 'SENDPARCEL';
+
+    /**
+     * P2p.
+     */
+    public const P2P = 'P2P';
+
+    /**
+     * Cn Express.
+     */
+    public const CN_EXPRESS = 'CN_EXPRESS';
+
+    /**
+     * Cirro Track.
+     */
+    public const CIRROTRACK = 'CIRROTRACK';
+
+    /**
+     * Land Logistics.
+     */
+    public const LAND_LOGISTICS = 'LAND_LOGISTICS';
+
+    /**
+     * Veho.
+     */
+    public const VEHO = 'VEHO';
+
+    /**
+     * Medline.
+     */
+    public const MEDLINE = 'MEDLINE';
+
+    /**
+     * Vdtrack.
+     */
+    public const VDTRACK = 'VDTRACK';
+
+    /**
+     * Sino Scm.
+     */
+    public const SINO_SCM = 'SINO_SCM';
+
+    /**
+     * 3pe Express.
+     */
+    public const ENUM_3PE_EXPRESS = '3PE_EXPRESS';
+
+    /**
+     * Swiftx.
+     */
+    public const SWIFTX = 'SWIFTX';
+
+    /**
+     * Sfyd Express.
+     */
+    public const SFYDEXPRESS = 'SFYDEXPRESS';
+
+    /**
+     * Toptrans.
+     */
+    public const TOPTRANS = 'TOPTRANS';
 }

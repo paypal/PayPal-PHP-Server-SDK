@@ -14,9 +14,9 @@ use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\CaptureStatusDetails;
 use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
-use PaypalServerSdkLib\Models\NetworkTransactionReference;
+use PaypalServerSdkLib\Models\NetworkTransaction;
 use PaypalServerSdkLib\Models\PaymentsCapture;
-use PaypalServerSdkLib\Models\PaymentsProcessorResponse;
+use PaypalServerSdkLib\Models\ProcessorResponse;
 use PaypalServerSdkLib\Models\SellerProtection;
 use PaypalServerSdkLib\Models\SellerReceivableBreakdown;
 
@@ -114,9 +114,9 @@ class PaymentsCaptureBuilder
     /**
      * Sets network transaction reference field.
      *
-     * @param NetworkTransactionReference|null $value
+     * @param NetworkTransaction|null $value
      */
-    public function networkTransactionReference(?NetworkTransactionReference $value): self
+    public function networkTransactionReference(?NetworkTransaction $value): self
     {
         $this->instance->setNetworkTransactionReference($value);
         return $this;
@@ -180,9 +180,9 @@ class PaymentsCaptureBuilder
     /**
      * Sets processor response field.
      *
-     * @param PaymentsProcessorResponse|null $value
+     * @param ProcessorResponse|null $value
      */
-    public function processorResponse(?PaymentsProcessorResponse $value): self
+    public function processorResponse(?ProcessorResponse $value): self
     {
         $this->instance->setProcessorResponse($value);
         return $this;

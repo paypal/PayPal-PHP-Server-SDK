@@ -12,8 +12,8 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\VaultedDigitalWalletShippingDetails;
-use PaypalServerSdkLib\Models\VaultVenmoExperienceContext;
 use PaypalServerSdkLib\Models\VaultVenmoRequest;
+use PaypalServerSdkLib\Models\VenmoExperienceContext;
 
 /**
  * Builder for model VaultVenmoRequest
@@ -109,9 +109,9 @@ class VaultVenmoRequestBuilder
     /**
      * Sets experience context field.
      *
-     * @param VaultVenmoExperienceContext|null $value
+     * @param VenmoExperienceContext|null $value
      */
-    public function experienceContext(?VaultVenmoExperienceContext $value): self
+    public function experienceContext(?VenmoExperienceContext $value): self
     {
         $this->instance->setExperienceContext($value);
         return $this;

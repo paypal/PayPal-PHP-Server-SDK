@@ -137,6 +137,31 @@ class CardBrand
     public const EFTPOS = 'EFTPOS';
 
     /**
+     * The Carte Bancaire payment network.
+     */
+    public const CARTE_BANCAIRE = 'CARTE_BANCAIRE';
+
+    /**
+     * The Star Access payment network.
+     */
+    public const STAR_ACCESS = 'STAR_ACCESS';
+
+    /**
+     * The Pulse payment network.
+     */
+    public const PULSE = 'PULSE';
+
+    /**
+     * The NYCE payment network.
+     */
+    public const NYCE = 'NYCE';
+
+    /**
+     * The Accel payment network.
+     */
+    public const ACCEL = 'ACCEL';
+
+    /**
      * UNKNOWN payment network.
      */
     public const UNKNOWN = 'UNKNOWN';

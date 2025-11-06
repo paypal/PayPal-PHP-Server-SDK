@@ -41,17 +41,6 @@ class PaypalWalletVaultInstructionBuilder
     }
 
     /**
-     * Sets store in vault field.
-     *
-     * @param string|null $value
-     */
-    public function storeInVault(?string $value): self
-    {
-        $this->instance->setStoreInVault($value);
-        return $this;
-    }
-
-    /**
      * Sets description field.
      *
      * @param string|null $value

@@ -32,7 +32,7 @@ Customizes the payer confirmation experience.
     "previous_network_transaction_reference": {
       "id": "id6",
       "date": "date2",
-      "network": "DELTA",
+      "network": "CONFIDIS",
       "acquirer_reference_number": "acquirer_reference_number8"
     }
   }
