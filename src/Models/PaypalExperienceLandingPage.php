@@ -34,4 +34,11 @@ class PaypalExperienceLandingPage
      * information required to complete the purchase, depending on their previous interaction with PayPal.
      */
     public const NO_PREFERENCE = 'NO_PREFERENCE';
+
+    /**
+     * DEPRECATED - please use GUEST_CHECKOUT. All implementations of 'BILLING' will be routed to
+     * 'GUEST_CHECKOUT'. When the customer clicks PayPal Checkout, the customer is redirected to a page to
+     * enter credit or debit card and other relevant billing information required to complete the purchase.
+     */
+    public const BILLING = 'BILLING';
 }

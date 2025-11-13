@@ -73,6 +73,17 @@ class VenmoWalletExperienceContextBuilder
     }
 
     /**
+     * Sets user action field.
+     *
+     * @param string|null $value
+     */
+    public function userAction(?string $value): self
+    {
+        $this->instance->setUserAction($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new Venmo Wallet Experience Context object.
      */
     public function build(): VenmoWalletExperienceContext

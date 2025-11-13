@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\AppSwitchContext;
 use PaypalServerSdkLib\Models\CallbackConfiguration;
 use PaypalServerSdkLib\Models\PaypalWalletExperienceContext;
 
@@ -102,6 +103,17 @@ class PaypalWalletExperienceContextBuilder
     public function cancelUrl(?string $value): self
     {
         $this->instance->setCancelUrl($value);
+        return $this;
+    }
+
+    /**
+     * Sets app switch context field.
+     *
+     * @param AppSwitchContext|null $value
+     */
+    public function appSwitchContext(?AppSwitchContext $value): self
+    {
+        $this->instance->setAppSwitchContext($value);
         return $this;
     }
 

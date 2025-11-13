@@ -214,7 +214,7 @@ class VaultPaypalWalletRequest implements \JsonSerializable
 
     /**
      * Returns Experience Context.
-     * Customizes the Vault creation flow experience for your customers.
+     * A resource representing an experience context of vault PayPal Wallet.
      */
     public function getExperienceContext(): ?VaultExperienceContext
     {
@@ -223,7 +223,7 @@ class VaultPaypalWalletRequest implements \JsonSerializable
 
     /**
      * Sets Experience Context.
-     * Customizes the Vault creation flow experience for your customers.
+     * A resource representing an experience context of vault PayPal Wallet.
      *
      * @maps experience_context
      */

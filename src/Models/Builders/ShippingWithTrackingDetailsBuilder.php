@@ -13,7 +13,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Address;
 use PaypalServerSdkLib\Models\OrderTrackerResponse;
-use PaypalServerSdkLib\Models\PhoneNumberWithCountryCode;
+use PaypalServerSdkLib\Models\PhoneNumberWithOptionalCountryCode;
 use PaypalServerSdkLib\Models\ShippingName;
 use PaypalServerSdkLib\Models\ShippingOption;
 use PaypalServerSdkLib\Models\ShippingWithTrackingDetails;
@@ -44,6 +44,17 @@ class ShippingWithTrackingDetailsBuilder
     }
 
     /**
+     * Sets trackers field.
+     *
+     * @param OrderTrackerResponse[]|null $value
+     */
+    public function trackers(?array $value): self
+    {
+        $this->instance->setTrackers($value);
+        return $this;
+    }
+
+    /**
      * Sets name field.
      *
      * @param ShippingName|null $value
@@ -68,9 +79,9 @@ class ShippingWithTrackingDetailsBuilder
     /**
      * Sets phone number field.
      *
-     * @param PhoneNumberWithCountryCode|null $value
+     * @param PhoneNumberWithOptionalCountryCode|null $value
      */
-    public function phoneNumber(?PhoneNumberWithCountryCode $value): self
+    public function phoneNumber(?PhoneNumberWithOptionalCountryCode $value): self
     {
         $this->instance->setPhoneNumber($value);
         return $this;
@@ -106,17 +117,6 @@ class ShippingWithTrackingDetailsBuilder
     public function address(?Address $value): self
     {
         $this->instance->setAddress($value);
-        return $this;
-    }
-
-    /**
-     * Sets trackers field.
-     *
-     * @param OrderTrackerResponse[]|null $value
-     */
-    public function trackers(?array $value): self
-    {
-        $this->instance->setTrackers($value);
         return $this;
     }
 

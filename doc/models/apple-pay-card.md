@@ -24,7 +24,7 @@ The payment card to be used to fund a payment. Can be a credit or debit card.
   "name": "name4",
   "last_digits": "last_digits8",
   "type": "UNKNOWN",
-  "brand": "AMEX",
+  "brand": "SWITCH",
   "billing_address": {
     "address_line_1": "address_line_12",
     "address_line_2": "address_line_28",

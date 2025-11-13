@@ -53,6 +53,17 @@ class VaultedDigitalWalletShippingDetailsBuilder
     }
 
     /**
+     * Sets email address field.
+     *
+     * @param string|null $value
+     */
+    public function emailAddress(?string $value): self
+    {
+        $this->instance->setEmailAddress($value);
+        return $this;
+    }
+
+    /**
      * Sets phone number field.
      *
      * @param PhoneNumberWithCountryCode|null $value

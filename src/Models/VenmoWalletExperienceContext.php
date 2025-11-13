@@ -28,12 +28,17 @@ class VenmoWalletExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $shippingPreference = ShippingPreference::GET_FROM_FILE;
+    private $shippingPreference = VenmoWalletExperienceContextShippingPreference::GET_FROM_FILE;
 
     /**
      * @var CallbackConfiguration|null
      */
     private $orderUpdateCallbackConfig;
+
+    /**
+     * @var string|null
+     */
+    private $userAction = VenmoWalletExperienceContextUserAction::CONTINUE_;
 
     /**
      * Returns Brand Name.
@@ -96,6 +101,26 @@ class VenmoWalletExperienceContext implements \JsonSerializable
     }
 
     /**
+     * Returns User Action.
+     * Configures a Continue or Pay Now checkout flow.
+     */
+    public function getUserAction(): ?string
+    {
+        return $this->userAction;
+    }
+
+    /**
+     * Sets User Action.
+     * Configures a Continue or Pay Now checkout flow.
+     *
+     * @maps user_action
+     */
+    public function setUserAction(?string $userAction): void
+    {
+        $this->userAction = $userAction;
+    }
+
+    /**
      * Converts the VenmoWalletExperienceContext object to a human-readable string representation.
      *
      * @return string The string representation of the VenmoWalletExperienceContext object.
@@ -107,7 +132,8 @@ class VenmoWalletExperienceContext implements \JsonSerializable
             [
                 'brandName' => $this->brandName,
                 'shippingPreference' => $this->shippingPreference,
-                'orderUpdateCallbackConfig' => $this->orderUpdateCallbackConfig
+                'orderUpdateCallbackConfig' => $this->orderUpdateCallbackConfig,
+                'userAction' => $this->userAction
             ]
         );
     }
@@ -132,6 +158,9 @@ class VenmoWalletExperienceContext implements \JsonSerializable
         }
         if (isset($this->orderUpdateCallbackConfig)) {
             $json['order_update_callback_config'] = $this->orderUpdateCallbackConfig;
+        }
+        if (isset($this->userAction)) {
+            $json['user_action']                  = $this->userAction;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -22,7 +22,7 @@ Previous network transaction reference including id and network.
 {
   "id": "id6",
   "date": "date2",
-  "network": "SYNCHRONY",
+  "network": "CONFIDIS",
   "time": "time6"
 }
 ```

@@ -54,7 +54,7 @@ class SetupTokenRequestCard implements \JsonSerializable
     private $verificationMethod;
 
     /**
-     * @var SetupTokenCardExperienceContext|null
+     * @var VaultCardExperienceContext|null
      */
     private $experienceContext;
 
@@ -210,20 +210,20 @@ class SetupTokenRequestCard implements \JsonSerializable
 
     /**
      * Returns Experience Context.
-     * Customizes the Vault creation flow experience for your customers.
+     * A resource representing an experience context of vault a card.
      */
-    public function getExperienceContext(): ?SetupTokenCardExperienceContext
+    public function getExperienceContext(): ?VaultCardExperienceContext
     {
         return $this->experienceContext;
     }
 
     /**
      * Sets Experience Context.
-     * Customizes the Vault creation flow experience for your customers.
+     * A resource representing an experience context of vault a card.
      *
      * @maps experience_context
      */
-    public function setExperienceContext(?SetupTokenCardExperienceContext $experienceContext): void
+    public function setExperienceContext(?VaultCardExperienceContext $experienceContext): void
     {
         $this->experienceContext = $experienceContext;
     }

@@ -59,7 +59,7 @@ class PurchaseUnitRequest implements \JsonSerializable
     private $softDescriptor;
 
     /**
-     * @var Item[]|null
+     * @var ItemRequest[]|null
      */
     private $items;
 
@@ -178,10 +178,12 @@ class PurchaseUnitRequest implements \JsonSerializable
 
     /**
      * Returns Description.
-     * The purchase description. The maximum length of the character is dependent on the type of characters
-     * used. The character length is specified assuming a US ASCII character. Depending on type of
-     * character; (e.g. accented character, Japanese characters) the number of characters that that can be
-     * specified as input might not equal the permissible max length.
+     * This field supports up to 3,000 characters, but any content beyond 127 characters (including spaces)
+     * will be truncated. The 127 character limit is reflected in the response representation of this field.
+     * The purchase description. The maximum length of the character is dependent on the type of
+     * characters used. The character length is specified assuming a US ASCII character. Depending on type
+     * of character; (e.g. accented character, Japanese characters) the number of characters that that can
+     * be specified as input might not equal the permissible max length.
      */
     public function getDescription(): ?string
     {
@@ -190,10 +192,12 @@ class PurchaseUnitRequest implements \JsonSerializable
 
     /**
      * Sets Description.
-     * The purchase description. The maximum length of the character is dependent on the type of characters
-     * used. The character length is specified assuming a US ASCII character. Depending on type of
-     * character; (e.g. accented character, Japanese characters) the number of characters that that can be
-     * specified as input might not equal the permissible max length.
+     * This field supports up to 3,000 characters, but any content beyond 127 characters (including spaces)
+     * will be truncated. The 127 character limit is reflected in the response representation of this field.
+     * The purchase description. The maximum length of the character is dependent on the type of
+     * characters used. The character length is specified assuming a US ASCII character. Depending on type
+     * of character; (e.g. accented character, Japanese characters) the number of characters that that can
+     * be specified as input might not equal the permissible max length.
      *
      * @maps description
      */
@@ -227,7 +231,10 @@ class PurchaseUnitRequest implements \JsonSerializable
     /**
      * Returns Invoice Id.
      * The API caller-provided external invoice number for this order. Appears in both the payer's
-     * transaction history and the emails that the payer receives.
+     * transaction history and the emails that the payer receives. invoice_id values are required to be
+     * unique within each merchant account by default. Although the uniqueness validation is configurable,
+     * disabling this behavior will remove the account's ability to use invoice_id in other APIs as an
+     * identifier. It is highly recommended to keep a unique invoice_id for each Order.
      */
     public function getInvoiceId(): ?string
     {
@@ -237,7 +244,10 @@ class PurchaseUnitRequest implements \JsonSerializable
     /**
      * Sets Invoice Id.
      * The API caller-provided external invoice number for this order. Appears in both the payer's
-     * transaction history and the emails that the payer receives.
+     * transaction history and the emails that the payer receives. invoice_id values are required to be
+     * unique within each merchant account by default. Although the uniqueness validation is configurable,
+     * disabling this behavior will remove the account's ability to use invoice_id in other APIs as an
+     * identifier. It is highly recommended to keep a unique invoice_id for each Order.
      *
      * @maps invoice_id
      */
@@ -248,6 +258,8 @@ class PurchaseUnitRequest implements \JsonSerializable
 
     /**
      * Returns Soft Descriptor.
+     * This field supports up to 127 characters, but any content beyond 22 characters (including spaces)
+     * will be truncated. The 22 character limit is reflected in the response representation of this field.
      * The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a
      * payer's card statement. If an Order is paid using the "PayPal Wallet", the statement descriptor will
      * appear in following format on the payer's card statement:
@@ -265,6 +277,8 @@ class PurchaseUnitRequest implements \JsonSerializable
 
     /**
      * Sets Soft Descriptor.
+     * This field supports up to 127 characters, but any content beyond 22 characters (including spaces)
+     * will be truncated. The 22 character limit is reflected in the response representation of this field.
      * The soft descriptor is the dynamic text used to construct the statement descriptor that appears on a
      * payer's card statement. If an Order is paid using the "PayPal Wallet", the statement descriptor will
      * appear in following format on the payer's card statement:
@@ -286,7 +300,7 @@ class PurchaseUnitRequest implements \JsonSerializable
      * Returns Items.
      * An array of items that the customer purchases from the merchant.
      *
-     * @return Item[]|null
+     * @return ItemRequest[]|null
      */
     public function getItems(): ?array
     {
@@ -299,7 +313,7 @@ class PurchaseUnitRequest implements \JsonSerializable
      *
      * @maps items
      *
-     * @param Item[]|null $items
+     * @param ItemRequest[]|null $items
      */
     public function setItems(?array $items): void
     {

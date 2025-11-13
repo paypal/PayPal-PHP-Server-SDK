@@ -12,7 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\AmountWithBreakdown;
-use PaypalServerSdkLib\Models\Item;
+use PaypalServerSdkLib\Models\ItemRequest;
 use PaypalServerSdkLib\Models\PayeeBase;
 use PaypalServerSdkLib\Models\PaymentInstruction;
 use PaypalServerSdkLib\Models\PurchaseUnitRequest;
@@ -126,7 +126,7 @@ class PurchaseUnitRequestBuilder
     /**
      * Sets items field.
      *
-     * @param Item[]|null $value
+     * @param ItemRequest[]|null $value
      */
     public function items(?array $value): self
     {

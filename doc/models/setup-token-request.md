@@ -28,7 +28,7 @@ Setup Token Request where the `source` defines the type of instrument to be stor
       "number": "number6",
       "expiry": "expiry4",
       "security_code": "security_code8",
-      "brand": "RUPAY"
+      "brand": "CB_NATIONALE"
     },
     "paypal": {
       "description": "description2",
@@ -37,6 +37,7 @@ Setup Token Request where the `source` defines the type of instrument to be stor
         "name": {
           "full_name": "full_name6"
         },
+        "email_address": "email_address2",
         "phone_number": {
           "country_code": "country_code2",
           "national_number": "national_number6"
@@ -61,6 +62,7 @@ Setup Token Request where the `source` defines the type of instrument to be stor
         "name": {
           "full_name": "full_name6"
         },
+        "email_address": "email_address2",
         "phone_number": {
           "country_code": "country_code2",
           "national_number": "national_number6"
@@ -77,6 +79,21 @@ Setup Token Request where the `source` defines the type of instrument to be stor
       },
       "permit_multiple_payment_tokens": false,
       "usage_type": "MERCHANT"
+    },
+    "apple_pay": {
+      "token": "token6",
+      "card": {
+        "type": "UNKNOWN",
+        "brand": "CB_NATIONALE",
+        "billing_address": {
+          "address_line_1": "address_line_12",
+          "address_line_2": "address_line_28",
+          "admin_area_2": "admin_area_28",
+          "admin_area_1": "admin_area_14",
+          "postal_code": "postal_code0",
+          "country_code": "country_code8"
+        }
+      }
     },
     "token": {
       "id": "id6",

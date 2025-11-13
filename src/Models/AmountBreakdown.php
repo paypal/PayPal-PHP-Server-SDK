@@ -176,7 +176,8 @@ class AmountBreakdown implements \JsonSerializable
 
     /**
      * Returns Discount.
-     * The currency and amount for a financial transaction, such as a balance or payment due.
+     * The discount amount and currency code. For list of supported currencies and decimal precision, see
+     * the PayPal REST APIs Currency Codes.
      */
     public function getDiscount(): ?Money
     {
@@ -185,7 +186,8 @@ class AmountBreakdown implements \JsonSerializable
 
     /**
      * Sets Discount.
-     * The currency and amount for a financial transaction, such as a balance or payment due.
+     * The discount amount and currency code. For list of supported currencies and decimal precision, see
+     * the PayPal REST APIs Currency Codes.
      *
      * @maps discount
      */

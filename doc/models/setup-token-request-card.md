@@ -18,7 +18,7 @@ A Resource representing a request to vault a Card.
 | `brand` | [`?string(CardBrand)`](../../doc/models/card-brand.md) | Optional | The card network or brand. Applies to credit, debit, gift, and payment cards.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` | getBrand(): ?string | setBrand(?string brand): void |
 | `billingAddress` | [`?Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). | getBillingAddress(): ?Address | setBillingAddress(?Address billingAddress): void |
 | `verificationMethod` | [`?string(VaultCardVerificationMethod)`](../../doc/models/vault-card-verification-method.md) | Optional | The verification method of the card.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getVerificationMethod(): ?string | setVerificationMethod(?string verificationMethod): void |
-| `experienceContext` | [`?SetupTokenCardExperienceContext`](../../doc/models/setup-token-card-experience-context.md) | Optional | Customizes the Vault creation flow experience for your customers. | getExperienceContext(): ?SetupTokenCardExperienceContext | setExperienceContext(?SetupTokenCardExperienceContext experienceContext): void |
+| `experienceContext` | [`?VaultCardExperienceContext`](../../doc/models/vault-card-experience-context.md) | Optional | A resource representing an experience context of vault a card. | getExperienceContext(): ?VaultCardExperienceContext | setExperienceContext(?VaultCardExperienceContext experienceContext): void |
 
 ## Example (as JSON)
 
@@ -28,7 +28,7 @@ A Resource representing a request to vault a Card.
   "number": "number0",
   "expiry": "expiry0",
   "security_code": "security_code4",
-  "brand": "DINERS"
+  "brand": "STAR"
 }
 ```
 

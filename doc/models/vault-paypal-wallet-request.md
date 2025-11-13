@@ -18,7 +18,7 @@ A resource representing a request to vault PayPal Wallet.
 | `usageType` | [`?string(PaypalPaymentTokenUsageType)`](../../doc/models/paypal-payment-token-usage-type.md) | Optional | The usage type associated with a digital wallet payment token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getUsageType(): ?string | setUsageType(?string usageType): void |
 | `customerType` | [`?string(PaypalPaymentTokenCustomerType)`](../../doc/models/paypal-payment-token-customer-type.md) | Optional | The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getCustomerType(): ?string | setCustomerType(?string customerType): void |
 | `billingPlan` | [`?Plan`](../../doc/models/plan.md) | Optional | The merchant level Recurring Billing plan metadata for the Billing Agreement. | getBillingPlan(): ?Plan | setBillingPlan(?Plan billingPlan): void |
-| `experienceContext` | [`?VaultExperienceContext`](../../doc/models/vault-experience-context.md) | Optional | Customizes the Vault creation flow experience for your customers. | getExperienceContext(): ?VaultExperienceContext | setExperienceContext(?VaultExperienceContext experienceContext): void |
+| `experienceContext` | [`?VaultExperienceContext`](../../doc/models/vault-experience-context.md) | Optional | A resource representing an experience context of vault PayPal Wallet. | getExperienceContext(): ?VaultExperienceContext | setExperienceContext(?VaultExperienceContext experienceContext): void |
 
 ## Example (as JSON)
 
@@ -31,6 +31,7 @@ A resource representing a request to vault PayPal Wallet.
     "name": {
       "full_name": "full_name6"
     },
+    "email_address": "email_address2",
     "phone_number": {
       "country_code": "country_code2",
       "national_number": "national_number6"

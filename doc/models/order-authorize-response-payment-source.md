@@ -24,9 +24,9 @@ The payment source used to fund the payment.
   "card": {
     "name": "name6",
     "last_digits": "last_digits0",
-    "brand": "RUPAY",
+    "brand": "CB_NATIONALE",
     "available_networks": [
-      "SYNCHRONY"
+      "DELTA"
     ],
     "type": "UNKNOWN"
   },
@@ -60,7 +60,7 @@ The payment source used to fund the payment.
       "name": "name6",
       "last_digits": "last_digits0",
       "type": "UNKNOWN",
-      "brand": "RUPAY",
+      "brand": "CB_NATIONALE",
       "billing_address": {
         "address_line_1": "address_line_12",
         "address_line_2": "address_line_28",

@@ -29,11 +29,11 @@ The payment card to use to fund a payment. Card can be a credit or debit card.
 {
   "name": "name0",
   "last_digits": "last_digits4",
-  "brand": "UNKNOWN",
+  "brand": "CARTE_BANCAIRE",
   "available_networks": [
-    "CONFIDIS",
-    "CONFIGOGA",
-    "CB_NATIONALE"
+    "ELO",
+    "DINERS",
+    "CHINA_UNION_PAY"
   ],
   "type": "CREDIT"
 }

@@ -53,17 +53,6 @@ class BillingCycleBuilder
     }
 
     /**
-     * Sets frequency field.
-     *
-     * @param mixed $value
-     */
-    public function frequency($value): self
-    {
-        $this->instance->setFrequency($value);
-        return $this;
-    }
-
-    /**
      * Sets total cycles field.
      *
      * @param int|null $value

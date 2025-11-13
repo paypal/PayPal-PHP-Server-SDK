@@ -15,13 +15,28 @@ namespace PaypalServerSdkLib\Models;
  */
 class PhoneType
 {
+    /**
+     * Fax number.
+     */
     public const FAX = 'FAX';
 
+    /**
+     * Home phone number.
+     */
     public const HOME = 'HOME';
 
+    /**
+     * Mobile phone number.
+     */
     public const MOBILE = 'MOBILE';
 
+    /**
+     * Other phone number.
+     */
     public const OTHER = 'OTHER';
 
+    /**
+     * Pager number.
+     */
     public const PAGER = 'PAGER';
 }

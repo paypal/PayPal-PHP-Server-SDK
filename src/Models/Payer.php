@@ -13,6 +13,9 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
+/**
+ * The customer who approves and pays for the order. The customer is also known as the payer.
+ */
 class Payer implements \JsonSerializable
 {
     /**

@@ -13,22 +13,20 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
+/**
+ * Captures either a portion or the full authorized amount of an authorized payment.
+ */
 class CaptureRequest implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    private $invoiceId;
-
-    /**
-     * @var string|null
-     */
-    private $noteToPayer;
-
     /**
      * @var Money|null
      */
     private $amount;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceId;
 
     /**
      * @var bool|null
@@ -43,7 +41,32 @@ class CaptureRequest implements \JsonSerializable
     /**
      * @var string|null
      */
+    private $noteToPayer;
+
+    /**
+     * @var string|null
+     */
     private $softDescriptor;
+
+    /**
+     * Returns Amount.
+     * The currency and amount for a financial transaction, such as a balance or payment due.
+     */
+    public function getAmount(): ?Money
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Sets Amount.
+     * The currency and amount for a financial transaction, such as a balance or payment due.
+     *
+     * @maps amount
+     */
+    public function setAmount(?Money $amount): void
+    {
+        $this->amount = $amount;
+    }
 
     /**
      * Returns Invoice Id.
@@ -65,48 +88,6 @@ class CaptureRequest implements \JsonSerializable
     public function setInvoiceId(?string $invoiceId): void
     {
         $this->invoiceId = $invoiceId;
-    }
-
-    /**
-     * Returns Note to Payer.
-     * An informational note about this settlement. Appears in both the payer's transaction history and the
-     * emails that the payer receives.
-     */
-    public function getNoteToPayer(): ?string
-    {
-        return $this->noteToPayer;
-    }
-
-    /**
-     * Sets Note to Payer.
-     * An informational note about this settlement. Appears in both the payer's transaction history and the
-     * emails that the payer receives.
-     *
-     * @maps note_to_payer
-     */
-    public function setNoteToPayer(?string $noteToPayer): void
-    {
-        $this->noteToPayer = $noteToPayer;
-    }
-
-    /**
-     * Returns Amount.
-     * The currency and amount for a financial transaction, such as a balance or payment due.
-     */
-    public function getAmount(): ?Money
-    {
-        return $this->amount;
-    }
-
-    /**
-     * Sets Amount.
-     * The currency and amount for a financial transaction, such as a balance or payment due.
-     *
-     * @maps amount
-     */
-    public function setAmount(?Money $amount): void
-    {
-        $this->amount = $amount;
     }
 
     /**
@@ -156,6 +137,28 @@ class CaptureRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Note to Payer.
+     * An informational note about this settlement. Appears in both the payer's transaction history and the
+     * emails that the payer receives.
+     */
+    public function getNoteToPayer(): ?string
+    {
+        return $this->noteToPayer;
+    }
+
+    /**
+     * Sets Note to Payer.
+     * An informational note about this settlement. Appears in both the payer's transaction history and the
+     * emails that the payer receives.
+     *
+     * @maps note_to_payer
+     */
+    public function setNoteToPayer(?string $noteToPayer): void
+    {
+        $this->noteToPayer = $noteToPayer;
+    }
+
+    /**
      * Returns Soft Descriptor.
      * The payment descriptor on the payer's account statement.
      */
@@ -185,11 +188,11 @@ class CaptureRequest implements \JsonSerializable
         return ApiHelper::stringify(
             'CaptureRequest',
             [
-                'invoiceId' => $this->invoiceId,
-                'noteToPayer' => $this->noteToPayer,
                 'amount' => $this->amount,
+                'invoiceId' => $this->invoiceId,
                 'finalCapture' => $this->finalCapture,
                 'paymentInstruction' => $this->paymentInstruction,
+                'noteToPayer' => $this->noteToPayer,
                 'softDescriptor' => $this->softDescriptor
             ]
         );
@@ -207,20 +210,20 @@ class CaptureRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        if (isset($this->invoiceId)) {
-            $json['invoice_id']          = $this->invoiceId;
-        }
-        if (isset($this->noteToPayer)) {
-            $json['note_to_payer']       = $this->noteToPayer;
-        }
         if (isset($this->amount)) {
             $json['amount']              = $this->amount;
+        }
+        if (isset($this->invoiceId)) {
+            $json['invoice_id']          = $this->invoiceId;
         }
         if (isset($this->finalCapture)) {
             $json['final_capture']       = $this->finalCapture;
         }
         if (isset($this->paymentInstruction)) {
             $json['payment_instruction'] = $this->paymentInstruction;
+        }
+        if (isset($this->noteToPayer)) {
+            $json['note_to_payer']       = $this->noteToPayer;
         }
         if (isset($this->softDescriptor)) {
             $json['soft_descriptor']     = $this->softDescriptor;

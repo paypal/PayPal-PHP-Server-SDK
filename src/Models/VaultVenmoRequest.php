@@ -13,6 +13,9 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
+/**
+ * A resource representing a request to vault Venmo.
+ */
 class VaultVenmoRequest implements \JsonSerializable
 {
     /**
@@ -46,7 +49,7 @@ class VaultVenmoRequest implements \JsonSerializable
     private $customerType;
 
     /**
-     * @var VaultVenmoExperienceContext|null
+     * @var VenmoExperienceContext|null
      */
     private $experienceContext;
 
@@ -186,20 +189,20 @@ class VaultVenmoRequest implements \JsonSerializable
 
     /**
      * Returns Experience Context.
-     * Customizes the Vault creation flow experience for your customers.
+     * A resource representing an experience context of vault a venmo account.
      */
-    public function getExperienceContext(): ?VaultVenmoExperienceContext
+    public function getExperienceContext(): ?VenmoExperienceContext
     {
         return $this->experienceContext;
     }
 
     /**
      * Sets Experience Context.
-     * Customizes the Vault creation flow experience for your customers.
+     * A resource representing an experience context of vault a venmo account.
      *
      * @maps experience_context
      */
-    public function setExperienceContext(?VaultVenmoExperienceContext $experienceContext): void
+    public function setExperienceContext(?VenmoExperienceContext $experienceContext): void
     {
         $this->experienceContext = $experienceContext;
     }

@@ -13,11 +13,13 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
-/**
- * The order shipping details.
- */
 class ShippingWithTrackingDetails implements \JsonSerializable
 {
+    /**
+     * @var OrderTrackerResponse[]|null
+     */
+    private $trackers;
+
     /**
      * @var ShippingName|null
      */
@@ -29,7 +31,7 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     private $emailAddress;
 
     /**
-     * @var PhoneNumberWithCountryCode|null
+     * @var PhoneNumberWithOptionalCountryCode|null
      */
     private $phoneNumber;
 
@@ -49,9 +51,28 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     private $address;
 
     /**
-     * @var OrderTrackerResponse[]|null
+     * Returns Trackers.
+     * An array of trackers for a transaction.
+     *
+     * @return OrderTrackerResponse[]|null
      */
-    private $trackers;
+    public function getTrackers(): ?array
+    {
+        return $this->trackers;
+    }
+
+    /**
+     * Sets Trackers.
+     * An array of trackers for a transaction.
+     *
+     * @maps trackers
+     *
+     * @param OrderTrackerResponse[]|null $trackers
+     */
+    public function setTrackers(?array $trackers): void
+    {
+        $this->trackers = $trackers;
+    }
 
     /**
      * Returns Name.
@@ -102,7 +123,7 @@ class ShippingWithTrackingDetails implements \JsonSerializable
      * The phone number in its canonical international [E.164 numbering plan format](https://www.itu.
      * int/rec/T-REC-E.164/en).
      */
-    public function getPhoneNumber(): ?PhoneNumberWithCountryCode
+    public function getPhoneNumber(): ?PhoneNumberWithOptionalCountryCode
     {
         return $this->phoneNumber;
     }
@@ -114,7 +135,7 @@ class ShippingWithTrackingDetails implements \JsonSerializable
      *
      * @maps phone_number
      */
-    public function setPhoneNumber(?PhoneNumberWithCountryCode $phoneNumber): void
+    public function setPhoneNumber(?PhoneNumberWithOptionalCountryCode $phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -194,30 +215,6 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     }
 
     /**
-     * Returns Trackers.
-     * An array of trackers for a transaction.
-     *
-     * @return OrderTrackerResponse[]|null
-     */
-    public function getTrackers(): ?array
-    {
-        return $this->trackers;
-    }
-
-    /**
-     * Sets Trackers.
-     * An array of trackers for a transaction.
-     *
-     * @maps trackers
-     *
-     * @param OrderTrackerResponse[]|null $trackers
-     */
-    public function setTrackers(?array $trackers): void
-    {
-        $this->trackers = $trackers;
-    }
-
-    /**
      * Converts the ShippingWithTrackingDetails object to a human-readable string representation.
      *
      * @return string The string representation of the ShippingWithTrackingDetails object.
@@ -227,13 +224,13 @@ class ShippingWithTrackingDetails implements \JsonSerializable
         return ApiHelper::stringify(
             'ShippingWithTrackingDetails',
             [
+                'trackers' => $this->trackers,
                 'name' => $this->name,
                 'emailAddress' => $this->emailAddress,
                 'phoneNumber' => $this->phoneNumber,
                 'type' => $this->type,
                 'options' => $this->options,
-                'address' => $this->address,
-                'trackers' => $this->trackers
+                'address' => $this->address
             ]
         );
     }
@@ -250,6 +247,9 @@ class ShippingWithTrackingDetails implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
+        if (isset($this->trackers)) {
+            $json['trackers']      = $this->trackers;
+        }
         if (isset($this->name)) {
             $json['name']          = $this->name;
         }
@@ -267,9 +267,6 @@ class ShippingWithTrackingDetails implements \JsonSerializable
         }
         if (isset($this->address)) {
             $json['address']       = $this->address;
-        }
-        if (isset($this->trackers)) {
-            $json['trackers']      = $this->trackers;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

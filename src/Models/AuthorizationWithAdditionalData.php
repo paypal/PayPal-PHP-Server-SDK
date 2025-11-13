@@ -50,7 +50,7 @@ class AuthorizationWithAdditionalData implements \JsonSerializable
     private $customId;
 
     /**
-     * @var NetworkTransactionReference|null
+     * @var NetworkTransaction|null
      */
     private $networkTransactionReference;
 
@@ -212,7 +212,7 @@ class AuthorizationWithAdditionalData implements \JsonSerializable
      * Returns Network Transaction Reference.
      * Reference values used by the card network to identify a transaction.
      */
-    public function getNetworkTransactionReference(): ?NetworkTransactionReference
+    public function getNetworkTransactionReference(): ?NetworkTransaction
     {
         return $this->networkTransactionReference;
     }
@@ -223,7 +223,7 @@ class AuthorizationWithAdditionalData implements \JsonSerializable
      *
      * @maps network_transaction_reference
      */
-    public function setNetworkTransactionReference(?NetworkTransactionReference $networkTransactionReference): void
+    public function setNetworkTransactionReference(?NetworkTransaction $networkTransactionReference): void
     {
         $this->networkTransactionReference = $networkTransactionReference;
     }

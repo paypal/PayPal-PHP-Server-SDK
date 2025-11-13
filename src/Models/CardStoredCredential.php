@@ -40,7 +40,7 @@ class CardStoredCredential implements \JsonSerializable
     private $usage = StoredPaymentSourceUsageType::DERIVED;
 
     /**
-     * @var NetworkTransactionReference|null
+     * @var NetworkTransaction|null
      */
     private $previousNetworkTransactionReference;
 
@@ -122,7 +122,7 @@ class CardStoredCredential implements \JsonSerializable
      * Returns Previous Network Transaction Reference.
      * Reference values used by the card network to identify a transaction.
      */
-    public function getPreviousNetworkTransactionReference(): ?NetworkTransactionReference
+    public function getPreviousNetworkTransactionReference(): ?NetworkTransaction
     {
         return $this->previousNetworkTransactionReference;
     }
@@ -134,7 +134,7 @@ class CardStoredCredential implements \JsonSerializable
      * @maps previous_network_transaction_reference
      */
     public function setPreviousNetworkTransactionReference(
-        ?NetworkTransactionReference $previousNetworkTransactionReference
+        ?NetworkTransaction $previousNetworkTransactionReference
     ): void {
         $this->previousNetworkTransactionReference = $previousNetworkTransactionReference;
     }

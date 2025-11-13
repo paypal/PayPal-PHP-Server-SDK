@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
+use PaypalServerSdkLib\Models\AppSwitchContext;
 use PaypalServerSdkLib\Models\VaultExperienceContext;
 
 /**
@@ -101,6 +102,28 @@ class VaultExperienceContextBuilder
     public function vaultInstruction(?string $value): self
     {
         $this->instance->setVaultInstruction($value);
+        return $this;
+    }
+
+    /**
+     * Sets app switch context field.
+     *
+     * @param AppSwitchContext|null $value
+     */
+    public function appSwitchContext(?AppSwitchContext $value): self
+    {
+        $this->instance->setAppSwitchContext($value);
+        return $this;
+    }
+
+    /**
+     * Sets user action field.
+     *
+     * @param string|null $value
+     */
+    public function userAction(?string $value): self
+    {
+        $this->instance->setUserAction($value);
         return $this;
     }
 

@@ -15,7 +15,7 @@ use PaypalServerSdkLib\Models\AuthorizationStatusDetails;
 use PaypalServerSdkLib\Models\AuthorizationWithAdditionalData;
 use PaypalServerSdkLib\Models\LinkDescription;
 use PaypalServerSdkLib\Models\Money;
-use PaypalServerSdkLib\Models\NetworkTransactionReference;
+use PaypalServerSdkLib\Models\NetworkTransaction;
 use PaypalServerSdkLib\Models\ProcessorResponse;
 use PaypalServerSdkLib\Models\SellerProtection;
 
@@ -113,9 +113,9 @@ class AuthorizationWithAdditionalDataBuilder
     /**
      * Sets network transaction reference field.
      *
-     * @param NetworkTransactionReference|null $value
+     * @param NetworkTransaction|null $value
      */
-    public function networkTransactionReference(?NetworkTransactionReference $value): self
+    public function networkTransactionReference(?NetworkTransaction $value): self
     {
         $this->instance->setNetworkTransactionReference($value);
         return $this;

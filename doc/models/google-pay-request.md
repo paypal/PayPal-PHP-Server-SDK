@@ -32,7 +32,7 @@ Information needed to pay using Google Pay.
   "card": {
     "name": "name6",
     "type": "UNKNOWN",
-    "brand": "RUPAY",
+    "brand": "CB_NATIONALE",
     "billing_address": {
       "address_line_1": "address_line_12",
       "address_line_2": "address_line_28",

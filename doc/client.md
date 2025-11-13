@@ -22,6 +22,14 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```php
+use PaypalServerSdkLib\Logging\LoggingConfigurationBuilder;
+use PaypalServerSdkLib\Logging\RequestLoggingConfigurationBuilder;
+use PaypalServerSdkLib\Logging\ResponseLoggingConfigurationBuilder;
+use Psr\Log\LogLevel;
+use PaypalServerSdkLib\Environment;
+use PaypalServerSdkLib\Authentication\ClientCredentialsAuthCredentialsBuilder;
+use PaypalServerSdkLib\PaypalServerSdkClientBuilder;
+
 $client = PaypalServerSdkClientBuilder::init()
     ->clientCredentialsAuthCredentials(
         ClientCredentialsAuthCredentialsBuilder::init(
@@ -50,5 +58,7 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | getOrdersController() | Gets OrdersController |
 | getPaymentsController() | Gets PaymentsController |
 | getVaultController() | Gets VaultController |
+| getTransactionSearchController() | Gets TransactionSearchController |
+| getSubscriptionsController() | Gets SubscriptionsController |
 | getOAuthAuthorizationController() | Gets OAuthAuthorizationController |
 

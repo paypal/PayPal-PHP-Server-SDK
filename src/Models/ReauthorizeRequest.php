@@ -21,8 +21,7 @@ use stdClass;
  * authorized payment. A reauthorized payment itself has a new honor period of three days. You can
  * reauthorize an authorized payment once. The allowed amount depends on context and geography, for
  * example in US it is up to 115% of the original authorized amount, not to exceed an increase of $75
- * USD. Supports only the `amount` request parameter. Note: This request is currently not supported for
- * Partner use cases.
+ * USD. Supports only the `amount` request parameter.
  */
 class ReauthorizeRequest implements \JsonSerializable
 {

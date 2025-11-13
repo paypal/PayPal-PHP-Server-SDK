@@ -33,9 +33,9 @@ The payment source used to fund the payment.
   "card": {
     "name": "name6",
     "last_digits": "last_digits0",
-    "brand": "RUPAY",
+    "brand": "CB_NATIONALE",
     "available_networks": [
-      "SYNCHRONY"
+      "DELTA"
     ],
     "type": "UNKNOWN"
   },

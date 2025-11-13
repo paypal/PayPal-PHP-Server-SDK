@@ -40,7 +40,8 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Returns Id.
-     * The PayPal-generated ID for the vault token.
+     * The PayPal-generated ID for the vaulted payment source. This ID should be stored on the merchant's
+     * server so the saved payment source can be used for future transactions.
      */
     public function getId(): ?string
     {
@@ -49,7 +50,8 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Sets Id.
-     * The PayPal-generated ID for the vault token.
+     * The PayPal-generated ID for the vaulted payment source. This ID should be stored on the merchant's
+     * server so the saved payment source can be used for future transactions.
      *
      * @maps id
      */

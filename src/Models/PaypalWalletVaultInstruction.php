@@ -13,13 +13,11 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
+/**
+ * Resource consolidating common request and response attributes for vaulting PayPal Wallet.
+ */
 class PaypalWalletVaultInstruction implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    private $storeInVault;
-
     /**
      * @var string|null
      */
@@ -51,26 +49,6 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
     public function __construct(string $usageType)
     {
         $this->usageType = $usageType;
-    }
-
-    /**
-     * Returns Store in Vault.
-     * Defines how and when the payment source gets vaulted.
-     */
-    public function getStoreInVault(): ?string
-    {
-        return $this->storeInVault;
-    }
-
-    /**
-     * Sets Store in Vault.
-     * Defines how and when the payment source gets vaulted.
-     *
-     * @maps store_in_vault
-     */
-    public function setStoreInVault(?string $storeInVault): void
-    {
-        $this->storeInVault = $storeInVault;
     }
 
     /**
@@ -198,7 +176,6 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
         return ApiHelper::stringify(
             'PaypalWalletVaultInstruction',
             [
-                'storeInVault' => $this->storeInVault,
                 'description' => $this->description,
                 'usagePattern' => $this->usagePattern,
                 'usageType' => $this->usageType,
@@ -220,9 +197,6 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        if (isset($this->storeInVault)) {
-            $json['store_in_vault']                 = $this->storeInVault;
-        }
         if (isset($this->description)) {
             $json['description']                    = $this->description;
         }

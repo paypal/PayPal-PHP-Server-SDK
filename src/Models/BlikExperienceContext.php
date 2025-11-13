@@ -31,7 +31,7 @@ class BlikExperienceContext implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $shippingPreference = ShippingPreference::GET_FROM_FILE;
+    private $shippingPreference = ExperienceContextShippingPreference::GET_FROM_FILE;
 
     /**
      * @var string|null

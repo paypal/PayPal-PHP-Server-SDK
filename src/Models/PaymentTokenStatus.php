@@ -22,7 +22,7 @@ class PaymentTokenStatus
     public const CREATED = 'CREATED';
 
     /**
-     * A contingecy on payer approval is required before the payment method can be saved.
+     * A contingency on payer approval is required before the payment method can be saved.
      */
     public const PAYER_ACTION_REQUIRED = 'PAYER_ACTION_REQUIRED';
 

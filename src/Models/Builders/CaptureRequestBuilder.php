@@ -41,28 +41,6 @@ class CaptureRequestBuilder
     }
 
     /**
-     * Sets invoice id field.
-     *
-     * @param string|null $value
-     */
-    public function invoiceId(?string $value): self
-    {
-        $this->instance->setInvoiceId($value);
-        return $this;
-    }
-
-    /**
-     * Sets note to payer field.
-     *
-     * @param string|null $value
-     */
-    public function noteToPayer(?string $value): self
-    {
-        $this->instance->setNoteToPayer($value);
-        return $this;
-    }
-
-    /**
      * Sets amount field.
      *
      * @param Money|null $value
@@ -70,6 +48,17 @@ class CaptureRequestBuilder
     public function amount(?Money $value): self
     {
         $this->instance->setAmount($value);
+        return $this;
+    }
+
+    /**
+     * Sets invoice id field.
+     *
+     * @param string|null $value
+     */
+    public function invoiceId(?string $value): self
+    {
+        $this->instance->setInvoiceId($value);
         return $this;
     }
 
@@ -92,6 +81,17 @@ class CaptureRequestBuilder
     public function paymentInstruction(?CapturePaymentInstruction $value): self
     {
         $this->instance->setPaymentInstruction($value);
+        return $this;
+    }
+
+    /**
+     * Sets note to payer field.
+     *
+     * @param string|null $value
+     */
+    public function noteToPayer(?string $value): self
+    {
+        $this->instance->setNoteToPayer($value);
         return $this;
     }
 

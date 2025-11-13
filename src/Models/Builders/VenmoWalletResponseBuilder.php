@@ -109,6 +109,17 @@ class VenmoWalletResponseBuilder
     }
 
     /**
+     * Sets return flow field.
+     *
+     * @param string|null $value
+     */
+    public function returnFlow(?string $value): self
+    {
+        $this->instance->setReturnFlow($value);
+        return $this;
+    }
+
+    /**
      * Sets attributes field.
      *
      * @param VenmoWalletAttributesResponse|null $value

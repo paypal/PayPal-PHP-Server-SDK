@@ -12,8 +12,8 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Address;
-use PaypalServerSdkLib\Models\SetupTokenCardExperienceContext;
 use PaypalServerSdkLib\Models\SetupTokenRequestCard;
+use PaypalServerSdkLib\Models\VaultCardExperienceContext;
 
 /**
  * Builder for model SetupTokenRequestCard
@@ -120,9 +120,9 @@ class SetupTokenRequestCardBuilder
     /**
      * Sets experience context field.
      *
-     * @param SetupTokenCardExperienceContext|null $value
+     * @param VaultCardExperienceContext|null $value
      */
-    public function experienceContext(?SetupTokenCardExperienceContext $value): self
+    public function experienceContext(?VaultCardExperienceContext $value): self
     {
         $this->instance->setExperienceContext($value);
         return $this;

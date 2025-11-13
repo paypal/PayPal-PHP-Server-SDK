@@ -24,11 +24,6 @@ class Plan implements \JsonSerializable
     private $billingCycles;
 
     /**
-     * @var mixed
-     */
-    private $product;
-
-    /**
      * @var OneTimeCharge
      */
     private $oneTimeCharges;
@@ -73,30 +68,6 @@ class Plan implements \JsonSerializable
     public function setBillingCycles(array $billingCycles): void
     {
         $this->billingCycles = $billingCycles;
-    }
-
-    /**
-     * Returns Product.
-     * Product details associated with any one-time product purchase.
-     *
-     * @return mixed
-     */
-    public function getProduct()
-    {
-        return $this->product;
-    }
-
-    /**
-     * Sets Product.
-     * Product details associated with any one-time product purchase.
-     *
-     * @maps product
-     *
-     * @param mixed $product
-     */
-    public function setProduct($product): void
-    {
-        $this->product = $product;
     }
 
     /**
@@ -151,7 +122,6 @@ class Plan implements \JsonSerializable
             'Plan',
             [
                 'billingCycles' => $this->billingCycles,
-                'product' => $this->product,
                 'oneTimeCharges' => $this->oneTimeCharges,
                 'name' => $this->name
             ]
@@ -171,9 +141,6 @@ class Plan implements \JsonSerializable
     {
         $json = [];
         $json['billing_cycles']   = $this->billingCycles;
-        if (isset($this->product)) {
-            $json['product']      = $this->product;
-        }
         $json['one_time_charges'] = $this->oneTimeCharges;
         if (isset($this->name)) {
             $json['name']         = $this->name;

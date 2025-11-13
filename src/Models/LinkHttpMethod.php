@@ -15,19 +15,43 @@ namespace PaypalServerSdkLib\Models;
  */
 class LinkHttpMethod
 {
+    /**
+     * The HTTP GET method.
+     */
     public const GET = 'GET';
 
+    /**
+     * The HTTP POST method.
+     */
     public const POST = 'POST';
 
+    /**
+     * The HTTP PUT method.
+     */
     public const PUT = 'PUT';
 
+    /**
+     * The HTTP DELETE method.
+     */
     public const DELETE = 'DELETE';
 
+    /**
+     * The HTTP HEAD method.
+     */
     public const HEAD = 'HEAD';
 
+    /**
+     * The HTTP CONNECT method.
+     */
     public const CONNECT = 'CONNECT';
 
+    /**
+     * The HTTP OPTIONS method.
+     */
     public const OPTIONS = 'OPTIONS';
 
+    /**
+     * The HTTP PATCH method.
+     */
     public const PATCH = 'PATCH';
 }

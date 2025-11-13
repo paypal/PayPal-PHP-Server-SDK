@@ -23,7 +23,7 @@ The payment method to vault with the instrument details.
     "number": "number6",
     "expiry": "expiry4",
     "security_code": "security_code8",
-    "brand": "RUPAY"
+    "brand": "CB_NATIONALE"
   },
   "token": {
     "id": "id6",

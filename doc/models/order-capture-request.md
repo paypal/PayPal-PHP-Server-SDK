@@ -67,7 +67,7 @@ Completes an capture payment for an order.
           "name": "name4",
           "number": "number2",
           "expiry": "expiry2",
-          "card_type": "CB_NATIONALE",
+          "card_type": "VISA",
           "type": "UNKNOWN"
         },
         "device_manufacturer_id": "device_manufacturer_id6",
@@ -90,7 +90,7 @@ Completes an capture payment for an order.
       "card": {
         "name": "name6",
         "type": "UNKNOWN",
-        "brand": "RUPAY",
+        "brand": "CB_NATIONALE",
         "billing_address": {
           "address_line_1": "address_line_12",
           "address_line_2": "address_line_28",

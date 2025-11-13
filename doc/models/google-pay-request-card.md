@@ -22,7 +22,7 @@ The payment card used to fund a Google Pay payment. Can be a credit or debit car
 {
   "name": "name8",
   "type": "STORE",
-  "brand": "DISCOVER",
+  "brand": "CONFIDIS",
   "billing_address": {
     "address_line_1": "address_line_12",
     "address_line_2": "address_line_28",

@@ -1387,4 +1387,40 @@ The carrier for the shipment. Some carriers have a global version as well as loc
 | `UPS_CHECKER` | ups-checker. |
 | `WINESHIPPING` | Wineshipping. |
 | `SPEDISCI` | Spedisci online. |
+| `FOURKITES` | Fourkites. |
+| `ETONAS` | Etonas. |
+| `FINMILE` | Fin Mile. |
+| `UNIUNI` | Uniuni. |
+| `RODONAVES` | Rodonaves. |
+| `INPOST_IT` | Inpost Italy. |
+| `TFORCE_FREIGHT` | Tforce Freight. |
+| `RICHMOM` | Rich Mom. |
+| `FRANCO` | Corriere Franco. |
+| `ECPARCEL` | Ecparcel. |
+| `FEDEX_CHINA` | Fedex China. |
+| `GOFO_EXPRESS` | Gofo Express. |
+| `SHIPBOB` | Shipbob. |
+| `JERSEYPOST_ATLAS` | Jersey Post Group. |
+| `CORETRAILS` | Coretrails. |
+| `RHENUS_ITALY` | Rhenus Logistics Italy. |
+| `JADLOG` | Jadlog. |
+| `JITSU` | Jitsu. |
+| `YANWEN_EXPRESS` | Yanwen Express. |
+| `DASHLINK` | Dashlink. |
+| `SEINO_SUPER_EXPRESS` | Seino Super Express. |
+| `FLOSHIP` | Floship. |
+| `METROSCG` | Metro Supply Chain. |
+| `SENDPARCEL` | Sendparcel. |
+| `P2P` | P2p. |
+| `CN_EXPRESS` | Cn Express. |
+| `CIRROTRACK` | Cirro Track. |
+| `LAND_LOGISTICS` | Land Logistics. |
+| `VEHO` | Veho. |
+| `MEDLINE` | Medline. |
+| `VDTRACK` | Vdtrack. |
+| `SINO_SCM` | Sino Scm. |
+| `ENUM_3PE_EXPRESS` | 3pe Express. |
+| `SWIFTX` | Swiftx. |
+| `SFYDEXPRESS` | Sfyd Express. |
+| `TOPTRANS` | Toptrans. |
 

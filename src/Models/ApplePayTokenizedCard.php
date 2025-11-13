@@ -117,7 +117,7 @@ class ApplePayTokenizedCard implements \JsonSerializable
 
     /**
      * Returns Card Type.
-     * The card network or brand. Applies to credit, debit, gift, and payment cards.
+     * The card brand or network. Typically used in the response.
      */
     public function getCardType(): ?string
     {
@@ -126,7 +126,7 @@ class ApplePayTokenizedCard implements \JsonSerializable
 
     /**
      * Sets Card Type.
-     * The card network or brand. Applies to credit, debit, gift, and payment cards.
+     * The card brand or network. Typically used in the response.
      *
      * @maps card_type
      */

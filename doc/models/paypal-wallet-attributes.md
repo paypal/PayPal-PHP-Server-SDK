@@ -12,7 +12,7 @@ Additional attributes associated with the use of this PayPal Wallet.
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
 | `customer` | [`?PaypalWalletCustomerRequest`](../../doc/models/paypal-wallet-customer-request.md) | Optional | - | getCustomer(): ?PaypalWalletCustomerRequest | setCustomer(?PaypalWalletCustomerRequest customer): void |
-| `vault` | [`?PaypalWalletVaultInstruction`](../../doc/models/paypal-wallet-vault-instruction.md) | Optional | - | getVault(): ?PaypalWalletVaultInstruction | setVault(?PaypalWalletVaultInstruction vault): void |
+| `vault` | [`?PaypalWalletVaultInstruction`](../../doc/models/paypal-wallet-vault-instruction.md) | Optional | Resource consolidating common request and response attributes for vaulting PayPal Wallet. | getVault(): ?PaypalWalletVaultInstruction | setVault(?PaypalWalletVaultInstruction vault): void |
 
 ## Example (as JSON)
 
@@ -34,7 +34,6 @@ Additional attributes associated with the use of this PayPal Wallet.
     "merchant_customer_id": "merchant_customer_id2"
   },
   "vault": {
-    "store_in_vault": "ON_SUCCESS",
     "description": "description6",
     "usage_pattern": "THRESHOLD_PREPAID",
     "usage_type": "MERCHANT",

@@ -177,6 +177,17 @@ class PaypalWalletResponseBuilder
     }
 
     /**
+     * Sets experience status field.
+     *
+     * @param string|null $value
+     */
+    public function experienceStatus(?string $value): self
+    {
+        $this->instance->setExperienceStatus($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new Paypal Wallet Response object.
      */
     public function build(): PaypalWalletResponse

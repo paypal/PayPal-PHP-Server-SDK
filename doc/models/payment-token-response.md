@@ -11,7 +11,7 @@ Full representation of a saved payment token.
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `id` | `?string` | Optional | The PayPal-generated ID for the vault token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getId(): ?string | setId(?string id): void |
+| `id` | `?string` | Optional | The PayPal-generated ID for the vaulted payment source. This ID should be stored on the merchant's server so the saved payment source can be used for future transactions.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getId(): ?string | setId(?string id): void |
 | `customer` | [`?CustomerResponse`](../../doc/models/customer-response.md) | Optional | Customer in merchant's or partner's system of records. | getCustomer(): ?CustomerResponse | setCustomer(?CustomerResponse customer): void |
 | `paymentSource` | [`?PaymentTokenResponsePaymentSource`](../../doc/models/payment-token-response-payment-source.md) | Optional | The vaulted payment method details. | getPaymentSource(): ?PaymentTokenResponsePaymentSource | setPaymentSource(?PaymentTokenResponsePaymentSource paymentSource): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` | getLinks(): ?array | setLinks(?array links): void |
@@ -29,7 +29,7 @@ Full representation of a saved payment token.
     "card": {
       "name": "name6",
       "last_digits": "last_digits0",
-      "brand": "RUPAY",
+      "brand": "CB_NATIONALE",
       "expiry": "expiry4",
       "billing_address": {
         "address_line_1": "address_line_12",
@@ -47,6 +47,7 @@ Full representation of a saved payment token.
         "name": {
           "full_name": "full_name6"
         },
+        "email_address": "email_address2",
         "phone_number": {
           "country_code": "country_code2",
           "national_number": "national_number6"
@@ -71,6 +72,7 @@ Full representation of a saved payment token.
         "name": {
           "full_name": "full_name6"
         },
+        "email_address": "email_address2",
         "phone_number": {
           "country_code": "country_code2",
           "national_number": "national_number6"
@@ -93,7 +95,7 @@ Full representation of a saved payment token.
         "name": "name6",
         "last_digits": "last_digits0",
         "type": "UNKNOWN",
-        "brand": "RUPAY",
+        "brand": "CB_NATIONALE",
         "billing_address": {
           "address_line_1": "address_line_12",
           "address_line_2": "address_line_28",

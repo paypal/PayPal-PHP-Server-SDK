@@ -49,6 +49,11 @@ class VenmoWalletResponse implements \JsonSerializable
     private $address;
 
     /**
+     * @var string|null
+     */
+    private $returnFlow = ReturnFlow::AUTO;
+
+    /**
      * @var VenmoWalletAttributesResponse|null
      */
     private $attributes;
@@ -190,6 +195,28 @@ class VenmoWalletResponse implements \JsonSerializable
     }
 
     /**
+     * Returns Return Flow.
+     * Merchant preference on how the buyer can navigate back to merchant website post approving the
+     * transaction on the Venmo App.
+     */
+    public function getReturnFlow(): ?string
+    {
+        return $this->returnFlow;
+    }
+
+    /**
+     * Sets Return Flow.
+     * Merchant preference on how the buyer can navigate back to merchant website post approving the
+     * transaction on the Venmo App.
+     *
+     * @maps return_flow
+     */
+    public function setReturnFlow(?string $returnFlow): void
+    {
+        $this->returnFlow = $returnFlow;
+    }
+
+    /**
      * Returns Attributes.
      * Additional attributes associated with the use of a Venmo Wallet.
      */
@@ -225,6 +252,7 @@ class VenmoWalletResponse implements \JsonSerializable
                 'name' => $this->name,
                 'phoneNumber' => $this->phoneNumber,
                 'address' => $this->address,
+                'returnFlow' => $this->returnFlow,
                 'attributes' => $this->attributes
             ]
         );
@@ -259,6 +287,9 @@ class VenmoWalletResponse implements \JsonSerializable
         }
         if (isset($this->address)) {
             $json['address']       = $this->address;
+        }
+        if (isset($this->returnFlow)) {
+            $json['return_flow']   = $this->returnFlow;
         }
         if (isset($this->attributes)) {
             $json['attributes']    = $this->attributes;

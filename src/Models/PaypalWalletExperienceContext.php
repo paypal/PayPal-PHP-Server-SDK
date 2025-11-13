@@ -51,6 +51,11 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     private $cancelUrl;
 
     /**
+     * @var AppSwitchContext|null
+     */
+    private $appSwitchContext;
+
+    /**
      * @var string|null
      */
     private $landingPage = PaypalExperienceLandingPage::NO_PREFERENCE;
@@ -205,6 +210,28 @@ class PaypalWalletExperienceContext implements \JsonSerializable
     }
 
     /**
+     * Returns App Switch Context.
+     * Merchant provided details of the native app or mobile web browser to facilitate buyer's app switch
+     * to the PayPal consumer app.
+     */
+    public function getAppSwitchContext(): ?AppSwitchContext
+    {
+        return $this->appSwitchContext;
+    }
+
+    /**
+     * Sets App Switch Context.
+     * Merchant provided details of the native app or mobile web browser to facilitate buyer's app switch
+     * to the PayPal consumer app.
+     *
+     * @maps app_switch_context
+     */
+    public function setAppSwitchContext(?AppSwitchContext $appSwitchContext): void
+    {
+        $this->appSwitchContext = $appSwitchContext;
+    }
+
+    /**
      * Returns Landing Page.
      * The type of landing page to show on the PayPal site for customer checkout.
      */
@@ -300,6 +327,7 @@ class PaypalWalletExperienceContext implements \JsonSerializable
                 'contactPreference' => $this->contactPreference,
                 'returnUrl' => $this->returnUrl,
                 'cancelUrl' => $this->cancelUrl,
+                'appSwitchContext' => $this->appSwitchContext,
                 'landingPage' => $this->landingPage,
                 'userAction' => $this->userAction,
                 'paymentMethodPreference' => $this->paymentMethodPreference,
@@ -337,6 +365,9 @@ class PaypalWalletExperienceContext implements \JsonSerializable
         }
         if (isset($this->cancelUrl)) {
             $json['cancel_url']                   = $this->cancelUrl;
+        }
+        if (isset($this->appSwitchContext)) {
+            $json['app_switch_context']           = $this->appSwitchContext;
         }
         if (isset($this->landingPage)) {
             $json['landing_page']                 = $this->landingPage;

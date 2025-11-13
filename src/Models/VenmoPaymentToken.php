@@ -13,6 +13,9 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
+/**
+ * Full representation of a Venmo Payment Token.
+ */
 class VenmoPaymentToken implements \JsonSerializable
 {
     /**
@@ -211,9 +214,10 @@ class VenmoPaymentToken implements \JsonSerializable
 
     /**
      * Returns Email Address.
-     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
-     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
-     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
+     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
+     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
+     * unquoted <code>@</code> sign exists.</blockquote>
      */
     public function getEmailAddress(): ?string
     {
@@ -222,9 +226,10 @@ class VenmoPaymentToken implements \JsonSerializable
 
     /**
      * Sets Email Address.
-     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
-     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
-     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     * The internationalized email address.<blockquote><strong>Note:</strong> Up to 64 characters are
+     * allowed before and 255 characters are allowed after the <code>@</code> sign. However, the generally
+     * accepted maximum length for an email address is 254 characters. The pattern verifies that an
+     * unquoted <code>@</code> sign exists.</blockquote>
      *
      * @maps email_address
      */
