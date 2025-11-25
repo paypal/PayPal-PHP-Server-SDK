@@ -94,6 +94,7 @@ class OrdersController extends BaseController
                 TemplateParam::init('id', $options)->extract('id'),
                 HeaderParam::init('PayPal-Mock-Response', $options)->extract('paypalMockResponse'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
+                HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('paypalPartnerAttributionId'),
                 QueryParam::init('fields', $options)->extract('fields')
             );
 
@@ -341,6 +342,7 @@ class OrdersController extends BaseController
                 HeaderParam::init('Prefer', $options)->extract('prefer', 'return=minimal'),
                 HeaderParam::init('PayPal-Client-Metadata-Id', $options)->extract('paypalClientMetadataId'),
                 HeaderParam::init('PayPal-Auth-Assertion', $options)->extract('paypalAuthAssertion'),
+                HeaderParam::init('PayPal-Partner-Attribution-Id', $options)->extract('paypalPartnerAttributionId'),
                 BodyParam::init($options)->extract('body')
             );
 
