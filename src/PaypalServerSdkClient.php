@@ -74,7 +74,7 @@ class PaypalServerSdkClient implements ConfigurationInterface
             ->converter(new CompatibilityConverter())
             ->jsonHelper(ApiHelper::getJsonHelper())
             ->apiCallback($this->config['httpCallback'] ?? null)
-            ->userAgent('PayPal REST API PHP SDK, Version: 2.0.0, on OS {os-info}')
+            ->userAgent('PayPal REST API PHP SDK, Version: 2.1.0, on OS {os-info}')
             ->serverUrls(self::ENVIRONMENT_MAP[$this->getEnvironment()], Server::DEFAULT_)
             ->authManagers(['Oauth2' => $this->clientCredentialsAuthManager])
             ->loggingConfiguration($loggingConfiguration)

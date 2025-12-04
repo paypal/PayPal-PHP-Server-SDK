@@ -7078,4 +7078,9 @@ class ShipmentCarrier
      * Toptrans.
      */
     public const TOPTRANS = 'TOPTRANS';
+
+    /**
+     * Other.
+     */
+    public const OTHER = 'OTHER';
 }

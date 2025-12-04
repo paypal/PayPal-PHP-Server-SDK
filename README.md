@@ -22,23 +22,23 @@ The PayPal Server SDK provides integration access to the PayPal REST APIs. The A
 Run the following command to install the package and automatically add the dependency to your composer.json file:
 
 ```bash
-composer require "paypal/paypal-server-sdk:2.0.0"
+composer require "paypal/paypal-server-sdk:2.1.0"
 ```
 
 Or add it to the composer.json file manually as given below:
 
 ```json
 "require": {
-    "paypal/paypal-server-sdk": "2.0.0"
+    "paypal/paypal-server-sdk": "2.1.0"
 }
 ```
 
 You can also view the package at:
-https://packagist.org/packages/paypal/paypal-server-sdk#2.0.0
+https://packagist.org/packages/paypal/paypal-server-sdk#2.1.0
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -54,9 +54,9 @@ The following parameters are configurable for the API Client:
 | retryOnTimeout | `bool` | Whether to retry on request timeout.<br>*Default*: `true` |
 | httpStatusCodesToRetry | `array` | Http status codes to retry against.<br>*Default*: `408, 413, 429, 500, 502, 503, 504, 521, 522, 524` |
 | httpMethodsToRetry | `array` | Http methods to retry against.<br>*Default*: `'GET', 'PUT'` |
-| loggingConfiguration | [`LoggingConfigurationBuilder`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/logging-configuration-builder.md) | Represents the logging configurations for API calls |
-| proxyConfiguration | [`ProxyConfigurationBuilder`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/proxy-configuration-builder.md) | Represents the proxy configurations for API calls |
-| clientCredentialsAuth | [`ClientCredentialsAuth`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/auth/oauth-2-client-credentials-grant.md) | The Credentials Setter for OAuth 2 Client Credentials Grant |
+| loggingConfiguration | [`LoggingConfigurationBuilder`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/logging-configuration-builder.md) | Represents the logging configurations for API calls |
+| proxyConfiguration | [`ProxyConfigurationBuilder`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/proxy-configuration-builder.md) | Represents the proxy configurations for API calls |
+| clientCredentialsAuth | [`ClientCredentialsAuth`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/auth/oauth-2-client-credentials-grant.md) | The Credentials Setter for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
@@ -101,30 +101,30 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/auth/oauth-2-client-credentials-grant.md)
+* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/auth/oauth-2-client-credentials-grant.md)
 
 ## List of APIs
 
-* [Transactionsearch](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/controllers/transactionsearch.md)
-* [Orders](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/controllers/orders.md)
-* [Payments](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/controllers/payments.md)
-* [Vault](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/controllers/vault.md)
-* [Subscriptions](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/controllers/subscriptions.md)
+* [Orders](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/controllers/orders.md)
+* [Payments](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/controllers/payments.md)
+* [Vault](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/controllers/vault.md)
+* [Transaction Search](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/controllers/transaction-search.md)
+* [Subscriptions](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/controllers/subscriptions.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxyConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/proxy-configuration-builder.md)
-* [LoggingConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/logging-configuration-builder.md)
-* [RequestLoggingConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/request-logging-configuration-builder.md)
-* [ResponseLoggingConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/response-logging-configuration-builder.md)
+* [ProxyConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/proxy-configuration-builder.md)
+* [LoggingConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/logging-configuration-builder.md)
+* [RequestLoggingConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/request-logging-configuration-builder.md)
+* [ResponseLoggingConfigurationBuilder](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/response-logging-configuration-builder.md)
 
 ### HTTP
 
-* [HttpRequest](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/http-request.md)
+* [HttpRequest](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.0.0/doc/api-response.md)
+* [ApiResponse](https://www.github.com/paypal/PayPal-PHP-Server-SDK/tree/2.1.0/doc/api-response.md)
 
