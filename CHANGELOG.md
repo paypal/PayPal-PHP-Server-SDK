@@ -1,3 +1,8 @@
+## 2.1.0
+- Bug Fixes:
+  - Fix missing `OTHERS` value in `Shipment Carrier` enum model
+  - Update Transaction Search API naming in docs
+
 ## 2.0.0
 - Breaking Changes:
   - Several model renames for more precise mapping to controllers
