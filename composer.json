@@ -3,7 +3,7 @@
     "description": "PayPal's SDK for interacting with the REST APIs",
     "type": "library",
     "keywords": [],
-    "homepage": "https://github.com/paypal/PayPal-PHP-Server-SDK",
+    "homepage": "https://www.apimatic.io",
     "license": [
         "MIT"
     ],
@@ -16,7 +16,7 @@
         "ext-curl": "*",
         "apimatic/unirest-php": "^4.0.6",
         "apimatic/core-interfaces": "~0.1.5",
-        "apimatic/core": "~0.3.15"
+        "apimatic/core": "~0.3.16"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
