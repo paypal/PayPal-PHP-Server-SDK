@@ -1423,4 +1423,5 @@ The carrier for the shipment. Some carriers have a global version as well as loc
 | `SWIFTX` | Swiftx. |
 | `SFYDEXPRESS` | Sfyd Express. |
 | `TOPTRANS` | Toptrans. |
+| `OTHER` | Other. |
 
