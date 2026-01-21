@@ -34,15 +34,11 @@ The create subscription request details.
     "value": "value6"
   },
   "subscriber": {
+    "email_address": "email_address8",
+    "payer_id": "payer_id8",
     "name": {
       "given_name": "given_name2",
       "surname": "surname8"
-    },
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
     },
     "shipping_address": {
       "name": {

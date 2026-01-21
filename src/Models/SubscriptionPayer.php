@@ -14,9 +14,9 @@ use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * The subscriber response information.
+ * The customer who approves and pays for the order. The customer is also known as the payer.
  */
-class Subscriber implements \JsonSerializable
+class SubscriptionPayer implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -32,16 +32,6 @@ class Subscriber implements \JsonSerializable
      * @var Name|null
      */
     private $name;
-
-    /**
-     * @var ShippingDetails|null
-     */
-    private $shippingAddress;
-
-    /**
-     * @var SubscriptionPaymentSourceResponse|null
-     */
-    private $paymentSource;
 
     /**
      * Returns Email Address.
@@ -108,61 +98,15 @@ class Subscriber implements \JsonSerializable
     }
 
     /**
-     * Returns Shipping Address.
-     * The shipping details.
-     */
-    public function getShippingAddress(): ?ShippingDetails
-    {
-        return $this->shippingAddress;
-    }
-
-    /**
-     * Sets Shipping Address.
-     * The shipping details.
+     * Converts the SubscriptionPayer object to a human-readable string representation.
      *
-     * @maps shipping_address
-     */
-    public function setShippingAddress(?ShippingDetails $shippingAddress): void
-    {
-        $this->shippingAddress = $shippingAddress;
-    }
-
-    /**
-     * Returns Payment Source.
-     * The payment source used to fund the payment.
-     */
-    public function getPaymentSource(): ?SubscriptionPaymentSourceResponse
-    {
-        return $this->paymentSource;
-    }
-
-    /**
-     * Sets Payment Source.
-     * The payment source used to fund the payment.
-     *
-     * @maps payment_source
-     */
-    public function setPaymentSource(?SubscriptionPaymentSourceResponse $paymentSource): void
-    {
-        $this->paymentSource = $paymentSource;
-    }
-
-    /**
-     * Converts the Subscriber object to a human-readable string representation.
-     *
-     * @return string The string representation of the Subscriber object.
+     * @return string The string representation of the SubscriptionPayer object.
      */
     public function __toString(): string
     {
         return ApiHelper::stringify(
-            'Subscriber',
-            [
-                'emailAddress' => $this->emailAddress,
-                'payerId' => $this->payerId,
-                'name' => $this->name,
-                'shippingAddress' => $this->shippingAddress,
-                'paymentSource' => $this->paymentSource
-            ]
+            'SubscriptionPayer',
+            ['emailAddress' => $this->emailAddress, 'payerId' => $this->payerId, 'name' => $this->name]
         );
     }
 
@@ -179,19 +123,13 @@ class Subscriber implements \JsonSerializable
     {
         $json = [];
         if (isset($this->emailAddress)) {
-            $json['email_address']    = $this->emailAddress;
+            $json['email_address'] = $this->emailAddress;
         }
         if (isset($this->payerId)) {
-            $json['payer_id']         = $this->payerId;
+            $json['payer_id']      = $this->payerId;
         }
         if (isset($this->name)) {
-            $json['name']             = $this->name;
-        }
-        if (isset($this->shippingAddress)) {
-            $json['shipping_address'] = $this->shippingAddress;
-        }
-        if (isset($this->paymentSource)) {
-            $json['payment_source']   = $this->paymentSource;
+            $json['name']          = $this->name;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

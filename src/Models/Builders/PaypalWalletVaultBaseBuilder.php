@@ -11,33 +11,31 @@ declare(strict_types=1);
 namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
-use PaypalServerSdkLib\Models\PaypalWalletVaultInstruction;
+use PaypalServerSdkLib\Models\PaypalWalletVaultBase;
 
 /**
- * Builder for model PaypalWalletVaultInstruction
+ * Builder for model PaypalWalletVaultBase
  *
- * @see PaypalWalletVaultInstruction
+ * @see PaypalWalletVaultBase
  */
-class PaypalWalletVaultInstructionBuilder
+class PaypalWalletVaultBaseBuilder
 {
     /**
-     * @var PaypalWalletVaultInstruction
+     * @var PaypalWalletVaultBase
      */
     private $instance;
 
-    private function __construct(PaypalWalletVaultInstruction $instance)
+    private function __construct(PaypalWalletVaultBase $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new Paypal Wallet Vault Instruction Builder object.
-     *
-     * @param string $usageType
+     * Initializes a new Paypal Wallet Vault Base Builder object.
      */
-    public static function init(string $usageType): self
+    public static function init(): self
     {
-        return new self(new PaypalWalletVaultInstruction($usageType));
+        return new self(new PaypalWalletVaultBase());
     }
 
     /**
@@ -74,6 +72,17 @@ class PaypalWalletVaultInstructionBuilder
     }
 
     /**
+     * Sets usage type field.
+     *
+     * @param string|null $value
+     */
+    public function usageType(?string $value): self
+    {
+        $this->instance->setUsageType($value);
+        return $this;
+    }
+
+    /**
      * Sets customer type field.
      *
      * @param string|null $value
@@ -96,9 +105,9 @@ class PaypalWalletVaultInstructionBuilder
     }
 
     /**
-     * Initializes a new Paypal Wallet Vault Instruction object.
+     * Initializes a new Paypal Wallet Vault Base object.
      */
-    public function build(): PaypalWalletVaultInstruction
+    public function build(): PaypalWalletVaultBase
     {
         return CoreHelper::clone($this->instance);
     }
