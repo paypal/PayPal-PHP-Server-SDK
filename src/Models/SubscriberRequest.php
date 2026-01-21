@@ -19,14 +19,19 @@ use stdClass;
 class SubscriberRequest implements \JsonSerializable
 {
     /**
+     * @var string|null
+     */
+    private $emailAddress;
+
+    /**
+     * @var string|null
+     */
+    private $payerId;
+
+    /**
      * @var Name|null
      */
     private $name;
-
-    /**
-     * @var PhoneWithType|null
-     */
-    private $phone;
 
     /**
      * @var ShippingDetails|null
@@ -37,6 +42,55 @@ class SubscriberRequest implements \JsonSerializable
      * @var SubscriptionPaymentSource|null
      */
     private $paymentSource;
+
+    /**
+     * @var PhoneWithType|null
+     */
+    private $phone;
+
+    /**
+     * Returns Email Address.
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     */
+    public function getEmailAddress(): ?string
+    {
+        return $this->emailAddress;
+    }
+
+    /**
+     * Sets Email Address.
+     * The internationalized email address. Note: Up to 64 characters are allowed before and 255 characters
+     * are allowed after the @ sign. However, the generally accepted maximum length for an email address is
+     * 254 characters. The pattern verifies that an unquoted @ sign exists.
+     *
+     * @maps email_address
+     */
+    public function setEmailAddress(?string $emailAddress): void
+    {
+        $this->emailAddress = $emailAddress;
+    }
+
+    /**
+     * Returns Payer Id.
+     * The account identifier for a PayPal account.
+     */
+    public function getPayerId(): ?string
+    {
+        return $this->payerId;
+    }
+
+    /**
+     * Sets Payer Id.
+     * The account identifier for a PayPal account.
+     *
+     * @maps payer_id
+     */
+    public function setPayerId(?string $payerId): void
+    {
+        $this->payerId = $payerId;
+    }
 
     /**
      * Returns Name.
@@ -56,26 +110,6 @@ class SubscriberRequest implements \JsonSerializable
     public function setName(?Name $name): void
     {
         $this->name = $name;
-    }
-
-    /**
-     * Returns Phone.
-     * The phone information.
-     */
-    public function getPhone(): ?PhoneWithType
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Sets Phone.
-     * The phone information.
-     *
-     * @maps phone
-     */
-    public function setPhone(?PhoneWithType $phone): void
-    {
-        $this->phone = $phone;
     }
 
     /**
@@ -123,6 +157,26 @@ class SubscriberRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Phone.
+     * The phone information.
+     */
+    public function getPhone(): ?PhoneWithType
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Sets Phone.
+     * The phone information.
+     *
+     * @maps phone
+     */
+    public function setPhone(?PhoneWithType $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    /**
      * Converts the SubscriberRequest object to a human-readable string representation.
      *
      * @return string The string representation of the SubscriberRequest object.
@@ -132,10 +186,12 @@ class SubscriberRequest implements \JsonSerializable
         return ApiHelper::stringify(
             'SubscriberRequest',
             [
+                'emailAddress' => $this->emailAddress,
+                'payerId' => $this->payerId,
                 'name' => $this->name,
-                'phone' => $this->phone,
                 'shippingAddress' => $this->shippingAddress,
-                'paymentSource' => $this->paymentSource
+                'paymentSource' => $this->paymentSource,
+                'phone' => $this->phone
             ]
         );
     }
@@ -152,17 +208,23 @@ class SubscriberRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
+        if (isset($this->emailAddress)) {
+            $json['email_address']    = $this->emailAddress;
+        }
+        if (isset($this->payerId)) {
+            $json['payer_id']         = $this->payerId;
+        }
         if (isset($this->name)) {
             $json['name']             = $this->name;
-        }
-        if (isset($this->phone)) {
-            $json['phone']            = $this->phone;
         }
         if (isset($this->shippingAddress)) {
             $json['shipping_address'] = $this->shippingAddress;
         }
         if (isset($this->paymentSource)) {
             $json['payment_source']   = $this->paymentSource;
+        }
+        if (isset($this->phone)) {
+            $json['phone']            = $this->phone;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
