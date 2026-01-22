@@ -1,3 +1,10 @@
+## 2.2.0
+- Bug Fixes:
+  - Add missing `email_address` & `payer_id` field to `Subscriber Response Information`
+  - Add missing `email_address` & `payer_id` field to `Subscriber Request Information`
+  - Add missing `store_in_vault` field to `PayPal Wallet Vault Instruction`
+  - Add missing `store_in_vault` field to `PayPal Wallet Attributes`
+
 ## 2.1.0
 - Bug Fixes:
   - Fix missing `OTHERS` value in `Shipment Carrier` enum model
