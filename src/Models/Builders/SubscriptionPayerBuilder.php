@@ -12,33 +12,31 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\Name;
-use PaypalServerSdkLib\Models\ShippingDetails;
-use PaypalServerSdkLib\Models\Subscriber;
-use PaypalServerSdkLib\Models\SubscriptionPaymentSourceResponse;
+use PaypalServerSdkLib\Models\SubscriptionPayer;
 
 /**
- * Builder for model Subscriber
+ * Builder for model SubscriptionPayer
  *
- * @see Subscriber
+ * @see SubscriptionPayer
  */
-class SubscriberBuilder
+class SubscriptionPayerBuilder
 {
     /**
-     * @var Subscriber
+     * @var SubscriptionPayer
      */
     private $instance;
 
-    private function __construct(Subscriber $instance)
+    private function __construct(SubscriptionPayer $instance)
     {
         $this->instance = $instance;
     }
 
     /**
-     * Initializes a new Subscriber Builder object.
+     * Initializes a new Subscription Payer Builder object.
      */
     public static function init(): self
     {
-        return new self(new Subscriber());
+        return new self(new SubscriptionPayer());
     }
 
     /**
@@ -75,31 +73,9 @@ class SubscriberBuilder
     }
 
     /**
-     * Sets shipping address field.
-     *
-     * @param ShippingDetails|null $value
+     * Initializes a new Subscription Payer object.
      */
-    public function shippingAddress(?ShippingDetails $value): self
-    {
-        $this->instance->setShippingAddress($value);
-        return $this;
-    }
-
-    /**
-     * Sets payment source field.
-     *
-     * @param SubscriptionPaymentSourceResponse|null $value
-     */
-    public function paymentSource(?SubscriptionPaymentSourceResponse $value): self
-    {
-        $this->instance->setPaymentSource($value);
-        return $this;
-    }
-
-    /**
-     * Initializes a new Subscriber object.
-     */
-    public function build(): Subscriber
+    public function build(): SubscriptionPayer
     {
         return CoreHelper::clone($this->instance);
     }

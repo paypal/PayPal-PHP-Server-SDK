@@ -43,6 +43,28 @@ class SubscriberRequestBuilder
     }
 
     /**
+     * Sets email address field.
+     *
+     * @param string|null $value
+     */
+    public function emailAddress(?string $value): self
+    {
+        $this->instance->setEmailAddress($value);
+        return $this;
+    }
+
+    /**
+     * Sets payer id field.
+     *
+     * @param string|null $value
+     */
+    public function payerId(?string $value): self
+    {
+        $this->instance->setPayerId($value);
+        return $this;
+    }
+
+    /**
      * Sets name field.
      *
      * @param Name|null $value
@@ -50,17 +72,6 @@ class SubscriberRequestBuilder
     public function name(?Name $value): self
     {
         $this->instance->setName($value);
-        return $this;
-    }
-
-    /**
-     * Sets phone field.
-     *
-     * @param PhoneWithType|null $value
-     */
-    public function phone(?PhoneWithType $value): self
-    {
-        $this->instance->setPhone($value);
         return $this;
     }
 
@@ -83,6 +94,17 @@ class SubscriberRequestBuilder
     public function paymentSource(?SubscriptionPaymentSource $value): self
     {
         $this->instance->setPaymentSource($value);
+        return $this;
+    }
+
+    /**
+     * Sets phone field.
+     *
+     * @param PhoneWithType|null $value
+     */
+    public function phone(?PhoneWithType $value): self
+    {
+        $this->instance->setPhone($value);
         return $this;
     }
 

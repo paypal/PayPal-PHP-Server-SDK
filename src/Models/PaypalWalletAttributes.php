@@ -48,7 +48,6 @@ class PaypalWalletAttributes implements \JsonSerializable
 
     /**
      * Returns Vault.
-     * Resource consolidating common request and response attributes for vaulting PayPal Wallet.
      */
     public function getVault(): ?PaypalWalletVaultInstruction
     {
@@ -57,7 +56,6 @@ class PaypalWalletAttributes implements \JsonSerializable
 
     /**
      * Sets Vault.
-     * Resource consolidating common request and response attributes for vaulting PayPal Wallet.
      *
      * @maps vault
      */

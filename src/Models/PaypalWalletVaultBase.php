@@ -13,7 +13,10 @@ namespace PaypalServerSdkLib\Models;
 use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
-class PaypalWalletVaultInstruction implements \JsonSerializable
+/**
+ * Resource consolidating common request and response attributes for vaulting PayPal Wallet.
+ */
+class PaypalWalletVaultBase implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -31,7 +34,7 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
     private $usagePattern;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $usageType;
 
@@ -44,14 +47,6 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
      * @var bool|null
      */
     private $permitMultiplePaymentTokens = false;
-
-    /**
-     * @param string $usageType
-     */
-    public function __construct(string $usageType)
-    {
-        $this->usageType = $usageType;
-    }
 
     /**
      * Returns Store in Vault.
@@ -119,7 +114,7 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
      * Returns Usage Type.
      * The usage type associated with the PayPal payment token.
      */
-    public function getUsageType(): string
+    public function getUsageType(): ?string
     {
         return $this->usageType;
     }
@@ -128,10 +123,9 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
      * Sets Usage Type.
      * The usage type associated with the PayPal payment token.
      *
-     * @required
      * @maps usage_type
      */
-    public function setUsageType(string $usageType): void
+    public function setUsageType(?string $usageType): void
     {
         $this->usageType = $usageType;
     }
@@ -189,14 +183,14 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
     }
 
     /**
-     * Converts the PaypalWalletVaultInstruction object to a human-readable string representation.
+     * Converts the PaypalWalletVaultBase object to a human-readable string representation.
      *
-     * @return string The string representation of the PaypalWalletVaultInstruction object.
+     * @return string The string representation of the PaypalWalletVaultBase object.
      */
     public function __toString(): string
     {
         return ApiHelper::stringify(
-            'PaypalWalletVaultInstruction',
+            'PaypalWalletVaultBase',
             [
                 'storeInVault' => $this->storeInVault,
                 'description' => $this->description,
@@ -229,7 +223,9 @@ class PaypalWalletVaultInstruction implements \JsonSerializable
         if (isset($this->usagePattern)) {
             $json['usage_pattern']                  = $this->usagePattern;
         }
-        $json['usage_type']                         = $this->usageType;
+        if (isset($this->usageType)) {
+            $json['usage_type']                     = $this->usageType;
+        }
         if (isset($this->customerType)) {
             $json['customer_type']                  = $this->customerType;
         }
