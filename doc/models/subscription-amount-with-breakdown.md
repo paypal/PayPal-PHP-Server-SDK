@@ -1,5 +1,5 @@
 
-# Subscription Amount With Breakdown
+# Subscription Amount with Breakdown
 
 The breakdown details for the amount. Includes the gross, tax, fee, and shipping amounts.
 

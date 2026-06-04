@@ -76,8 +76,8 @@ class VaultCardExperienceContext implements \JsonSerializable
      * localize the error-related strings, such as messages, issues, and suggested actions. The tag is made
      * up of the [ISO 639-2 language code](https://www.loc.gov/standards/iso639-2/php/code_list.php), the
      * optional [ISO-15924 script tag](https://www.unicode.org/iso15924/codelists.html), and the [ISO-3166
-     * alpha-2 country code](/api/rest/reference/country-codes/) or [M49 region code](https://unstats.un.
-     * org/unsd/methodology/m49/).
+     * alpha-2 country code](https://developer.paypal.com/api/rest/reference/country-codes/) or [M49 region
+     * code](https://unstats.un.org/unsd/methodology/m49/).
      */
     public function getLocale(): ?string
     {
@@ -90,8 +90,8 @@ class VaultCardExperienceContext implements \JsonSerializable
      * localize the error-related strings, such as messages, issues, and suggested actions. The tag is made
      * up of the [ISO 639-2 language code](https://www.loc.gov/standards/iso639-2/php/code_list.php), the
      * optional [ISO-15924 script tag](https://www.unicode.org/iso15924/codelists.html), and the [ISO-3166
-     * alpha-2 country code](/api/rest/reference/country-codes/) or [M49 region code](https://unstats.un.
-     * org/unsd/methodology/m49/).
+     * alpha-2 country code](https://developer.paypal.com/api/rest/reference/country-codes/) or [M49 region
+     * code](https://unstats.un.org/unsd/methodology/m49/).
      *
      * @maps locale
      */

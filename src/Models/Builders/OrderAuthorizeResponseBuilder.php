@@ -98,6 +98,17 @@ class OrderAuthorizeResponseBuilder
     }
 
     /**
+     * Sets processing instruction field.
+     *
+     * @param string|null $value
+     */
+    public function processingInstruction(?string $value): self
+    {
+        $this->instance->setProcessingInstruction($value);
+        return $this;
+    }
+
+    /**
      * Sets payer field.
      *
      * @param Payer|null $value

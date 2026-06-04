@@ -29,6 +29,10 @@ Shows details for an authorized payment, by ID.
 function getAuthorizedPayment(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -39,6 +43,8 @@ function getAuthorizedPayment(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows authorization details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
@@ -48,7 +54,21 @@ $collect = [
     'authorizationId' => 'authorization_id8'
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->getAuthorizedPayment($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'PaymentAuthorization:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -70,6 +90,10 @@ Captures an authorized payment, by ID.
 function captureAuthorizedPayment(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -82,6 +106,8 @@ function captureAuthorizedPayment(array $options): ApiResponse
 | `body` | [`?CaptureRequest`](../../doc/models/capture-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows captured payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
@@ -96,7 +122,21 @@ $collect = [
         ->build()
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->captureAuthorizedPayment($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'CapturedPayment:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -121,6 +161,10 @@ Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds a
 function reauthorizePayment(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -133,6 +177,8 @@ function reauthorizePayment(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows the reauthorized payment details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
@@ -143,7 +189,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->reauthorizePayment($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'PaymentAuthorization:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -167,6 +227,10 @@ Voids, or cancels, an authorized payment, by ID. You cannot void an authorized p
 function voidPayment(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -179,6 +243,8 @@ function voidPayment(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows authorization details. This response is returned when the Prefer header is set to return=representation.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`?PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
 ## Example Usage
@@ -189,7 +255,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->voidPayment($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'PaymentAuthorization|null:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -213,6 +293,10 @@ Shows details for a captured payment, by ID.
 function getCapturedPayment(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -221,6 +305,8 @@ function getCapturedPayment(array $options): ApiResponse
 | `paypalMockResponse` | `?string` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows captured payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
@@ -231,7 +317,21 @@ $collect = [
     'captureId' => 'capture_id2'
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->getCapturedPayment($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'CapturedPayment:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -253,6 +353,10 @@ Refunds a captured payment, by ID. For a full refund, include an empty payload i
 function refundCapturedPayment(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -266,6 +370,8 @@ function refundCapturedPayment(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows refund details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
 ## Example Usage
@@ -276,7 +382,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->refundCapturedPayment($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Refund:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -301,6 +421,10 @@ Shows details for a refund, by ID.
 function getRefund(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -311,6 +435,8 @@ function getRefund(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows refund details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
 ## Example Usage
@@ -320,7 +446,21 @@ $collect = [
     'refundId' => 'refund_id4'
 ];
 
+$paymentsController = $client->getPaymentsController();
 $apiResponse = $paymentsController->getRefund($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Refund:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors

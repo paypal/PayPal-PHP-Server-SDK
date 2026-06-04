@@ -24,6 +24,11 @@ class OrderRequest implements \JsonSerializable
     private $intent;
 
     /**
+     * @var string|null
+     */
+    private $processingInstruction;
+
+    /**
      * @var Payer|null
      */
     private $payer;
@@ -74,6 +79,26 @@ class OrderRequest implements \JsonSerializable
     public function setIntent(string $intent): void
     {
         $this->intent = $intent;
+    }
+
+    /**
+     * Returns Processing Instruction.
+     * The instruction to process an order.
+     */
+    public function getProcessingInstruction(): ?string
+    {
+        return $this->processingInstruction;
+    }
+
+    /**
+     * Sets Processing Instruction.
+     * The instruction to process an order.
+     *
+     * @maps processing_instruction
+     */
+    public function setProcessingInstruction(?string $processingInstruction): void
+    {
+        $this->processingInstruction = $processingInstruction;
     }
 
     /**
@@ -184,6 +209,7 @@ class OrderRequest implements \JsonSerializable
             'OrderRequest',
             [
                 'intent' => $this->intent,
+                'processingInstruction' => $this->processingInstruction,
                 'payer' => $this->payer,
                 'purchaseUnits' => $this->purchaseUnits,
                 'paymentSource' => $this->paymentSource,
@@ -204,16 +230,19 @@ class OrderRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['intent']                  = $this->intent;
-        if (isset($this->payer)) {
-            $json['payer']               = $this->payer;
+        $json['intent']                     = $this->intent;
+        if (isset($this->processingInstruction)) {
+            $json['processing_instruction'] = $this->processingInstruction;
         }
-        $json['purchase_units']          = $this->purchaseUnits;
+        if (isset($this->payer)) {
+            $json['payer']                  = $this->payer;
+        }
+        $json['purchase_units']             = $this->purchaseUnits;
         if (isset($this->paymentSource)) {
-            $json['payment_source']      = $this->paymentSource;
+            $json['payment_source']         = $this->paymentSource;
         }
         if (isset($this->applicationContext)) {
-            $json['application_context'] = $this->applicationContext;
+            $json['application_context']    = $this->applicationContext;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

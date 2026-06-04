@@ -44,6 +44,11 @@ class Order implements \JsonSerializable
     private $intent;
 
     /**
+     * @var string|null
+     */
+    private $processingInstruction;
+
+    /**
      * @var Payer|null
      */
     private $payer;
@@ -174,6 +179,26 @@ class Order implements \JsonSerializable
     }
 
     /**
+     * Returns Processing Instruction.
+     * The instruction to process an order.
+     */
+    public function getProcessingInstruction(): ?string
+    {
+        return $this->processingInstruction;
+    }
+
+    /**
+     * Sets Processing Instruction.
+     * The instruction to process an order.
+     *
+     * @maps processing_instruction
+     */
+    public function setProcessingInstruction(?string $processingInstruction): void
+    {
+        $this->processingInstruction = $processingInstruction;
+    }
+
+    /**
      * Returns Payer.
      * DEPRECATED. The customer is also known as the payer. The Payer object was intended to only be used
      * with the `payment_source.paypal` object. In order to make this design more clear, the details in the
@@ -298,6 +323,7 @@ class Order implements \JsonSerializable
                 'id' => $this->id,
                 'paymentSource' => $this->paymentSource,
                 'intent' => $this->intent,
+                'processingInstruction' => $this->processingInstruction,
                 'payer' => $this->payer,
                 'purchaseUnits' => $this->purchaseUnits,
                 'status' => $this->status,
@@ -319,31 +345,34 @@ class Order implements \JsonSerializable
     {
         $json = [];
         if (isset($this->createTime)) {
-            $json['create_time']    = $this->createTime;
+            $json['create_time']            = $this->createTime;
         }
         if (isset($this->updateTime)) {
-            $json['update_time']    = $this->updateTime;
+            $json['update_time']            = $this->updateTime;
         }
         if (isset($this->id)) {
-            $json['id']             = $this->id;
+            $json['id']                     = $this->id;
         }
         if (isset($this->paymentSource)) {
-            $json['payment_source'] = $this->paymentSource;
+            $json['payment_source']         = $this->paymentSource;
         }
         if (isset($this->intent)) {
-            $json['intent']         = $this->intent;
+            $json['intent']                 = $this->intent;
+        }
+        if (isset($this->processingInstruction)) {
+            $json['processing_instruction'] = $this->processingInstruction;
         }
         if (isset($this->payer)) {
-            $json['payer']          = $this->payer;
+            $json['payer']                  = $this->payer;
         }
         if (isset($this->purchaseUnits)) {
-            $json['purchase_units'] = $this->purchaseUnits;
+            $json['purchase_units']         = $this->purchaseUnits;
         }
         if (isset($this->status)) {
-            $json['status']         = $this->status;
+            $json['status']                 = $this->status;
         }
         if (isset($this->links)) {
-            $json['links']          = $this->links;
+            $json['links']                  = $this->links;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;
