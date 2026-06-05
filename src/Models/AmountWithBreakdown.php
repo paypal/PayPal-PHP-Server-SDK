@@ -49,8 +49,8 @@ class AmountWithBreakdown implements \JsonSerializable
 
     /**
      * Returns Currency Code.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      */
     public function getCurrencyCode(): string
     {
@@ -59,8 +59,8 @@ class AmountWithBreakdown implements \JsonSerializable
 
     /**
      * Sets Currency Code.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      *
      * @required
      * @maps currency_code
@@ -74,8 +74,8 @@ class AmountWithBreakdown implements \JsonSerializable
      * Returns Value.
      * The value, which might be: An integer for currencies like `JPY` that are not typically fractional. A
      * decimal fraction for currencies like `TND` that are subdivided into thousandths. For the required
-     * number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-
-     * codes/).
+     * number of decimal places for a currency code, see [Currency Codes](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/).
      */
     public function getValue(): string
     {
@@ -86,8 +86,8 @@ class AmountWithBreakdown implements \JsonSerializable
      * Sets Value.
      * The value, which might be: An integer for currencies like `JPY` that are not typically fractional. A
      * decimal fraction for currencies like `TND` that are subdivided into thousandths. For the required
-     * number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-
-     * codes/).
+     * number of decimal places for a currency code, see [Currency Codes](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/).
      *
      * @required
      * @maps value

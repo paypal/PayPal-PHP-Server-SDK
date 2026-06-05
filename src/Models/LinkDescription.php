@@ -14,7 +14,10 @@ use PaypalServerSdkLib\ApiHelper;
 use stdClass;
 
 /**
- * The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information.
+ * The request-related [HATEOAS link](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+ * information., The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information.,
+ * The request-related [HATEOAS link](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+ * information.
  */
 class LinkDescription implements \JsonSerializable
 {

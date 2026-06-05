@@ -1,5 +1,5 @@
 
-# Phone With Type
+# Phone with Type
 
 The phone information.
 

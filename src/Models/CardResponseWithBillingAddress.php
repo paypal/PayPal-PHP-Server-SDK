@@ -108,8 +108,8 @@ class CardResponseWithBillingAddress implements \JsonSerializable
 
     /**
      * Returns Currency Code.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      */
     public function getCurrencyCode(): ?string
     {
@@ -118,8 +118,8 @@ class CardResponseWithBillingAddress implements \JsonSerializable
 
     /**
      * Sets Currency Code.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      *
      * @maps currency_code
      */

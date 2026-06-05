@@ -30,6 +30,10 @@ Creates an order. Merchants and partners can add Level 2 and 3 data to payments 
 function createOrder(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -43,6 +47,8 @@ function createOrder(array $options): ApiResponse
 | `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
 
 ## Response Type
+
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows order details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -64,7 +70,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->createOrder($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Order:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -85,6 +105,10 @@ Shows details for an order, by ID. Note: For error handling and troubleshooting,
 function getOrder(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -96,6 +120,8 @@ function getOrder(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows order details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
@@ -105,7 +131,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->getOrder($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Order:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -125,6 +165,10 @@ Updates an order with a `CREATED` or `APPROVED` status. You cannot update an ord
 function patchOrder(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -135,6 +179,8 @@ function patchOrder(array $options): ApiResponse
 | `body` | [`?(Patch[])`](../../doc/models/patch.md) | Body, Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with an empty object in the JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -150,7 +196,21 @@ $collect = [
     ]
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->patchOrder($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -172,6 +232,10 @@ Payer confirms their intent to pay for the the Order with the given payment sour
 function confirmOrder(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -184,6 +248,8 @@ function confirmOrder(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request indicates that the payment source was added to the Order. A successful request returns the HTTP `200 OK` status code with a JSON response body that shows order details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
@@ -194,7 +260,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->confirmOrder($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Order:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -216,6 +296,10 @@ Authorizes payment for an order. To successfully authorize payment for an order,
 function authorizeOrder(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -230,6 +314,8 @@ function authorizeOrder(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows authorized payment details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
 
 ## Example Usage
@@ -240,7 +326,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->authorizeOrder($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'OrderAuthorizeResponse:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -264,6 +364,10 @@ Captures payment for an order. To successfully capture payment for an order, the
 function captureOrder(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -278,6 +382,8 @@ function captureOrder(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows captured payment details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
@@ -288,7 +394,21 @@ $collect = [
     'prefer' => 'return=minimal'
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->captureOrder($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Order:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -312,6 +432,10 @@ Adds tracking information for an Order.
 function createOrderTracking(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -321,6 +445,8 @@ function createOrderTracking(array $options): ApiResponse
 | `paypalAuthAssertion` | `?string` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
 
 ## Response Type
+
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows tracker details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -336,7 +462,21 @@ $collect = [
         ->build()
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->createOrderTracking($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Order:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -359,6 +499,10 @@ Updates or cancels the tracking information for a PayPal order, by ID. Updatable
 function updateOrderTracking(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -369,6 +513,8 @@ function updateOrderTracking(array $options): ApiResponse
 | `body` | [`?(Patch[])`](../../doc/models/patch.md) | Body, Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with an empty object in the JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -385,7 +531,21 @@ $collect = [
     ]
 ];
 
+$ordersController = $client->getOrdersController();
 $apiResponse = $ordersController->updateOrderTracking($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors

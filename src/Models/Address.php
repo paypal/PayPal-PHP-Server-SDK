@@ -171,10 +171,10 @@ class Address implements \JsonSerializable
 
     /**
      * Returns Country Code.
-     * The [2-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country or
-     * region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
-     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
-     * price (CUP) method, bank card, and cross-border transactions.
+     * The [2-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/)
+     * that identifies the country or region. Note: The country code for Great Britain is GB and not UK as
+     * used in the top-level domain names for that country. Use the `C2` country code for China worldwide
+     * for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.
      */
     public function getCountryCode(): string
     {
@@ -183,10 +183,10 @@ class Address implements \JsonSerializable
 
     /**
      * Sets Country Code.
-     * The [2-character ISO 3166-1 code](/api/rest/reference/country-codes/) that identifies the country or
-     * region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain
-     * names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled
-     * price (CUP) method, bank card, and cross-border transactions.
+     * The [2-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/)
+     * that identifies the country or region. Note: The country code for Great Britain is GB and not UK as
+     * used in the top-level domain names for that country. Use the `C2` country code for China worldwide
+     * for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.
      *
      * @required
      * @maps country_code
