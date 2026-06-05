@@ -24,6 +24,11 @@ class ConfirmOrderRequest implements \JsonSerializable
     private $paymentSource;
 
     /**
+     * @var string|null
+     */
+    private $processingInstruction;
+
+    /**
      * @var OrderConfirmApplicationContext|null
      */
     private $applicationContext;
@@ -58,6 +63,26 @@ class ConfirmOrderRequest implements \JsonSerializable
     }
 
     /**
+     * Returns Processing Instruction.
+     * The instruction to process an order.
+     */
+    public function getProcessingInstruction(): ?string
+    {
+        return $this->processingInstruction;
+    }
+
+    /**
+     * Sets Processing Instruction.
+     * The instruction to process an order.
+     *
+     * @maps processing_instruction
+     */
+    public function setProcessingInstruction(?string $processingInstruction): void
+    {
+        $this->processingInstruction = $processingInstruction;
+    }
+
+    /**
      * Returns Application Context.
      * Customizes the payer confirmation experience.
      */
@@ -86,7 +111,11 @@ class ConfirmOrderRequest implements \JsonSerializable
     {
         return ApiHelper::stringify(
             'ConfirmOrderRequest',
-            ['paymentSource' => $this->paymentSource, 'applicationContext' => $this->applicationContext]
+            [
+                'paymentSource' => $this->paymentSource,
+                'processingInstruction' => $this->processingInstruction,
+                'applicationContext' => $this->applicationContext
+            ]
         );
     }
 
@@ -102,9 +131,12 @@ class ConfirmOrderRequest implements \JsonSerializable
     public function jsonSerialize(bool $asArrayWhenEmpty = false)
     {
         $json = [];
-        $json['payment_source']          = $this->paymentSource;
+        $json['payment_source']             = $this->paymentSource;
+        if (isset($this->processingInstruction)) {
+            $json['processing_instruction'] = $this->processingInstruction;
+        }
         if (isset($this->applicationContext)) {
-            $json['application_context'] = $this->applicationContext;
+            $json['application_context']    = $this->applicationContext;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

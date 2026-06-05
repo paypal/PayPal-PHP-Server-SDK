@@ -1,5 +1,5 @@
 
-# Shipping With Tracking Details
+# Shipping with Tracking Details
 
 ## Structure
 

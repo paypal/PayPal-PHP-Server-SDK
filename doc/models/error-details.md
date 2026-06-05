@@ -15,7 +15,7 @@ The error details. Required for client-side `4XX` errors.
 | `value` | `?string` | Optional | The value of the field that caused the error. | getValue(): ?string | setValue(?string value): void |
 | `location` | `?string` | Optional | The location of the field that caused the error. Value is `body`, `path`, or `query`.<br><br>**Default**: `'body'` | getLocation(): ?string | setLocation(?string location): void |
 | `issue` | `string` | Required | The unique, fine-grained application-level error code. | getIssue(): string | setIssue(string issue): void |
-| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links) that are either relevant to the issue by providing additional information or offering potential resolutions.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `4` | getLinks(): ?array | setLinks(?array links): void |
+| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-links) that are either relevant to the issue by providing additional information or offering potential resolutions.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `4` | getLinks(): ?array | setLinks(?array links): void |
 | `description` | `?string` | Optional | The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value. | getDescription(): ?string | setDescription(?string description): void |
 
 ## Example (as JSON)

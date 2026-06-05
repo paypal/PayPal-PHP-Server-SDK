@@ -35,8 +35,8 @@ class ExchangeRate implements \JsonSerializable
 
     /**
      * Returns Source Currency.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      */
     public function getSourceCurrency(): ?string
     {
@@ -45,8 +45,8 @@ class ExchangeRate implements \JsonSerializable
 
     /**
      * Sets Source Currency.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      *
      * @maps source_currency
      */
@@ -57,8 +57,8 @@ class ExchangeRate implements \JsonSerializable
 
     /**
      * Returns Target Currency.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      */
     public function getTargetCurrency(): ?string
     {
@@ -67,8 +67,8 @@ class ExchangeRate implements \JsonSerializable
 
     /**
      * Sets Target Currency.
-     * The [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) that identifies
-     * the currency.
+     * The [three-character ISO-4217 currency code](https://developer.paypal.
+     * com/api/rest/reference/currency-codes/) that identifies the currency.
      *
      * @maps target_currency
      */

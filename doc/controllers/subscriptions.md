@@ -39,6 +39,10 @@ Creates a plan that defines pricing and billing cycle details for subscriptions.
 function createBillingPlan(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -48,6 +52,8 @@ function createBillingPlan(array $options): ApiResponse
 | `body` | [`?PlanRequest`](../../doc/models/plan-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows billing plan details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`BillingPlan`](../../doc/models/billing-plan.md).
 
@@ -83,7 +89,21 @@ $collect = [
         ->build()
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->createBillingPlan($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'BillingPlan:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -106,6 +126,10 @@ Lists billing plans.
 function listBillingPlans(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -117,6 +141,8 @@ function listBillingPlans(array $options): ApiResponse
 | `totalRequired` | `?bool` | Query, Optional | Indicates whether to show the total count in the response.<br><br>**Default**: `false` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that lists billing plans.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`PlanCollection`](../../doc/models/plan-collection.md).
 
@@ -130,7 +156,21 @@ $collect = [
     'totalRequired' => false
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->listBillingPlans($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'PlanCollection:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -153,6 +193,10 @@ Shows details for a plan, by ID.
 function getBillingPlan(string $id): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -161,6 +205,8 @@ function getBillingPlan(string $id): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows plan details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`BillingPlan`](../../doc/models/billing-plan.md).
 
 ## Example Usage
@@ -168,7 +214,21 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 ```php
 $id = 'id0';
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->getBillingPlan($id);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'BillingPlan:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -190,6 +250,10 @@ Updates a plan with the `CREATED` or `ACTIVE` status. For an `INACTIVE` plan, yo
 function patchBillingPlan(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -198,6 +262,8 @@ function patchBillingPlan(array $options): ApiResponse
 | `body` | [`?(Patch[])`](../../doc/models/patch.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -213,7 +279,21 @@ $collect = [
     ]
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->patchBillingPlan($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -237,6 +317,10 @@ Activates a plan, by ID.
 function activateBillingPlan(string $id): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -245,6 +329,8 @@ function activateBillingPlan(string $id): ApiResponse
 
 ## Response Type
 
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
 ## Example Usage
@@ -252,7 +338,21 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 ```php
 $id = 'id0';
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->activateBillingPlan($id);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -275,6 +375,10 @@ Deactivates a plan, by ID.
 function deactivateBillingPlan(string $id): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -283,6 +387,8 @@ function deactivateBillingPlan(string $id): ApiResponse
 
 ## Response Type
 
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
 ## Example Usage
@@ -290,7 +396,21 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 ```php
 $id = 'id0';
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->deactivateBillingPlan($id);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -313,6 +433,10 @@ Updates pricing for a plan. For example, you can update a regular billing cycle 
 function updateBillingPlanPricingSchemes(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -321,6 +445,8 @@ function updateBillingPlanPricingSchemes(array $options): ApiResponse
 | `body` | [`?UpdatePricingSchemesRequest`](../../doc/models/update-pricing-schemes-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -339,7 +465,21 @@ $collect = [
     )->build()
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->updateBillingPlanPricingSchemes($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -363,6 +503,10 @@ Creates a subscription.
 function createSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -373,6 +517,8 @@ function createSubscription(array $options): ApiResponse
 | `body` | [`?CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Subscription`](../../doc/models/subscription.md).
 
@@ -388,7 +534,21 @@ $collect = [
         ->build()
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->createSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Subscription:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -411,6 +571,10 @@ List all subscriptions for merchant account.
 function listSubscriptions(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -428,6 +592,8 @@ function listSubscriptions(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that lists the subscriptions.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`SubscriptionCollection`](../../doc/models/subscription-collection.md).
 
 ## Example Usage
@@ -438,7 +604,21 @@ $collect = [
     'page' => 1
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->listSubscriptions($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'SubscriptionCollection:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -460,6 +640,10 @@ Shows details for a subscription, by ID.
 function getSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -468,6 +652,8 @@ function getSubscription(array $options): ApiResponse
 | `fields` | `?string` | Query, Optional | List of fields that are to be returned in the response. Possible value for fields are last_failed_payment and plan.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `100` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`Subscription`](../../doc/models/subscription.md).
 
@@ -478,7 +664,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->getSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'Subscription:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -500,6 +700,10 @@ Updates a subscription which could be in ACTIVE or SUSPENDED status. You can ove
 function patchSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -508,6 +712,8 @@ function patchSubscription(array $options): ApiResponse
 | `body` | [`?(Patch[])`](../../doc/models/patch.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -523,7 +729,21 @@ $collect = [
     ]
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->patchSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -547,6 +767,10 @@ Updates the quantity of the product or service in a subscription. You can also u
 function reviseSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -555,6 +779,8 @@ function reviseSubscription(array $options): ApiResponse
 | `body` | [`?ModifySubscriptionRequest`](../../doc/models/modify-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`ModifySubscriptionResponse`](../../doc/models/modify-subscription-response.md).
 
@@ -565,7 +791,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->reviseSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'ModifySubscriptionResponse:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -589,6 +829,10 @@ Suspends the subscription.
 function suspendSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -597,6 +841,8 @@ function suspendSubscription(array $options): ApiResponse
 | `body` | [`?SuspendSubscription`](../../doc/models/suspend-subscription.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -607,7 +853,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->suspendSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -631,6 +891,10 @@ Cancels the subscription.
 function cancelSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -639,6 +903,8 @@ function cancelSubscription(array $options): ApiResponse
 | `body` | [`?CancelSubscriptionRequest`](../../doc/models/cancel-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -649,7 +915,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->cancelSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -673,6 +953,10 @@ Activates the subscription.
 function activateSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -681,6 +965,8 @@ function activateSubscription(array $options): ApiResponse
 | `body` | [`?ActivateSubscriptionRequest`](../../doc/models/activate-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -691,7 +977,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->activateSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'void:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -715,6 +1015,10 @@ Captures an authorized payment from the subscriber on the subscription.
 function captureSubscription(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -725,6 +1029,8 @@ function captureSubscription(array $options): ApiResponse
 
 ## Response Type
 
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
+
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`?SubscriptionTransactionDetails`](../../doc/models/subscription-transaction-details.md).
 
 ## Example Usage
@@ -734,7 +1040,21 @@ $collect = [
     'id' => 'id0'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->captureSubscription($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'SubscriptionTransactionDetails|null:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors
@@ -758,6 +1078,10 @@ Lists transactions for a subscription.
 function listSubscriptionTransactions(array $options): ApiResponse
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -767,6 +1091,8 @@ function listSubscriptionTransactions(array $options): ApiResponse
 | `endTime` | `string` | Query, Required | The end time of the range of transactions to list.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `getResult()` method on this instance returns the response data which is of type [`TransactionsList`](../../doc/models/transactions-list.md).
 
@@ -779,7 +1105,21 @@ $collect = [
     'endTime' => 'end_time2'
 ];
 
+$subscriptionsController = $client->getSubscriptionsController();
 $apiResponse = $subscriptionsController->listSubscriptionTransactions($collect);
+
+// Extracting response status code
+var_dump($apiResponse->getStatusCode());
+// Extracting response headers
+var_dump($apiResponse->getHeaders());
+
+if ($apiResponse->isSuccess()) {
+    echo 'TransactionsList:';
+    var_dump($apiResponse->getResult());
+} else {
+    $error = $apiResponse->getResult();
+    var_dump($error);
+}
 ```
 
 ## Errors

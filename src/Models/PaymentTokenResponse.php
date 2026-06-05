@@ -102,7 +102,7 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Returns Links.
-     * An array of related [HATEOAS links](/api/rest/responses/#hateoas).
+     * An array of related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas).
      *
      * @return LinkDescription[]|null
      */
@@ -113,7 +113,7 @@ class PaymentTokenResponse implements \JsonSerializable
 
     /**
      * Sets Links.
-     * An array of related [HATEOAS links](/api/rest/responses/#hateoas).
+     * An array of related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas).
      *
      * @maps links
      *

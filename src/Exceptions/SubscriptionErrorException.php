@@ -178,7 +178,8 @@ class SubscriptionErrorException extends ApiException
 
     /**
      * Returns Links.
-     * An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).
+     * An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-
+     * links).
      *
      * @return \PaypalServerSdkLib\Models\LinkDescription[]|null
      */
@@ -189,7 +190,8 @@ class SubscriptionErrorException extends ApiException
 
     /**
      * Sets Links.
-     * An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).
+     * An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-
+     * links).
      *
      * @maps links
      *

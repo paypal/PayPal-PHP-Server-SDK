@@ -245,7 +245,8 @@ class SearchResponse implements \JsonSerializable
 
     /**
      * Returns Links.
-     * An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).
+     * An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-
+     * links).
      *
      * @return LinkDescription[]|null
      */
@@ -256,7 +257,8 @@ class SearchResponse implements \JsonSerializable
 
     /**
      * Sets Links.
-     * An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links).
+     * An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-
+     * links).
      *
      * @maps links
      *

@@ -14,9 +14,9 @@ The error details.
 | `name` | `string` | Required | The human-readable, unique name of the error. | getName(): string | setName(string name): void |
 | `message` | `string` | Required | The message that describes the error. | getMessage(): string | setMessage(string message): void |
 | `debugId` | `string` | Required | The PayPal internal ID. Used for correlation purposes. | getDebugId(): string | setDebugId(string debugId): void |
-| `informationLink` | `?string` | Optional | The information link, or URI, that shows detailed information about this error for the developer. | getInformationLink(): ?string | setInformationLink(?string informationLink): void |
+| `informationLink` | `?string` | Optional, Read-only | The information link, or URI, that shows detailed information about this error for the developer. | getInformationLink(): ?string | setInformationLink(?string informationLink): void |
 | `details` | [`?(ErrorDetails[])`](../../doc/models/error-details.md) | Optional | An array of additional details about the error. | getDetails(): ?array | setDetails(?array details): void |
-| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional | An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). | getLinks(): ?array | setLinks(?array links): void |
+| `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-links). | getLinks(): ?array | setLinks(?array links): void |
 
 ## Example (as JSON)
 

@@ -1,3 +1,9 @@
+## 2.3.0
+- New Features:
+  - Adds `processing_instruction` field to order models.
+- Bug Fixes:
+  - Fixes URLs for documentation
+
 ## 2.2.0
 - Bug Fixes:
   - Add missing `email_address` & `payer_id` field to `Subscriber Response Information`

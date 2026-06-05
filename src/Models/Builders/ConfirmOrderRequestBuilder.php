@@ -43,6 +43,17 @@ class ConfirmOrderRequestBuilder
     }
 
     /**
+     * Sets processing instruction field.
+     *
+     * @param string|null $value
+     */
+    public function processingInstruction(?string $value): self
+    {
+        $this->instance->setProcessingInstruction($value);
+        return $this;
+    }
+
+    /**
      * Sets application context field.
      *
      * @param OrderConfirmApplicationContext|null $value
