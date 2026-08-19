@@ -14,12 +14,11 @@ The processor response information for payment requests, such as direct credit c
 | `avsCode` | [`?string(AvsCode)`](../../doc/models/avs-code.md) | Optional, Read-only | The address verification code for Visa, Discover, Mastercard, or American Express transactions. | getAvsCode(): ?string | setAvsCode(?string avsCode): void |
 | `cvvCode` | [`?string(CvvCode)`](../../doc/models/cvv-code.md) | Optional, Read-only | The card verification value code for for Visa, Discover, Mastercard, or American Express. | getCvvCode(): ?string | setCvvCode(?string cvvCode): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "avs_code": "E",
-  "cvv_code": "All others"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardVerificationProcessorResponseBuilder;
+
+$cardVerificationProcessorResponse = CardVerificationProcessorResponseBuilder::init()->build();
 ```
 

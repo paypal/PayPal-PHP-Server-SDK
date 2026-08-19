@@ -13,11 +13,14 @@ The details of the captured payment status.
 |  --- | --- | --- | --- | --- | --- |
 | `reason` | [`?string(CaptureIncompleteReason)`](../../doc/models/capture-incomplete-reason.md) | Optional | The reason why the captured payment status is `PENDING` or `DENIED`.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64`, *Pattern*: `^[A-Z_]+$` | getReason(): ?string | setReason(?string reason): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "BUYER_COMPLAINT"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CaptureStatusDetailsBuilder;
+use PaypalServerSdkLib\Models\CaptureIncompleteReason;
+
+$captureStatusDetails = CaptureStatusDetailsBuilder::init()
+    ->reason(CaptureIncompleteReason::RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION)
+    ->build();
 ```
 

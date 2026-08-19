@@ -19,35 +19,41 @@ The detailed breakdown of the capture activity. This is not available for transa
 | `exchangeRate` | [`?ExchangeRate`](../../doc/models/exchange-rate.md) | Optional, Read-only | The exchange rate that determines the amount to convert from one currency to another currency. | getExchangeRate(): ?ExchangeRate | setExchangeRate(?ExchangeRate exchangeRate): void |
 | `platformFees` | [`?(PlatformFee[])`](../../doc/models/platform-fee.md) | Optional | An array of platform or partner fees, commissions, or brokerage fees that associated with the captured payment.<br><br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `1` | getPlatformFees(): ?array | setPlatformFees(?array platformFees): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gross_amount": {
-    "currency_code": "currency_code4",
-    "value": "value0"
-  },
-  "paypal_fee": {
-    "currency_code": "currency_code4",
-    "value": "value2"
-  },
-  "paypal_fee_in_receivable_currency": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "net_amount": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  },
-  "receivable_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "exchange_rate": {
-    "source_currency": "source_currency4",
-    "target_currency": "target_currency6",
-    "value": "value6"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SellerReceivableBreakdownBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$sellerReceivableBreakdown = SellerReceivableBreakdownBuilder::init(
+    MoneyBuilder::init(
+        'currency_code4',
+        'value0'
+    )->build()
+)
+    ->paypalFee(
+        MoneyBuilder::init(
+            'currency_code4',
+            'value2'
+        )->build()
+    )
+    ->paypalFeeInReceivableCurrency(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value8'
+        )->build()
+    )
+    ->netAmount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value2'
+        )->build()
+    )
+    ->receivableAmount(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value8'
+        )->build()
+    )->build();
 ```
 

@@ -16,39 +16,42 @@ The details about a saved Card payment source.
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` | getLinks(): ?array | setLinks(?array links): void |
 | `customer` | [`?CardCustomerInformation`](../../doc/models/card-customer-information.md) | Optional | The details about a customer in PayPal's system of record. | getCustomer(): ?CardCustomerInformation | setCustomer(?CardCustomerInformation customer): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "status": "VAULTED",
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ],
-  "customer": {
-    "id": "id0",
-    "email_address": "email_address2",
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "merchant_customer_id": "merchant_customer_id2"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardVaultResponseBuilder;
+use PaypalServerSdkLib\Models\VaultStatus;
+use PaypalServerSdkLib\Models\Builders\CardCustomerInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+
+$cardVaultResponse = CardVaultResponseBuilder::init()
+    ->id('id0')
+    ->status(VaultStatus::VAULTED)
+    ->customer(
+        CardCustomerInformationBuilder::init()
+            ->id('id0')
+            ->emailAddress('email_address2')
+            ->phone(
+                PhoneWithTypeBuilder::init(
+                    PhoneNumberBuilder::init(
+                        'national_number6'
+                    )->build()
+                )
+                    ->phoneType(PhoneType::OTHER)
+                    ->build()
+            )
+            ->name(
+                NameBuilder::init()
+                    ->givenName('given_name2')
+                    ->surname('surname8')
+                    ->build()
+            )
+            ->merchantCustomerId('merchant_customer_id2')
+            ->build()
+    )
+    ->build();
 ```
 

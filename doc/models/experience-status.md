@@ -16,3 +16,11 @@ This field indicates the status of PayPal's Checkout experience throughout the o
 | `CANCELED` | PayPal checkout is canceled (by closing the checkout window or clicking cancel) before the order approval. |
 | `APPROVED` | Order is approved. User has completed the checkout process. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\ExperienceStatus;
+
+$experienceStatus = ExperienceStatus::CANCELED;
+```
+

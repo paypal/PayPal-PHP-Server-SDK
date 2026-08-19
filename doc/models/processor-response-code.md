@@ -166,3 +166,11 @@ Processor response code for the non-PayPal payment processor errors.
 | `RESPONSE_PPVE` | VALIDATION_ERROR. |
 | `RESPONSE_PPVT` | VIRTUAL_TERMINAL_UNSUPPORTED. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\ProcessorResponseCode;
+
+$processorResponseCode = ProcessorResponseCode::RESPONSE_PPD3;
+```
+

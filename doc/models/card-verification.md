@@ -13,11 +13,14 @@ The API caller can opt in to verify the card through PayPal offered verification
 |  --- | --- | --- | --- | --- | --- |
 | `method` | [`?string(OrdersCardVerificationMethod)`](../../doc/models/orders-card-verification-method.md) | Optional | The method used for card verification.<br><br>**Default**: `OrdersCardVerificationMethod::SCA_WHEN_REQUIRED`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getMethod(): ?string | setMethod(?string method): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "method": "SCA_WHEN_REQUIRED"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardVerificationBuilder;
+use PaypalServerSdkLib\Models\OrdersCardVerificationMethod;
+
+$cardVerification = CardVerificationBuilder::init()
+    ->method(OrdersCardVerificationMethod::SCA_WHEN_REQUIRED)
+    ->build();
 ```
 

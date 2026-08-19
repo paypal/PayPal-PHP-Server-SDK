@@ -15,16 +15,20 @@ The charge amount from the subscriber.
 | `captureType` | [`string(CaptureType)`](../../doc/models/capture-type.md) | Required | The type of capture.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `24`, *Pattern*: `^[A-Z_]+$` | getCaptureType(): string | setCaptureType(string captureType): void |
 | `amount` | [`Money`](../../doc/models/money.md) | Required | The currency and amount for a financial transaction, such as a balance or payment due. | getAmount(): Money | setAmount(Money amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "note": "note4",
-  "capture_type": "OUTSTANDING_BALANCE",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CaptureSubscriptionRequestBuilder;
+use PaypalServerSdkLib\Models\CaptureType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$captureSubscriptionRequest = CaptureSubscriptionRequestBuilder::init(
+    'note2',
+    CaptureType::OUTSTANDING_BALANCE,
+    MoneyBuilder::init(
+        'currency_code6',
+        'value0'
+    )->build()
+)->build();
 ```
 

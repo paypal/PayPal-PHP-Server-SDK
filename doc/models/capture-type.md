@@ -13,3 +13,11 @@ The type of capture.
 |  --- | --- |
 | `OUTSTANDING_BALANCE` | The outstanding balance that the subscriber must clear. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\CaptureType;
+
+$captureType = CaptureType::OUTSTANDING_BALANCE;
+```
+

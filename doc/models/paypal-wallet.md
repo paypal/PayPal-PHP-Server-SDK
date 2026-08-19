@@ -23,23 +23,34 @@ A resource that identifies a PayPal Wallet is used for payment.
 | `billingAgreementId` | `?string` | Optional | The PayPal billing agreement ID. References an approved recurring payment for goods or services.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `128`, *Pattern*: `^[a-zA-Z0-9-]+$` | getBillingAgreementId(): ?string | setBillingAgreementId(?string billingAgreementId): void |
 | `storedCredential` | [`?PaypalWalletStoredCredential`](../../doc/models/paypal-wallet-stored-credential.md) | Optional | Provides additional details to process a payment using the PayPal wallet billing agreement or a vaulted payment method that has been stored or is intended to be stored. | getStoredCredential(): ?PaypalWalletStoredCredential | setStoredCredential(?PaypalWalletStoredCredential storedCredential): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "vault_id": "vault_id8",
-  "email_address": "email_address8",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "phone": {
-    "phone_type": "OTHER",
-    "phone_number": {
-      "national_number": "national_number6"
-    }
-  },
-  "birth_date": "birth_date4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaypalWalletBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+
+$paypalWallet = PaypalWalletBuilder::init()
+    ->vaultId('vault_id4')
+    ->emailAddress('email_address6')
+    ->name(
+        NameBuilder::init()
+            ->givenName('given_name2')
+            ->surname('surname8')
+            ->build()
+    )
+    ->phone(
+        PhoneWithTypeBuilder::init(
+            PhoneNumberBuilder::init(
+                'national_number6'
+            )->build()
+        )
+            ->phoneType(PhoneType::OTHER)
+            ->build()
+    )
+    ->birthDate('birth_date8')
+    ->build();
 ```
 

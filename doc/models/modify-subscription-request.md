@@ -18,49 +18,78 @@ The request to update the quantity of the product or service in a subscription. 
 | `applicationContext` | [`?SubscriptionPatchApplicationContext`](../../doc/models/subscription-patch-application-context.md) | Optional | The application context, which customizes the payer experience during the subscription approval process with PayPal. | getApplicationContext(): ?SubscriptionPatchApplicationContext | setApplicationContext(?SubscriptionPatchApplicationContext applicationContext): void |
 | `plan` | [`?PlanOverride`](../../doc/models/plan-override.md) | Optional | An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. | getPlan(): ?PlanOverride | setPlan(?PlanOverride plan): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id6",
-  "quantity": "quantity0",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
-    ]
-  },
-  "application_context": {
-    "brand_name": "brand_name8",
-    "locale": "locale2",
-    "shipping_preference": "SET_PROVIDED_ADDRESS",
-    "payment_method": {
-      "payee_preferred": "UNRESTRICTED"
-    },
-    "return_url": "return_url0",
-    "cancel_url": "cancel_url2"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ModifySubscriptionRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\FulfillmentType;
+use PaypalServerSdkLib\Models\Builders\ShippingOptionBuilder;
+use PaypalServerSdkLib\Models\ShippingType;
+use PaypalServerSdkLib\Models\Builders\SubscriptionPatchApplicationContextBuilder;
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+use PaypalServerSdkLib\Models\Builders\PaymentMethodBuilder;
+use PaypalServerSdkLib\Models\PayeePaymentMethodPreference;
+
+$modifySubscriptionRequest = ModifySubscriptionRequestBuilder::init()
+    ->planId('plan_id0')
+    ->quantity('quantity4')
+    ->shippingAmount(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )
+    ->shippingAddress(
+        ShippingDetailsBuilder::init()
+            ->name(
+                ShippingNameBuilder::init()
+                    ->fullName('full_name6')
+                    ->build()
+            )
+            ->emailAddress('email_address8')
+            ->phoneNumber(
+                PhoneNumberWithCountryCodeBuilder::init(
+                    'country_code2',
+                    'national_number6'
+                )->build()
+            )
+            ->type(FulfillmentType::PICKUP_IN_STORE)
+            ->options(
+                [
+                    ShippingOptionBuilder::init(
+                        'id2',
+                        'label2',
+                        false
+                    )
+                        ->type(ShippingType::SHIPPING)
+                        ->amount(
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )->build()
+                ]
+            )->build()
+    )
+    ->applicationContext(
+        SubscriptionPatchApplicationContextBuilder::init(
+            'return_url0',
+            'cancel_url2'
+        )
+            ->brandName('brand_name8')
+            ->locale('locale2')
+            ->shippingPreference(ExperienceContextShippingPreference::SET_PROVIDED_ADDRESS)
+            ->paymentMethod(
+                PaymentMethodBuilder::init()
+                    ->payeePreferred(PayeePaymentMethodPreference::UNRESTRICTED)
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

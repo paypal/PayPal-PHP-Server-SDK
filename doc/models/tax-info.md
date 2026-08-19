@@ -14,12 +14,15 @@ The tax ID of the customer. The customer is also known as the payer. Both `tax_i
 | `taxId` | `string` | Required | The customer's tax ID value.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `14`, *Pattern*: `([a-zA-Z0-9])` | getTaxId(): string | setTaxId(string taxId): void |
 | `taxIdType` | [`string(TaxIdType)`](../../doc/models/tax-id-type.md) | Required | The customer's tax ID type.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `14`, *Pattern*: `^[A-Z0-9_]+$` | getTaxIdType(): string | setTaxIdType(string taxIdType): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "tax_id": "tax_id0",
-  "tax_id_type": "BR_CPF"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\TaxInfoBuilder;
+use PaypalServerSdkLib\Models\TaxIdType;
+
+$taxInfo = TaxInfoBuilder::init(
+    'tax_id6',
+    TaxIdType::BR_CPF
+)->build();
 ```
 

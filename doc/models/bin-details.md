@@ -16,18 +16,22 @@ Bank Identification Number (BIN) details used to fund a payment.
 | `binCountryCode` | `?string` | Optional | The [two-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` | getBinCountryCode(): ?string | setBinCountryCode(?string binCountryCode): void |
 | `products` | `?(string[])` | Optional | The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `256`, *Minimum Length*: `1`, *Maximum Length*: `255` | getProducts(): ?array | setProducts(?array products): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "bin": "bin0",
-  "issuing_bank": "issuing_bank0",
-  "bin_country_code": "bin_country_code4",
-  "products": [
-    "products8",
-    "products9",
-    "products0"
-  ]
-}
+```php
+use PaypalServerSdkLib\Models\Builders\BinDetailsBuilder;
+
+$binDetails = BinDetailsBuilder::init()
+    ->bin('bin2')
+    ->issuingBank('issuing_bank2')
+    ->binCountryCode('bin_country_code6')
+    ->products(
+        [
+            'products0',
+            'products1',
+            'products2'
+        ]
+    )
+    ->build();
 ```
 

@@ -18,18 +18,26 @@ The application context, which customizes the payer experience during the subscr
 | `returnUrl` | `string` | Required | The URL where the customer is redirected after the customer approves the payment.<br><br>**Constraints**: *Minimum Length*: `10`, *Maximum Length*: `4000` | getReturnUrl(): string | setReturnUrl(string returnUrl): void |
 | `cancelUrl` | `string` | Required | The URL where the customer is redirected after the customer cancels the payment.<br><br>**Constraints**: *Minimum Length*: `10`, *Maximum Length*: `4000` | getCancelUrl(): string | setCancelUrl(string cancelUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "return_url": "return_url4",
-  "cancel_url": "cancel_url8",
-  "brand_name": "brand_name4",
-  "locale": "locale8",
-  "payment_method": {
-    "payee_preferred": "UNRESTRICTED"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionPatchApplicationContextBuilder;
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+use PaypalServerSdkLib\Models\Builders\PaymentMethodBuilder;
+use PaypalServerSdkLib\Models\PayeePaymentMethodPreference;
+
+$subscriptionPatchApplicationContext = SubscriptionPatchApplicationContextBuilder::init(
+    'return_url0',
+    'cancel_url2'
+)
+    ->brandName('brand_name8')
+    ->locale('locale2')
+    ->shippingPreference(ExperienceContextShippingPreference::GET_FROM_FILE)
+    ->paymentMethod(
+        PaymentMethodBuilder::init()
+            ->payeePreferred(PayeePaymentMethodPreference::UNRESTRICTED)
+            ->build()
+    )
+    ->build();
 ```
 

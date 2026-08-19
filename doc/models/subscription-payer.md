@@ -15,16 +15,21 @@ The customer who approves and pays for the order. The customer is also known as 
 | `payerId` | `?string` | Optional | The account identifier for a PayPal account.<br><br>**Constraints**: *Minimum Length*: `13`, *Maximum Length*: `13`, *Pattern*: `^[2-9A-HJ-NP-Z]{13}$` | getPayerId(): ?string | setPayerId(?string payerId): void |
 | `name` | [`?Name`](../../doc/models/name.md) | Optional | The name of the party. | getName(): ?Name | setName(?Name name): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address4",
-  "payer_id": "payer_id4",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionPayerBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+
+$subscriptionPayer = SubscriptionPayerBuilder::init()
+    ->emailAddress('email_address8')
+    ->payerId('payer_id8')
+    ->name(
+        NameBuilder::init()
+            ->givenName('given_name2')
+            ->surname('surname8')
+            ->build()
+    )
+    ->build();
 ```
 

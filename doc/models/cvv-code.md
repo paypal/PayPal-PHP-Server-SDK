@@ -26,3 +26,11 @@ The card verification value code for for Visa, Discover, Mastercard, or American
 | `CVV_3` | For Maestro, the merchant has indicated that CVV2 is not present on card. |
 | `CVV_4` | For Maestro, the service is not available. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\CvvCode;
+
+$cvvCode = CvvCode::CVV_P;
+```
+

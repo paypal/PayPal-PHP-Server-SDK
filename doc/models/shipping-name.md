@@ -13,11 +13,13 @@ The name of the party.
 |  --- | --- | --- | --- | --- | --- |
 | `fullName` | `?string` | Optional | When the party is a person, the party's full name.<br><br>**Constraints**: *Maximum Length*: `300` | getFullName(): ?string | setFullName(?string fullName): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "full_name": "full_name6"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+
+$shippingName = ShippingNameBuilder::init()
+    ->fullName('full_name8')
+    ->build();
 ```
 

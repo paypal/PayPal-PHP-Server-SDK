@@ -15,13 +15,17 @@ Results of 3D Secure Authentication.
 | `enrollmentStatus` | [`?string(EnrollmentStatus)`](../../doc/models/enrollment-status.md) | Optional | Status of Authentication eligibility.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getEnrollmentStatus(): ?string | setEnrollmentStatus(?string enrollmentStatus): void |
 | `authenticationId` | `?string` | Optional | The externally received 3ds authentication id, to be returned in card detokenization response.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9a-zA-Z_-]+$` | getAuthenticationId(): ?string | setAuthenticationId(?string authenticationId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "authentication_status": "D",
-  "enrollment_status": "U",
-  "authentication_id": "authentication_id2"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ThreeDSecureCardAuthenticationResponseBuilder;
+use PaypalServerSdkLib\Models\PaResStatus;
+use PaypalServerSdkLib\Models\EnrollmentStatus;
+
+$threeDSecureCardAuthenticationResponse = ThreeDSecureCardAuthenticationResponseBuilder::init()
+    ->authenticationStatus(PaResStatus::UNABLETOCOMPLETEAUTHENTICATION)
+    ->enrollmentStatus(EnrollmentStatus::UNAVAILABLE)
+    ->authenticationId('authentication_id4')
+    ->build();
 ```
 

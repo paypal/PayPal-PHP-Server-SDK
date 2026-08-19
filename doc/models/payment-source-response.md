@@ -26,49 +26,70 @@ The payment source used to fund the payment.
 | `googlePay` | [`?GooglePayWalletResponse`](../../doc/models/google-pay-wallet-response.md) | Optional | Google Pay Wallet payment data. | getGooglePay(): ?GooglePayWalletResponse | setGooglePay(?GooglePayWalletResponse googlePay): void |
 | `venmo` | [`?VenmoWalletResponse`](../../doc/models/venmo-wallet-response.md) | Optional | Venmo wallet response. | getVenmo(): ?VenmoWalletResponse | setVenmo(?VenmoWalletResponse venmo): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "last_digits": "last_digits0",
-    "brand": "CB_NATIONALE",
-    "available_networks": [
-      "DELTA"
-    ],
-    "type": "UNKNOWN"
-  },
-  "paypal": {
-    "email_address": "email_address0",
-    "account_id": "account_id4",
-    "account_status": "VERIFIED",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "phone_type": "FAX"
-  },
-  "bancontact": {
-    "name": "name0",
-    "country_code": "country_code0",
-    "bic": "bic2",
-    "iban_last_chars": "iban_last_chars8",
-    "card_last_digits": "card_last_digits4"
-  },
-  "blik": {
-    "name": "name2",
-    "country_code": "country_code2",
-    "email": "email4",
-    "one_click": {
-      "consumer_reference": "consumer_reference2"
-    }
-  },
-  "eps": {
-    "name": "name6",
-    "country_code": "country_code6",
-    "bic": "bic8"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaymentSourceResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\CardResponseBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\PaypalWalletResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\BancontactPaymentObjectBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikPaymentObjectBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikOneClickPaymentObjectBuilder;
+use PaypalServerSdkLib\Models\Builders\EpsPaymentObjectBuilder;
+
+$paymentSourceResponse = PaymentSourceResponseBuilder::init()
+    ->card(
+        CardResponseBuilder::init()
+            ->name('name6')
+            ->brand(CardBrand::CB_NATIONALE)
+            ->type(CardType::UNKNOWN)
+            ->build()
+    )
+    ->paypal(
+        PaypalWalletResponseBuilder::init()
+            ->emailAddress('email_address0')
+            ->accountId('account_id4')
+            ->name(
+                NameBuilder::init()
+                    ->givenName('given_name2')
+                    ->surname('surname8')
+                    ->build()
+            )
+            ->phoneType(PhoneType::FAX)
+            ->build()
+    )
+    ->bancontact(
+        BancontactPaymentObjectBuilder::init()
+            ->name('name0')
+            ->countryCode('country_code0')
+            ->bic('bic2')
+            ->ibanLastChars('iban_last_chars8')
+            ->cardLastDigits('card_last_digits4')
+            ->build()
+    )
+    ->blik(
+        BlikPaymentObjectBuilder::init()
+            ->name('name2')
+            ->countryCode('country_code2')
+            ->email('email4')
+            ->oneClick(
+                BlikOneClickPaymentObjectBuilder::init()
+                    ->consumerReference('consumer_reference2')
+                    ->build()
+            )
+            ->build()
+    )
+    ->eps(
+        EpsPaymentObjectBuilder::init()
+            ->name('name6')
+            ->countryCode('country_code6')
+            ->bic('bic8')
+            ->build()
+    )
+    ->build();
 ```
 

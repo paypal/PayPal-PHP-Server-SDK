@@ -21,37 +21,54 @@ Information needed to pay using ApplePay.
 | `attributes` | [`?ApplePayAttributes`](../../doc/models/apple-pay-attributes.md) | Optional | Additional attributes associated with apple pay. | getAttributes(): ?ApplePayAttributes | setAttributes(?ApplePayAttributes attributes): void |
 | `experienceContext` | [`?ApplePayExperienceContext`](../../doc/models/apple-pay-experience-context.md) | Optional | Customizes the payer experience during the approval process for the payment. | getExperienceContext(): ?ApplePayExperienceContext | setExperienceContext(?ApplePayExperienceContext experienceContext): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "name": "name6",
-  "email_address": "email_address4",
-  "phone_number": {
-    "national_number": "national_number6"
-  },
-  "decrypted_token": {
-    "transaction_amount": {
-      "currency_code": "currency_code6",
-      "value": "value2"
-    },
-    "tokenized_card": {
-      "name": "name4",
-      "number": "number2",
-      "expiry": "expiry2",
-      "card_type": "VISA",
-      "type": "UNKNOWN"
-    },
-    "device_manufacturer_id": "device_manufacturer_id6",
-    "payment_data_type": "3DSECURE",
-    "payment_data": {
-      "cryptogram": "cryptogram6",
-      "eci_indicator": "eci_indicator0",
-      "emv_data": "emv_data0",
-      "pin": "pin4"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ApplePayRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayDecryptedTokenDataBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayTokenizedCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\ApplePayPaymentDataType;
+use PaypalServerSdkLib\Models\Builders\ApplePayPaymentDataBuilder;
+
+$applePayRequest = ApplePayRequestBuilder::init()
+    ->id('id0')
+    ->name('name0')
+    ->emailAddress('email_address8')
+    ->phoneNumber(
+        PhoneNumberBuilder::init(
+            'national_number6'
+        )->build()
+    )
+    ->decryptedToken(
+        ApplePayDecryptedTokenDataBuilder::init(
+            ApplePayTokenizedCardBuilder::init()
+                ->name('name4')
+                ->number('number2')
+                ->expiry('expiry2')
+                ->type(CardType::UNKNOWN)
+                ->build()
+        )
+            ->transactionAmount(
+                MoneyBuilder::init(
+                    'currency_code6',
+                    'value2'
+                )->build()
+            )
+            ->deviceManufacturerId('device_manufacturer_id6')
+            ->paymentDataType(ApplePayPaymentDataType::ENUM_3DSECURE)
+            ->paymentData(
+                ApplePayPaymentDataBuilder::init()
+                    ->cryptogram('cryptogram6')
+                    ->eciIndicator('eci_indicator0')
+                    ->emvData('emv_data0')
+                    ->pin('pin4')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

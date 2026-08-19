@@ -13,15 +13,20 @@ The supplementary data.
 |  --- | --- | --- | --- | --- | --- |
 | `relatedIds` | [`?RelatedIdentifiers`](../../doc/models/related-identifiers.md) | Optional | Identifiers related to a specific resource. | getRelatedIds(): ?RelatedIdentifiers | setRelatedIds(?RelatedIdentifiers relatedIds): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "related_ids": {
-    "order_id": "order_id2",
-    "authorization_id": "authorization_id0",
-    "capture_id": "capture_id0"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaymentSupplementaryDataBuilder;
+use PaypalServerSdkLib\Models\Builders\RelatedIdentifiersBuilder;
+
+$paymentSupplementaryData = PaymentSupplementaryDataBuilder::init()
+    ->relatedIds(
+        RelatedIdentifiersBuilder::init()
+            ->orderId('order_id2')
+            ->authorizationId('authorization_id0')
+            ->captureId('capture_id0')
+            ->build()
+    )
+    ->build();
 ```
 

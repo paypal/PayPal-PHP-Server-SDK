@@ -14,3 +14,11 @@ The reason why the authorized status is `PENDING`.
 | `PENDING_REVIEW` | Authorization is pending manual review. |
 | `DECLINED_BY_RISK_FRAUD_FILTERS` | Risk Filter set by the payee failed for the transaction. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\AuthorizationIncompleteReason;
+
+$authorizationIncompleteReason = AuthorizationIncompleteReason::PENDING_REVIEW;
+```
+

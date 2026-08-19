@@ -15,13 +15,16 @@ Customizes the payer experience during the approval process for the SEPA Debit p
 | `returnUrl` | `string` | Required | Describes the URL. | getReturnUrl(): string | setReturnUrl(string returnUrl): void |
 | `cancelUrl` | `string` | Required | Describes the URL. | getCancelUrl(): string | setCancelUrl(string cancelUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "locale": "locale8",
-  "return_url": "return_url6",
-  "cancel_url": "cancel_url8"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SepaDebitExperienceContextBuilder;
+
+$sepaDebitExperienceContext = SepaDebitExperienceContextBuilder::init(
+    'return_url4',
+    'cancel_url6'
+)
+    ->locale('locale6')
+    ->build();
 ```
 

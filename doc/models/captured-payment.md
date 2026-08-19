@@ -29,22 +29,29 @@ A captured payment.
 | `supplementaryData` | [`?PaymentSupplementaryData`](../../doc/models/payment-supplementary-data.md) | Optional | The supplementary data. | getSupplementaryData(): ?PaymentSupplementaryData | setSupplementaryData(?PaymentSupplementaryData supplementaryData): void |
 | `payee` | [`?PayeeBase`](../../doc/models/payee-base.md) | Optional | The details for the merchant who receives the funds and fulfills the order. The merchant is also known as the payee. | getPayee(): ?PayeeBase | setPayee(?PayeeBase payee): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "final_capture": false,
-  "disbursement_mode": "INSTANT",
-  "status": "PARTIALLY_REFUNDED",
-  "status_details": {
-    "reason": "VERIFICATION_REQUIRED"
-  },
-  "id": "id4",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CapturedPaymentBuilder;
+use PaypalServerSdkLib\Models\Builders\CaptureStatusDetailsBuilder;
+use PaypalServerSdkLib\Models\CaptureIncompleteReason;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\DisbursementMode;
+
+$capturedPayment = CapturedPaymentBuilder::init()
+    ->statusDetails(
+        CaptureStatusDetailsBuilder::init()
+            ->reason(CaptureIncompleteReason::VERIFICATION_REQUIRED)
+            ->build()
+    )
+    ->amount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value0'
+        )->build()
+    )
+    ->finalCapture(false)
+    ->disbursementMode(DisbursementMode::INSTANT)
+    ->build();
 ```
 

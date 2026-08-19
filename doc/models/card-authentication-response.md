@@ -13,15 +13,22 @@ Results of Authentication such as 3D Secure.
 |  --- | --- | --- | --- | --- | --- |
 | `threeDSecure` | [`?ThreeDSecureCardAuthenticationResponse`](../../doc/models/three-d-secure-card-authentication-response.md) | Optional | Results of 3D Secure Authentication. | getThreeDSecure(): ?ThreeDSecureCardAuthenticationResponse | setThreeDSecure(?ThreeDSecureCardAuthenticationResponse threeDSecure): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "three_d_secure": {
-    "authentication_status": "C",
-    "enrollment_status": "Y",
-    "authentication_id": "authentication_id6"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardAuthenticationResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\ThreeDSecureCardAuthenticationResponseBuilder;
+use PaypalServerSdkLib\Models\PaResStatus;
+use PaypalServerSdkLib\Models\EnrollmentStatus;
+
+$cardAuthenticationResponse = CardAuthenticationResponseBuilder::init()
+    ->threeDSecure(
+        ThreeDSecureCardAuthenticationResponseBuilder::init()
+            ->authenticationStatus(PaResStatus::CHALLENGEREQUIRED)
+            ->enrollmentStatus(EnrollmentStatus::ENROLLED)
+            ->authenticationId('authentication_id6')
+            ->build()
+    )
+    ->build();
 ```
 

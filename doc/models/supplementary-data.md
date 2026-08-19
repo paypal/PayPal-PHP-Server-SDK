@@ -14,47 +14,76 @@ Supplementary data about a payment. This object passes information that can be u
 | `card` | [`?CardSupplementaryData`](../../doc/models/card-supplementary-data.md) | Optional | Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs. For more information about processing payments, see checkout or multiparty checkout. | getCard(): ?CardSupplementaryData | setCard(?CardSupplementaryData card): void |
 | `risk` | [`?RiskSupplementaryData`](../../doc/models/risk-supplementary-data.md) | Optional | Additional information necessary to evaluate the risk profile of a transaction. | getRisk(): ?RiskSupplementaryData | setRisk(?RiskSupplementaryData risk): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "level_2": {
-      "invoice_id": "invoice_id4",
-      "tax_total": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      }
-    },
-    "level_3": {
-      "shipping_amount": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "duty_amount": {
-        "currency_code": "currency_code6",
-        "value": "value2"
-      },
-      "discount_amount": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      },
-      "shipping_address": {
-        "address_line_1": "address_line_10",
-        "address_line_2": "address_line_20",
-        "admin_area_2": "admin_area_24",
-        "admin_area_1": "admin_area_16",
-        "postal_code": "postal_code2",
-        "country_code": "country_code0"
-      },
-      "ships_from_postal_code": "ships_from_postal_code4"
-    }
-  },
-  "risk": {
-    "customer": {
-      "ip_address": "ip_address0"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SupplementaryDataBuilder;
+use PaypalServerSdkLib\Models\Builders\CardSupplementaryDataBuilder;
+use PaypalServerSdkLib\Models\Builders\Level2CardProcessingDataBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\Builders\Level3CardProcessingDataBuilder;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\RiskSupplementaryDataBuilder;
+use PaypalServerSdkLib\Models\Builders\ParticipantMetadataBuilder;
+
+$supplementaryData = SupplementaryDataBuilder::init()
+    ->card(
+        CardSupplementaryDataBuilder::init()
+            ->level2(
+                Level2CardProcessingDataBuilder::init()
+                    ->invoiceId('invoice_id4')
+                    ->taxTotal(
+                        MoneyBuilder::init(
+                            'currency_code4',
+                            'value0'
+                        )->build()
+                    )->build()
+            )
+            ->level3(
+                Level3CardProcessingDataBuilder::init()
+                    ->shippingAmount(
+                        MoneyBuilder::init(
+                            'currency_code0',
+                            'value6'
+                        )->build()
+                    )
+                    ->dutyAmount(
+                        MoneyBuilder::init(
+                            'currency_code6',
+                            'value2'
+                        )->build()
+                    )
+                    ->discountAmount(
+                        MoneyBuilder::init(
+                            'currency_code2',
+                            'value8'
+                        )->build()
+                    )
+                    ->shippingAddress(
+                        AddressBuilder::init(
+                            'country_code0'
+                        )
+                            ->addressLine1('address_line_10')
+                            ->addressLine2('address_line_20')
+                            ->adminArea2('admin_area_24')
+                            ->adminArea1('admin_area_16')
+                            ->postalCode('postal_code2')
+                            ->build()
+                    )
+                    ->shipsFromPostalCode('ships_from_postal_code4')
+                    ->build()
+            )
+            ->build()
+    )
+    ->risk(
+        RiskSupplementaryDataBuilder::init()
+            ->customer(
+                ParticipantMetadataBuilder::init()
+                    ->ipAddress('ip_address0')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

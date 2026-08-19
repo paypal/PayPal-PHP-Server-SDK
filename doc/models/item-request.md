@@ -23,24 +23,31 @@ The details for the items to be purchased.
 | `upc` | [`?UniversalProductCode`](../../doc/models/universal-product-code.md) | Optional | The Universal Product Code of the item. | getUpc(): ?UniversalProductCode | setUpc(?UniversalProductCode upc): void |
 | `billingPlan` | [`?OrderBillingPlan`](../../doc/models/order-billing-plan.md) | Optional | Metadata for merchant-managed recurring billing plans. Valid only during the saved payment method token or billing agreement creation. | getBillingPlan(): ?OrderBillingPlan | setBillingPlan(?OrderBillingPlan billingPlan): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "unit_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "tax": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "quantity": "quantity6",
-  "description": "description0",
-  "sku": "sku6",
-  "url": "url4",
-  "category": "DIGITAL_GOODS"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ItemRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\ItemCategory;
+
+$itemRequest = ItemRequestBuilder::init(
+    'name8',
+    MoneyBuilder::init(
+        'currency_code2',
+        'value8'
+    )->build(),
+    'quantity4'
+)
+    ->tax(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )
+    ->description('description2')
+    ->sku('sku6')
+    ->url('url2')
+    ->category(ItemCategory::DIGITAL_GOODS)
+    ->build();
 ```
 

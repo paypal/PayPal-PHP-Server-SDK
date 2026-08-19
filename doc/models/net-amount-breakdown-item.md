@@ -15,23 +15,24 @@ The net amount. Returned when the currency of the refund is different from the c
 | `convertedAmount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getConvertedAmount(): ?Money | setConvertedAmount(?Money convertedAmount): void |
 | `exchangeRate` | [`?ExchangeRate`](../../doc/models/exchange-rate.md) | Optional, Read-only | The exchange rate that determines the amount to convert from one currency to another currency. | getExchangeRate(): ?ExchangeRate | setExchangeRate(?ExchangeRate exchangeRate): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payable_amount": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  },
-  "converted_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "exchange_rate": {
-    "source_currency": "source_currency4",
-    "target_currency": "target_currency6",
-    "value": "value6"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\NetAmountBreakdownItemBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$netAmountBreakdownItem = NetAmountBreakdownItemBuilder::init()
+    ->payableAmount(
+        MoneyBuilder::init(
+            'currency_code8',
+            'value4'
+        )->build()
+    )
+    ->convertedAmount(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )->build();
 ```
 

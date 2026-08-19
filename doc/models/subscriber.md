@@ -17,54 +17,85 @@ The subscriber response information.
 | `shippingAddress` | [`?ShippingDetails`](../../doc/models/shipping-details.md) | Optional | The shipping details. | getShippingAddress(): ?ShippingDetails | setShippingAddress(?ShippingDetails shippingAddress): void |
 | `paymentSource` | [`?SubscriptionPaymentSourceResponse`](../../doc/models/subscription-payment-source-response.md) | Optional | The payment source used to fund the payment. | getPaymentSource(): ?SubscriptionPaymentSourceResponse | setPaymentSource(?SubscriptionPaymentSourceResponse paymentSource): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address2",
-  "payer_id": "payer_id2",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
-    ]
-  },
-  "payment_source": {
-    "card": {
-      "name": "name6",
-      "billing_address": {
-        "address_line_1": "address_line_12",
-        "address_line_2": "address_line_28",
-        "admin_area_2": "admin_area_28",
-        "admin_area_1": "admin_area_14",
-        "postal_code": "postal_code0",
-        "country_code": "country_code8"
-      },
-      "expiry": "expiry4",
-      "currency_code": "currency_code2"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriberBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\FulfillmentType;
+use PaypalServerSdkLib\Models\Builders\ShippingOptionBuilder;
+use PaypalServerSdkLib\Models\ShippingType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\SubscriptionPaymentSourceResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\CardResponseWithBillingAddressBuilder;
+
+$subscriber = SubscriberBuilder::init()
+    ->emailAddress('email_address8')
+    ->payerId('payer_id8')
+    ->name(
+        NameBuilder::init()
+            ->givenName('given_name2')
+            ->surname('surname8')
+            ->build()
+    )
+    ->shippingAddress(
+        ShippingDetailsBuilder::init()
+            ->name(
+                ShippingNameBuilder::init()
+                    ->fullName('full_name6')
+                    ->build()
+            )
+            ->emailAddress('email_address8')
+            ->phoneNumber(
+                PhoneNumberWithCountryCodeBuilder::init(
+                    'country_code2',
+                    'national_number6'
+                )->build()
+            )
+            ->type(FulfillmentType::PICKUP_IN_STORE)
+            ->options(
+                [
+                    ShippingOptionBuilder::init(
+                        'id2',
+                        'label2',
+                        false
+                    )
+                        ->type(ShippingType::SHIPPING)
+                        ->amount(
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )->build()
+                ]
+            )->build()
+    )
+    ->paymentSource(
+        SubscriptionPaymentSourceResponseBuilder::init()
+            ->card(
+                CardResponseWithBillingAddressBuilder::init()
+                    ->name('name6')
+                    ->billingAddress(
+                        AddressBuilder::init(
+                            'country_code8'
+                        )
+                            ->addressLine1('address_line_12')
+                            ->addressLine2('address_line_28')
+                            ->adminArea2('admin_area_28')
+                            ->adminArea1('admin_area_14')
+                            ->postalCode('postal_code0')
+                            ->build()
+                    )
+                    ->expiry('expiry4')
+                    ->currencyCode('currency_code2')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

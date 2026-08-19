@@ -18,16 +18,23 @@ Resource consolidating common request and response attirbutes for vaulting Venmo
 | `customerType` | [`?string(VenmoPaymentTokenCustomerType)`](../../doc/models/venmo-payment-token-customer-type.md) | Optional | The customer type associated with the Venmo payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer.<br><br>**Default**: `VenmoPaymentTokenCustomerType::CONSUMER`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getCustomerType(): ?string | setCustomerType(?string customerType): void |
 | `permitMultiplePaymentTokens` | `?bool` | Optional | Create multiple payment tokens for the same payer, merchant/platform combination. Use this when the customer has not logged in at merchant/platform. The payment token thus generated, can then also be used to create the customer account at merchant/platform. Use this also when multiple payment tokens are required for the same payer, different customer at merchant/platform. This helps to identify customers distinctly even though they may share the same Venmo account.<br><br>**Default**: `false` | getPermitMultiplePaymentTokens(): ?bool | setPermitMultiplePaymentTokens(?bool permitMultiplePaymentTokens): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "store_in_vault": "ON_SUCCESS",
-  "usage_type": "MERCHANT",
-  "customer_type": "CONSUMER",
-  "permit_multiple_payment_tokens": false,
-  "description": "description6",
-  "usage_pattern": "RECURRING_PREPAID"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\VenmoWalletVaultAttributesBuilder;
+use PaypalServerSdkLib\Models\StoreInVaultInstruction;
+use PaypalServerSdkLib\Models\VenmoPaymentTokenUsageType;
+use PaypalServerSdkLib\Models\VenmoPaymentTokenUsagePattern;
+use PaypalServerSdkLib\Models\VenmoPaymentTokenCustomerType;
+
+$venmoWalletVaultAttributes = VenmoWalletVaultAttributesBuilder::init(
+    StoreInVaultInstruction::ON_SUCCESS,
+    VenmoPaymentTokenUsageType::MERCHANT
+)
+    ->description('description8')
+    ->usagePattern(VenmoPaymentTokenUsagePattern::RECURRING_PREPAID)
+    ->customerType(VenmoPaymentTokenCustomerType::CONSUMER)
+    ->permitMultiplePaymentTokens(false)
+    ->build();
 ```
 

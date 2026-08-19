@@ -15,27 +15,46 @@ Additional attributes associated with the use of this card.
 | `vault` | [`?VaultInstructionBase`](../../doc/models/vault-instruction-base.md) | Optional | Basic vault instruction specification that can be extended by specific payment sources that supports vaulting. | getVault(): ?VaultInstructionBase | setVault(?VaultInstructionBase vault): void |
 | `verification` | [`?CardVerification`](../../doc/models/card-verification.md) | Optional | The API caller can opt in to verify the card through PayPal offered verification services (e.g. Smart Dollar Auth, 3DS). | getVerification(): ?CardVerification | setVerification(?CardVerification verification): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "customer": {
-    "id": "id0",
-    "email_address": "email_address2",
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "merchant_customer_id": "merchant_customer_id2"
-  },
-  "vault": {
-    "store_in_vault": "ON_SUCCESS"
-  },
-  "verification": {
-    "method": "3D_SECURE"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionsCardAttributesBuilder;
+use PaypalServerSdkLib\Models\Builders\CardCustomerBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\VaultInstructionBaseBuilder;
+use PaypalServerSdkLib\Models\StoreInVaultInstruction;
+use PaypalServerSdkLib\Models\Builders\CardVerificationBuilder;
+use PaypalServerSdkLib\Models\OrdersCardVerificationMethod;
+
+$subscriptionsCardAttributes = SubscriptionsCardAttributesBuilder::init()
+    ->customer(
+        CardCustomerBuilder::init()
+            ->id('id0')
+            ->emailAddress('email_address2')
+            ->phone(
+                PhoneWithTypeBuilder::init(
+                    PhoneNumberBuilder::init(
+                        'national_number6'
+                    )->build()
+                )
+                    ->phoneType(PhoneType::OTHER)
+                    ->build()
+            )
+            ->merchantCustomerId('merchant_customer_id2')
+            ->build()
+    )
+    ->vault(
+        VaultInstructionBaseBuilder::init()
+            ->storeInVault(StoreInVaultInstruction::ON_SUCCESS)
+            ->build()
+    )
+    ->verification(
+        CardVerificationBuilder::init()
+            ->method(OrdersCardVerificationMethod::ENUM_3D_SECURE)
+            ->build()
+    )
+    ->build();
 ```
 

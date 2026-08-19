@@ -20,19 +20,25 @@ The payer information.
 | `countryCode` | `?string` | Optional | The [two-character ISO 3166-1 code](/docs/integration/direct/rest/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` | getCountryCode(): ?string | setCountryCode(?string countryCode): void |
 | `address` | [`?SimplePostalAddressCoarseGrained`](../../doc/models/simple-postal-address-coarse-grained.md) | Optional | A simple postal address with coarse-grained fields. Do not use for an international address. Use for backward compatibility only. Does not contain phone. | getAddress(): ?SimplePostalAddressCoarseGrained | setAddress(?SimplePostalAddressCoarseGrained address): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "account_id": "account_id6",
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6",
-    "extension_number": "extension_number8"
-  },
-  "address_status": "address_status2",
-  "payer_status": "payer_status8"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PayerInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneBuilder;
+
+$payerInformation = PayerInformationBuilder::init()
+    ->accountId('account_id4')
+    ->emailAddress('email_address0')
+    ->phoneNumber(
+        PhoneBuilder::init(
+            'country_code2',
+            'national_number6'
+        )
+            ->extensionNumber('extension_number8')
+            ->build()
+    )
+    ->addressStatus('address_status0')
+    ->payerStatus('payer_status0')
+    ->build();
 ```
 

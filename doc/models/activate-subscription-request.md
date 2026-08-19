@@ -13,11 +13,13 @@ The activate subscription request details.
 |  --- | --- | --- | --- | --- | --- |
 | `reason` | `?string` | Optional | The reason for activation of a subscription. Required to reactivate the subscription.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` | getReason(): ?string | setReason(?string reason): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "reason4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ActivateSubscriptionRequestBuilder;
+
+$activateSubscriptionRequest = ActivateSubscriptionRequestBuilder::init()
+    ->reason('reason6')
+    ->build();
 ```
 

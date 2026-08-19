@@ -20,3 +20,11 @@ The reason code for the payment failure.
 | `TRANSACTION_RECEIVING_LIMIT_EXCEEDED` | The transaction exceeds the receiver's receiving limit. |
 | `CURRENCY_MISMATCH` | The transaction is declined due to a currency mismatch. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\ReasonCode;
+
+$reasonCode = ReasonCode::TRANSACTION_RECEIVING_LIMIT_EXCEEDED;
+```
+

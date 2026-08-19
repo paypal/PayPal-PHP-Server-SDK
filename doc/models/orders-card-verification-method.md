@@ -16,3 +16,11 @@ The method used for card verification.
 | `ENUM_3D_SECURE` | The contingency surfaced as an additional security layer that helps prevent unauthorized card-not-present transactions and protects the merchant from exposure to fraud. |
 | `AVS_CVV` | Places a temporary hold on the card to ensure its validity. This process protects the merchant from exposure to fraud. This verification method will confirm that the address information or CVV included matches what the issuing bank has on file for the associated card, ensuring that only authorized card users are able to make purchases from you. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\OrdersCardVerificationMethod;
+
+$ordersCardVerificationMethod = OrdersCardVerificationMethod::ENUM_3D_SECURE;
+```
+

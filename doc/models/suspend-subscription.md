@@ -13,11 +13,13 @@ The suspend subscription request details.
 |  --- | --- | --- | --- | --- | --- |
 | `reason` | `string` | Required | The reason for suspension of the Subscription.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` | getReason(): string | setReason(string reason): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "reason4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SuspendSubscriptionBuilder;
+
+$suspendSubscription = SuspendSubscriptionBuilder::init(
+    'reason4'
+)->build();
 ```
 

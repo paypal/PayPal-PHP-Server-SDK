@@ -25,17 +25,17 @@ The Card from Apple Pay Wallet used to fund the payment.
 | `billingAddress` | [`?Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). | getBillingAddress(): ?Address | setBillingAddress(?Address billingAddress): void |
 | `countryCode` | `?string` | Optional | The [two-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` | getCountryCode(): ?string | setCountryCode(?string countryCode): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "last_digits": "last_digits8",
-  "brand": "ACCEL",
-  "available_networks": [
-    "STAR_ACCESS"
-  ],
-  "type": "DEBIT"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ApplePayCardResponseBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\CardType;
+
+$applePayCardResponse = ApplePayCardResponseBuilder::init()
+    ->name('name0')
+    ->brand(CardBrand::CETELEM)
+    ->type(CardType::CREDIT)
+    ->build();
 ```
 

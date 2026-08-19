@@ -23,22 +23,28 @@ Full representation of a Card Payment Token.
 | `binDetails` | [`?BinDetails`](../../doc/models/bin-details.md) | Optional | Bank Identification Number (BIN) details used to fund a payment. | getBinDetails(): ?BinDetails | setBinDetails(?BinDetails binDetails): void |
 | `type` | [`?string(CardType)`](../../doc/models/card-type.md) | Optional | Type of card. i.e Credit, Debit and so on.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` | getType(): ?string | setType(?string type): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "last_digits": "last_digits0",
-  "brand": "VISA",
-  "expiry": "expiry4",
-  "billing_address": {
-    "address_line_1": "address_line_12",
-    "address_line_2": "address_line_28",
-    "admin_area_2": "admin_area_28",
-    "admin_area_1": "admin_area_14",
-    "postal_code": "postal_code0",
-    "country_code": "country_code8"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardPaymentTokenEntityBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\Builders\CardResponseAddressBuilder;
+
+$cardPaymentTokenEntity = CardPaymentTokenEntityBuilder::init()
+    ->name('name0')
+    ->brand(CardBrand::SOLO)
+    ->expiry('expiry8')
+    ->billingAddress(
+        CardResponseAddressBuilder::init(
+            'country_code8'
+        )
+            ->addressLine1('address_line_12')
+            ->addressLine2('address_line_28')
+            ->adminArea2('admin_area_28')
+            ->adminArea1('admin_area_14')
+            ->postalCode('postal_code0')
+            ->build()
+    )
+    ->build();
 ```
 

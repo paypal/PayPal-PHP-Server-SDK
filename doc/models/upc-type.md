@@ -19,3 +19,11 @@ The Universal Product Code type.
 | `UPC_2` |
 | `UPC_5` |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\UpcType;
+
+$upcType = UpcType::UPC_C;
+```
+

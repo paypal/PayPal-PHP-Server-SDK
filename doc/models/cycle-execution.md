@@ -18,16 +18,15 @@ The regular and trial execution details for a billing cycle.
 | `currentPricingSchemeVersion` | `?int` | Optional, Read-only | The active pricing scheme version for the billing cycle.<br><br>**Constraints**: `>= 1`, `<= 99` | getCurrentPricingSchemeVersion(): ?int | setCurrentPricingSchemeVersion(?int currentPricingSchemeVersion): void |
 | `totalCycles` | `?int` | Optional, Read-only | The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between 1 and 999 for total_cycles). Regular billing cycles can be executed infinite times (value of 0 for total_cycles) or a finite number of times (value between 1 and 999 for total_cycles).<br><br>**Constraints**: `>= 0`, `<= 999` | getTotalCycles(): ?int | setTotalCycles(?int totalCycles): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "tenure_type": "REGULAR",
-  "sequence": 99,
-  "cycles_completed": 172,
-  "cycles_remaining": 208,
-  "current_pricing_scheme_version": 99,
-  "total_cycles": 60
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CycleExecutionBuilder;
+
+$cycleExecution = CycleExecutionBuilder::init(
+    '',
+    99,
+    0
+)->build();
 ```
 

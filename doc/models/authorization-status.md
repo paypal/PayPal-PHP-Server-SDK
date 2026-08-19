@@ -18,3 +18,11 @@ The status for the authorized payment.
 | `VOIDED` | The authorized payment was voided. No more captured payments can be made against this authorized payment. |
 | `PENDING` | The created authorization is in pending state. For more information, see status.details. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\AuthorizationStatus;
+
+$authorizationStatus = AuthorizationStatus::VOIDED;
+```
+

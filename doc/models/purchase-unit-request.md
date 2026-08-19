@@ -23,80 +23,116 @@ The purchase unit request. Includes required information for the payment contrac
 | `shipping` | [`?ShippingDetails`](../../doc/models/shipping-details.md) | Optional | The shipping details. | getShipping(): ?ShippingDetails | setShipping(?ShippingDetails shipping): void |
 | `supplementaryData` | [`?SupplementaryData`](../../doc/models/supplementary-data.md) | Optional | Supplementary data about a payment. This object passes information that can be used to improve risk assessments and processing costs, for example, by providing Level 2 and Level 3 payment data. | getSupplementaryData(): ?SupplementaryData | setSupplementaryData(?SupplementaryData supplementaryData): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reference_id": "reference_id6",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0",
-    "breakdown": {
-      "item_total": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "shipping": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "handling": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      },
-      "tax_total": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      },
-      "insurance": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      }
-    }
-  },
-  "payee": {
-    "email_address": "email_address4",
-    "merchant_id": "merchant_id6"
-  },
-  "payment_instruction": {
-    "platform_fees": [
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      }
-    ],
-    "disbursement_mode": "INSTANT",
-    "payee_pricing_tier_id": "payee_pricing_tier_id2",
-    "payee_receivable_fx_rate_id": "payee_receivable_fx_rate_id0"
-  },
-  "description": "description6",
-  "custom_id": "custom_id4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PurchaseUnitRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\AmountWithBreakdownBuilder;
+use PaypalServerSdkLib\Models\Builders\AmountBreakdownBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\Builders\PayeeBaseBuilder;
+use PaypalServerSdkLib\Models\Builders\PaymentInstructionBuilder;
+use PaypalServerSdkLib\Models\Builders\PlatformFeeBuilder;
+use PaypalServerSdkLib\Models\DisbursementMode;
+
+$purchaseUnitRequest = PurchaseUnitRequestBuilder::init(
+    AmountWithBreakdownBuilder::init(
+        'currency_code6',
+        'value0'
+    )
+        ->breakdown(
+            AmountBreakdownBuilder::init()
+                ->itemTotal(
+                    MoneyBuilder::init(
+                        'currency_code0',
+                        'value6'
+                    )->build()
+                )
+                ->shipping(
+                    MoneyBuilder::init(
+                        'currency_code0',
+                        'value6'
+                    )->build()
+                )
+                ->handling(
+                    MoneyBuilder::init(
+                        'currency_code2',
+                        'value8'
+                    )->build()
+                )
+                ->taxTotal(
+                    MoneyBuilder::init(
+                        'currency_code4',
+                        'value0'
+                    )->build()
+                )
+                ->insurance(
+                    MoneyBuilder::init(
+                        'currency_code2',
+                        'value8'
+                    )->build()
+                )->build()
+        )->build()
+)
+    ->referenceId('reference_id8')
+    ->payee(
+        PayeeBaseBuilder::init()
+            ->emailAddress('email_address4')
+            ->merchantId('merchant_id6')
+            ->build()
+    )
+    ->paymentInstruction(
+        PaymentInstructionBuilder::init()
+            ->platformFees(
+                [
+                    PlatformFeeBuilder::init(
+                        MoneyBuilder::init(
+                            'currency_code6',
+                            'value0'
+                        )->build()
+                    )
+                        ->payee(
+                            PayeeBaseBuilder::init()
+                                ->emailAddress('email_address4')
+                                ->merchantId('merchant_id6')
+                                ->build()
+                        )
+                        ->build(),
+                    PlatformFeeBuilder::init(
+                        MoneyBuilder::init(
+                            'currency_code6',
+                            'value0'
+                        )->build()
+                    )
+                        ->payee(
+                            PayeeBaseBuilder::init()
+                                ->emailAddress('email_address4')
+                                ->merchantId('merchant_id6')
+                                ->build()
+                        )
+                        ->build(),
+                    PlatformFeeBuilder::init(
+                        MoneyBuilder::init(
+                            'currency_code6',
+                            'value0'
+                        )->build()
+                    )
+                        ->payee(
+                            PayeeBaseBuilder::init()
+                                ->emailAddress('email_address4')
+                                ->merchantId('merchant_id6')
+                                ->build()
+                        )
+                        ->build()
+                ]
+            )
+            ->disbursementMode(DisbursementMode::INSTANT)
+            ->payeePricingTierId('payee_pricing_tier_id2')
+            ->payeeReceivableFxRateId('payee_receivable_fx_rate_id0')
+            ->build()
+    )
+    ->description('description0')
+    ->customId('custom_id8')
+    ->build();
 ```
 

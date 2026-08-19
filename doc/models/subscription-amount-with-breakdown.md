@@ -18,34 +18,47 @@ The breakdown details for the amount. Includes the gross, tax, fee, and shipping
 | `taxAmount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getTaxAmount(): ?Money | setTaxAmount(?Money taxAmount): void |
 | `netAmount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getNetAmount(): ?Money | setNetAmount(?Money netAmount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "gross_amount": {
-    "currency_code": "currency_code4",
-    "value": "value0"
-  },
-  "total_item_amount": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  },
-  "fee_amount": {
-    "currency_code": "currency_code2",
-    "value": "value4"
-  },
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "tax_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "net_amount": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionAmountWithBreakdownBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$subscriptionAmountWithBreakdown = SubscriptionAmountWithBreakdownBuilder::init(
+    MoneyBuilder::init(
+        'currency_code4',
+        'value0'
+    )->build()
+)
+    ->totalItemAmount(
+        MoneyBuilder::init(
+            'currency_code8',
+            'value4'
+        )->build()
+    )
+    ->feeAmount(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value4'
+        )->build()
+    )
+    ->shippingAmount(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )
+    ->taxAmount(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value8'
+        )->build()
+    )
+    ->netAmount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value2'
+        )->build()
+    )->build();
 ```
 
