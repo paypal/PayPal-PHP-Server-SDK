@@ -19,44 +19,64 @@ Information needed to pay using Google Pay.
 | `assuranceDetails` | [`?AssuranceDetails`](../../doc/models/assurance-details.md) | Optional | Information about cardholder possession validation and cardholder identification and verifications (ID&V). | getAssuranceDetails(): ?AssuranceDetails | setAssuranceDetails(?AssuranceDetails assuranceDetails): void |
 | `experienceContext` | [`?GooglePayExperienceContext`](../../doc/models/google-pay-experience-context.md) | Optional | Customizes the payer experience during the approval process for the payment. | getExperienceContext(): ?GooglePayExperienceContext | setExperienceContext(?GooglePayExperienceContext experienceContext): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "card": {
-    "name": "name6",
-    "type": "UNKNOWN",
-    "brand": "CB_NATIONALE",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "admin_area_2": "admin_area_28",
-      "admin_area_1": "admin_area_14",
-      "postal_code": "postal_code0",
-      "country_code": "country_code8"
-    }
-  },
-  "decrypted_token": {
-    "message_id": "message_id0",
-    "message_expiration": "message_expiration2",
-    "payment_method": "CARD",
-    "card": {
-      "name": "name6",
-      "number": "number6",
-      "expiry": "expiry4",
-      "last_digits": "last_digits0",
-      "type": "UNKNOWN"
-    },
-    "authentication_method": "PAN_ONLY",
-    "cryptogram": "cryptogram6",
-    "eci_indicator": "eci_indicator0"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\GooglePayRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayRequestCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayDecryptedTokenDataBuilder;
+use PaypalServerSdkLib\Models\GooglePayPaymentMethod;
+use PaypalServerSdkLib\Models\Builders\GooglePayCardBuilder;
+use PaypalServerSdkLib\Models\GooglePayAuthenticationMethod;
+
+$googlePayRequest = GooglePayRequestBuilder::init()
+    ->name('name6')
+    ->emailAddress('email_address6')
+    ->phoneNumber(
+        PhoneNumberWithCountryCodeBuilder::init(
+            'country_code2',
+            'national_number6'
+        )->build()
+    )
+    ->card(
+        GooglePayRequestCardBuilder::init()
+            ->name('name6')
+            ->type(CardType::UNKNOWN)
+            ->brand(CardBrand::CB_NATIONALE)
+            ->billingAddress(
+                AddressBuilder::init(
+                    'country_code8'
+                )
+                    ->addressLine1('address_line_12')
+                    ->addressLine2('address_line_28')
+                    ->adminArea2('admin_area_28')
+                    ->adminArea1('admin_area_14')
+                    ->postalCode('postal_code0')
+                    ->build()
+            )
+            ->build()
+    )
+    ->decryptedToken(
+        GooglePayDecryptedTokenDataBuilder::init(
+            GooglePayPaymentMethod::CARD,
+            GooglePayCardBuilder::init()
+                ->name('name6')
+                ->number('number6')
+                ->expiry('expiry4')
+                ->type(CardType::UNKNOWN)
+                ->build(),
+            GooglePayAuthenticationMethod::PAN_ONLY
+        )
+            ->messageId('message_id0')
+            ->messageExpiration('message_expiration2')
+            ->cryptogram('cryptogram6')
+            ->eciIndicator('eci_indicator0')
+            ->build()
+    )
+    ->build();
 ```
 

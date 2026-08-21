@@ -17,73 +17,51 @@
 | `options` | [`?(ShippingOption[])`](../../doc/models/shipping-option.md) | Optional | An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items.<br><br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `10` | getOptions(): ?array | setOptions(?array options): void |
 | `address` | [`?Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). | getAddress(): ?Address | setAddress(?Address address): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "trackers": [
-    {
-      "id": "id2",
-      "status": "CANCELLED",
-      "items": [
-        {
-          "name": "name8",
-          "quantity": "quantity4",
-          "sku": "sku6",
-          "url": "url2",
-          "image_url": "image_url4"
-        }
-      ],
-      "links": [
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        },
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        }
-      ],
-      "create_time": "create_time8"
-    },
-    {
-      "id": "id2",
-      "status": "CANCELLED",
-      "items": [
-        {
-          "name": "name8",
-          "quantity": "quantity4",
-          "sku": "sku6",
-          "url": "url2",
-          "image_url": "image_url4"
-        }
-      ],
-      "links": [
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        },
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        }
-      ],
-      "create_time": "create_time8"
-    }
-  ],
-  "name": {
-    "full_name": "full_name6"
-  },
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "type": "SHIPPING"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ShippingWithTrackingDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\OrderTrackerResponseBuilder;
+use PaypalServerSdkLib\Models\OrderTrackerStatus;
+use PaypalServerSdkLib\Models\Builders\OrderTrackerItemBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithOptionalCountryCodeBuilder;
+use PaypalServerSdkLib\Models\FulfillmentType;
+
+$shippingWithTrackingDetails = ShippingWithTrackingDetailsBuilder::init()
+    ->trackers(
+        [
+            OrderTrackerResponseBuilder::init()
+                ->status(OrderTrackerStatus::CANCELLED)
+                ->items(
+                    [
+                        OrderTrackerItemBuilder::init()
+                            ->name('name8')
+                            ->quantity('quantity4')
+                            ->sku('sku6')
+                            ->url('url2')
+                            ->imageUrl('image_url4')
+                            ->build()
+                    ]
+                )
+                ->createTime('create_time8')
+                ->build()
+        ]
+    )
+    ->name(
+        ShippingNameBuilder::init()
+            ->fullName('full_name6')
+            ->build()
+    )
+    ->emailAddress('email_address6')
+    ->phoneNumber(
+        PhoneNumberWithOptionalCountryCodeBuilder::init(
+            'national_number6'
+        )
+            ->countryCode('country_code2')
+            ->build()
+    )
+    ->type(FulfillmentType::PICKUP_IN_STORE)
+    ->build();
 ```
 

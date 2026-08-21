@@ -17,23 +17,34 @@ The details about a customer in PayPal's system of record.
 | `name` | [`?Name`](../../doc/models/name.md) | Optional | The name of the party. | getName(): ?Name | setName(?Name name): void |
 | `merchantCustomerId` | `?string` | Optional | Merchants and partners may already have a data-store where their customer information is persisted. Use merchant_customer_id to associate the PayPal-generated customer.id to your representation of a customer.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64`, *Pattern*: `^[0-9a-zA-Z-_.^*$@#]+$` | getMerchantCustomerId(): ?string | setMerchantCustomerId(?string merchantCustomerId): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "email_address": "email_address2",
-  "phone": {
-    "phone_type": "OTHER",
-    "phone_number": {
-      "national_number": "national_number6"
-    }
-  },
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "merchant_customer_id": "merchant_customer_id2"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardCustomerInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+
+$cardCustomerInformation = CardCustomerInformationBuilder::init()
+    ->id('id0')
+    ->emailAddress('email_address8')
+    ->phone(
+        PhoneWithTypeBuilder::init(
+            PhoneNumberBuilder::init(
+                'national_number6'
+            )->build()
+        )
+            ->phoneType(PhoneType::OTHER)
+            ->build()
+    )
+    ->name(
+        NameBuilder::init()
+            ->givenName('given_name2')
+            ->surname('surname8')
+            ->build()
+    )
+    ->merchantCustomerId('merchant_customer_id2')
+    ->build();
 ```
 

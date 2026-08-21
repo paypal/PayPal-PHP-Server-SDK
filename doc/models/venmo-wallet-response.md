@@ -20,21 +20,30 @@ Venmo wallet response.
 | `returnFlow` | [`?string(ReturnFlow)`](../../doc/models/return-flow.md) | Optional, Read-only | Merchant preference on how the buyer can navigate back to merchant website post approving the transaction on the Venmo App.<br><br>**Default**: `ReturnFlow::AUTO`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `6`, *Pattern*: `^[A-Z_]+$` | getReturnFlow(): ?string | setReturnFlow(?string returnFlow): void |
 | `attributes` | [`?VenmoWalletAttributesResponse`](../../doc/models/venmo-wallet-attributes-response.md) | Optional | Additional attributes associated with the use of a Venmo Wallet. | getAttributes(): ?VenmoWalletAttributesResponse | setAttributes(?VenmoWalletAttributesResponse attributes): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_flow": "AUTO",
-  "email_address": "email_address6",
-  "account_id": "account_id8",
-  "user_name": "user_name2",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "phone_number": {
-    "national_number": "national_number6"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\VenmoWalletResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\ReturnFlow;
+
+$venmoWalletResponse = VenmoWalletResponseBuilder::init()
+    ->emailAddress('email_address0')
+    ->accountId('account_id4')
+    ->userName('user_name8')
+    ->name(
+        NameBuilder::init()
+            ->givenName('given_name2')
+            ->surname('surname8')
+            ->build()
+    )
+    ->phoneNumber(
+        PhoneNumberBuilder::init(
+            'national_number6'
+        )->build()
+    )
+    ->returnFlow(ReturnFlow::AUTO)
+    ->build();
 ```
 

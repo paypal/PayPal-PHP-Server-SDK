@@ -16,3 +16,11 @@ The status of the refund.
 | `PENDING` | The refund is pending. For more information, see status_details.reason. |
 | `COMPLETED` | The funds for this transaction were debited to the customer's account. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\RefundStatus;
+
+$refundStatus = RefundStatus::PENDING;
+```
+

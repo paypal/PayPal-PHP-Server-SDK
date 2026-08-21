@@ -18,3 +18,11 @@ Expected business/pricing model for the billing agreement.
 | `THRESHOLD_PREPAID` | Charge payer when the set amount is reached or monthly billing cycle, whichever comes first, before the goods/service is delivered. |
 | `THRESHOLD_POSTPAID` | Charge payer when the set amount is reached or monthly billing cycle, whichever comes first, after the goods/service is delivered. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\VenmoPaymentTokenUsagePattern;
+
+$venmoPaymentTokenUsagePattern = VenmoPaymentTokenUsagePattern::THRESHOLD_PREPAID;
+```
+

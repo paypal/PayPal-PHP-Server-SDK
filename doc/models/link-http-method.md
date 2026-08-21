@@ -20,3 +20,11 @@ The HTTP method required to make the related call.
 | `OPTIONS` | The HTTP OPTIONS method. |
 | `PATCH` | The HTTP PATCH method. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\LinkHttpMethod;
+
+$linkHttpMethod = LinkHttpMethod::HEAD;
+```
+

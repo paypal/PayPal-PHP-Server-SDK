@@ -27,22 +27,29 @@ A captured payment.
 | `createTime` | `?string` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` | getCreateTime(): ?string | setCreateTime(?string createTime): void |
 | `updateTime` | `?string` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` | getUpdateTime(): ?string | setUpdateTime(?string updateTime): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "final_capture": false,
-  "disbursement_mode": "INSTANT",
-  "status": "REFUNDED",
-  "status_details": {
-    "reason": "VERIFICATION_REQUIRED"
-  },
-  "id": "id2",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id2"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\OrdersCaptureBuilder;
+use PaypalServerSdkLib\Models\Builders\CaptureStatusDetailsBuilder;
+use PaypalServerSdkLib\Models\CaptureIncompleteReason;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\DisbursementMode;
+
+$ordersCapture = OrdersCaptureBuilder::init()
+    ->statusDetails(
+        CaptureStatusDetailsBuilder::init()
+            ->reason(CaptureIncompleteReason::VERIFICATION_REQUIRED)
+            ->build()
+    )
+    ->amount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value0'
+        )->build()
+    )
+    ->finalCapture(false)
+    ->disbursementMode(DisbursementMode::INSTANT)
+    ->build();
 ```
 

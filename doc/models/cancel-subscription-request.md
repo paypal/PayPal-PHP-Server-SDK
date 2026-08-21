@@ -13,11 +13,13 @@ The cancel subscription request details.
 |  --- | --- | --- | --- | --- | --- |
 | `reason` | `string` | Required | The reason for the cancellation of a subscription.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` | getReason(): string | setReason(string reason): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "reason8"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CancelSubscriptionRequestBuilder;
+
+$cancelSubscriptionRequest = CancelSubscriptionRequestBuilder::init(
+    'reason0'
+)->build();
 ```
 

@@ -26,20 +26,25 @@ The authorized payment transaction.
 | `supplementaryData` | [`?PaymentSupplementaryData`](../../doc/models/payment-supplementary-data.md) | Optional | The supplementary data. | getSupplementaryData(): ?PaymentSupplementaryData | setSupplementaryData(?PaymentSupplementaryData supplementaryData): void |
 | `payee` | [`?PayeeBase`](../../doc/models/payee-base.md) | Optional | The details for the merchant who receives the funds and fulfills the order. The merchant is also known as the payee. | getPayee(): ?PayeeBase | setPayee(?PayeeBase payee): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "VOIDED",
-  "status_details": {
-    "reason": "PENDING_REVIEW"
-  },
-  "id": "id0",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id0"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaymentAuthorizationBuilder;
+use PaypalServerSdkLib\Models\Builders\AuthorizationStatusDetailsBuilder;
+use PaypalServerSdkLib\Models\AuthorizationIncompleteReason;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$paymentAuthorization = PaymentAuthorizationBuilder::init()
+    ->statusDetails(
+        AuthorizationStatusDetailsBuilder::init()
+            ->reason(AuthorizationIncompleteReason::PENDING_REVIEW)
+            ->build()
+    )
+    ->amount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value0'
+        )->build()
+    )->build();
 ```
 

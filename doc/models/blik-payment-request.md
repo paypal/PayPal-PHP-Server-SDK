@@ -18,29 +18,43 @@ Information needed to pay using BLIK.
 | `level0` | [`?BlikLevel0PaymentObject`](../../doc/models/blik-level-0-payment-object.md) | Optional | Information used to pay using BLIK level_0 flow. | getLevel0(): ?BlikLevel0PaymentObject | setLevel0(?BlikLevel0PaymentObject level0): void |
 | `oneClick` | [`?BlikOneClickPaymentRequest`](../../doc/models/blik-one-click-payment-request.md) | Optional | Information used to pay using BLIK one-click flow. | getOneClick(): ?BlikOneClickPaymentRequest | setOneClick(?BlikOneClickPaymentRequest oneClick): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "country_code": "country_code8",
-  "email": "email8",
-  "experience_context": {
-    "brand_name": "brand_name2",
-    "locale": "locale6",
-    "shipping_preference": "NO_SHIPPING",
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  },
-  "level_0": {
-    "auth_code": "auth_code8"
-  },
-  "one_click": {
-    "auth_code": "auth_code0",
-    "consumer_reference": "consumer_reference2",
-    "alias_label": "alias_label6",
-    "alias_key": "alias_key4"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\BlikPaymentRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikExperienceContextBuilder;
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+use PaypalServerSdkLib\Models\Builders\BlikLevel0PaymentObjectBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikOneClickPaymentRequestBuilder;
+
+$blikPaymentRequest = BlikPaymentRequestBuilder::init(
+    'name6',
+    'country_code6'
+)
+    ->email('email0')
+    ->experienceContext(
+        BlikExperienceContextBuilder::init()
+            ->brandName('brand_name2')
+            ->locale('locale6')
+            ->shippingPreference(ExperienceContextShippingPreference::NO_SHIPPING)
+            ->returnUrl('return_url4')
+            ->cancelUrl('cancel_url6')
+            ->build()
+    )
+    ->level0(
+        BlikLevel0PaymentObjectBuilder::init(
+            'auth_code8'
+        )->build()
+    )
+    ->oneClick(
+        BlikOneClickPaymentRequestBuilder::init(
+            'consumer_reference2'
+        )
+            ->authCode('auth_code0')
+            ->aliasLabel('alias_label6')
+            ->aliasKey('alias_key4')
+            ->build()
+    )
+    ->build();
 ```
 

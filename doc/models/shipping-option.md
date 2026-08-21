@@ -17,18 +17,24 @@ The options that the payee or merchant offers to the payer to ship or pick up th
 | `amount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getAmount(): ?Money | setAmount(?Money amount): void |
 | `selected` | `bool` | Required | If the API request sets `selected = true`, it represents the shipping option that the payee or merchant expects to be pre-selected for the payer when they first view the `shipping.options` in the PayPal Checkout experience. As part of the response if a `shipping.option` contains `selected=true`, it represents the shipping option that the payer selected during the course of checkout with PayPal. Only one `shipping.option` can be set to `selected=true`. | getSelected(): bool | setSelected(bool selected): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "label": "label4",
-  "type": "SHIPPING",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "selected": false
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ShippingOptionBuilder;
+use PaypalServerSdkLib\Models\ShippingType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$shippingOption = ShippingOptionBuilder::init(
+    'id6',
+    'label6',
+    false
+)
+    ->type(ShippingType::SHIPPING)
+    ->amount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value0'
+        )->build()
+    )->build();
 ```
 

@@ -13,50 +13,63 @@ The update pricing scheme request details.
 |  --- | --- | --- | --- | --- | --- |
 | `pricingSchemes` | [`UpdatePricingScheme[]`](../../doc/models/update-pricing-scheme.md) | Required | An array of pricing schemes.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `99` | getPricingSchemes(): array | setPricingSchemes(array pricingSchemes): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "pricing_schemes": [
-    {
-      "billing_cycle_sequence": 34,
-      "pricing_scheme": {
-        "version": 10,
-        "fixed_price": {
-          "currency_code": "currency_code4",
-          "value": "value0"
-        },
-        "pricing_model": "VOLUME",
-        "tiers": [
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          }
-        ],
-        "create_time": "create_time4"
-      }
-    }
-  ]
-}
+```php
+use PaypalServerSdkLib\Models\Builders\UpdatePricingSchemesRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\UpdatePricingSchemeBuilder;
+use PaypalServerSdkLib\Models\Builders\SubscriptionPricingSchemeBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\SubscriptionPricingModel;
+use PaypalServerSdkLib\Models\Builders\PricingTierBuilder;
+
+$updatePricingSchemesRequest = UpdatePricingSchemesRequestBuilder::init(
+    [
+        UpdatePricingSchemeBuilder::init(
+            34,
+            SubscriptionPricingSchemeBuilder::init()
+                ->fixedPrice(
+                    MoneyBuilder::init(
+                        'currency_code4',
+                        'value0'
+                    )->build()
+                )
+                ->pricingModel(SubscriptionPricingModel::VOLUME)
+                ->tiers(
+                    [
+                        PricingTierBuilder::init(
+                            'starting_quantity8',
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )
+                            ->endingQuantity('ending_quantity6')
+                            ->build(),
+                        PricingTierBuilder::init(
+                            'starting_quantity8',
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )
+                            ->endingQuantity('ending_quantity6')
+                            ->build(),
+                        PricingTierBuilder::init(
+                            'starting_quantity8',
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )
+                            ->endingQuantity('ending_quantity6')
+                            ->build()
+                    ]
+                )
+                ->createTime('create_time4')
+                ->build()
+        )->build()
+    ]
+)->build();
 ```
 

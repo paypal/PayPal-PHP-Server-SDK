@@ -18,3 +18,11 @@ The status of the captured payment.
 | `REFUNDED` | An amount greater than or equal to this captured payment's amount was refunded to the payer. |
 | `FAILED` | There was an error while capturing payment. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\CaptureStatus;
+
+$captureStatus = CaptureStatus::COMPLETED;
+```
+

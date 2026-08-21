@@ -20,15 +20,18 @@ A Resource representing a request to vault a Card.
 | `verificationMethod` | [`?string(VaultCardVerificationMethod)`](../../doc/models/vault-card-verification-method.md) | Optional | The verification method of the card.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getVerificationMethod(): ?string | setVerificationMethod(?string verificationMethod): void |
 | `experienceContext` | [`?VaultCardExperienceContext`](../../doc/models/vault-card-experience-context.md) | Optional | A resource representing an experience context of vault a card. | getExperienceContext(): ?VaultCardExperienceContext | setExperienceContext(?VaultCardExperienceContext experienceContext): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name2",
-  "number": "number0",
-  "expiry": "expiry0",
-  "security_code": "security_code4",
-  "brand": "STAR"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SetupTokenRequestCardBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+
+$setupTokenRequestCard = SetupTokenRequestCardBuilder::init()
+    ->name('name8')
+    ->number('number4')
+    ->expiry('expiry6')
+    ->securityCode('security_code0')
+    ->brand(CardBrand::DISCOVER)
+    ->build();
 ```
 

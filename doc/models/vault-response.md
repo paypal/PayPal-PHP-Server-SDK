@@ -16,26 +16,28 @@ The details about a saved payment source.
 | `customer` | [`?VaultCustomer`](../../doc/models/vault-customer.md) | Optional | This object represents a merchant’s customer, allowing them to store contact details, and track all payments associated with the same customer. | getCustomer(): ?VaultCustomer | setCustomer(?VaultCustomer customer): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` | getLinks(): ?array | setLinks(?array links): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "CREATED",
-  "customer": {
-    "id": "id0",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    }
-  },
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ]
-}
+```php
+use PaypalServerSdkLib\Models\Builders\VaultResponseBuilder;
+use PaypalServerSdkLib\Models\VaultStatus;
+use PaypalServerSdkLib\Models\Builders\VaultCustomerBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+
+$vaultResponse = VaultResponseBuilder::init()
+    ->id('id2')
+    ->status(VaultStatus::VAULTED)
+    ->customer(
+        VaultCustomerBuilder::init()
+            ->id('id0')
+            ->name(
+                NameBuilder::init()
+                    ->givenName('given_name2')
+                    ->surname('surname8')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

@@ -18,48 +18,76 @@ The subscriber request information .
 | `paymentSource` | [`?SubscriptionPaymentSource`](../../doc/models/subscription-payment-source.md) | Optional | The payment source definition. To be eligible to create subscription using debit or credit card, you will need to sign up here (https://www.paypal.com/bizsignup/entry/product/ppcp). Please note, its available only for non-3DS cards and for merchants in US and AU regions. | getPaymentSource(): ?SubscriptionPaymentSource | setPaymentSource(?SubscriptionPaymentSource paymentSource): void |
 | `phone` | [`?PhoneWithType`](../../doc/models/phone-with-type.md) | Optional | The phone information. | getPhone(): ?PhoneWithType | setPhone(?PhoneWithType phone): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address0",
-  "payer_id": "payer_id0",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
-    ]
-  },
-  "payment_source": {
-    "card": {
-      "name": "name6",
-      "number": "number6",
-      "expiry": "expiry4",
-      "security_code": "security_code8",
-      "type": "UNKNOWN"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriberRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\FulfillmentType;
+use PaypalServerSdkLib\Models\Builders\ShippingOptionBuilder;
+use PaypalServerSdkLib\Models\ShippingType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\Builders\SubscriptionPaymentSourceBuilder;
+use PaypalServerSdkLib\Models\Builders\SubscriptionCardRequestBuilder;
+use PaypalServerSdkLib\Models\CardType;
+
+$subscriberRequest = SubscriberRequestBuilder::init()
+    ->emailAddress('email_address4')
+    ->payerId('payer_id4')
+    ->name(
+        NameBuilder::init()
+            ->givenName('given_name2')
+            ->surname('surname8')
+            ->build()
+    )
+    ->shippingAddress(
+        ShippingDetailsBuilder::init()
+            ->name(
+                ShippingNameBuilder::init()
+                    ->fullName('full_name6')
+                    ->build()
+            )
+            ->emailAddress('email_address8')
+            ->phoneNumber(
+                PhoneNumberWithCountryCodeBuilder::init(
+                    'country_code2',
+                    'national_number6'
+                )->build()
+            )
+            ->type(FulfillmentType::PICKUP_IN_STORE)
+            ->options(
+                [
+                    ShippingOptionBuilder::init(
+                        'id2',
+                        'label2',
+                        false
+                    )
+                        ->type(ShippingType::SHIPPING)
+                        ->amount(
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )->build()
+                ]
+            )->build()
+    )
+    ->paymentSource(
+        SubscriptionPaymentSourceBuilder::init()
+            ->card(
+                SubscriptionCardRequestBuilder::init()
+                    ->name('name6')
+                    ->number('number6')
+                    ->expiry('expiry4')
+                    ->securityCode('security_code8')
+                    ->type(CardType::UNKNOWN)
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

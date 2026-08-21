@@ -18,16 +18,19 @@ The portable international postal address. Maps to [AddressValidationMetadata](h
 | `postalCode` | `?string` | Optional | The postal code, which is the ZIP code or equivalent. Typically required for countries with a postal code or an equivalent. See [postal code](https://en.wikipedia.org/wiki/Postal_code).<br><br>**Constraints**: *Maximum Length*: `60` | getPostalCode(): ?string | setPostalCode(?string postalCode): void |
 | `countryCode` | `string` | Required | The [2-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` | getCountryCode(): string | setCountryCode(string countryCode): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "address_line_1": "address_line_18",
-  "address_line_2": "address_line_28",
-  "admin_area_2": "admin_area_22",
-  "admin_area_1": "admin_area_14",
-  "postal_code": "postal_code0",
-  "country_code": "country_code8"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+
+$address = AddressBuilder::init(
+    'country_code6'
+)
+    ->addressLine1('address_line_16')
+    ->addressLine2('address_line_26')
+    ->adminArea2('admin_area_20')
+    ->adminArea1('admin_area_12')
+    ->postalCode('postal_code8')
+    ->build();
 ```
 

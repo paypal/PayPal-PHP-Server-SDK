@@ -16,19 +16,29 @@ Provides additional details to process a payment using a `payment_source` that h
 | `usage` | [`?string(StoredPaymentSourceUsageType)`](../../doc/models/stored-payment-source-usage-type.md) | Optional | Indicates if this is a `first` or `subsequent` payment using a stored payment source (also referred to as stored credential or card on file).<br><br>**Default**: `StoredPaymentSourceUsageType::DERIVED`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getUsage(): ?string | setUsage(?string usage): void |
 | `previousNetworkTransactionReference` | [`?NetworkTransaction`](../../doc/models/network-transaction.md) | Optional | Reference values used by the card network to identify a transaction. | getPreviousNetworkTransactionReference(): ?NetworkTransaction | setPreviousNetworkTransactionReference(?NetworkTransaction previousNetworkTransactionReference): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payment_initiator": "CUSTOMER",
-  "payment_type": "RECURRING",
-  "usage": "DERIVED",
-  "previous_network_transaction_reference": {
-    "id": "id6",
-    "date": "date2",
-    "network": "CONFIDIS",
-    "acquirer_reference_number": "acquirer_reference_number8"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\StoredPaymentSourceBuilder;
+use PaypalServerSdkLib\Models\PaymentInitiator;
+use PaypalServerSdkLib\Models\StoredPaymentSourcePaymentType;
+use PaypalServerSdkLib\Models\StoredPaymentSourceUsageType;
+use PaypalServerSdkLib\Models\Builders\NetworkTransactionBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+
+$storedPaymentSource = StoredPaymentSourceBuilder::init(
+    PaymentInitiator::CUSTOMER,
+    StoredPaymentSourcePaymentType::ONE_TIME
+)
+    ->usage(StoredPaymentSourceUsageType::DERIVED)
+    ->previousNetworkTransactionReference(
+        NetworkTransactionBuilder::init()
+            ->id('id6')
+            ->date('date2')
+            ->network(CardBrand::CONFIDIS)
+            ->acquirerReferenceNumber('acquirer_reference_number8')
+            ->build()
+    )
+    ->build();
 ```
 

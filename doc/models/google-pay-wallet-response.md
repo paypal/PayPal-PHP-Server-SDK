@@ -16,30 +16,43 @@ Google Pay Wallet payment data.
 | `phoneNumber` | [`?PhoneNumberWithCountryCode`](../../doc/models/phone-number-with-country-code.md) | Optional | The phone number in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). | getPhoneNumber(): ?PhoneNumberWithCountryCode | setPhoneNumber(?PhoneNumberWithCountryCode phoneNumber): void |
 | `card` | [`?GooglePayCardResponse`](../../doc/models/google-pay-card-response.md) | Optional | The payment card to use to fund a Google Pay payment response. Can be a credit or debit card. | getCard(): ?GooglePayCardResponse | setCard(?GooglePayCardResponse card): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "card": {
-    "name": "name6",
-    "last_digits": "last_digits0",
-    "type": "UNKNOWN",
-    "brand": "CB_NATIONALE",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "admin_area_2": "admin_area_28",
-      "admin_area_1": "admin_area_14",
-      "postal_code": "postal_code0",
-      "country_code": "country_code8"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\GooglePayWalletResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayCardResponseBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+
+$googlePayWalletResponse = GooglePayWalletResponseBuilder::init()
+    ->name('name0')
+    ->emailAddress('email_address8')
+    ->phoneNumber(
+        PhoneNumberWithCountryCodeBuilder::init(
+            'country_code2',
+            'national_number6'
+        )->build()
+    )
+    ->card(
+        GooglePayCardResponseBuilder::init()
+            ->name('name6')
+            ->type(CardType::UNKNOWN)
+            ->brand(CardBrand::CB_NATIONALE)
+            ->billingAddress(
+                AddressBuilder::init(
+                    'country_code8'
+                )
+                    ->addressLine1('address_line_12')
+                    ->addressLine2('address_line_28')
+                    ->adminArea2('admin_area_28')
+                    ->adminArea1('admin_area_14')
+                    ->postalCode('postal_code0')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

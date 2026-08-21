@@ -13,14 +13,18 @@ Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds a
 |  --- | --- | --- | --- | --- | --- |
 | `amount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getAmount(): ?Money | setAmount(?Money amount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ReauthorizeRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$reauthorizeRequest = ReauthorizeRequestBuilder::init()
+    ->amount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value0'
+        )->build()
+    )->build();
 ```
 

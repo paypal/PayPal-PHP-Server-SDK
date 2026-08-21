@@ -13,11 +13,14 @@ The details of the refund status.
 |  --- | --- | --- | --- | --- | --- |
 | `reason` | [`?string(RefundIncompleteReason)`](../../doc/models/refund-incomplete-reason.md) | Optional | The reason why the refund has the `PENDING` or `FAILED` status. | getReason(): ?string | setReason(?string reason): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "ECHECK"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\RefundStatusDetailsBuilder;
+use PaypalServerSdkLib\Models\RefundIncompleteReason;
+
+$refundStatusDetails = RefundStatusDetailsBuilder::init()
+    ->reason(RefundIncompleteReason::ECHECK)
+    ->build();
 ```
 

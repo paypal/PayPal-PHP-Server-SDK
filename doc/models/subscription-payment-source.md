@@ -13,17 +13,23 @@ The payment source definition. To be eligible to create subscription using debit
 |  --- | --- | --- | --- | --- | --- |
 | `card` | [`?SubscriptionCardRequest`](../../doc/models/subscription-card-request.md) | Optional | The payment card to use to fund a payment. Can be a credit or debit card. | getCard(): ?SubscriptionCardRequest | setCard(?SubscriptionCardRequest card): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "number": "number6",
-    "expiry": "expiry4",
-    "security_code": "security_code8",
-    "type": "UNKNOWN"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionPaymentSourceBuilder;
+use PaypalServerSdkLib\Models\Builders\SubscriptionCardRequestBuilder;
+use PaypalServerSdkLib\Models\CardType;
+
+$subscriptionPaymentSource = SubscriptionPaymentSourceBuilder::init()
+    ->card(
+        SubscriptionCardRequestBuilder::init()
+            ->name('name6')
+            ->number('number6')
+            ->expiry('expiry4')
+            ->securityCode('security_code8')
+            ->type(CardType::UNKNOWN)
+            ->build()
+    )
+    ->build();
 ```
 

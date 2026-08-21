@@ -14,12 +14,14 @@ Customizes the payer experience during the approval process for the payment.
 | `returnUrl` | `string` | Required | Describes the URL. | getReturnUrl(): string | setReturnUrl(string returnUrl): void |
 | `cancelUrl` | `string` | Required | Describes the URL. | getCancelUrl(): string | setCancelUrl(string cancelUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_url": "return_url6",
-  "cancel_url": "cancel_url8"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\GooglePayExperienceContextBuilder;
+
+$googlePayExperienceContext = GooglePayExperienceContextBuilder::init(
+    'return_url6',
+    'cancel_url8'
+)->build();
 ```
 

@@ -22,78 +22,112 @@ The order authorize response.
 | `status` | [`?string(OrderStatus)`](../../doc/models/order-status.md) | Optional | The order status.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getStatus(): ?string | setStatus(?string status): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links. To complete payer approval, use the `approve` link to redirect the payer. The API caller has 6 hours (default setting, this which can be changed by your account manager to 24/48/72 hours to accommodate your use case) from the time the order is created, to redirect your payer. Once redirected, the API caller has 6 hours for the payer to approve the order and either authorize or capture the order. If you are not using the PayPal JavaScript SDK to initiate PayPal Checkout (in context) ensure that you include `application_context.return_url` is specified or you will get "We're sorry, Things don't appear to be working at the moment" after the payer approves the payment. | getLinks(): ?array | setLinks(?array links): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "create_time": "create_time0",
-  "update_time": "update_time4",
-  "id": "id4",
-  "payment_source": {
-    "card": {
-      "name": "name6",
-      "last_digits": "last_digits0",
-      "brand": "CB_NATIONALE",
-      "available_networks": [
-        "DELTA"
-      ],
-      "type": "UNKNOWN"
-    },
-    "paypal": {
-      "email_address": "email_address0",
-      "account_id": "account_id4",
-      "account_status": "VERIFIED",
-      "name": {
-        "given_name": "given_name2",
-        "surname": "surname8"
-      },
-      "phone_type": "FAX"
-    },
-    "apple_pay": {
-      "id": "id0",
-      "token": "token6",
-      "name": "name0",
-      "email_address": "email_address8",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "google_pay": {
-      "name": "name8",
-      "email_address": "email_address6",
-      "phone_number": {
-        "country_code": "country_code2",
-        "national_number": "national_number6"
-      },
-      "card": {
-        "name": "name6",
-        "last_digits": "last_digits0",
-        "type": "UNKNOWN",
-        "brand": "CB_NATIONALE",
-        "billing_address": {
-          "address_line_1": "address_line_12",
-          "address_line_2": "address_line_28",
-          "admin_area_2": "admin_area_28",
-          "admin_area_1": "admin_area_14",
-          "postal_code": "postal_code0",
-          "country_code": "country_code8"
-        }
-      }
-    },
-    "venmo": {
-      "email_address": "email_address4",
-      "account_id": "account_id8",
-      "user_name": "user_name2",
-      "name": {
-        "given_name": "given_name2",
-        "surname": "surname8"
-      },
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    }
-  },
-  "intent": "CAPTURE"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\OrderAuthorizeResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\OrderAuthorizeResponsePaymentSourceBuilder;
+use PaypalServerSdkLib\Models\Builders\CardResponseBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\PaypalWalletResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayPaymentObjectBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayWalletResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayCardResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\VenmoWalletResponseBuilder;
+use PaypalServerSdkLib\Models\CheckoutPaymentIntent;
+
+$orderAuthorizeResponse = OrderAuthorizeResponseBuilder::init()
+    ->createTime('create_time8')
+    ->updateTime('update_time4')
+    ->paymentSource(
+        OrderAuthorizeResponsePaymentSourceBuilder::init()
+            ->card(
+                CardResponseBuilder::init()
+                    ->name('name6')
+                    ->brand(CardBrand::CB_NATIONALE)
+                    ->type(CardType::UNKNOWN)
+                    ->build()
+            )
+            ->paypal(
+                PaypalWalletResponseBuilder::init()
+                    ->emailAddress('email_address0')
+                    ->accountId('account_id4')
+                    ->name(
+                        NameBuilder::init()
+                            ->givenName('given_name2')
+                            ->surname('surname8')
+                            ->build()
+                    )
+                    ->phoneType(PhoneType::FAX)
+                    ->build()
+            )
+            ->applePay(
+                ApplePayPaymentObjectBuilder::init()
+                    ->id('id0')
+                    ->token('token6')
+                    ->name('name0')
+                    ->emailAddress('email_address8')
+                    ->phoneNumber(
+                        PhoneNumberBuilder::init(
+                            'national_number6'
+                        )->build()
+                    )->build()
+            )
+            ->googlePay(
+                GooglePayWalletResponseBuilder::init()
+                    ->name('name8')
+                    ->emailAddress('email_address6')
+                    ->phoneNumber(
+                        PhoneNumberWithCountryCodeBuilder::init(
+                            'country_code2',
+                            'national_number6'
+                        )->build()
+                    )
+                    ->card(
+                        GooglePayCardResponseBuilder::init()
+                            ->name('name6')
+                            ->type(CardType::UNKNOWN)
+                            ->brand(CardBrand::CB_NATIONALE)
+                            ->billingAddress(
+                                AddressBuilder::init(
+                                    'country_code8'
+                                )
+                                    ->addressLine1('address_line_12')
+                                    ->addressLine2('address_line_28')
+                                    ->adminArea2('admin_area_28')
+                                    ->adminArea1('admin_area_14')
+                                    ->postalCode('postal_code0')
+                                    ->build()
+                            )
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->venmo(
+                VenmoWalletResponseBuilder::init()
+                    ->emailAddress('email_address4')
+                    ->accountId('account_id8')
+                    ->userName('user_name2')
+                    ->name(
+                        NameBuilder::init()
+                            ->givenName('given_name2')
+                            ->surname('surname8')
+                            ->build()
+                    )
+                    ->phoneNumber(
+                        PhoneNumberBuilder::init(
+                            'national_number6'
+                        )->build()
+                    )->build()
+            )->build()
+    )
+    ->intent(CheckoutPaymentIntent::CAPTURE)
+    ->build();
 ```
 

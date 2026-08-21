@@ -18,15 +18,17 @@ The name of the party.
 | `suffix` | `?string` | Optional | The suffix for the party's name.<br><br>**Constraints**: *Maximum Length*: `140` | getSuffix(): ?string | setSuffix(?string suffix): void |
 | `fullName` | `?string` | Optional | When the party is a person, the party's full name.<br><br>**Constraints**: *Maximum Length*: `300` | getFullName(): ?string | setFullName(?string fullName): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "prefix": "prefix4",
-  "given_name": "given_name8",
-  "surname": "surname2",
-  "middle_name": "middle_name4",
-  "suffix": "suffix4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionPayerNameBuilder;
+
+$subscriptionPayerName = SubscriptionPayerNameBuilder::init()
+    ->prefix('prefix8')
+    ->givenName('given_name2')
+    ->surname('surname8')
+    ->middleName('middle_name0')
+    ->suffix('suffix0')
+    ->build();
 ```
 

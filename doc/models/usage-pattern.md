@@ -24,3 +24,11 @@ Expected business/pricing model for the billing agreement., Expected business/ch
 | `INSTALLMENT_PREPAID` | Merchant-managed installment plan when the "amount" to be paid and the "billing frequency" are fixed, but there is a defined number of payments with the payment due before the good/service is delivered. |
 | `INSTALLMENT_POSTPAID` | Merchant-managed installment plan when the "amount" to be paid and the "billing frequency" are fixed, but there is a defined number of payments with the payment due after the goods/services are delivered. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\UsagePattern;
+
+$usagePattern = UsagePattern::INSTALLMENT_PREPAID;
+```
+

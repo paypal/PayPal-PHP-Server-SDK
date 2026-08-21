@@ -13,28 +13,33 @@ Additional attributes associated with the use of Apple Pay.
 |  --- | --- | --- | --- | --- | --- |
 | `vault` | [`?VaultResponse`](../../doc/models/vault-response.md) | Optional | The details about a saved payment source. | getVault(): ?VaultResponse | setVault(?VaultResponse vault): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "vault": {
-    "id": "id6",
-    "status": "APPROVED",
-    "customer": {
-      "id": "id0",
-      "name": {
-        "given_name": "given_name2",
-        "surname": "surname8"
-      }
-    },
-    "links": [
-      {
-        "href": "href6",
-        "rel": "rel0",
-        "method": "HEAD"
-      }
-    ]
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ApplePayAttributesResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\VaultResponseBuilder;
+use PaypalServerSdkLib\Models\VaultStatus;
+use PaypalServerSdkLib\Models\Builders\VaultCustomerBuilder;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+
+$applePayAttributesResponse = ApplePayAttributesResponseBuilder::init()
+    ->vault(
+        VaultResponseBuilder::init()
+            ->id('id6')
+            ->status(VaultStatus::APPROVED)
+            ->customer(
+                VaultCustomerBuilder::init()
+                    ->id('id0')
+                    ->name(
+                        NameBuilder::init()
+                            ->givenName('given_name2')
+                            ->surname('surname8')
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

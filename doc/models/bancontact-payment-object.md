@@ -17,15 +17,17 @@ Information used to pay Bancontact.
 | `ibanLastChars` | `?string` | Optional | The last characters of the IBAN used to pay.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `34`, *Pattern*: `[a-zA-Z0-9]{4}` | getIbanLastChars(): ?string | setIbanLastChars(?string ibanLastChars): void |
 | `cardLastDigits` | `?string` | Optional | The last digits of the card used to fund the Bancontact payment.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `4`, *Pattern*: `[0-9]{4}` | getCardLastDigits(): ?string | setCardLastDigits(?string cardLastDigits): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "country_code": "country_code6",
-  "bic": "bic8",
-  "iban_last_chars": "iban_last_chars4",
-  "card_last_digits": "card_last_digits0"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\BancontactPaymentObjectBuilder;
+
+$bancontactPaymentObject = BancontactPaymentObjectBuilder::init()
+    ->name('name6')
+    ->countryCode('country_code6')
+    ->bic('bic8')
+    ->ibanLastChars('iban_last_chars4')
+    ->cardLastDigits('card_last_digits0')
+    ->build();
 ```
 

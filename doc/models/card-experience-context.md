@@ -14,12 +14,14 @@ Customizes the payer experience during the 3DS Approval for payment.
 | `returnUrl` | `?string` | Optional | Describes the URL. | getReturnUrl(): ?string | setReturnUrl(?string returnUrl): void |
 | `cancelUrl` | `?string` | Optional | Describes the URL. | getCancelUrl(): ?string | setCancelUrl(?string cancelUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_url": "return_url2",
-  "cancel_url": "cancel_url0"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardExperienceContextBuilder;
+
+$cardExperienceContext = CardExperienceContextBuilder::init()
+    ->returnUrl('return_url0')
+    ->cancelUrl('cancel_url2')
+    ->build();
 ```
 

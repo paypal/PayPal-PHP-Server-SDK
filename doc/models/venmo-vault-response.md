@@ -16,43 +16,41 @@ The details about a saved venmo payment source.
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` | getLinks(): ?array | setLinks(?array links): void |
 | `customer` | [`?CustomerInformation`](../../doc/models/customer-information.md) | Optional | This object represents a merchant’s customer, allowing them to store contact details, and track all payments associated with the same customer. | getCustomer(): ?CustomerInformation | setCustomer(?CustomerInformation customer): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "CREATED",
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ],
-  "customer": {
-    "id": "id0",
-    "email_address": "email_address2",
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\VenmoVaultResponseBuilder;
+use PaypalServerSdkLib\Models\VenmoVaultResponseStatus;
+use PaypalServerSdkLib\Models\Builders\CustomerInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+
+$venmoVaultResponse = VenmoVaultResponseBuilder::init()
+    ->id('id4')
+    ->status(VenmoVaultResponseStatus::APPROVED)
+    ->customer(
+        CustomerInformationBuilder::init()
+            ->id('id0')
+            ->emailAddress('email_address2')
+            ->phone(
+                PhoneWithTypeBuilder::init(
+                    PhoneNumberBuilder::init(
+                        'national_number6'
+                    )->build()
+                )
+                    ->phoneType(PhoneType::OTHER)
+                    ->build()
+            )
+            ->name(
+                NameBuilder::init()
+                    ->givenName('given_name2')
+                    ->surname('surname8')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

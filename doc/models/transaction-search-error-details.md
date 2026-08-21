@@ -17,15 +17,18 @@ The error details. Required for client-side `4XX` errors.
 | `issue` | `string` | Required | The unique, fine-grained application-level error code. | getIssue(): string | setIssue(string issue): void |
 | `description` | `?string` | Optional | The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value. | getDescription(): ?string | setDescription(?string description): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "location": "body",
-  "issue": "issue2",
-  "field": "field0",
-  "value": "value8",
-  "description": "description6"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\TransactionSearchErrorDetailsBuilder;
+
+$transactionSearchErrorDetails = TransactionSearchErrorDetailsBuilder::init(
+    'issue8'
+)
+    ->field('field6')
+    ->value('value4')
+    ->location('body')
+    ->description('description2')
+    ->build();
 ```
 

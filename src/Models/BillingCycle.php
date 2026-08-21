@@ -47,6 +47,11 @@ class BillingCycle implements \JsonSerializable
     private $startDate;
 
     /**
+     * @var CycleFrequency|null
+     */
+    private $frequency;
+
+    /**
      * @param string $tenureType
      */
     public function __construct(string $tenureType)
@@ -176,6 +181,26 @@ class BillingCycle implements \JsonSerializable
     }
 
     /**
+     * Returns Frequency.
+     * The frequency of the terms reset cycle.
+     */
+    public function getFrequency(): ?CycleFrequency
+    {
+        return $this->frequency;
+    }
+
+    /**
+     * Sets Frequency.
+     * The frequency of the terms reset cycle.
+     *
+     * @maps frequency
+     */
+    public function setFrequency(?CycleFrequency $frequency): void
+    {
+        $this->frequency = $frequency;
+    }
+
+    /**
      * Converts the BillingCycle object to a human-readable string representation.
      *
      * @return string The string representation of the BillingCycle object.
@@ -189,7 +214,8 @@ class BillingCycle implements \JsonSerializable
                 'pricingScheme' => $this->pricingScheme,
                 'totalCycles' => $this->totalCycles,
                 'sequence' => $this->sequence,
-                'startDate' => $this->startDate
+                'startDate' => $this->startDate,
+                'frequency' => $this->frequency
             ]
         );
     }
@@ -218,6 +244,9 @@ class BillingCycle implements \JsonSerializable
         }
         if (isset($this->startDate)) {
             $json['start_date']     = $this->startDate;
+        }
+        if (isset($this->frequency)) {
+            $json['frequency']      = $this->frequency;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

@@ -1425,3 +1425,11 @@ The carrier for the shipment. Some carriers have a global version as well as loc
 | `TOPTRANS` | Toptrans. |
 | `OTHER` | Other. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\ShipmentCarrier;
+
+$shipmentCarrier = ShipmentCarrier::XMSZM;
+```
+

@@ -16,3 +16,11 @@ The PayPal reference ID type.
 | `SUB` | A subscription ID. |
 | `PAP` | A pre-approved payment ID. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\PaypalReferenceIdType;
+
+$paypalReferenceIdType = PaypalReferenceIdType::ODR;
+```
+

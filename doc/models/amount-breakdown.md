@@ -19,30 +19,42 @@ The breakdown of the amount. Breakdown provides details such as total item amoun
 | `shippingDiscount` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getShippingDiscount(): ?Money | setShippingDiscount(?Money shippingDiscount): void |
 | `discount` | [`?Money`](../../doc/models/money.md) | Optional | The discount amount and currency code. For list of supported currencies and decimal precision, see the PayPal REST APIs Currency Codes. | getDiscount(): ?Money | setDiscount(?Money discount): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "item_total": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "shipping": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "handling": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "tax_total": {
-    "currency_code": "currency_code4",
-    "value": "value0"
-  },
-  "insurance": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\AmountBreakdownBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$amountBreakdown = AmountBreakdownBuilder::init()
+    ->itemTotal(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )
+    ->shipping(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )
+    ->handling(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value8'
+        )->build()
+    )
+    ->taxTotal(
+        MoneyBuilder::init(
+            'currency_code4',
+            'value0'
+        )->build()
+    )
+    ->insurance(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value8'
+        )->build()
+    )->build();
 ```
 
