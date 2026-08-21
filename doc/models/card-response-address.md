@@ -19,16 +19,19 @@ Address request details.
 | `countryCode` | `string` | Required | The [2-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` | getCountryCode(): string | setCountryCode(string countryCode): void |
 | `id` | `?string` | Optional | The resource ID of the address.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9A-Za-z-_]+$` | getId(): ?string | setId(?string id): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "address_line_1": "address_line_12",
-  "address_line_2": "address_line_22",
-  "admin_area_2": "admin_area_26",
-  "admin_area_1": "admin_area_18",
-  "postal_code": "postal_code4",
-  "country_code": "country_code2"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\CardResponseAddressBuilder;
+
+$cardResponseAddress = CardResponseAddressBuilder::init(
+    'country_code2'
+)
+    ->addressLine1('address_line_18')
+    ->addressLine2('address_line_22')
+    ->adminArea2('admin_area_26')
+    ->adminArea1('admin_area_18')
+    ->postalCode('postal_code4')
+    ->build();
 ```
 

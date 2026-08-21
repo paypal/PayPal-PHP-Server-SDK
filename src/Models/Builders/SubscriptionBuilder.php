@@ -187,6 +187,39 @@ class SubscriptionBuilder
     }
 
     /**
+     * Sets status field.
+     *
+     * @param string|null $value
+     */
+    public function status(?string $value): self
+    {
+        $this->instance->setStatus($value);
+        return $this;
+    }
+
+    /**
+     * Sets status change note field.
+     *
+     * @param string|null $value
+     */
+    public function statusChangeNote(?string $value): self
+    {
+        $this->instance->setStatusChangeNote($value);
+        return $this;
+    }
+
+    /**
+     * Sets status update time field.
+     *
+     * @param string|null $value
+     */
+    public function statusUpdateTime(?string $value): self
+    {
+        $this->instance->setStatusUpdateTime($value);
+        return $this;
+    }
+
+    /**
      * Initializes a new Subscription object.
      */
     public function build(): Subscription

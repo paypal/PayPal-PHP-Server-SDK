@@ -17,15 +17,18 @@ Customizes the payer experience during the approval process for the payment.
 | `returnUrl` | `?string` | Optional | Describes the URL. | getReturnUrl(): ?string | setReturnUrl(?string returnUrl): void |
 | `cancelUrl` | `?string` | Optional | Describes the URL. | getCancelUrl(): ?string | setCancelUrl(?string cancelUrl): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "brand_name": "brand_name0",
-  "locale": "locale4",
-  "return_url": "return_url2",
-  "cancel_url": "cancel_url4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ExperienceContextBuilder;
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+
+$experienceContext = ExperienceContextBuilder::init()
+    ->brandName('brand_name0')
+    ->locale('locale4')
+    ->shippingPreference(ExperienceContextShippingPreference::GET_FROM_FILE)
+    ->returnUrl('return_url2')
+    ->cancelUrl('cancel_url4')
+    ->build();
 ```
 

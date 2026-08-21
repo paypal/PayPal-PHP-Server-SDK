@@ -14,3 +14,11 @@ Configures the label name to `Continue` or `Subscribe Now` for subscription cons
 | `CONTINUE_` | After you redirect the customer to the PayPal subscription consent page, a Continue button appears. Use this option when you want to control the activation of the subscription and do not want PayPal to activate the subscription. |
 | `SUBSCRIBE_NOW` | After you redirect the customer to the PayPal subscription consent page, a Subscribe Now button appears. Use this option when you want PayPal to activate the subscription. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\ApplicationContextUserAction;
+
+$applicationContextUserAction = ApplicationContextUserAction::CONTINUE_;
+```
+

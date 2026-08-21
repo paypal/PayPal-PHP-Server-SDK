@@ -19,72 +19,103 @@ The transaction details.
 | `auctionInfo` | [`?AuctionInformation`](../../doc/models/auction-information.md) | Optional | The auction information. | getAuctionInfo(): ?AuctionInformation | setAuctionInfo(?AuctionInformation auctionInfo): void |
 | `incentiveInfo` | [`?IncentiveInformation`](../../doc/models/incentive-information.md) | Optional | The incentive details. | getIncentiveInfo(): ?IncentiveInformation | setIncentiveInfo(?IncentiveInformation incentiveInfo): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transaction_info": {
-    "paypal_account_id": "paypal_account_id4",
-    "transaction_id": "transaction_id0",
-    "paypal_reference_id": "paypal_reference_id2",
-    "paypal_reference_id_type": "ODR",
-    "transaction_event_code": "transaction_event_code6"
-  },
-  "payer_info": {
-    "account_id": "account_id2",
-    "email_address": "email_address2",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6",
-      "extension_number": "extension_number8"
-    },
-    "address_status": "address_status2",
-    "payer_status": "payer_status2"
-  },
-  "shipping_info": {
-    "name": "name0",
-    "method": "method4",
-    "address": {
-      "line1": "line18",
-      "line2": "line20",
-      "city": "city6",
-      "state": "state2",
-      "country_code": "country_code6",
-      "postal_code": "postal_code8"
-    },
-    "secondary_shipping_address": {
-      "line1": "line16",
-      "line2": "line28",
-      "city": "city4",
-      "state": "state0",
-      "country_code": "country_code4",
-      "postal_code": "postal_code6"
-    }
-  },
-  "cart_info": {
-    "item_details": [
-      {
-        "item_code": "item_code0",
-        "item_name": "item_name8",
-        "item_description": "item_description4",
-        "item_options": "item_options2",
-        "item_quantity": "item_quantity2"
-      },
-      {
-        "item_code": "item_code0",
-        "item_name": "item_name8",
-        "item_description": "item_description4",
-        "item_options": "item_options2",
-        "item_quantity": "item_quantity2"
-      }
-    ],
-    "tax_inclusive": false,
-    "paypal_invoice_id": "paypal_invoice_id6"
-  },
-  "store_info": {
-    "store_id": "store_id2",
-    "terminal_id": "terminal_id6"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\TransactionDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\TransactionInformationBuilder;
+use PaypalServerSdkLib\Models\PaypalReferenceIdType;
+use PaypalServerSdkLib\Models\Builders\PayerInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneBuilder;
+use PaypalServerSdkLib\Models\Builders\SimplePostalAddressCoarseGrainedBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\CartInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\ItemDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\StoreInformationBuilder;
+
+$transactionDetails = TransactionDetailsBuilder::init()
+    ->transactionInfo(
+        TransactionInformationBuilder::init()
+            ->paypalAccountId('paypal_account_id4')
+            ->paypalReferenceId('paypal_reference_id2')
+            ->paypalReferenceIdType(PaypalReferenceIdType::ODR)
+            ->transactionEventCode('transaction_event_code6')
+            ->build()
+    )
+    ->payerInfo(
+        PayerInformationBuilder::init()
+            ->accountId('account_id2')
+            ->emailAddress('email_address2')
+            ->phoneNumber(
+                PhoneBuilder::init(
+                    'country_code2',
+                    'national_number6'
+                )
+                    ->extensionNumber('extension_number8')
+                    ->build()
+            )
+            ->addressStatus('address_status2')
+            ->payerStatus('payer_status2')
+            ->build()
+    )
+    ->shippingInfo(
+        ShippingInformationBuilder::init()
+            ->name('name0')
+            ->method('method4')
+            ->address(
+                SimplePostalAddressCoarseGrainedBuilder::init(
+                    'line18',
+                    'city6',
+                    'country_code6'
+                )
+                    ->line2('line20')
+                    ->state('state2')
+                    ->postalCode('postal_code8')
+                    ->build()
+            )
+            ->secondaryShippingAddress(
+                SimplePostalAddressCoarseGrainedBuilder::init(
+                    'line16',
+                    'city4',
+                    'country_code4'
+                )
+                    ->line2('line28')
+                    ->state('state0')
+                    ->postalCode('postal_code6')
+                    ->build()
+            )
+            ->build()
+    )
+    ->cartInfo(
+        CartInformationBuilder::init()
+            ->itemDetails(
+                [
+                    ItemDetailsBuilder::init()
+                        ->itemCode('item_code0')
+                        ->itemName('item_name8')
+                        ->itemDescription('item_description4')
+                        ->itemOptions('item_options2')
+                        ->itemQuantity('item_quantity2')
+                        ->build(),
+                    ItemDetailsBuilder::init()
+                        ->itemCode('item_code0')
+                        ->itemName('item_name8')
+                        ->itemDescription('item_description4')
+                        ->itemOptions('item_options2')
+                        ->itemQuantity('item_quantity2')
+                        ->build()
+                ]
+            )
+            ->taxInclusive(false)
+            ->paypalInvoiceId('paypal_invoice_id6')
+            ->build()
+    )
+    ->storeInfo(
+        StoreInformationBuilder::init()
+            ->storeId('store_id2')
+            ->terminalId('terminal_id6')
+            ->build()
+    )
+    ->build();
 ```
 

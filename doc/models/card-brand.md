@@ -42,3 +42,11 @@ The card network or brand. Applies to credit, debit, gift, and payment cards.
 | `ACCEL` | The Accel payment network. |
 | `UNKNOWN` | UNKNOWN payment network. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\CardBrand;
+
+$cardBrand = CardBrand::DISCOVER;
+```
+

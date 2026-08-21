@@ -19,15 +19,17 @@ The payment card used to fund a Google Pay payment. Can be a credit or debit car
 | `brand` | [`?string(CardBrand)`](../../doc/models/card-brand.md) | Optional | The card network or brand. Applies to credit, debit, gift, and payment cards.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` | getBrand(): ?string | setBrand(?string brand): void |
 | `billingAddress` | [`?Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). | getBillingAddress(): ?Address | setBillingAddress(?Address billingAddress): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "number": "number2",
-  "expiry": "expiry2",
-  "last_digits": "last_digits8",
-  "type": "DEBIT"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\GooglePayCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+
+$googlePayCard = GooglePayCardBuilder::init()
+    ->name('name4')
+    ->number('number8')
+    ->expiry('expiry2')
+    ->type(CardType::DEBIT)
+    ->build();
 ```
 

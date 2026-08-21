@@ -15,3 +15,11 @@ Indicates the type of the stored payment_source payment.
 | `RECURRING` | Payment which is part of a series of payments with fixed or variable amounts, following a fixed time interval. (e.g. Subscription payments). |
 | `UNSCHEDULED` | Payment which is part of a series of payments that occur on a non-fixed schedule and/or have variable amounts. (e.g. Account Topup payments). |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\StoredPaymentSourcePaymentType;
+
+$storedPaymentSourcePaymentType = StoredPaymentSourcePaymentType::UNSCHEDULED;
+```
+

@@ -14,3 +14,11 @@ The customer type associated with the PayPal payment token. This is to indicate 
 | `CONSUMER` | The customer vaulting the PayPal payment token is a consumer on the merchant / platform. |
 | `BUSINESS` | The customer vaulting the PayPal payment token is a business on merchant / platform. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\PaypalPaymentTokenCustomerType;
+
+$paypalPaymentTokenCustomerType = PaypalPaymentTokenCustomerType::CONSUMER;
+```
+

@@ -17,29 +17,40 @@ Information about the Payment data obtained by decrypting Apple Pay token.
 | `paymentDataType` | [`?string(ApplePayPaymentDataType)`](../../doc/models/apple-pay-payment-data-type.md) | Optional | Indicates the type of payment data passed, in case of Non China the payment data is 3DSECURE and for China it is EMV.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `16`, *Pattern*: `^[0-9A-Z_]+$` | getPaymentDataType(): ?string | setPaymentDataType(?string paymentDataType): void |
 | `paymentData` | [`?ApplePayPaymentData`](../../doc/models/apple-pay-payment-data.md) | Optional | Information about the decrypted apple pay payment data for the token like cryptogram, eci indicator. | getPaymentData(): ?ApplePayPaymentData | setPaymentData(?ApplePayPaymentData paymentData): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "transaction_amount": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  },
-  "tokenized_card": {
-    "name": "name4",
-    "number": "number2",
-    "expiry": "expiry2",
-    "card_type": "VISA",
-    "type": "UNKNOWN"
-  },
-  "device_manufacturer_id": "device_manufacturer_id2",
-  "payment_data_type": "3DSECURE",
-  "payment_data": {
-    "cryptogram": "cryptogram6",
-    "eci_indicator": "eci_indicator0",
-    "emv_data": "emv_data0",
-    "pin": "pin4"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ApplePayDecryptedTokenDataBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayTokenizedCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\ApplePayPaymentDataType;
+use PaypalServerSdkLib\Models\Builders\ApplePayPaymentDataBuilder;
+
+$applePayDecryptedTokenData = ApplePayDecryptedTokenDataBuilder::init(
+    ApplePayTokenizedCardBuilder::init()
+        ->name('name4')
+        ->number('number2')
+        ->expiry('expiry2')
+        ->type(CardType::UNKNOWN)
+        ->build()
+)
+    ->transactionAmount(
+        MoneyBuilder::init(
+            'currency_code6',
+            'value2'
+        )->build()
+    )
+    ->deviceManufacturerId('device_manufacturer_id8')
+    ->paymentDataType(ApplePayPaymentDataType::ENUM_3DSECURE)
+    ->paymentData(
+        ApplePayPaymentDataBuilder::init()
+            ->cryptogram('cryptogram6')
+            ->eciIndicator('eci_indicator0')
+            ->emvData('emv_data0')
+            ->pin('pin4')
+            ->build()
+    )
+    ->build();
 ```
 

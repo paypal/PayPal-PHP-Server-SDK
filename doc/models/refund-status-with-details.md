@@ -14,14 +14,19 @@ The refund status with details.
 | `status` | [`?string(RefundStatus)`](../../doc/models/refund-status.md) | Optional, Read-only | The status of the refund. | getStatus(): ?string | setStatus(?string status): void |
 | `statusDetails` | [`?RefundStatusDetails`](../../doc/models/refund-status-details.md) | Optional | The details of the refund status. | getStatusDetails(): ?RefundStatusDetails | setStatusDetails(?RefundStatusDetails statusDetails): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "PENDING",
-  "status_details": {
-    "reason": "ECHECK"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\RefundStatusWithDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\RefundStatusDetailsBuilder;
+use PaypalServerSdkLib\Models\RefundIncompleteReason;
+
+$refundStatusWithDetails = RefundStatusWithDetailsBuilder::init()
+    ->statusDetails(
+        RefundStatusDetailsBuilder::init()
+            ->reason(RefundIncompleteReason::ECHECK)
+            ->build()
+    )
+    ->build();
 ```
 

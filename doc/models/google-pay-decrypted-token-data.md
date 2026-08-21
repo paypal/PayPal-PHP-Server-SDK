@@ -19,23 +19,29 @@ Details shared by Google for the merchant to be shared with PayPal. This is requ
 | `cryptogram` | `?string` | Optional | Base-64 cryptographic identifier used by card schemes to validate the token verification result. This is a conditionally required field if authentication_method is CRYPTOGRAM_3DS.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000` | getCryptogram(): ?string | setCryptogram(?string cryptogram): void |
 | `eciIndicator` | `?string` | Optional | Electronic Commerce Indicator may not always be present. It is only returned for tokens on the Visa card network. This value is passed through in the payment authorization request.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `256`, *Pattern*: `^.*$` | getEciIndicator(): ?string | setEciIndicator(?string eciIndicator): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message_id": "message_id4",
-  "message_expiration": "message_expiration8",
-  "payment_method": "CARD",
-  "card": {
-    "name": "name6",
-    "number": "number6",
-    "expiry": "expiry4",
-    "last_digits": "last_digits0",
-    "type": "UNKNOWN"
-  },
-  "authentication_method": "PAN_ONLY",
-  "cryptogram": "cryptogram0",
-  "eci_indicator": "eci_indicator4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\GooglePayDecryptedTokenDataBuilder;
+use PaypalServerSdkLib\Models\GooglePayPaymentMethod;
+use PaypalServerSdkLib\Models\Builders\GooglePayCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\GooglePayAuthenticationMethod;
+
+$googlePayDecryptedTokenData = GooglePayDecryptedTokenDataBuilder::init(
+    GooglePayPaymentMethod::CARD,
+    GooglePayCardBuilder::init()
+        ->name('name6')
+        ->number('number6')
+        ->expiry('expiry4')
+        ->type(CardType::UNKNOWN)
+        ->build(),
+    GooglePayAuthenticationMethod::PAN_ONLY
+)
+    ->messageId('message_id8')
+    ->messageExpiration('message_expiration0')
+    ->cryptogram('cryptogram8')
+    ->eciIndicator('eci_indicator2')
+    ->build();
 ```
 

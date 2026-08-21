@@ -12,6 +12,7 @@ namespace PaypalServerSdkLib\Models\Builders;
 
 use Core\Utils\CoreHelper;
 use PaypalServerSdkLib\Models\BillingCycle;
+use PaypalServerSdkLib\Models\CycleFrequency;
 use PaypalServerSdkLib\Models\PricingScheme;
 
 /**
@@ -82,6 +83,17 @@ class BillingCycleBuilder
     public function startDate(?string $value): self
     {
         $this->instance->setStartDate($value);
+        return $this;
+    }
+
+    /**
+     * Sets frequency field.
+     *
+     * @param CycleFrequency|null $value
+     */
+    public function frequency(?CycleFrequency $value): self
+    {
+        $this->instance->setFrequency($value);
         return $this;
     }
 

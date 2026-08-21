@@ -18,3 +18,11 @@ The operation.
 | `COPY` | Copies the value at a specified location to the target location. The operation object must contain a from parameter, which is a string that contains a JSON pointer value that references the location in the target document from which to copy the value. For the operation to succeed, the from location must exist. For more information, see 4.5. copy. |
 | `TEST` | Tests that a value at the target location is equal to a specified value. The operation object must contain a value parameter that defines the value to compare to the target location's value. For the operation to succeed, the target location must be equal to the value value. For test, equal indicates that the value at the target location and the value that value defines are of the same JSON type. The data type of the value determines how equality is defined: Type Considered equal if both values strings Contain the same number of Unicode characters and their code points are byte-by-byte equal. numbers Are numerically equal. arrays Contain the same number of values, and each value is equal to the value at the corresponding position in the other array, by using these type-specific rules. objects Contain the same number of parameters, and each parameter is equal to a parameter in the other object, by comparing their keys (as strings) and their values (by using these type-specific rules). literals (false, true, and null) Are the same. The comparison is a logical comparison. For example, whitespace between the parameter values of an array is not significant. Also, ordering of the serialization of object parameters is not significant. For more information, see 4.6. test. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\PatchOp;
+
+$patchOp = PatchOp::COPY;
+```
+

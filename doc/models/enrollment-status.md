@@ -16,3 +16,11 @@ Status of Authentication eligibility.
 | `UNAVAILABLE` | Unavailable. The DS or ACS is not available for authentication at the time of the request. |
 | `BYPASS` | Bypass. The merchant authentication rule is triggered to bypass authentication. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\EnrollmentStatus;
+
+$enrollmentStatus = EnrollmentStatus::UNAVAILABLE;
+```
+

@@ -16,14 +16,17 @@ Information used to pay using BLIK one-click flow.
 | `aliasLabel` | `?string` | Optional | A bank defined identifier used as a display name to allow the payer to differentiate between multiple registered bank accounts.<br><br>**Constraints**: *Minimum Length*: `8`, *Maximum Length*: `35`, *Pattern*: `^[ -~]{8,35}$` | getAliasLabel(): ?string | setAliasLabel(?string aliasLabel): void |
 | `aliasKey` | `?string` | Optional | A Blik-defined identifier for a specific Blik-enabled bank account that is associated with a given merchant. Used only in conjunction with a Consumer Reference.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `19`, *Pattern*: `^[0-9]+$` | getAliasKey(): ?string | setAliasKey(?string aliasKey): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "auth_code": "auth_code8",
-  "consumer_reference": "consumer_reference6",
-  "alias_label": "alias_label2",
-  "alias_key": "alias_key6"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\BlikOneClickPaymentRequestBuilder;
+
+$blikOneClickPaymentRequest = BlikOneClickPaymentRequestBuilder::init(
+    'consumer_reference2'
+)
+    ->authCode('auth_code4')
+    ->aliasLabel('alias_label2')
+    ->aliasKey('alias_key0')
+    ->build();
 ```
 

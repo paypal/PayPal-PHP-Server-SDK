@@ -15,3 +15,11 @@ Liability shift indicator. The outcome of the issuer's authentication.
 | `POSSIBLE` | Liability may shift to the card issuer. |
 | `UNKNOWN` | The authentication system is not available. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\LiabilityShiftIndicator;
+
+$liabilityShiftIndicator = LiabilityShiftIndicator::POSSIBLE;
+```
+

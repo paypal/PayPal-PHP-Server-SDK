@@ -19,17 +19,20 @@ OAuth 2 Authorization endpoint response
 | `refreshToken` | `?string` | Optional | Refresh token<br>Used to get a new access token when it expires. | getRefreshToken(): ?string | setRefreshToken(?string refreshToken): void |
 | `idToken` | `?string` | Optional | An ID token response type is of JSON Web Token (JWT) that contains claims about the identity of the authenticated user. | getIdToken(): ?string | setIdToken(?string idToken): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "access_token": "access_token4",
-  "token_type": "token_type6",
-  "expires_in": 74,
-  "scope": "scope6",
-  "expiry": 88,
-  "refresh_token": "refresh_token6",
-  "id_token": "id_token6"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\OAuthTokenBuilder;
+
+$oAuthToken = OAuthTokenBuilder::init(
+    'access_token2',
+    'token_type2'
+)
+    ->expiresIn(84)
+    ->scope('scope8')
+    ->expiry(78)
+    ->refreshToken('refresh_token4')
+    ->idToken('id_token8')
+    ->build();
 ```
 

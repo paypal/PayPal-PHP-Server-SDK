@@ -17,24 +17,31 @@ The Balance information.
 | `availableBalance` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getAvailableBalance(): ?Money | setAvailableBalance(?Money availableBalance): void |
 | `withheldBalance` | [`?Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. | getWithheldBalance(): ?Money | setWithheldBalance(?Money withheldBalance): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "currency": "currency4",
-  "primary": false,
-  "total_balance": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  },
-  "available_balance": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  },
-  "withheld_balance": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\BalanceInformationBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+
+$balanceInformation = BalanceInformationBuilder::init(
+    'currency2',
+    MoneyBuilder::init(
+        'currency_code6',
+        'value2'
+    )->build()
+)
+    ->primary(false)
+    ->availableBalance(
+        MoneyBuilder::init(
+            'currency_code8',
+            'value4'
+        )->build()
+    )
+    ->withheldBalance(
+        MoneyBuilder::init(
+            'currency_code2',
+            'value8'
+        )->build()
+    )->build();
 ```
 

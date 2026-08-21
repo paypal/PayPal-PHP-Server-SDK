@@ -15,3 +15,11 @@ Operating System type of the device that the buyer is using.
 | `IOS` | Apple OS typically found in Apple mobile devices. |
 | `OTHER` | Any other OS type. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\OsType;
+
+$osType = OsType::IOS;
+```
+

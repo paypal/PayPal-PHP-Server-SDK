@@ -18,15 +18,17 @@ The details of the items in the shipment.
 | `imageUrl` | `?string` | Optional | The URL of the item's image. File type and size restrictions apply. An image that violates these restrictions will not be honored.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2048`, *Pattern*: `^(https:)([/\|.\|\w\|\s\|-])*\.(?:jpg\|gif\|png\|jpeg\|JPG\|GIF\|PNG\|JPEG)` | getImageUrl(): ?string | setImageUrl(?string imageUrl): void |
 | `upc` | [`?UniversalProductCode`](../../doc/models/universal-product-code.md) | Optional | The Universal Product Code of the item. | getUpc(): ?UniversalProductCode | setUpc(?UniversalProductCode upc): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "quantity": "quantity2",
-  "sku": "sku2",
-  "url": "url0",
-  "image_url": "image_url2"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\OrderTrackerItemBuilder;
+
+$orderTrackerItem = OrderTrackerItemBuilder::init()
+    ->name('name8')
+    ->quantity('quantity4')
+    ->sku('sku6')
+    ->url('url2')
+    ->imageUrl('image_url4')
+    ->build();
 ```
 

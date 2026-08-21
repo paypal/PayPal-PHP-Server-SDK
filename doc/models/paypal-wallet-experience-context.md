@@ -23,18 +23,25 @@ Customizes the payer experience during the approval process for payment with Pay
 | `paymentMethodPreference` | [`?string(PayeePaymentMethodPreference)`](../../doc/models/payee-payment-method-preference.md) | Optional | The merchant-preferred payment methods.<br><br>**Default**: `PayeePaymentMethodPreference::UNRESTRICTED`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` | getPaymentMethodPreference(): ?string | setPaymentMethodPreference(?string paymentMethodPreference): void |
 | `orderUpdateCallbackConfig` | [`?CallbackConfiguration`](../../doc/models/callback-configuration.md) | Optional | CallBack Configuration that the merchant can provide to PayPal/Venmo. | getOrderUpdateCallbackConfig(): ?CallbackConfiguration | setOrderUpdateCallbackConfig(?CallbackConfiguration orderUpdateCallbackConfig): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "contact_preference": "NO_CONTACT_INFO",
-  "landing_page": "NO_PREFERENCE",
-  "user_action": "CONTINUE",
-  "payment_method_preference": "UNRESTRICTED",
-  "brand_name": "brand_name6",
-  "locale": "locale0",
-  "return_url": "return_url8"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaypalWalletExperienceContextBuilder;
+use PaypalServerSdkLib\Models\PaypalWalletContextShippingPreference;
+use PaypalServerSdkLib\Models\PaypalWalletContactPreference;
+use PaypalServerSdkLib\Models\PaypalExperienceLandingPage;
+use PaypalServerSdkLib\Models\PaypalExperienceUserAction;
+use PaypalServerSdkLib\Models\PayeePaymentMethodPreference;
+
+$paypalWalletExperienceContext = PaypalWalletExperienceContextBuilder::init()
+    ->brandName('brand_name2')
+    ->locale('locale6')
+    ->shippingPreference(PaypalWalletContextShippingPreference::GET_FROM_FILE)
+    ->contactPreference(PaypalWalletContactPreference::NO_CONTACT_INFO)
+    ->returnUrl('return_url6')
+    ->landingPage(PaypalExperienceLandingPage::NO_PREFERENCE)
+    ->userAction(PaypalExperienceUserAction::CONTINUE_)
+    ->paymentMethodPreference(PayeePaymentMethodPreference::UNRESTRICTED)
+    ->build();
 ```
 

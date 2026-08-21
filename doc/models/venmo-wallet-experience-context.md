@@ -16,21 +16,29 @@ Customizes the buyer experience during the approval process for payment with Ven
 | `orderUpdateCallbackConfig` | [`?CallbackConfiguration`](../../doc/models/callback-configuration.md) | Optional | CallBack Configuration that the merchant can provide to PayPal/Venmo. | getOrderUpdateCallbackConfig(): ?CallbackConfiguration | setOrderUpdateCallbackConfig(?CallbackConfiguration orderUpdateCallbackConfig): void |
 | `userAction` | [`?string(VenmoWalletExperienceContextUserAction)`](../../doc/models/venmo-wallet-experience-context-user-action.md) | Optional | Configures a Continue or Pay Now checkout flow.<br><br>**Default**: `VenmoWalletExperienceContextUserAction::CONTINUE_`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `8`, *Pattern*: `^[0-9A-Z_]+$` | getUserAction(): ?string | setUserAction(?string userAction): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name6",
-  "order_update_callback_config": {
-    "callback_events": [
-      "SHIPPING_OPTIONS",
-      "SHIPPING_ADDRESS",
-      "SHIPPING_OPTIONS"
-    ],
-    "callback_url": "callback_url6"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\VenmoWalletExperienceContextBuilder;
+use PaypalServerSdkLib\Models\VenmoWalletExperienceContextShippingPreference;
+use PaypalServerSdkLib\Models\Builders\CallbackConfigurationBuilder;
+use PaypalServerSdkLib\Models\CallbackEvents;
+use PaypalServerSdkLib\Models\VenmoWalletExperienceContextUserAction;
+
+$venmoWalletExperienceContext = VenmoWalletExperienceContextBuilder::init()
+    ->brandName('brand_name8')
+    ->shippingPreference(VenmoWalletExperienceContextShippingPreference::GET_FROM_FILE)
+    ->orderUpdateCallbackConfig(
+        CallbackConfigurationBuilder::init(
+            [
+                CallbackEvents::SHIPPING_OPTIONS,
+                CallbackEvents::SHIPPING_ADDRESS,
+                CallbackEvents::SHIPPING_OPTIONS
+            ],
+            'callback_url6'
+        )->build()
+    )
+    ->userAction(VenmoWalletExperienceContextUserAction::CONTINUE_)
+    ->build();
 ```
 

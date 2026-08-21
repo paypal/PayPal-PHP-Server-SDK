@@ -19,134 +19,190 @@ The response to a request to update the quantity of the product or service in a 
 | `planOverridden` | `?bool` | Optional, Read-only | Indicates whether the subscription has overridden any plan attributes. | getPlanOverridden(): ?bool | setPlanOverridden(?bool planOverridden): void |
 | `links` | [`?(LinkDescription[])`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). | getLinks(): ?array | setLinks(?array links): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id6",
-  "quantity": "quantity0",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
-    ]
-  },
-  "plan": {
-    "billing_cycles": [
-      {
-        "pricing_scheme": {
-          "version": 10,
-          "fixed_price": {
-            "currency_code": "currency_code4",
-            "value": "value0"
-          },
-          "pricing_model": "VOLUME",
-          "tiers": [
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            }
-          ],
-          "create_time": "create_time4"
-        },
-        "sequence": 8,
-        "total_cycles": 198
-      },
-      {
-        "pricing_scheme": {
-          "version": 10,
-          "fixed_price": {
-            "currency_code": "currency_code4",
-            "value": "value0"
-          },
-          "pricing_model": "VOLUME",
-          "tiers": [
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            }
-          ],
-          "create_time": "create_time4"
-        },
-        "sequence": 8,
-        "total_cycles": 198
-      }
-    ],
-    "payment_preferences": {
-      "auto_bill_outstanding": false,
-      "setup_fee": {
-        "currency_code": "currency_code8",
-        "value": "value4"
-      },
-      "setup_fee_failure_action": "CONTINUE",
-      "payment_failure_threshold": 104
-    },
-    "taxes": {
-      "percentage": "percentage8",
-      "inclusive": false
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ModifySubscriptionResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\FulfillmentType;
+use PaypalServerSdkLib\Models\Builders\ShippingOptionBuilder;
+use PaypalServerSdkLib\Models\ShippingType;
+use PaypalServerSdkLib\Models\Builders\PlanOverrideBuilder;
+use PaypalServerSdkLib\Models\Builders\BillingCycleOverrideBuilder;
+use PaypalServerSdkLib\Models\Builders\SubscriptionPricingSchemeBuilder;
+use PaypalServerSdkLib\Models\SubscriptionPricingModel;
+use PaypalServerSdkLib\Models\Builders\PricingTierBuilder;
+use PaypalServerSdkLib\Models\Builders\PaymentPreferencesOverrideBuilder;
+use PaypalServerSdkLib\Models\SetupFeeFailureAction;
+use PaypalServerSdkLib\Models\Builders\TaxesOverrideBuilder;
+
+$modifySubscriptionResponse = ModifySubscriptionResponseBuilder::init()
+    ->planId('plan_id4')
+    ->quantity('quantity8')
+    ->shippingAmount(
+        MoneyBuilder::init(
+            'currency_code0',
+            'value6'
+        )->build()
+    )
+    ->shippingAddress(
+        ShippingDetailsBuilder::init()
+            ->name(
+                ShippingNameBuilder::init()
+                    ->fullName('full_name6')
+                    ->build()
+            )
+            ->emailAddress('email_address8')
+            ->phoneNumber(
+                PhoneNumberWithCountryCodeBuilder::init(
+                    'country_code2',
+                    'national_number6'
+                )->build()
+            )
+            ->type(FulfillmentType::PICKUP_IN_STORE)
+            ->options(
+                [
+                    ShippingOptionBuilder::init(
+                        'id2',
+                        'label2',
+                        false
+                    )
+                        ->type(ShippingType::SHIPPING)
+                        ->amount(
+                            MoneyBuilder::init(
+                                'currency_code6',
+                                'value0'
+                            )->build()
+                        )->build()
+                ]
+            )->build()
+    )
+    ->plan(
+        PlanOverrideBuilder::init()
+            ->billingCycles(
+                [
+                    BillingCycleOverrideBuilder::init(
+                        8
+                    )
+                        ->pricingScheme(
+                            SubscriptionPricingSchemeBuilder::init()
+                                ->fixedPrice(
+                                    MoneyBuilder::init(
+                                        'currency_code4',
+                                        'value0'
+                                    )->build()
+                                )
+                                ->pricingModel(SubscriptionPricingModel::VOLUME)
+                                ->tiers(
+                                    [
+                                        PricingTierBuilder::init(
+                                            'starting_quantity8',
+                                            MoneyBuilder::init(
+                                                'currency_code6',
+                                                'value0'
+                                            )->build()
+                                        )
+                                            ->endingQuantity('ending_quantity6')
+                                            ->build(),
+                                        PricingTierBuilder::init(
+                                            'starting_quantity8',
+                                            MoneyBuilder::init(
+                                                'currency_code6',
+                                                'value0'
+                                            )->build()
+                                        )
+                                            ->endingQuantity('ending_quantity6')
+                                            ->build(),
+                                        PricingTierBuilder::init(
+                                            'starting_quantity8',
+                                            MoneyBuilder::init(
+                                                'currency_code6',
+                                                'value0'
+                                            )->build()
+                                        )
+                                            ->endingQuantity('ending_quantity6')
+                                            ->build()
+                                    ]
+                                )
+                                ->createTime('create_time4')
+                                ->build()
+                        )
+                        ->totalCycles(198)
+                        ->build(),
+                    BillingCycleOverrideBuilder::init(
+                        8
+                    )
+                        ->pricingScheme(
+                            SubscriptionPricingSchemeBuilder::init()
+                                ->fixedPrice(
+                                    MoneyBuilder::init(
+                                        'currency_code4',
+                                        'value0'
+                                    )->build()
+                                )
+                                ->pricingModel(SubscriptionPricingModel::VOLUME)
+                                ->tiers(
+                                    [
+                                        PricingTierBuilder::init(
+                                            'starting_quantity8',
+                                            MoneyBuilder::init(
+                                                'currency_code6',
+                                                'value0'
+                                            )->build()
+                                        )
+                                            ->endingQuantity('ending_quantity6')
+                                            ->build(),
+                                        PricingTierBuilder::init(
+                                            'starting_quantity8',
+                                            MoneyBuilder::init(
+                                                'currency_code6',
+                                                'value0'
+                                            )->build()
+                                        )
+                                            ->endingQuantity('ending_quantity6')
+                                            ->build(),
+                                        PricingTierBuilder::init(
+                                            'starting_quantity8',
+                                            MoneyBuilder::init(
+                                                'currency_code6',
+                                                'value0'
+                                            )->build()
+                                        )
+                                            ->endingQuantity('ending_quantity6')
+                                            ->build()
+                                    ]
+                                )
+                                ->createTime('create_time4')
+                                ->build()
+                        )
+                        ->totalCycles(198)
+                        ->build()
+                ]
+            )
+            ->paymentPreferences(
+                PaymentPreferencesOverrideBuilder::init()
+                    ->autoBillOutstanding(false)
+                    ->setupFee(
+                        MoneyBuilder::init(
+                            'currency_code8',
+                            'value4'
+                        )->build()
+                    )
+                    ->setupFeeFailureAction(SetupFeeFailureAction::CONTINUE_)
+                    ->paymentFailureThreshold(104)
+                    ->build()
+            )
+            ->taxes(
+                TaxesOverrideBuilder::init()
+                    ->percentage('percentage8')
+                    ->inclusive(false)
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

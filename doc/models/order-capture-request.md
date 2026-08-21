@@ -13,110 +13,174 @@ Completes an capture payment for an order.
 |  --- | --- | --- | --- | --- | --- |
 | `paymentSource` | [`?OrderCaptureRequestPaymentSource`](../../doc/models/order-capture-request-payment-source.md) | Optional | The payment source definition. | getPaymentSource(): ?OrderCaptureRequestPaymentSource | setPaymentSource(?OrderCaptureRequestPaymentSource paymentSource): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "payment_source": {
-    "card": {
-      "name": "name6",
-      "number": "number6",
-      "expiry": "expiry4",
-      "security_code": "security_code8",
-      "billing_address": {
-        "address_line_1": "address_line_12",
-        "address_line_2": "address_line_28",
-        "admin_area_2": "admin_area_28",
-        "admin_area_1": "admin_area_14",
-        "postal_code": "postal_code0",
-        "country_code": "country_code8"
-      }
-    },
-    "token": {
-      "id": "id6",
-      "type": "BILLING_AGREEMENT"
-    },
-    "paypal": {
-      "vault_id": "vault_id0",
-      "email_address": "email_address0",
-      "name": {
-        "given_name": "given_name2",
-        "surname": "surname8"
-      },
-      "phone": {
-        "phone_type": "OTHER",
-        "phone_number": {
-          "national_number": "national_number6"
-        }
-      },
-      "birth_date": "birth_date8"
-    },
-    "apple_pay": {
-      "id": "id0",
-      "name": "name0",
-      "email_address": "email_address8",
-      "phone_number": {
-        "national_number": "national_number6"
-      },
-      "decrypted_token": {
-        "transaction_amount": {
-          "currency_code": "currency_code6",
-          "value": "value2"
-        },
-        "tokenized_card": {
-          "name": "name4",
-          "number": "number2",
-          "expiry": "expiry2",
-          "card_type": "VISA",
-          "type": "UNKNOWN"
-        },
-        "device_manufacturer_id": "device_manufacturer_id6",
-        "payment_data_type": "3DSECURE",
-        "payment_data": {
-          "cryptogram": "cryptogram6",
-          "eci_indicator": "eci_indicator0",
-          "emv_data": "emv_data0",
-          "pin": "pin4"
-        }
-      }
-    },
-    "google_pay": {
-      "name": "name8",
-      "email_address": "email_address6",
-      "phone_number": {
-        "country_code": "country_code2",
-        "national_number": "national_number6"
-      },
-      "card": {
-        "name": "name6",
-        "type": "UNKNOWN",
-        "brand": "CB_NATIONALE",
-        "billing_address": {
-          "address_line_1": "address_line_12",
-          "address_line_2": "address_line_28",
-          "admin_area_2": "admin_area_28",
-          "admin_area_1": "admin_area_14",
-          "postal_code": "postal_code0",
-          "country_code": "country_code8"
-        }
-      },
-      "decrypted_token": {
-        "message_id": "message_id0",
-        "message_expiration": "message_expiration2",
-        "payment_method": "CARD",
-        "card": {
-          "name": "name6",
-          "number": "number6",
-          "expiry": "expiry4",
-          "last_digits": "last_digits0",
-          "type": "UNKNOWN"
-        },
-        "authentication_method": "PAN_ONLY",
-        "cryptogram": "cryptogram6",
-        "eci_indicator": "eci_indicator0"
-      }
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\OrderCaptureRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\OrderCaptureRequestPaymentSourceBuilder;
+use PaypalServerSdkLib\Models\Builders\CardRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\Builders\TokenBuilder;
+use PaypalServerSdkLib\Models\TokenType;
+use PaypalServerSdkLib\Models\Builders\PaypalWalletBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayDecryptedTokenDataBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayTokenizedCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\Builders\MoneyBuilder;
+use PaypalServerSdkLib\Models\ApplePayPaymentDataType;
+use PaypalServerSdkLib\Models\Builders\ApplePayPaymentDataBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayRequestCardBuilder;
+use PaypalServerSdkLib\Models\Builders\GooglePayDecryptedTokenDataBuilder;
+use PaypalServerSdkLib\Models\GooglePayPaymentMethod;
+use PaypalServerSdkLib\Models\Builders\GooglePayCardBuilder;
+use PaypalServerSdkLib\Models\GooglePayAuthenticationMethod;
+
+$orderCaptureRequest = OrderCaptureRequestBuilder::init()
+    ->paymentSource(
+        OrderCaptureRequestPaymentSourceBuilder::init()
+            ->card(
+                CardRequestBuilder::init()
+                    ->name('name6')
+                    ->number('number6')
+                    ->expiry('expiry4')
+                    ->securityCode('security_code8')
+                    ->billingAddress(
+                        AddressBuilder::init(
+                            'country_code8'
+                        )
+                            ->addressLine1('address_line_12')
+                            ->addressLine2('address_line_28')
+                            ->adminArea2('admin_area_28')
+                            ->adminArea1('admin_area_14')
+                            ->postalCode('postal_code0')
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->token(
+                TokenBuilder::init(
+                    'id6',
+                    TokenType::BILLING_AGREEMENT
+                )->build()
+            )
+            ->paypal(
+                PaypalWalletBuilder::init()
+                    ->vaultId('vault_id0')
+                    ->emailAddress('email_address0')
+                    ->name(
+                        NameBuilder::init()
+                            ->givenName('given_name2')
+                            ->surname('surname8')
+                            ->build()
+                    )
+                    ->phone(
+                        PhoneWithTypeBuilder::init(
+                            PhoneNumberBuilder::init(
+                                'national_number6'
+                            )->build()
+                        )
+                            ->phoneType(PhoneType::OTHER)
+                            ->build()
+                    )
+                    ->birthDate('birth_date8')
+                    ->build()
+            )
+            ->applePay(
+                ApplePayRequestBuilder::init()
+                    ->id('id0')
+                    ->name('name0')
+                    ->emailAddress('email_address8')
+                    ->phoneNumber(
+                        PhoneNumberBuilder::init(
+                            'national_number6'
+                        )->build()
+                    )
+                    ->decryptedToken(
+                        ApplePayDecryptedTokenDataBuilder::init(
+                            ApplePayTokenizedCardBuilder::init()
+                                ->name('name4')
+                                ->number('number2')
+                                ->expiry('expiry2')
+                                ->type(CardType::UNKNOWN)
+                                ->build()
+                        )
+                            ->transactionAmount(
+                                MoneyBuilder::init(
+                                    'currency_code6',
+                                    'value2'
+                                )->build()
+                            )
+                            ->deviceManufacturerId('device_manufacturer_id6')
+                            ->paymentDataType(ApplePayPaymentDataType::ENUM_3DSECURE)
+                            ->paymentData(
+                                ApplePayPaymentDataBuilder::init()
+                                    ->cryptogram('cryptogram6')
+                                    ->eciIndicator('eci_indicator0')
+                                    ->emvData('emv_data0')
+                                    ->pin('pin4')
+                                    ->build()
+                            )
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->googlePay(
+                GooglePayRequestBuilder::init()
+                    ->name('name8')
+                    ->emailAddress('email_address6')
+                    ->phoneNumber(
+                        PhoneNumberWithCountryCodeBuilder::init(
+                            'country_code2',
+                            'national_number6'
+                        )->build()
+                    )
+                    ->card(
+                        GooglePayRequestCardBuilder::init()
+                            ->name('name6')
+                            ->type(CardType::UNKNOWN)
+                            ->brand(CardBrand::CB_NATIONALE)
+                            ->billingAddress(
+                                AddressBuilder::init(
+                                    'country_code8'
+                                )
+                                    ->addressLine1('address_line_12')
+                                    ->addressLine2('address_line_28')
+                                    ->adminArea2('admin_area_28')
+                                    ->adminArea1('admin_area_14')
+                                    ->postalCode('postal_code0')
+                                    ->build()
+                            )
+                            ->build()
+                    )
+                    ->decryptedToken(
+                        GooglePayDecryptedTokenDataBuilder::init(
+                            GooglePayPaymentMethod::CARD,
+                            GooglePayCardBuilder::init()
+                                ->name('name6')
+                                ->number('number6')
+                                ->expiry('expiry4')
+                                ->type(CardType::UNKNOWN)
+                                ->build(),
+                            GooglePayAuthenticationMethod::PAN_ONLY
+                        )
+                            ->messageId('message_id0')
+                            ->messageExpiration('message_expiration2')
+                            ->cryptogram('cryptogram6')
+                            ->eciIndicator('eci_indicator0')
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

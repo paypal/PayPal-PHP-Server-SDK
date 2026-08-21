@@ -15,3 +15,11 @@ Indicates if this is a `first` or `subsequent` payment using a stored payment so
 | `SUBSEQUENT` | Indicates a payment using a stored payment_source which has been successfully used previously for a payment. |
 | `DERIVED` | Indicates that PayPal will derive the value of `FIRST` or `SUBSEQUENT` based on data available to PayPal. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\StoredPaymentSourceUsageType;
+
+$storedPaymentSourceUsageType = StoredPaymentSourceUsageType::SUBSEQUENT;
+```
+

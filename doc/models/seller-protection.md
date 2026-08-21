@@ -14,14 +14,11 @@ The level of protection offered as defined by [PayPal Seller Protection for Merc
 | `status` | [`?string(SellerProtectionStatus)`](../../doc/models/seller-protection-status.md) | Optional, Read-only | Indicates whether the transaction is eligible for seller protection. For information, see [PayPal Seller Protection for Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-protection). | getStatus(): ?string | setStatus(?string status): void |
 | `disputeCategories` | [`?(string(DisputeCategory)[])`](../../doc/models/dispute-category.md) | Optional, Read-only | An array of conditions that are covered for the transaction. | getDisputeCategories(): ?array | setDisputeCategories(?array disputeCategories): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "NOT_ELIGIBLE",
-  "dispute_categories": [
-    "ITEM_NOT_RECEIVED"
-  ]
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SellerProtectionBuilder;
+
+$sellerProtection = SellerProtectionBuilder::init()->build();
 ```
 

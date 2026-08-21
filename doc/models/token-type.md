@@ -13,3 +13,11 @@ The tokenization method that generated the ID.
 |  --- | --- |
 | `BILLING_AGREEMENT` | The PayPal billing agreement ID. References an approved recurring payment for goods or services. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\TokenType;
+
+$tokenType = TokenType::BILLING_AGREEMENT;
+```
+

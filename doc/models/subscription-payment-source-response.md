@@ -13,23 +13,32 @@ The payment source used to fund the payment.
 |  --- | --- | --- | --- | --- | --- |
 | `card` | [`?CardResponseWithBillingAddress`](../../doc/models/card-response-with-billing-address.md) | Optional | The payment card used to fund the payment. Card can be a credit or debit card. | getCard(): ?CardResponseWithBillingAddress | setCard(?CardResponseWithBillingAddress card): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "admin_area_2": "admin_area_28",
-      "admin_area_1": "admin_area_14",
-      "postal_code": "postal_code0",
-      "country_code": "country_code8"
-    },
-    "expiry": "expiry4",
-    "currency_code": "currency_code2"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SubscriptionPaymentSourceResponseBuilder;
+use PaypalServerSdkLib\Models\Builders\CardResponseWithBillingAddressBuilder;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+
+$subscriptionPaymentSourceResponse = SubscriptionPaymentSourceResponseBuilder::init()
+    ->card(
+        CardResponseWithBillingAddressBuilder::init()
+            ->name('name6')
+            ->billingAddress(
+                AddressBuilder::init(
+                    'country_code8'
+                )
+                    ->addressLine1('address_line_12')
+                    ->addressLine2('address_line_28')
+                    ->adminArea2('admin_area_28')
+                    ->adminArea1('admin_area_14')
+                    ->postalCode('postal_code0')
+                    ->build()
+            )
+            ->expiry('expiry4')
+            ->currencyCode('currency_code2')
+            ->build()
+    )
+    ->build();
 ```
 

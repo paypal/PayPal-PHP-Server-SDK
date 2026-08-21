@@ -16,14 +16,16 @@ Information used to pay using MyBank.
 | `bic` | `?string` | Optional | The business identification code (BIC). In payments systems, a BIC is used to identify a specific business, most commonly a bank.<br><br>**Constraints**: *Minimum Length*: `8`, *Maximum Length*: `11`, *Pattern*: `^[A-Z-a-z0-9]{4}[A-Z-a-z]{2}[A-Z-a-z0-9]{2}([A-Z-a-z0-9]{3})?$` | getBic(): ?string | setBic(?string bic): void |
 | `ibanLastChars` | `?string` | Optional | The last characters of the IBAN used to pay.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `34`, *Pattern*: `[a-zA-Z0-9]{4}` | getIbanLastChars(): ?string | setIbanLastChars(?string ibanLastChars): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "country_code": "country_code4",
-  "bic": "bic6",
-  "iban_last_chars": "iban_last_chars2"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\MybankPaymentObjectBuilder;
+
+$mybankPaymentObject = MybankPaymentObjectBuilder::init()
+    ->name('name2')
+    ->countryCode('country_code8')
+    ->bic('bic4')
+    ->ibanLastChars('iban_last_chars0')
+    ->build();
 ```
 

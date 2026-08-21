@@ -27,75 +27,122 @@ The payment source definition.
 | `googlePay` | [`?GooglePayRequest`](../../doc/models/google-pay-request.md) | Optional | Information needed to pay using Google Pay. | getGooglePay(): ?GooglePayRequest | setGooglePay(?GooglePayRequest googlePay): void |
 | `venmo` | [`?VenmoWalletRequest`](../../doc/models/venmo-wallet-request.md) | Optional | Information needed to pay using Venmo. | getVenmo(): ?VenmoWalletRequest | setVenmo(?VenmoWalletRequest venmo): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "number": "number6",
-    "expiry": "expiry4",
-    "security_code": "security_code8",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "admin_area_2": "admin_area_28",
-      "admin_area_1": "admin_area_14",
-      "postal_code": "postal_code0",
-      "country_code": "country_code8"
-    }
-  },
-  "token": {
-    "id": "id6",
-    "type": "BILLING_AGREEMENT"
-  },
-  "paypal": {
-    "vault_id": "vault_id0",
-    "email_address": "email_address0",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "birth_date": "birth_date8"
-  },
-  "bancontact": {
-    "name": "name0",
-    "country_code": "country_code0",
-    "experience_context": {
-      "brand_name": "brand_name2",
-      "locale": "locale6",
-      "shipping_preference": "NO_SHIPPING",
-      "return_url": "return_url4",
-      "cancel_url": "cancel_url6"
-    }
-  },
-  "blik": {
-    "name": "name2",
-    "country_code": "country_code2",
-    "email": "email4",
-    "experience_context": {
-      "brand_name": "brand_name2",
-      "locale": "locale6",
-      "shipping_preference": "NO_SHIPPING",
-      "return_url": "return_url4",
-      "cancel_url": "cancel_url6"
-    },
-    "level_0": {
-      "auth_code": "auth_code8"
-    },
-    "one_click": {
-      "auth_code": "auth_code0",
-      "consumer_reference": "consumer_reference2",
-      "alias_label": "alias_label6",
-      "alias_key": "alias_key4"
-    }
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaymentSourceBuilder;
+use PaypalServerSdkLib\Models\Builders\CardRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneWithTypeBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberBuilder;
+use PaypalServerSdkLib\Models\PhoneType;
+use PaypalServerSdkLib\Models\Builders\NameBuilder;
+use PaypalServerSdkLib\Models\Builders\TokenBuilder;
+use PaypalServerSdkLib\Models\TokenType;
+use PaypalServerSdkLib\Models\Builders\PaypalWalletBuilder;
+use PaypalServerSdkLib\Models\Builders\BancontactPaymentRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\ExperienceContextBuilder;
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+use PaypalServerSdkLib\Models\Builders\BlikPaymentRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikExperienceContextBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikLevel0PaymentObjectBuilder;
+use PaypalServerSdkLib\Models\Builders\BlikOneClickPaymentRequestBuilder;
+
+$paymentSource = PaymentSourceBuilder::init()
+    ->card(
+        CardRequestBuilder::init()
+            ->name('name6')
+            ->number('number6')
+            ->expiry('expiry4')
+            ->securityCode('security_code8')
+            ->billingAddress(
+                AddressBuilder::init(
+                    'country_code8'
+                )
+                    ->addressLine1('address_line_12')
+                    ->addressLine2('address_line_28')
+                    ->adminArea2('admin_area_28')
+                    ->adminArea1('admin_area_14')
+                    ->postalCode('postal_code0')
+                    ->build()
+            )
+            ->build()
+    )
+    ->token(
+        TokenBuilder::init(
+            'id6',
+            TokenType::BILLING_AGREEMENT
+        )->build()
+    )
+    ->paypal(
+        PaypalWalletBuilder::init()
+            ->vaultId('vault_id0')
+            ->emailAddress('email_address0')
+            ->name(
+                NameBuilder::init()
+                    ->givenName('given_name2')
+                    ->surname('surname8')
+                    ->build()
+            )
+            ->phone(
+                PhoneWithTypeBuilder::init(
+                    PhoneNumberBuilder::init(
+                        'national_number6'
+                    )->build()
+                )
+                    ->phoneType(PhoneType::OTHER)
+                    ->build()
+            )
+            ->birthDate('birth_date8')
+            ->build()
+    )
+    ->bancontact(
+        BancontactPaymentRequestBuilder::init(
+            'name0',
+            'country_code0'
+        )
+            ->experienceContext(
+                ExperienceContextBuilder::init()
+                    ->brandName('brand_name2')
+                    ->locale('locale6')
+                    ->shippingPreference(ExperienceContextShippingPreference::NO_SHIPPING)
+                    ->returnUrl('return_url4')
+                    ->cancelUrl('cancel_url6')
+                    ->build()
+            )
+            ->build()
+    )
+    ->blik(
+        BlikPaymentRequestBuilder::init(
+            'name2',
+            'country_code2'
+        )
+            ->email('email4')
+            ->experienceContext(
+                BlikExperienceContextBuilder::init()
+                    ->brandName('brand_name2')
+                    ->locale('locale6')
+                    ->shippingPreference(ExperienceContextShippingPreference::NO_SHIPPING)
+                    ->returnUrl('return_url4')
+                    ->cancelUrl('cancel_url6')
+                    ->build()
+            )
+            ->level0(
+                BlikLevel0PaymentObjectBuilder::init(
+                    'auth_code8'
+                )->build()
+            )
+            ->oneClick(
+                BlikOneClickPaymentRequestBuilder::init(
+                    'consumer_reference2'
+                )
+                    ->authCode('auth_code0')
+                    ->aliasLabel('alias_label6')
+                    ->aliasKey('alias_key4')
+                    ->build()
+            )
+            ->build()
+    )
+    ->build();
 ```
 

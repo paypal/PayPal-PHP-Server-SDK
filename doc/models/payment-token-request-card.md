@@ -18,15 +18,18 @@ A Resource representing a request to vault a Card.
 | `brand` | [`?string(CardBrand)`](../../doc/models/card-brand.md) | Optional | The card network or brand. Applies to credit, debit, gift, and payment cards.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` | getBrand(): ?string | setBrand(?string brand): void |
 | `billingAddress` | [`?Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). | getBillingAddress(): ?Address | setBillingAddress(?Address billingAddress): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "number": "number8",
-  "expiry": "expiry2",
-  "security_code": "security_code6",
-  "brand": "HIPER"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\PaymentTokenRequestCardBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+
+$paymentTokenRequestCard = PaymentTokenRequestCardBuilder::init()
+    ->name('name0')
+    ->number('number8')
+    ->expiry('expiry8')
+    ->securityCode('security_code2')
+    ->brand(CardBrand::SOLO)
+    ->build();
 ```
 

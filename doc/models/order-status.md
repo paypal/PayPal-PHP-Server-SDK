@@ -18,3 +18,11 @@ The order status.
 | `COMPLETED` | The intent of the order was completed and a `payments` resource was created. Important: Check the payment status in `purchase_units[].payments.captures[].status` before fulfilling the order. A completed order can indicate a payment was authorized, an authorized payment was captured, or a payment was declined. |
 | `PAYER_ACTION_REQUIRED` | The order requires an action from the payer (e.g. 3DS authentication). Redirect the payer to the "rel":"payer-action" HATEOAS link returned as part of the response prior to authorizing or capturing the order. Some payment sources may not return a payer-action HATEOAS link (eg. MB WAY). For these payment sources the payer-action is managed by the scheme itself (eg. through SMS, email, in-app notification, etc). |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\OrderStatus;
+
+$orderStatus = OrderStatus::COMPLETED;
+```
+

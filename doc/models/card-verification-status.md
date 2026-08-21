@@ -14,3 +14,11 @@ Verification status of Card.
 | `VERIFIED` | Card has been verified |
 | `FAILED` | Card verification has failed |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\CardVerificationStatus;
+
+$cardVerificationStatus = CardVerificationStatus::VERIFIED;
+```
+

@@ -13,3 +13,11 @@ The tokenization method that generated the ID.
 |  --- | --- |
 | `SETUP_TOKEN` | The setup token, which is a temporary reference to payment source. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\VaultTokenRequestType;
+
+$vaultTokenRequestType = VaultTokenRequestType::SETUP_TOKEN;
+```
+

@@ -31,15 +31,17 @@ The item details.
 | `invoiceNumber` | `?string` | Optional | The invoice number. An alphanumeric string that identifies a billing for a merchant.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `200`, *Pattern*: `^[a-zA-Z0-9_'\-., ":;\!?]*$` | getInvoiceNumber(): ?string | setInvoiceNumber(?string invoiceNumber): void |
 | `checkoutOptions` | [`?(CheckoutOption[])`](../../doc/models/checkout-option.md) | Optional | An array of checkout options. Each option has a name and value.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32767` | getCheckoutOptions(): ?array | setCheckoutOptions(?array checkoutOptions): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "item_code": "item_code4",
-  "item_name": "item_name2",
-  "item_description": "item_description0",
-  "item_options": "item_options4",
-  "item_quantity": "item_quantity4"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\ItemDetailsBuilder;
+
+$itemDetails = ItemDetailsBuilder::init()
+    ->itemCode('item_code2')
+    ->itemName('item_name0')
+    ->itemDescription('item_description8')
+    ->itemOptions('item_options4')
+    ->itemQuantity('item_quantity4')
+    ->build();
 ```
 

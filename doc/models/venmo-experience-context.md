@@ -16,14 +16,19 @@ A resource representing an experience context of vault a venmo account.
 | `vaultInstruction` | [`?string(VaultInstructionAction)`](../../doc/models/vault-instruction-action.md) | Optional | DEPRECATED. Vault Instruction on action to be performed after a successful payer approval.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` | getVaultInstruction(): ?string | setVaultInstruction(?string vaultInstruction): void |
 | `userAction` | [`?string(VaultUserAction)`](../../doc/models/vault-user-action.md) | Optional | User Action on action to be performed after a successful payer approval.<br><br>**Default**: `VaultUserAction::CONTINUE_`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` | getUserAction(): ?string | setUserAction(?string userAction): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name0",
-  "vault_instruction": "ON_CREATE_PAYMENT_TOKENS"
-}
+```php
+use PaypalServerSdkLib\Models\Builders\VenmoExperienceContextBuilder;
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+use PaypalServerSdkLib\Models\VaultInstructionAction;
+use PaypalServerSdkLib\Models\VaultUserAction;
+
+$venmoExperienceContext = VenmoExperienceContextBuilder::init()
+    ->brandName('brand_name6')
+    ->shippingPreference(ExperienceContextShippingPreference::GET_FROM_FILE)
+    ->vaultInstruction(VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS)
+    ->userAction(VaultUserAction::CONTINUE_)
+    ->build();
 ```
 

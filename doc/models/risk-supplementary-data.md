@@ -13,13 +13,18 @@ Additional information necessary to evaluate the risk profile of a transaction.
 |  --- | --- | --- | --- | --- | --- |
 | `customer` | [`?ParticipantMetadata`](../../doc/models/participant-metadata.md) | Optional | Profile information of the sender or receiver. | getCustomer(): ?ParticipantMetadata | setCustomer(?ParticipantMetadata customer): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "customer": {
-    "ip_address": "ip_address0"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\RiskSupplementaryDataBuilder;
+use PaypalServerSdkLib\Models\Builders\ParticipantMetadataBuilder;
+
+$riskSupplementaryData = RiskSupplementaryDataBuilder::init()
+    ->customer(
+        ParticipantMetadataBuilder::init()
+            ->ipAddress('ip_address0')
+            ->build()
+    )
+    ->build();
 ```
 

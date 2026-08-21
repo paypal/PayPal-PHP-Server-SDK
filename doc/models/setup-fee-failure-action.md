@@ -14,3 +14,11 @@ The action to take on the subscription if the initial payment for the setup fail
 | `CONTINUE_` | Continues the subscription if the initial payment for the setup fails. |
 | `CANCEL` | Cancels the subscription if the initial payment for the setup fails. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\SetupFeeFailureAction;
+
+$setupFeeFailureAction = SetupFeeFailureAction::CONTINUE_;
+```
+

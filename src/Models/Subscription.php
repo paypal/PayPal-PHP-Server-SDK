@@ -84,6 +84,21 @@ class Subscription implements \JsonSerializable
     private $links;
 
     /**
+     * @var string|null
+     */
+    private $status;
+
+    /**
+     * @var string|null
+     */
+    private $statusChangeNote;
+
+    /**
+     * @var string|null
+     */
+    private $statusUpdateTime;
+
+    /**
      * Returns Id.
      * The PayPal-generated ID for the subscription.
      */
@@ -362,6 +377,70 @@ class Subscription implements \JsonSerializable
     }
 
     /**
+     * Returns Status.
+     * The status of the subscription.
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    /**
+     * Sets Status.
+     * The status of the subscription.
+     *
+     * @maps status
+     */
+    public function setStatus(?string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * Returns Status Change Note.
+     * The reason or notes for the status of the subscription.
+     */
+    public function getStatusChangeNote(): ?string
+    {
+        return $this->statusChangeNote;
+    }
+
+    /**
+     * Sets Status Change Note.
+     * The reason or notes for the status of the subscription.
+     *
+     * @maps status_change_note
+     */
+    public function setStatusChangeNote(?string $statusChangeNote): void
+    {
+        $this->statusChangeNote = $statusChangeNote;
+    }
+
+    /**
+     * Returns Status Update Time.
+     * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
+     */
+    public function getStatusUpdateTime(): ?string
+    {
+        return $this->statusUpdateTime;
+    }
+
+    /**
+     * Sets Status Update Time.
+     * The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.
+     * 6). Seconds are required while fractional seconds are optional. Note: The regular expression
+     * provides guidance but does not reject all invalid dates.
+     *
+     * @maps status_update_time
+     */
+    public function setStatusUpdateTime(?string $statusUpdateTime): void
+    {
+        $this->statusUpdateTime = $statusUpdateTime;
+    }
+
+    /**
      * Converts the Subscription object to a human-readable string representation.
      *
      * @return string The string representation of the Subscription object.
@@ -383,7 +462,10 @@ class Subscription implements \JsonSerializable
                 'customId' => $this->customId,
                 'planOverridden' => $this->planOverridden,
                 'plan' => $this->plan,
-                'links' => $this->links
+                'links' => $this->links,
+                'status' => $this->status,
+                'statusChangeNote' => $this->statusChangeNote,
+                'statusUpdateTime' => $this->statusUpdateTime
             ]
         );
     }
@@ -401,43 +483,52 @@ class Subscription implements \JsonSerializable
     {
         $json = [];
         if (isset($this->id)) {
-            $json['id']              = $this->id;
+            $json['id']                 = $this->id;
         }
         if (isset($this->planId)) {
-            $json['plan_id']         = $this->planId;
+            $json['plan_id']            = $this->planId;
         }
         if (isset($this->startTime)) {
-            $json['start_time']      = $this->startTime;
+            $json['start_time']         = $this->startTime;
         }
         if (isset($this->quantity)) {
-            $json['quantity']        = $this->quantity;
+            $json['quantity']           = $this->quantity;
         }
         if (isset($this->shippingAmount)) {
-            $json['shipping_amount'] = $this->shippingAmount;
+            $json['shipping_amount']    = $this->shippingAmount;
         }
         if (isset($this->subscriber)) {
-            $json['subscriber']      = $this->subscriber;
+            $json['subscriber']         = $this->subscriber;
         }
         if (isset($this->billingInfo)) {
-            $json['billing_info']    = $this->billingInfo;
+            $json['billing_info']       = $this->billingInfo;
         }
         if (isset($this->createTime)) {
-            $json['create_time']     = $this->createTime;
+            $json['create_time']        = $this->createTime;
         }
         if (isset($this->updateTime)) {
-            $json['update_time']     = $this->updateTime;
+            $json['update_time']        = $this->updateTime;
         }
         if (isset($this->customId)) {
-            $json['custom_id']       = $this->customId;
+            $json['custom_id']          = $this->customId;
         }
         if (isset($this->planOverridden)) {
-            $json['plan_overridden'] = $this->planOverridden;
+            $json['plan_overridden']    = $this->planOverridden;
         }
         if (isset($this->plan)) {
-            $json['plan']            = $this->plan;
+            $json['plan']               = $this->plan;
         }
         if (isset($this->links)) {
-            $json['links']           = $this->links;
+            $json['links']              = $this->links;
+        }
+        if (isset($this->status)) {
+            $json['status']             = $this->status;
+        }
+        if (isset($this->statusChangeNote)) {
+            $json['status_change_note'] = $this->statusChangeNote;
+        }
+        if (isset($this->statusUpdateTime)) {
+            $json['status_update_time'] = $this->statusUpdateTime;
         }
 
         return (!$asArrayWhenEmpty && empty($json)) ? new stdClass() : $json;

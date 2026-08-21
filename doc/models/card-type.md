@@ -17,3 +17,11 @@ Type of card. i.e Credit, Debit and so on.
 | `STORE` | A store card. |
 | `UNKNOWN` | Card type cannot be determined. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\CardType;
+
+$cardType = CardType::UNKNOWN;
+```
+

@@ -15,3 +15,11 @@ The location from which the shipping address is derived., The shipping preferenc
 | `NO_SHIPPING` | Redacts the shipping address from the PayPal site. Recommended for digital goods. |
 | `SET_PROVIDED_ADDRESS` | Merchant sends the shipping address using purchase_units.shipping.address. The customer cannot change this address on the PayPal site. |
 
+## Example
+
+```php
+use PaypalServerSdkLib\Models\ExperienceContextShippingPreference;
+
+$experienceContextShippingPreference = ExperienceContextShippingPreference::NO_SHIPPING;
+```
+

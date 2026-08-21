@@ -18,86 +18,136 @@ The payment method to vault with the instrument details.
 | `token` | [`?VaultTokenRequest`](../../doc/models/vault-token-request.md) | Optional | The Tokenized Payment Source representing a Request to Vault a Token. | getToken(): ?VaultTokenRequest | setToken(?VaultTokenRequest token): void |
 | `bank` | [`?BankRequest`](../../doc/models/bank-request.md) | Optional | A Resource representing a request to vault a Bank used for ACH Debit. | getBank(): ?BankRequest | setBank(?BankRequest bank): void |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "number": "number6",
-    "expiry": "expiry4",
-    "security_code": "security_code8",
-    "brand": "CB_NATIONALE"
-  },
-  "paypal": {
-    "description": "description2",
-    "usage_pattern": "THRESHOLD_PREPAID",
-    "shipping": {
-      "name": {
-        "full_name": "full_name6"
-      },
-      "email_address": "email_address2",
-      "phone_number": {
-        "country_code": "country_code2",
-        "national_number": "national_number6"
-      },
-      "type": "SHIPPING",
-      "address": {
-        "address_line_1": "address_line_16",
-        "address_line_2": "address_line_26",
-        "admin_area_2": "admin_area_20",
-        "admin_area_1": "admin_area_12",
-        "postal_code": "postal_code8",
-        "country_code": "country_code6"
-      }
-    },
-    "permit_multiple_payment_tokens": false,
-    "usage_type": "MERCHANT"
-  },
-  "venmo": {
-    "description": "description6",
-    "usage_pattern": "UNSCHEDULED_PREPAID",
-    "shipping": {
-      "name": {
-        "full_name": "full_name6"
-      },
-      "email_address": "email_address2",
-      "phone_number": {
-        "country_code": "country_code2",
-        "national_number": "national_number6"
-      },
-      "type": "SHIPPING",
-      "address": {
-        "address_line_1": "address_line_16",
-        "address_line_2": "address_line_26",
-        "admin_area_2": "admin_area_20",
-        "admin_area_1": "admin_area_12",
-        "postal_code": "postal_code8",
-        "country_code": "country_code6"
-      }
-    },
-    "permit_multiple_payment_tokens": false,
-    "usage_type": "MERCHANT"
-  },
-  "apple_pay": {
-    "token": "token6",
-    "card": {
-      "type": "UNKNOWN",
-      "brand": "CB_NATIONALE",
-      "billing_address": {
-        "address_line_1": "address_line_12",
-        "address_line_2": "address_line_28",
-        "admin_area_2": "admin_area_28",
-        "admin_area_1": "admin_area_14",
-        "postal_code": "postal_code0",
-        "country_code": "country_code8"
-      }
-    }
-  },
-  "token": {
-    "id": "id6",
-    "type": "SETUP_TOKEN"
-  }
-}
+```php
+use PaypalServerSdkLib\Models\Builders\SetupTokenRequestPaymentSourceBuilder;
+use PaypalServerSdkLib\Models\Builders\SetupTokenRequestCardBuilder;
+use PaypalServerSdkLib\Models\CardBrand;
+use PaypalServerSdkLib\Models\Builders\AddressBuilder;
+use PaypalServerSdkLib\Models\Builders\VaultPaypalWalletRequestBuilder;
+use PaypalServerSdkLib\Models\UsagePattern;
+use PaypalServerSdkLib\Models\Builders\VaultedDigitalWalletShippingDetailsBuilder;
+use PaypalServerSdkLib\Models\Builders\ShippingNameBuilder;
+use PaypalServerSdkLib\Models\Builders\PhoneNumberWithCountryCodeBuilder;
+use PaypalServerSdkLib\Models\FulfillmentType;
+use PaypalServerSdkLib\Models\PaypalPaymentTokenUsageType;
+use PaypalServerSdkLib\Models\Builders\VaultVenmoRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\VaultApplePayRequestBuilder;
+use PaypalServerSdkLib\Models\Builders\ApplePayRequestCardBuilder;
+use PaypalServerSdkLib\Models\CardType;
+use PaypalServerSdkLib\Models\Builders\VaultTokenRequestBuilder;
+use PaypalServerSdkLib\Models\VaultTokenRequestType;
+
+$setupTokenRequestPaymentSource = SetupTokenRequestPaymentSourceBuilder::init()
+    ->card(
+        SetupTokenRequestCardBuilder::init()
+            ->name('name6')
+            ->number('number6')
+            ->expiry('expiry4')
+            ->securityCode('security_code8')
+            ->brand(CardBrand::CB_NATIONALE)
+            ->build()
+    )
+    ->paypal(
+        VaultPaypalWalletRequestBuilder::init()
+            ->description('description2')
+            ->usagePattern(UsagePattern::THRESHOLD_PREPAID)
+            ->shipping(
+                VaultedDigitalWalletShippingDetailsBuilder::init()
+                    ->name(
+                        ShippingNameBuilder::init()
+                            ->fullName('full_name6')
+                            ->build()
+                    )
+                    ->emailAddress('email_address2')
+                    ->phoneNumber(
+                        PhoneNumberWithCountryCodeBuilder::init(
+                            'country_code2',
+                            'national_number6'
+                        )->build()
+                    )
+                    ->type(FulfillmentType::SHIPPING)
+                    ->address(
+                        AddressBuilder::init(
+                            'country_code6'
+                        )
+                            ->addressLine1('address_line_16')
+                            ->addressLine2('address_line_26')
+                            ->adminArea2('admin_area_20')
+                            ->adminArea1('admin_area_12')
+                            ->postalCode('postal_code8')
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->permitMultiplePaymentTokens(false)
+            ->usageType(PaypalPaymentTokenUsageType::MERCHANT)
+            ->build()
+    )
+    ->venmo(
+        VaultVenmoRequestBuilder::init()
+            ->description('description6')
+            ->usagePattern(UsagePattern::UNSCHEDULED_PREPAID)
+            ->shipping(
+                VaultedDigitalWalletShippingDetailsBuilder::init()
+                    ->name(
+                        ShippingNameBuilder::init()
+                            ->fullName('full_name6')
+                            ->build()
+                    )
+                    ->emailAddress('email_address2')
+                    ->phoneNumber(
+                        PhoneNumberWithCountryCodeBuilder::init(
+                            'country_code2',
+                            'national_number6'
+                        )->build()
+                    )
+                    ->type(FulfillmentType::SHIPPING)
+                    ->address(
+                        AddressBuilder::init(
+                            'country_code6'
+                        )
+                            ->addressLine1('address_line_16')
+                            ->addressLine2('address_line_26')
+                            ->adminArea2('admin_area_20')
+                            ->adminArea1('admin_area_12')
+                            ->postalCode('postal_code8')
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->permitMultiplePaymentTokens(false)
+            ->usageType(PaypalPaymentTokenUsageType::MERCHANT)
+            ->build()
+    )
+    ->applePay(
+        VaultApplePayRequestBuilder::init()
+            ->token('token6')
+            ->card(
+                ApplePayRequestCardBuilder::init()
+                    ->type(CardType::UNKNOWN)
+                    ->brand(CardBrand::CB_NATIONALE)
+                    ->billingAddress(
+                        AddressBuilder::init(
+                            'country_code8'
+                        )
+                            ->addressLine1('address_line_12')
+                            ->addressLine2('address_line_28')
+                            ->adminArea2('admin_area_28')
+                            ->adminArea1('admin_area_14')
+                            ->postalCode('postal_code0')
+                            ->build()
+                    )
+                    ->build()
+            )
+            ->build()
+    )
+    ->token(
+        VaultTokenRequestBuilder::init(
+            'id6',
+            VaultTokenRequestType::SETUP_TOKEN
+        )->build()
+    )->build();
 ```
 
