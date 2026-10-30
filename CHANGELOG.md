@@ -1,4 +1,5 @@
 ## 2.3.0
+- Updated README with information about PHP CVEs.
 - New Features:
   - Adds `processing_instruction` field to order models.
 - Bug Fixes:

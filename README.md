@@ -1,5 +1,17 @@
 
 # Getting Started with PayPal Server SDK
+## 🚨 Security Advisory: PHP2Shell (CVE-2026-109618 & CVE-2026-109619)
+
+Two critical remote code execution (RCE) vulnerabilities in PHP, [CVE-2026-109618](https://nvd.nist.gov/vuln/detail/cve-2026-109618) and [CVE-2026-109619](https://www.cve.org/CVERecord?id=CVE-2026-109619) (collectively "PHP2Shell", CVSS 9.2), allow an attacker to execute arbitrary code on a server running a vulnerable PHP version.
+
+ **Action required**
+ 1. Check your version: `php -v`
+ 2. Upgrade to the patched PHP release for your branch as soon as it is available. See the [official PHP advisory](https://www.php.net/archive/2026.php) for fixed versions.
+ 3. Update base images, `composer.json` (`"require": {"php": ">=X.Y.Z"}`), and CI matrices to the patched version. Recommended versions are (8.2.35+, 8.3.36+, 8.4.27+, 8.5.12+). The PayPal Server SDK has been confirmed to be compatible with all of them.
+ 4. If you use managed hosting, confirm with your provider that the patch has been applied.
+ 5. Until patched, treat internet-facing PHP apps as exposed and apply compensating controls (restrict access, WAF rules).
+
+ Please note: this is a vulnerability with PHP itself and not the PayPal Server SDK.
 
 ## Introduction
 
