@@ -11,7 +11,7 @@ Two critical remote code execution (RCE) vulnerabilities in PHP, [CVE-2026-10961
  4. If you use managed hosting, confirm with your provider that the patch has been applied.
  5. Until patched, treat internet-facing PHP apps as exposed and apply compensating controls (restrict access, WAF rules).
 
- Please note: this is a vulnerability with PHP itself and not the PayPal Server SDK.
+ Please note: this is a vulnerability with PHP itself and not the PayPal Server SDK. Future releases of the PayPal Server SDK will formally drop support for unpatched versions of PHP.
 
 ## Introduction
 
